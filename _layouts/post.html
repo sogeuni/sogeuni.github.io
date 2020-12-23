@@ -123,8 +123,12 @@ layout: default
 
     {% include post-nav.html %}
 
-    {% if site.disqus.comments and page.comments %}
-      {% include disqus.html %}
+    {% if page.comments %}
+      {% if site.comments == 'disqus' %}
+        {% include disqus.html %}
+      {% elsif site.comments == 'utterances' %}
+        {% include utterances.html %}
+      {% endif %}
     {% endif %}
 
     </div> <!-- #post-extend-wrapper -->
