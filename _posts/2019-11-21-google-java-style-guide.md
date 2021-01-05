@@ -108,7 +108,7 @@ static 블록과 non-static 블록이 함께 있는 경우 두 블록 사이를 
 
 ### 클래스에 대한 static import는 없음
 
-정정 중첩 클래스에 대해 static import를 사용하지 않고 일반적인 import를 사용한다.
+정적 중첩 클래스에 대해 static import를 사용하지 않고 일반적인 import를 사용한다.
 
 ## 클래스 선언
 
