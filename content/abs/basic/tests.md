@@ -1,0 +1,1127 @@
+---
+title: 7. Tests
+---
+
+
+Every reasonably complete programming language can test for a condition, then act according to the result of the test. Bash has the [[tests#^TTESTREF|test]] command, various [[tests#^DBLBRACKETS|bracket]] and [[tests#^DBLPARENSTST|parenthesis]] operators, and the **if/then** construct.
+
+## Test Constructs
+
+- An **if/then** construct tests whether the [[exit-and-exit-status#^EXITSTATUSREF|exit status]] of a list of commands is 0 (since 0 means "success" by UNIX convention), and if so, executes one or more commands.
+- There exists a dedicated command called **[[special-characters#^LEFTBRACKET|** ([left bracket]] special character). It is a synonym for **test**, and a [[../commands/internal-commands-and-builtins|builtin]] for efficiency reasons. This command considers its arguments as comparison expressions or file tests and returns an exit status corresponding to the result of the comparison (0 for true, 1 for false).
+- With version 2.02, Bash introduced the [[tests#^DBLBRACKETS|[[ ... | ... ]]]] _extended test command_, which performs comparisons in a manner more familiar to programmers from other languages. Note that **[[../commands/internal-commands-and-builtins#^keywordref|[** is a [keyword]], not a command.
+    Bash sees **[[ $a -lt $b | $a -lt $b ]]** as a single element, which returns an exit status.
+- The [[operations-and-related-topics.html|(( ... ))]] and [[../commands/internal-commands-and-builtins#^LETREF|let ...]] constructs return an [[exit-and-exit-status#^EXITSTATUSREF|exit status]], _according to whether the arithmetic expressions they evaluate expand to a non-zero value_. These [[../beyond-the-basic/arithmetic-expansion#^ARITHEXPREF|arithmetic-expansion]] constructs may therefore be used to perform [[other-comparison-operators#^ICOMPARISON1|arithmetic comparisons]].
+
+```bash
+(( 0 && 1 ))                 # Logical AND
+echo $?     # 1     ***
+# And so ...
+let "num = (( 0 && 1 ))"
+echo $num   # 0
+# But ...
+let "num = (( 0 && 1 ))"
+echo $?     # 1     ***
+
+
+(( 200 || 11 ))              # Logical OR
+echo $?     # 0     ***
+# ...
+let "num = (( 200 || 11 ))"
+echo $num   # 1
+let "num = (( 200 || 11 ))"
+echo $?     # 0     ***
+
+
+(( 200 | 11 ))               # Bitwise OR
+echo $?                      # 0     ***
+# ...
+let "num = (( 200 | 11 ))"
+echo $num                    # 203
+let "num = (( 200 | 11 ))"
+echo $?                      # 0     ***
+
+# The "let" construct returns the same exit status
+#+ as the double-parentheses arithmetic expansion.
+```
+
+> [!caution]
+> Again, note that the _exit status_ of an arithmetic expression is _not_ an error value.
+>
+> ```bash
+> var=-2 && (( var+=2 ))
+> echo $?                   # 1
+> 
+> var=-2 && (( var+=2 )) && echo $var
+>                           # Will not echo $var!
+> ```
+
+- An **if** can test any command, not just conditions enclosed within brackets.
+
+```bash
+if cmp a b &> /dev/null  # Suppress output.
+then echo "Files a and b are identical."
+else echo "Files a and b differ."
+fi
+
+# The very useful "if-grep" construct:
+# ----------------------------------- 
+if grep -q Bash file
+  then echo "File contains at least one occurrence of Bash."
+fi
+
+word=Linux
+letter_sequence=inu
+if echo "$word" | grep -q "$letter_sequence"
+# The "-q" option to grep suppresses output.
+then
+  echo "$letter_sequence found in $word"
+else
+  echo "$letter_sequence not found in $word"
+fi
+
+
+if COMMAND_WHOSE_EXIT_STATUS_IS_0_UNLESS_ERROR_OCCURRED
+  then echo "Command succeeded."
+  else echo "Command failed."
+fi
+```
+
+- _These last two examples courtesy of Stéphane Chazelas._
+
+###### Example 7-1. What is truth?
+
+```bash
+
+#!/bin/bash
+
+#  Tip:
+#  If you're unsure how a certain condition might evaluate,
+#+ test it in an if-test.
+
+echo
+
+echo "Testing \"0\""
+if [ 0 ]      # zero
+then
+  echo "0 is true."
+else          # Or else ...
+  echo "0 is false."
+fi            # 0 is true.
+
+echo
+
+echo "Testing \"1\""
+if [ 1 ]      # one
+then
+  echo "1 is true."
+else
+  echo "1 is false."
+fi            # 1 is true.
+
+echo
+
+echo "Testing \"-1\""
+if [ -1 ]     # minus one
+then
+  echo "-1 is true."
+else
+  echo "-1 is false."
+fi            # -1 is true.
+
+echo
+
+echo "Testing \"NULL\""
+if [ ]        # NULL (empty condition)
+then
+  echo "NULL is true."
+else
+  echo "NULL is false."
+fi            # NULL is false.
+
+echo
+
+echo "Testing \"xyz\""
+if [ xyz ]    # string
+then
+  echo "Random string is true."
+else
+  echo "Random string is false."
+fi            # Random string is true.
+
+echo
+
+echo "Testing \"\$xyz\""
+if [ $xyz ]   # Tests if $xyz is null, but...
+              # it's only an uninitialized variable.
+then
+  echo "Uninitialized variable is true."
+else
+  echo "Uninitialized variable is false."
+fi            # Uninitialized variable is false.
+
+echo
+
+echo "Testing \"-n \$xyz\""
+if [ -n "$xyz" ]            # More pedantically correct.
+then
+  echo "Uninitialized variable is true."
+else
+  echo "Uninitialized variable is false."
+fi            # Uninitialized variable is false.
+
+echo
+
+
+xyz=          # Initialized, but set to null value.
+
+echo "Testing \"-n \$xyz\""
+if [ -n "$xyz" ]
+then
+  echo "Null variable is true."
+else
+  echo "Null variable is false."
+fi            # Null variable is false.
+
+
+echo
+
+
+# When is "false" true?
+
+echo "Testing \"false\""
+if [ "false" ]              #  It seems that "false" is just a string ...
+then
+  echo "\"false\" is true." #+ and it tests true.
+else
+  echo "\"false\" is false."
+fi            # "false" is true.
+
+echo
+
+echo "Testing \"\$false\""  # Again, uninitialized variable.
+if [ "$false" ]
+then
+  echo "\"\$false\" is true."
+else
+  echo "\"\$false\" is false."
+fi            # "$false" is false.
+              # Now, we get the expected result.
+
+#  What would happen if we tested the uninitialized variable "$true"?
+
+echo
+
+exit 0
+```
+
+**Exercise.** Explain the behavior of [[tests#^EX10|Example 7-1]], above.
+
+```bash
+if [ condition-true ]
+then
+   command 1
+   command 2
+   ...
+else  # Or else ...
+      # Adds default code block executing if original condition tests false.
+   command 3
+   command 4
+   ...
+fi
+```
+
+> [!note] 
+> When _if_ and _then_ are on same line in a condition test, a semicolon must terminate the _if_ statement. Both _if_ and _then_ are [[../commands/internal-commands-and-builtins#^keywordref|keywords]]. Keywords (or commands) begin statements, and before a new statement on the same line begins, the old one must terminate.
+>
+> ```bash
+> if [ -x "$filename" ]; then
+> ```
+
+**Else if and elif**
+
+elif
+
+**elif** is a contraction for _else if_. The effect is to nest an inner if/then construct within an outer one.
+
+```bash
+if [ condition1 ]
+then
+   command1
+   command2
+   command3
+elif [ condition2 ]
+# Same as else if
+then
+   command4
+   command5
+else
+   default-command
+fi
+```
+
+The **if test condition-true** construct is the exact equivalent of **if [ condition-true ]**. As it happens, the left bracket, **[** , is a _token_ [^1] which invokes the **test** command. The closing right bracket, **]** , in an if/test should not therefore be strictly necessary, however newer versions of Bash require it.
+
+> [!note] 
+> The **test** command is a Bash [[../commands/internal-commands-and-builtins|builtin]] which tests file types and compares strings. Therefore, in a Bash script, **test** does _not_ call the external /usr/bin/test binary, which is part of the _sh-utils_ package. Likewise, **[** does not call /usr/bin/[, which is linked to /usr/bin/test.
+>
+> ```bash
+> bash$ type test
+> test is a shell builtin
+> bash$ type '['
+> [ is a shell builtin
+> bash$ type '[['
+> [[ is a shell keyword
+> bash$ type ']]'
+> ]] is a shell keyword
+> bash$ type ']'
+> bash: type: ]: not found
+> 	      
+> ```
+>
+> If, for some reason, you wish to use /usr/bin/test in a Bash script, then specify it by full pathname.
+
+###### Example 7-2. Equivalence of *test*, `/usr/bin/test`, `[ ]`, and `/usr/bin/[`
+
+```bash
+#!/bin/bash
+
+echo
+
+if test -z "$1"
+then
+  echo "No command-line arguments."
+else
+  echo "First command-line argument is $1."
+fi
+
+echo
+
+if /usr/bin/test -z "$1"      # Equivalent to "test" builtin.
+#  ^^^^^^^^^^^^^              # Specifying full pathname.
+then
+  echo "No command-line arguments."
+else
+  echo "First command-line argument is $1."
+fi
+
+echo
+
+if [ -z "$1" ]                # Functionally identical to above code blocks.
+#   if [ -z "$1"                should work, but...
+#+  Bash responds to a missing close-bracket with an error message.
+then
+  echo "No command-line arguments."
+else
+  echo "First command-line argument is $1."
+fi
+
+echo
+
+
+if /usr/bin/[ -z "$1" ]       # Again, functionally identical to above.
+# if /usr/bin/[ -z "$1"       # Works, but gives an error message.
+#                             # Note:
+#                               This has been fixed in Bash, version 3.x.
+then
+  echo "No command-line arguments."
+else
+  echo "First command-line argument is $1."
+fi
+
+echo
+
+exit 0
+```
+
+> The [[ | ]] construct is the more versatile Bash version of [ ]. This is the _extended test command_, adopted from _ksh88_.
+>
+> No filename expansion or word splitting takes place between [[ and | and ]], but there is parameter expansion and command substitution.
+>
+> ```bash
+> file=/etc/passwd
+> 
+> if [[ -e $file ]]
+> then
+>   echo "Password file exists."
+> fi
+> ```
+>
+> Using the **[[ ... | ... ]]** test construct, rather than **[ ... ]** can prevent many logic errors in scripts. For example, the &&, \|, <, and > operators work within a [[ | ]] test, despite giving an error within a [ ] construct.
+>
+> _Arithmetic evaluation_ of octal / hexadecimal constants takes place automatically within a [[ ... | ... ]] construct.
+>
+> ```bash
+> # [[ Octal and hexadecimal evaluation ]]
+> # Thank you, Moritz Gronbach, for pointing this out.
+> 
+> 
+> decimal=15
+> octal=017   # = 15 (decimal)
+> hex=0x0f    # = 15 (decimal)
+> 
+> if [ "$decimal" -eq "$octal" ]
+> then
+>   echo "$decimal equals $octal"
+> else
+>   echo "$decimal is not equal to $octal"       # 15 is not equal to 017
+> fi      # Doesn't evaluate within [ single brackets ]!
+> 
+> 
+> if [[ "$decimal" -eq "$octal" ]]
+> then
+>   echo "$decimal equals $octal"                # 15 equals 017
+> else
+>   echo "$decimal is not equal to $octal"
+> fi      # Evaluates within [[ double brackets ]]!
+> 
+> if [[ "$decimal" -eq "$hex" ]]
+> then
+>   echo "$decimal equals $hex"                  # 15 equals 0x0f
+> else
+>   echo "$decimal is not equal to $hex"
+> fi      # [[ $hexadecimal ]] also evaluates!
+> ```
+
+> [!note]
+> Following an **if**, neither the **test** command nor the test brackets ( [ ] or [[ | ]] ) are strictly necessary.
+>
+> ```bash
+> dir=/home/bozo
+> 
+> if cd "$dir" 2>/dev/null; then   # "2>/dev/null" hides error message.
+>   echo "Now in $dir."
+> else
+>   echo "Can't change to $dir."
+> fi
+> ```
+>
+> The "if COMMAND" construct returns the exit status of COMMAND.
+>
+> Similarly, a condition within test brackets may stand alone without an **if**, when used in combination with a [[../advanced-topics/list-constructs#^LISTCONSREF|list construct]].
+>
+> ```bash
+> var1=20
+> var2=22
+> [ "$var1" -ne "$var2" ] && echo "$var1 is not equal to $var2"
+> 
+> home=/home/bozo
+> [ -d "$home" ] || echo "$home directory does not exist."
+> ```
+
+The [[./operations-and-related-topics|(( )) construct]] expands and evaluates an arithmetic expression. If the expression evaluates as zero, it returns an [[exit-and-exit-status#^EXITSTATUSREF|exit status]] of 1, or "false". A non-zero expression returns an exit status of 0, or "true". This is in marked contrast to using the **test** and [ ] constructs previously discussed.
+
+###### Example 7-3. Arithmetic Tests using `(( ))`
+
+```bash
+#!/bin/bash
+# arith-tests.sh
+# Arithmetic tests.
+
+# The (( ... )) construct evaluates and tests numerical expressions.
+# Exit status opposite from [ ... ] construct!
+
+(( 0 ))
+echo "Exit status of \"(( 0 ))\" is $?."         # 1
+
+(( 1 ))
+echo "Exit status of \"(( 1 ))\" is $?."         # 0
+
+(( 5 > 4 ))                                      # true
+echo "Exit status of \"(( 5 > 4 ))\" is $?."     # 0
+
+(( 5 > 9 ))                                      # false
+echo "Exit status of \"(( 5 > 9 ))\" is $?."     # 1
+
+(( 5 == 5 ))                                     # true
+echo "Exit status of \"(( 5 == 5 ))\" is $?."    # 0
+# (( 5 = 5 ))  gives an error message.
+
+(( 5 - 5 ))                                      # 0
+echo "Exit status of \"(( 5 - 5 ))\" is $?."     # 1
+
+(( 5 / 4 ))                                      # Division o.k.
+echo "Exit status of \"(( 5 / 4 ))\" is $?."     # 0
+
+(( 1 / 2 ))                                      # Division result < 1.
+echo "Exit status of \"(( 1 / 2 ))\" is $?."     # Rounded off to 0.
+                                                 # 1
+
+(( 1 / 0 )) 2>/dev/null                          # Illegal division by 0.
+#           ^^^^^^^^^^^
+echo "Exit status of \"(( 1 / 0 ))\" is $?."     # 1
+
+# What effect does the "2>/dev/null" have?
+# What would happen if it were removed?
+# Try removing it, then rerunning the script.
+
+# ======================================= #
+
+# (( ... )) also useful in an if-then test.
+
+var1=5
+var2=4
+
+if (( var1 > var2 ))
+then #^      ^      Note: Not $var1, $var2. Why?
+  echo "$var1 is greater than $var2"
+fi     # 5 is greater than 4
+
+exit 0
+```
+
+## File test operators
+
+**Returns true if...**
+
+-e
+
+file exists
+
+-a
+
+file exists
+
+This is identical in effect to -e. It has been "deprecated," [^2] and its use is discouraged.
+
+-f
+
+file is a _regular_ file (not a directory or [[../advanced-topics/dev#^DEVFILEREF|device file]])
+
+-s
+
+file is not zero size
+
+-d
+
+file is a directory
+
+-b
+
+file is a [[../advanced-topics/dev#^BLOCKDEVREF|block device]]
+
+-c
+
+file is a [[../advanced-topics/dev#^CHARDEVREF|character device]]
+
+```bash
+device0="/dev/sda2"    # /   (root directory)
+if [ -b "$device0" ]
+then
+  echo "$device0 is a block device."
+fi
+
+# /dev/sda2 is a block device.
+
+
+
+device1="/dev/ttyS1"   # PCMCIA modem card.
+if [ -c "$device1" ]
+then
+  echo "$device1 is a character device."
+fi
+
+# /dev/ttyS1 is a character device.
+```
+
+-p
+
+file is a [[./special-characters#^PIPEREF|pipe]]
+
+```bash
+function show_input_type()
+{
+   [ -p /dev/fd/0 ] && echo PIPE || echo STDIN
+}
+
+show_input_type "Input"                           # STDIN
+echo "Input" | show_input_type                    # PIPE
+
+# This example courtesy of Carl Anderson.
+```
+
+-h
+
+file is a [[../commands/basic-commands#^SYMLINKREF|symbolic link]]
+
+-L
+
+file is a symbolic link
+
+-S
+
+file is a [[../advanced-topics/dev#^SOCKETREF|socket]]
+
+-t
+
+file ([[../advanced-topics/io-redirection#^FDREF|descriptor]]) is associated with a terminal device
+
+This test option [[../advanced-topics/interactive-and-non-interactive-shell-and-scripts#^II2TEST|may be used to check]] whether the stdin **[ -t 0 ]** or stdout **[ -t 1 ]** in a given script is a terminal.
+
+-r
+
+file has read permission (_for the user running the test_)
+
+-w
+
+file has write permission (for the user running the test)
+
+-x
+
+file has execute permission (for the user running the test)
+
+-g
+
+set-group-id (sgid) flag set on file or directory
+
+If a directory has the _sgid_ flag set, then a file created within that directory belongs to the group that owns the directory, not necessarily to the group of the user who created the file. This may be useful for a directory shared by a workgroup.
+
+-u
+
+set-user-id (suid) flag set on file
+
+A binary owned by _root_ with _set-user-id_ flag set runs with _root_ privileges, even when an ordinary user invokes it. [^3] This is useful for executables (such as **pppd** and **cdrecord**) that need to access system hardware. Lacking the _suid_ flag, these binaries could not be invoked by a _non-root_ user.
+
+```bash
+	      -rwsr-xr-t    1 root       178236 Oct  2  2000 /usr/sbin/pppd
+	      
+```
+
+A file with the _suid_ flag set shows an _s_ in its permissions.
+
+-k
+
+_sticky bit_ set
+
+Commonly known as the _sticky bit,_ the _save-text-mode_ flag is a special type of file permission. If a file has this flag set, that file will be kept in cache memory, for quicker access. [^4] If set on a directory, it restricts write permission. Setting the sticky bit adds a _t_ to the permissions on the file or directory listing. This restricts altering or deleting specific files in that directory to the owner of those files.
+
+```bash
+	      drwxrwxrwt    7 root         1024 May 19 21:26 tmp/
+	      
+```
+
+If a user does not own a directory that has the sticky bit set, but has write permission in that directory, she can only delete those files that she owns in it. This keeps users from inadvertently overwriting or deleting each other's files in a publicly accessible directory, such as /tmp. (The _owner_ of the directory or _root_ can, of course, delete or rename files there.)
+
+-O
+
+you are owner of file
+
+-G
+
+group-id of file same as yours
+
+-N
+
+file modified since it was last read
+
+f1 -nt f2
+
+file _f1_ is newer than _f2_
+
+f1 -ot f2
+
+file _f1_ is older than _f2_
+
+f1 -ef f2
+
+files _f1_ and _f2_ are hard links to the same file
+
+!
+
+"not" -- reverses the sense of the tests above (returns true if condition absent).
+
+###### Example 7-4. Testing for broken links
+
+```bash
+#!/bin/bash
+# broken-link.sh
+# Written by Lee bigelow <ligelowbee@yahoo.com>
+# Used in ABS Guide with permission.
+
+#  A pure shell script to find dead symlinks and output them quoted
+#+ so they can be fed to xargs and dealt with :)
+#+ eg. sh broken-link.sh /somedir /someotherdir|xargs rm
+#
+#  This, however, is a better method:
+#
+#  find "somedir" -type l -print0|\
+#  xargs -r0 file|\
+#  grep "broken symbolic"|
+#  sed -e 's/^\|: *broken symbolic.*$/"/g'
+#
+#+ but that wouldn't be pure Bash, now would it.
+#  Caution: beware the /proc file system and any circular links!
+################################################################
+
+
+#  If no args are passed to the script set directories-to-search 
+#+ to current directory.  Otherwise set the directories-to-search 
+#+ to the args passed.
+######################
+
+[ $# -eq 0 ] && directorys=`pwd` || directorys=$@
+
+
+#  Setup the function linkchk to check the directory it is passed 
+#+ for files that are links and don't exist, then print them quoted.
+#  If one of the elements in the directory is a subdirectory then 
+#+ send that subdirectory to the linkcheck function.
+##########
+
+linkchk () {
+    for element in $1/*; do
+      [ -h "$element" -a ! -e "$element" ] && echo \"$element\"
+      [ -d "$element" ] && linkchk $element
+    # Of course, '-h' tests for symbolic link, '-d' for directory.
+    done
+}
+
+#  Send each arg that was passed to the script to the linkchk() function
+#+ if it is a valid directoy.  If not, then print the error message
+#+ and usage info.
+##################
+for directory in $directorys; do
+    if [ -d $directory ]
+	then linkchk $directory
+	else 
+	    echo "$directory is not a directory"
+	    echo "Usage: $0 dir1 dir2 ..."
+    fi
+done
+
+exit $?
+```
+
+[[zeros#COOKIES|Example 31-1]], [[../beyond-the-basic/loops#BINGREP|Example 11-8]], [[../beyond-the-basic/loops#FILEINFO|Example 11-3]], [[zeros#RAMDISK|Example 31-3]], and [[../apendix/contributed-scripts#MAILFORMAT|Example A-1]] also illustrate uses of the file test operators.
+
+## Other Comparison Operators
+
+A _binary_ comparison operator compares two variables or quantities. _Note that integer and string comparison use a different set of operators._
+
+**integer comparison**
+
+-eq
+
+is equal to
+
+**if [ "$a" -eq "$b" ]**
+
+-ne
+
+is not equal to
+
+**if [ "$a" -ne "$b" ]**
+
+-gt
+
+is greater than
+
+**if [ "$a" -gt "$b" ]**
+
+-ge
+
+is greater than or equal to
+
+**if [ "$a" -ge "$b" ]**
+
+-lt
+
+is less than
+
+**if [ "$a" -lt "$b" ]**
+
+-le
+
+is less than or equal to
+
+**if [ "$a" -le "$b" ]**
+
+<
+
+is less than (within [[operations-and-related-topics.html|double parentheses]])
+
+**(("$a" < "$b"))**
+
+<=
+
+is less than or equal to (within double parentheses)
+
+**(("$a" <= "$b"))**
+
+>
+
+is greater than (within double parentheses)
+
+**(("$a" > "$b"))**
+
+>=
+
+is greater than or equal to (within double parentheses)
+
+**(("$a" >= "$b"))**
+
+**string comparison**
+
+=
+
+is equal to
+
+**if [ "$a" = "$b" ]**
+
+> [!caution]
+> Note the [[./special-characters#Whitespace|whitespace]] framing the **=**.
+>
+> **if [ "$a"="$b" ]** is _not_ equivalent to the above.
+
+==
+
+is equal to
+
+**if [ "$a" == "$b" ]**
+
+This is a synonym for =.
+
+> [!note]
+> The == comparison operator behaves differently within a [[tests#^DBLBRACKETS|double-brackets]] test than within single brackets.
+>
+> ```bash
+> [[ $a == z* ]]   # True if $a starts with an "z" (pattern matching).
+> [[ $a == "z*" ]] # True if $a is equal to z* (literal matching).
+> 
+> [ $a == z* ]     # File globbing and word splitting take place.
+> [ "$a" == "z*" ] # True if $a is equal to z* (literal matching).
+> 
+> # Thanks, Stéphane Chazelas
+> ```
+
+!=
+
+is not equal to
+
+**if [ "$a" != "$b" ]**
+
+This operator uses pattern matching within a [[tests#^DBLBRACKETS|[[ ... | ... ]]]] construct.
+
+<
+
+is less than, in [[./special-characters#^ASCIIDEF|ASCII]] alphabetical order
+
+**if [[ "$a" < "$b" | "$a" < "$b" ]]**
+
+**if [ "$a" \< "$b" ]**
+
+Note that the "<" needs to be [[./quoting#^ESCP|escaped]] within a **[ ]** construct.
+
+>
+
+is greater than, in ASCII alphabetical order
+
+**if [[ "$a" > "$b" | "$a" > "$b" ]]**
+
+**if [ "$a" \> "$b" ]**
+
+Note that the ">" needs to be escaped within a **[ ]** construct.
+
+See [[../advanced-topics/arrays#^BUBBLE|Example 27-11]] for an application of this comparison operator.
+
+-z
+
+string is _null_, that is, has zero length
+
+```bash
+ String=''   # Zero-length ("null") string variable.
+
+if [ -z "$String" ]
+then
+  echo "\$String is null."
+else
+  echo "\$String is NOT null."
+fi     # $String is null.
+```
+
+-n
+
+string is not _null._
+
+> [!caution] The **-n** test requires that the string be quoted within the test brackets. Using an unquoted string with _! -z_, or even just the unquoted string alone within test brackets (see [[other-comparison-operators#^STRTEST|Example 7-6]]) normally works, however, this is an unsafe practice. _Always_ quote a tested string. [^5]
+
+###### Example 7-5. Arithmetic and string comparisons
+
+```bash
+#!/bin/bash
+
+a=4
+b=5
+
+#  Here "a" and "b" can be treated either as integers or strings.
+#  There is some blurring between the arithmetic and string comparisons,
+#+ since Bash variables are not strongly typed.
+
+#  Bash permits integer operations and comparisons on variables
+#+ whose value consists of all-integer characters.
+#  Caution advised, however.
+
+echo
+
+if [ "$a" -ne "$b" ]
+then
+  echo "$a is not equal to $b"
+  echo "(arithmetic comparison)"
+fi
+
+echo
+
+if [ "$a" != "$b" ]
+then
+  echo "$a is not equal to $b."
+  echo "(string comparison)"
+  #     "4"  != "5"
+  # ASCII 52 != ASCII 53
+fi
+
+# In this particular instance, both "-ne" and "!=" work.
+
+echo
+
+exit 0
+```
+
+###### Example 7-6. Testing whether a string is *null*
+
+```bash
+#!/bin/bash
+#  str-test.sh: Testing null strings and unquoted strings,
+#+ but not strings and sealing wax, not to mention cabbages and kings . . .
+
+# Using   if [ ... ]
+
+# If a string has not been initialized, it has no defined value.
+# This state is called "null" (not the same as zero!).
+
+if [ -n $string1 ]    # string1 has not been declared or initialized.
+then
+  echo "String \"string1\" is not null."
+else  
+  echo "String \"string1\" is null."
+fi                    # Wrong result.
+# Shows $string1 as not null, although it was not initialized.
+
+echo
+
+# Let's try it again.
+
+if [ -n "$string1" ]  # This time, $string1 is quoted.
+then
+  echo "String \"string1\" is not null."
+else  
+  echo "String \"string1\" is null."
+fi                    # Quote strings within test brackets!
+
+echo
+
+if [ $string1 ]       # This time, $string1 stands naked.
+then
+  echo "String \"string1\" is not null."
+else  
+  echo "String \"string1\" is null."
+fi                    # This works fine.
+# The [ ... ] test operator alone detects whether the string is null.
+# However it is good practice to quote it (if [ "$string1" ]).
+#
+# As Stephane Chazelas points out,
+#    if [ $string1 ]    has one argument, "]"
+#    if [ "$string1" ]  has two arguments, the empty "$string1" and "]" 
+
+
+echo
+
+
+string1=initialized
+
+if [ $string1 ]       # Again, $string1 stands unquoted.
+then
+  echo "String \"string1\" is not null."
+else  
+  echo "String \"string1\" is null."
+fi                    # Again, gives correct result.
+# Still, it is better to quote it ("$string1"), because . . .
+
+
+string1="a = b"
+
+if [ $string1 ]       # Again, $string1 stands unquoted.
+then
+  echo "String \"string1\" is not null."
+else  
+  echo "String \"string1\" is null."
+fi                    # Not quoting "$string1" now gives wrong result!
+
+exit 0   # Thank you, also, Florian Wisser, for the "heads-up".
+```
+
+###### Example 7-7. *zmore*
+
+```bash
+#!/bin/bash
+# zmore
+
+# View gzipped files with 'more' filter.
+
+E_NOARGS=85
+E_NOTFOUND=86
+E_NOTGZIP=87
+
+if [ $# -eq 0 ] # same effect as:  if [ -z "$1" ]
+# $1 can exist, but be empty:  zmore "" arg2 arg3
+then
+  echo "Usage: `basename $0` filename" >&2
+  # Error message to stderr.
+  exit $E_NOARGS
+  # Returns 85 as exit status of script (error code).
+fi  
+
+filename=$1
+
+if [ ! -f "$filename" ]   # Quoting $filename allows for possible spaces.
+then
+  echo "File $filename not found!" >&2   # Error message to stderr.
+  exit $E_NOTFOUND
+fi  
+
+if [ ${filename##*.} != "gz" ]
+# Using bracket in variable substitution.
+then
+  echo "File $1 is not a gzipped file!"
+  exit $E_NOTGZIP
+fi  
+
+zcat $1 | more
+
+# Uses the 'more' filter.
+# May substitute 'less' if desired.
+
+exit $?   # Script returns exit status of pipe.
+#  Actually "exit $?" is unnecessary, as the script will, in any case,
+#+ return the exit status of the last command executed.
+```
+
+**compound comparison**
+
+-a
+
+logical and
+
+_exp1 -a exp2_ returns true if _both_ exp1 and exp2 are true.
+
+-o
+
+logical or
+
+_exp1 -o exp2_ returns true if either exp1 _or_ exp2 is true.
+
+These are similar to the Bash comparison operators **&&** and **||**, used within [[test-constructs.md#^DBLBRACKETS|double brackets]].
+
+```bash
+[[ condition1 && condition2 ]]
+```
+
+The **-o** and **-a** operators work with the [[test-constructs.md#^TTESTREF|test]] command or occur within single test brackets.
+
+```bash
+if [ "$expr1" -a "$expr2" ]
+then
+  echo "Both expr1 and expr2 are true."
+else
+  echo "Either expr1 or expr2 is false."
+fi
+```
+
+> [!caution]
+> But, as _rihad_ points out:
+>
+> ```bash
+> [ 1 -eq 1 ] && [ -n "`echo true 1>&2`" ]   # true
+> [ 1 -eq 2 ] && [ -n "`echo true 1>&2`" ]   # (no output)
+> # ^^^^^^^ False condition. So far, everything as expected.
+> 
+> # However ...
+> [ 1 -eq 2 -a -n "`echo true 1>&2`" ]       # true
+> # ^^^^^^^ False condition. So, why "true" output?
+> 
+> # Is it because both condition clauses within brackets evaluate?
+> [[ 1 -eq 2 && -n "`echo true 1>&2`" ]]     # (no output)
+> # No, that's not it.
+> 
+> # Apparently && and || "short-circuit" while -a and -o do not.
+> ```
+
+Refer to [[./operations-and-related-topics#^ANDOR|Example 8-3]], [[../advanced-topics/arrays#^TWODIM|Example 27-17]], and [[../apendix/contributed-scripts#^WHX|Example A-29]] to see compound comparison operators in action.
+
+## Nested _if/then_ Condition Tests
+
+Condition tests using the _if/then_ construct may be nested. The net result is equivalent to using the [[./operations-and-related-topics#LOGOPS1|_&&_]] compound comparison operator.
+
+```bash
+a=3
+
+if [ "$a" -gt 0 ]
+then
+  if [ "$a" -lt 5 ]
+  then
+    echo "The value of \"a\" lies somewhere between 0 and 5."
+  fi
+fi
+
+# Same result as:
+
+if [ "$a" -gt 0 ] && [ "$a" -lt 5 ]
+then
+  echo "The value of \"a\" lies somewhere between 0 and 5."
+fi
+```
+
+[[../advanced-topics/bash-version-2#^CARDS|Example 37-4]] and [[../commands/system-and-administrative-commands#BACKLIGHT|Example 17-11]] demonstrate nested _if/then_ condition tests.
+
+## Testing Your Knowledge of Tests
+
+The systemwide xinitrc file can be used to launch the X server. This file contains quite a number of _if/then_ tests. The following is excerpted from an "ancient" version of xinitrc (_Red Hat 7.1_, or thereabouts).
+
+```bash
+if [ -f $HOME/.Xclients ]; then
+  exec $HOME/.Xclients
+elif [ -f /etc/X11/xinit/Xclients ]; then
+  exec /etc/X11/xinit/Xclients
+else
+     # failsafe settings.  Although we should never get here
+     # (we provide fallbacks in Xclients as well) it can't hurt.
+     xclock -geometry 100x100-5+5 &
+     xterm -geometry 80x50-50+150 &
+     if [ -f /usr/bin/netscape -a -f /usr/share/doc/HTML/index.html ]; then
+             netscape /usr/share/doc/HTML/index.html &
+     fi
+fi
+```
+
+Explain the _test_ constructs in the above snippet, then examine an updated version of the file, /etc/X11/xinit/xinitrc, and analyze the _if/then_ test constructs there. You may need to refer ahead to the discussions of [[../commands/text-processing-commands#^GREPREF|grep]], [[sedawk#^SEDREF|sed]], and [[../advanced-topics/regexp#^REGEXREF|regular expressions]].
+
+[^1]: A _token_ is a symbol or short string with a special meaning attached to it (a [[../advanced-topics/brief-introduction-to-regular-expressions#^metameaningref|meta-meaning]]). In Bash, certain tokens, such as **[[special-characters#^DOTREF|** and [. (dot-command)]], may expand to _keywords_ and commands.
+
+[^2]: Per the 1913 edition of _Webster's Dictionary_:
+
+    ```bash
+    Deprecate
+    ...
+
+    To pray against, as an evil;
+    to seek to avert by prayer;
+    to desire the removal of;
+    to seek deliverance from;
+    to express deep regret for;
+    to disapprove of strongly.
+    ```
+
+[^3]: Be aware that _suid_ binaries may open security holes. The _suid_ flag has no effect on shell scripts.
+
+[^4]: On Linux systems, the sticky bit is no longer used for files, only on directories.
+
+[^5]: As S.C. points out, in a compound test, even quoting the string variable might not suffice. **[ -n "$string" -o "$a" = "$b" ]** may cause an error with some versions of Bash if $string is empty. The safe way is to append an extra character to possibly empty variables, **[ "x$string" != x -o "x$a" = "x$b" ]** (the "x's" cancel out).
