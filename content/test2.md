@@ -1,5 +1,5 @@
 ---
-share: true
+publish: true
 title: test title2
 permalink: a/b
 ---
