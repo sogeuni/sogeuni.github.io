@@ -7,7 +7,7 @@ On July 27, 2004, Chet Ramey released version 3 of Bash. This update fixed quite
 
 Some of the more important added features:
 
-- A new, more generalized **{a..z}** [[../basic/special-characters#^BRACEEXPREF|brace expansion]] operator.
+- A new, more generalized **{a..z}** [[special-characters#^BRACEEXPREF|brace expansion]] operator.
     
 ```bash
 #!/bin/bash
@@ -75,7 +75,7 @@ done
 echo
 ```
 
-- The **`${!array[@]}`** operator, which expands to all the indices of a given [[./arrays#^ARRAYREF|array]].
+- The **`${!array[@]}`** operator, which expands to all the indices of a given [[arrays#^ARRAYREF|array]].
 
 ```bash
 #!/bin/bash
@@ -99,7 +99,7 @@ do
 done
 ```
 
-- The **=~** [[./regexp#^REGEXREF|Regular Expression]] matching operator within a [[../basic/tests#^DBLBRACKETS|double brackets]] test expression. (Perl has a similar operator.)
+- The **=~** [[regexp#^REGEXREF|Regular Expression]] matching operator within a [[tests#^DBLBRACKETS|double brackets]] test expression. (Perl has a similar operator.)
 
 ```bash
 #!/bin/bash
@@ -137,16 +137,16 @@ else
 fi
 ```
 
-For additional examples of using the **=~** operator, see [[../apendix/contributed-scripts#^WHX|Example A-29]], [[./here-strings#^MAILBOXGREP|Example 19-14]], [[../apendix/contributed-scripts#^FINDSPLIT|Example A-35]], and [[../apendix/contributed-scripts#^TOHTML|Example A-24]].
+For additional examples of using the **=~** operator, see [[contributed-scripts#^WHX|Example A-29]], [[here-strings#^MAILBOXGREP|Example 19-14]], [[contributed-scripts#^FINDSPLIT|Example A-35]], and [[contributed-scripts#^TOHTML|Example A-24]].
 
-- The new `set -o pipefail` option is useful for debugging [[../basic/special-characters#^PIPEREF|pipes]]. If this option is set, then the [[exit-and-exit-status#^EXITSTATUSREF|exit status]] of a pipe is the exit status of the last command in the pipe to _fail_ (return a non-zero value), rather than the actual final command in the pipe.
+- The new `set -o pipefail` option is useful for debugging [[special-characters#^PIPEREF|pipes]]. If this option is set, then the [[exit-and-exit-status#^EXITSTATUSREF|exit status]] of a pipe is the exit status of the last command in the pipe to _fail_ (return a non-zero value), rather than the actual final command in the pipe.
 
-    See [[../commands/communications-commands#^FC4UPD|Example 16-43]].
+    See [[communications-commands#^FC4UPD|Example 16-43]].
 
 > [!caution]
 > The update to version 3 of Bash breaks a few scripts that worked under earlier versions. _Test critical legacy scripts to make sure they still work!_
 
-As it happens, a couple of the scripts in the _Advanced Bash Scripting Guide_ had to be fixed up (see [[../beyond-the-basic/another-look-at-variables#^TOUT|Example 9-4]], for instance).|
+As it happens, a couple of the scripts in the _Advanced Bash Scripting Guide_ had to be fixed up (see [[another-look-at-variables#^TOUT|Example 9-4]], for instance).|
 
 ## 37.2.1. Bash, version 3.1
 
@@ -165,7 +165,7 @@ a+=Hello
 echo $a        # 15Hello
 ```
 
-Here, += functions as a _string concatenation_ operator. Note that its behavior in this particular context is different than within a [[../commands/internal-commands-and-builtins#^LETREF|let]] construct.
+Here, += functions as a _string concatenation_ operator. Note that its behavior in this particular context is different than within a [[internal-commands-and-builtins#^LETREF|let]] construct.
 
 ```bash
 a=1
@@ -196,11 +196,11 @@ bash$ echo $PATH
 
 This is pretty much a bugfix update.
 
-- In [[../beyond-the-basic/parameter-substitution#^PSGLOB|_global_ parameter substitutions]], the pattern no longer anchors at the start of the string.
+- In [[parameter-substitution#^PSGLOB|_global_ parameter substitutions]], the pattern no longer anchors at the start of the string.
 
-- The --wordexp option disables [[./process-substitution#^PROCESSSUBREF|process substitution]].
+- The --wordexp option disables [[process-substitution#^PROCESSSUBREF|process substitution]].
 
-- The **=~** [[bash-version-3#^REGEXMATCHREF|Regular Expression match operator]] no longer requires [[Chapter 5. Quoting#^QUOTINGREF|quoting]] of the _pattern_ within [[../basic/tests#^DBLBRACKETS|[[ ... ]]]].
+- The **=~** [[bash-version-3#^REGEXMATCHREF|Regular Expression match operator]] no longer requires [[Chapter 5. Quoting#^QUOTINGREF|quoting]] of the _pattern_ within [[tests#^DBLBRACKETS|[[ ... ]]]].
 
 > [!caution]
 > In fact, quoting in this context is _not_ advisable as it may cause _regex_ evaluation to fail. Chet Ramey states in the [[biblio#^BASHFAQ|Bash FAQ]] that quoting explicitly disables regex evaluation. See also the [Ubuntu Bug List](https://bugs.launchpad.net/ubuntu-website/+bug/109931) and [Wikinerds on Bash syntax](http://en.wikinerds.org/index.php/Bash_syntax_and_semantics).
