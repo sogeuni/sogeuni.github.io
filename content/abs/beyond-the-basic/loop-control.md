@@ -13,7 +13,7 @@ title: 11.3. Loop Control
 
 **break**, **continue**
 
-The **break** and **continue** loop control commands [^1] correspond exactly to their counterparts in other programming languages. The **break** command terminates the loop (_breaks_ out of it), while **continue** causes a jump to the next [[./loops#^ITERATIONREF|iteration]] of the loop, skipping all the remaining commands in that particular loop cycle.
+The **break** and **continue** loop control commands [^1] correspond exactly to their counterparts in other programming languages. The **break** command terminates the loop (_breaks_ out of it), while **continue** causes a jump to the next [[loops#^ITERATIONREF|iteration]] of the loop, skipping all the remaining commands in that particular loop cycle.
 
 ###### Example 11-21. Effects of *break* and **continue** in a loop
 
@@ -204,4 +204,4 @@ done
 
 > [!caution] The **continue N** construct is difficult to understand and tricky to use in any meaningful context. It is probably best avoided.
 
-[^1]: These are shell [[../commands/internal-commands-and-builtins|builtins]], whereas other loop commands, such as [[loops1#^WHILELOOPREF|while]] and [[./testing-and-branching#^CASEESAC1|case]], are [[../commands/internal-commands-and-builtins#^keywordref|keywords]].
+[^1]: These are shell [[internal-commands-and-builtins|builtins]], whereas other loop commands, such as [[loops1#^WHILELOOPREF|while]] and [[testing-and-branching#^CASEESAC1|case]], are [[internal-commands-and-builtins#^keywordref|keywords]].
