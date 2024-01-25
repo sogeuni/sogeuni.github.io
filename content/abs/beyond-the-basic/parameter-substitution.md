@@ -109,9 +109,9 @@ DISKS=${1:-E_NOPARAM}   # Must specify how many disks.
 #+ or to $E_NOPARAM if that is unset.
 ```
 
-See also [[../basic/special-characters#^EX58|Example 3-4]], [[zeros#^EX73|Example 31-2]], and [[../apendix/contributed-scripts#^COLLATZ|Example A-6]].
+See also [[special-characters#^EX58|Example 3-4]], [[zeros#^EX73|Example 31-2]], and [[contributed-scripts#^COLLATZ|Example A-6]].
 
-Compare this method with [[../advanced-topics/list-constructs#^ANDDEFAULT|using an _and list_ to supply a default command-line argument]].
+Compare this method with [[list-constructs#^ANDDEFAULT|using an _and list_ to supply a default command-line argument]].
 
 **${parameter=default}**, **${parameter:=default}**
 
@@ -252,7 +252,7 @@ exit 0  # Will exit here only if command-line parameter present.
 # If not, then "$?" is 1.
 ```
 
-**Parameter substitution and/or expansion.** The following expressions are the complement to the **match** _in_ **expr** string operations (see [[../commands/complex-commands#^EX45|Example 16-9]]). These particular ones are used mostly in parsing file path names.
+**Parameter substitution and/or expansion.** The following expressions are the complement to the **match** _in_ **expr** string operations (see [[complex-commands#^EX45|Example 16-9]]). These particular ones are used mostly in parsing file path names.
 
 **Variable length / Substring removal**
 
@@ -299,7 +299,7 @@ exit 0
 
 **${var##Pattern}** Remove from $var the _longest_ part of $Pattern that matches the _front end_ of $var.
 
-A usage illustration from [[../apendix/contributed-scripts#^DAYSBETWEEN|Example A-7]]:
+A usage illustration from [[contributed-scripts#^DAYSBETWEEN|Example A-7]]:
 
 ```bash
 # Function from "days-between.sh" example.
@@ -440,7 +440,7 @@ Variable _var_ expanded, starting from offset _pos_.
 
 **${var:pos:len}**
 
-Expansion to a max of _len_ characters of variable _var_, from offset _pos_. See [[../apendix/contributed-scripts#^PW|Example A-13]] for an example of the creative use of this operator.
+Expansion to a max of _len_ characters of variable _var_, from offset _pos_. See [[contributed-scripts#^PW|Example A-13]] for an example of the creative use of this operator.
 
 **${var/Pattern/Replacement}**
 
@@ -593,4 +593,4 @@ c=${!b}            #  Now, the more familiar type of indirect reference.
 echo $c            #  something_else
 ```
 
-[^1]: If $parameter is null in a non-interactive script, it will terminate with a [[../apendix/exit-codes-with-special-meanings#^EXITCODESREF|127 exit status]] (the Bash error code for "command not found").
+[^1]: If $parameter is null in a non-interactive script, it will terminate with a [[exit-codes-with-special-meanings#^EXITCODESREF|127 exit status]] (the Bash error code for "command not found").
