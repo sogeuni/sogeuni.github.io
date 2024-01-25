@@ -7,7 +7,7 @@ title: 16.5. File and Archiving Commands
 
 **tar**
 
-The standard UNIX archiving utility. [^1] Originally a _Tape ARchiving_ program, it has developed into a general purpose package that can handle all manner of archiving with all types of destination devices, ranging from tape drives to regular files to even stdout (see [[../basic/special-characters#^EX58|Example 3-4]]). GNU _tar_ has been patched to accept various compression filters, for example: **tar czvf archive_name.tar.gz ***, which recursively archives and [[file-and-archiving-commands#^GZIPREF|gzips]] all files in a directory tree except [[./basic-commands#^DOTFILESREF|dotfiles]] in the current working directory ([[../beyond-the-basic/another-look-at-variables#^PWDREF|$PWD]]). [^2]
+The standard UNIX archiving utility. [^1] Originally a _Tape ARchiving_ program, it has developed into a general purpose package that can handle all manner of archiving with all types of destination devices, ranging from tape drives to regular files to even stdout (see [[special-characters#^EX58|Example 3-4]]). GNU _tar_ has been patched to accept various compression filters, for example: **tar czvf archive_name.tar.gz ***, which recursively archives and [[file-and-archiving-commands#^GZIPREF|gzips]] all files in a directory tree except [[basic-commands#^DOTFILESREF|dotfiles]] in the current working directory ([[another-look-at-variables#^PWDREF|$PWD]]). [^2]
 
 Some useful **tar** options:
 
@@ -182,7 +182,7 @@ Note that _pax_ handles many of the standard archiving and compression commands.
 The standard GNU/UNIX compression utility, replacing the inferior and proprietary **compress**. The corresponding decompression command is **gunzip**, which is the equivalent of **gzip -d**.
 
 > [!note]
-> The -c option sends the output of **gzip** to stdout. This is useful when [[../basic/special-characters#^PIPEREF|piping]] to other commands.
+> The -c option sends the output of **gzip** to stdout. This is useful when [[special-characters#^PIPEREF|piping]] to other commands.
 
 The **zcat** filter decompresses a _gzipped_ file to stdout, as possible input to a pipe or redirection. This is, in effect, a **cat** command that works on compressed files (including files processed with the older [[file-and-archiving-commands#^COMPRESSREF|compress]] utility). The **zcat** command is equivalent to **gzip -dc**.
 
@@ -209,7 +209,7 @@ This is an older, proprietary compression utility found in commercial UNIX distr
 
 **sq**
 
-Yet another compression (**sq**ueeze) utility, a filter that works only on sorted [[../basic/special-characters#^ASCIIDEF|ASCII]] word lists. It uses the standard invocation syntax for a filter, **sq < input-file > output-file**. Fast, but not nearly as efficient as [[file-and-archiving-commands#^GZIPREF|gzip]]. The corresponding uncompression filter is **unsq**, invoked like **sq**.
+Yet another compression (**sq**ueeze) utility, a filter that works only on sorted [[special-characters#^ASCIIDEF|ASCII]] word lists. It uses the standard invocation syntax for a filter, **sq < input-file > output-file**. Fast, but not nearly as efficient as [[file-and-archiving-commands#^GZIPREF|gzip]]. The corresponding uncompression filter is **unsq**, invoked like **sq**.
 
 > [!tip]
 > The output of **sq** may be piped to **gzip** for further compression.
@@ -234,9 +234,9 @@ A new high-efficiency compression tool, backward compatible with _lzma_, and wit
 
 **file**
 
-A utility for identifying file types. The command **file file-name** will return a file specification for file-name, such as ascii text or data. It references the [[../introduction/sha-bang#^magnumref|magic numbers]] found in /usr/share/magic, /etc/magic, or /usr/lib/magic, depending on the Linux/UNIX distribution.
+A utility for identifying file types. The command **file file-name** will return a file specification for file-name, such as ascii text or data. It references the [[sha-bang#^magnumref|magic numbers]] found in /usr/share/magic, /etc/magic, or /usr/lib/magic, depending on the Linux/UNIX distribution.
 
-The -f option causes **file** to run in [[./time-date-commands#^BATCHPROCREF|batch]] mode, to read from a designated file a list of filenames to analyze. The -z option, when used on a compressed target file, forces an attempt to analyze the uncompressed file type.
+The -f option causes **file** to run in [[time-date-commands#^BATCHPROCREF|batch]] mode, to read from a designated file a list of filenames to analyze. The -z option, when used on a compressed target file, forces an attempt to analyze the uncompressed file type.
 
 ```bash
 bash$ file test.tar.gz
@@ -360,11 +360,11 @@ exit 0
 /usr/bin/rm
 ```
 
-For an interesting use of this command, see [[../advanced-topics/colorizing-scripts#^HORSERACE|Example 36-16]].
+For an interesting use of this command, see [[colorizing-scripts#^HORSERACE|Example 36-16]].
 
 **whereis**
 
-Similar to **which**, above, **whereis command** gives the full path to "command," but also to its [[./basic-commands#^MANREF|manpage]].
+Similar to **which**, above, **whereis command** gives the full path to "command," but also to its [[basic-commands#^MANREF|manpage]].
 
 **$bash whereis rm**
 
@@ -407,11 +407,11 @@ exit 0
 #    ./what.sh | less
 ```
 
-See also [[../beyond-the-basic/loops#^FILEINFO|Example 11-3]].
+See also [[loops#^FILEINFO|Example 11-3]].
 
 **vdir**
 
-Show a detailed directory listing. The effect is similar to [[./basic-commands#^LSREF|ls -lb]].
+Show a detailed directory listing. The effect is similar to [[basic-commands#^LSREF|ls -lb]].
 
 This is one of the GNU _fileutils_.
 
@@ -485,7 +485,7 @@ bash$ readlink /usr/bin/awk
 
 **strings**
 
-Use the **strings** command to find printable strings in a binary or data file. It will list sequences of printable characters found in the target file. This might be handy for a quick 'n dirty examination of a core dump or for looking at an unknown graphic image file (**strings image-file | more** might show something like _JFIF_, which would identify the file as a _jpeg_ graphic). In a script, you would probably parse the output of **strings** with [[textproc#^GREPREF|grep]] or [[sedawk#^SEDREF|sed]]. See [[../beyond-the-basic/loops#^BINGREP|Example 11-8]] and [[../beyond-the-basic/loops#^FINDSTRING|Example 11-10]].
+Use the **strings** command to find printable strings in a binary or data file. It will list sequences of printable characters found in the target file. This might be handy for a quick 'n dirty examination of a core dump or for looking at an unknown graphic image file (**strings image-file | more** might show something like _JFIF_, which would identify the file as a _jpeg_ graphic). In a script, you would probably parse the output of **strings** with [[textproc#^GREPREF|grep]] or [[sedawk#^SEDREF|sed]]. See [[loops#^BINGREP|Example 11-8]] and [[loops#^FINDSTRING|Example 11-10]].
 
 ###### Example 16-34. An "improved" *strings* command
 
@@ -570,7 +570,7 @@ exit $?
 
 **diff**, **patch**
 
-**diff**: flexible file comparison utility. It compares the target files line-by-line sequentially. In some applications, such as comparing word dictionaries, it may be helpful to filter the files through [[./text-processing-commands#^SORTREF|sort]] and **uniq** before piping them to **diff**. **diff file-1 file-2** outputs the lines in the files that differ, with carets showing which file each particular line belongs to.
+**diff**: flexible file comparison utility. It compares the target files line-by-line sequentially. In some applications, such as comparing word dictionaries, it may be helpful to filter the files through [[text-processing-commands#^SORTREF|sort]] and **uniq** before piping them to **diff**. **diff file-1 file-2** outputs the lines in the files that differ, with carets showing which file each particular line belongs to.
 
 The --side-by-side option to **diff** outputs each compared file, line by line, in separate columns, with non-matching lines marked. The -c and -u options likewise make the output of the command easier to interpret.
 
@@ -723,7 +723,7 @@ echo "Usage: `basename $0` arg1 arg2 ... argn"
 Strips the **basename** from a filename, printing only the path information.
 
 > [!note]
-> **basename** and **dirname** can operate on any arbitrary string. The argument does not need to refer to an existing file, or even be a filename for that matter (see [[../apendix/contributed-scripts#^DAYSBETWEEN|Example A-7]]).
+> **basename** and **dirname** can operate on any arbitrary string. The argument does not need to refer to an existing file, or even be a filename for that matter (see [[contributed-scripts#^DAYSBETWEEN|Example A-7]]).
 
 ###### Example 16-36. _basename_ and *dirname*
 
@@ -800,7 +800,7 @@ bash$ echo -n "Top Secret" | md5sum
 > [!note]
 > The **cksum** command shows the size, in bytes, of its target, whether file or stdout.
 >
-> The **md5sum** and **sha1sum** commands display a [[../basic/special-characters#^DASHREF2|dash]] when they receive their input from stdout.
+> The **md5sum** and **sha1sum** commands display a [[special-characters#^DASHREF2|dash]] when they receive their input from stdout.
 
 ###### Example 16-38. Checking file integrity
 
@@ -922,7 +922,7 @@ exit 0
 #+ http://sourceforge.net/projects/tripwire/.
 ```
 
-Also see [[../apendix/contributed-scripts#^DIRECTORYINFO|Example A-19]], [[../advanced-topics/colorizing-scripts#^HORSERACE|Example 36-16]], and [[../beyond-the-basic/manipulating-strings#^RANDSTRING|Example 10-2]] for creative uses of the **md5sum** command.
+Also see [[contributed-scripts#^DIRECTORYINFO|Example A-19]], [[colorizing-scripts#^HORSERACE|Example 36-16]], and [[manipulating-strings#^RANDSTRING|Example 10-2]] for creative uses of the **md5sum** command.
 
 > [!note]
 > There have been reports that the 128-bit **md5sum** can be cracked, so the more secure 160-bit **sha1sum** is a welcome new addition to the checksum toolkit.
@@ -939,7 +939,7 @@ Security consultants have demonstrated that even **sha1sum** can be compromised.
 
 **uuencode**
 
-This utility encodes binary files (images, sound files, compressed files, etc.) into [[../basic/special-characters#^ASCIIDEF|ASCII]] characters, making them suitable for transmission in the body of an e-mail message or in a newsgroup posting. This is especially useful where MIME (multimedia) encoding is not available.
+This utility encodes binary files (images, sound files, compressed files, etc.) into [[special-characters#^ASCIIDEF|ASCII]] characters, making them suitable for transmission in the body of an e-mail message or in a newsgroup posting. This is especially useful where MIME (multimedia) encoding is not available.
 
 **uudecode**
 
@@ -982,15 +982,15 @@ exit 0
 ```
 
 > [!tip]
-> The [[./text-processing-commands#^FOLDREF|fold -s]] command may be useful (possibly in a pipe) to process long uudecoded text messages downloaded from Usenet newsgroups.
+> The [[text-processing-commands#^FOLDREF|fold -s]] command may be useful (possibly in a pipe) to process long uudecoded text messages downloaded from Usenet newsgroups.
 
 **mimencode**, **mmencode**
 
-The **mimencode** and **mmencode** commands process multimedia-encoded e-mail attachments. Although _mail user agents_ (such as _pine_ or _kmail_) normally handle this automatically, these particular utilities permit manipulating such attachments manually from the command-line or in [[./time-date-commands#^BATCHPROCREF|batch processing mode]] by means of a shell script.
+The **mimencode** and **mmencode** commands process multimedia-encoded e-mail attachments. Although _mail user agents_ (such as _pine_ or _kmail_) normally handle this automatically, these particular utilities permit manipulating such attachments manually from the command-line or in [[time-date-commands#^BATCHPROCREF|batch processing mode]] by means of a shell script.
 
 **crypt**
 
-At one time, this was the standard UNIX file encryption utility. [^5] Politically-motivated government regulations prohibiting the export of encryption software resulted in the disappearance of **crypt** from much of the UNIX world, and it is still missing from most Linux distributions. Fortunately, programmers have come up with a number of decent alternatives to it, among them the author's very own [cruft](ftp://metalab.unc.edu/pub/Linux/utils/file/cruft-0.2.tar.gz) (see [[../apendix/contributed-scripts#^ENCRYPTEDPW|Example A-4]]).
+At one time, this was the standard UNIX file encryption utility. [^5] Politically-motivated government regulations prohibiting the export of encryption software resulted in the disappearance of **crypt** from much of the UNIX world, and it is still missing from most Linux distributions. Fortunately, programmers have come up with a number of decent alternatives to it, among them the author's very own [cruft](ftp://metalab.unc.edu/pub/Linux/utils/file/cruft-0.2.tar.gz) (see [[contributed-scripts#^ENCRYPTEDPW|Example A-4]]).
 
 **openssl**
 
@@ -1009,7 +1009,7 @@ openssl aes-128-ecb -d -salt -in file.encrypted -out file.txt \
 #          ^^^^^^^^^^^   User-selected password.
 ```
 
-[[../basic/special-characters#^PIPEREF|Piping]] _openssl_ to/from [[file-and-archiving-commands#^TARREF|tar]] makes it possible to encrypt an entire directory tree.
+[[special-characters#^PIPEREF|Piping]] _openssl_ to/from [[file-and-archiving-commands#^TARREF|tar]] makes it possible to encrypt an entire directory tree.
 
 ```bash
 # To encrypt a directory:
@@ -1029,11 +1029,11 @@ tar -xzv
 # Decrypts and unpacks into current working directory.
 ```
 
-Of course, _openssl_ has many other uses, such as obtaining signed _certificates_ for Web sites. See the [[./basic-commands#^INFOREF|info]] page.
+Of course, _openssl_ has many other uses, such as obtaining signed _certificates_ for Web sites. See the [[basic-commands#^INFOREF|info]] page.
 
 **shred**
 
-Securely erase a file by overwriting it multiple times with random bit patterns before deleting it. This command has the same effect as [[./miscellaneous-commands#^BLOTOUT|Example 16-61]], but does it in a more thorough and elegant manner.
+Securely erase a file by overwriting it multiple times with random bit patterns before deleting it. This command has the same effect as [[miscellaneous-commands#^BLOTOUT|Example 16-61]], but does it in a more thorough and elegant manner.
 
 This is one of the GNU _fileutils_.
 
@@ -1079,11 +1079,11 @@ The _make_ utility is, in effect, a powerful scripting language similar in many 
 
 **install**
 
-Special purpose file copying command, similar to [[./basic-commands#^CPREF|cp]], but capable of setting permissions and attributes of the copied files. This command seems tailormade for installing software packages, and as such it shows up frequently in Makefiles (in the _make install :_ section). It could likewise prove useful in installation scripts.
+Special purpose file copying command, similar to [[basic-commands#^CPREF|cp]], but capable of setting permissions and attributes of the copied files. This command seems tailormade for installing software packages, and as such it shows up frequently in Makefiles (in the _make install :_ section). It could likewise prove useful in installation scripts.
 
 **dos2unix**
 
-This utility, written by Benjamin Lin and collaborators, converts DOS-formatted text files (lines terminated by CR-LF) to UNIX format (lines terminated by LF only), and [[../advanced-topics/gotchas#^DOSNEWLINES|vice-versa]].
+This utility, written by Benjamin Lin and collaborators, converts DOS-formatted text files (lines terminated by CR-LF) to UNIX format (lines terminated by LF only), and [[gotchas#^DOSNEWLINES|vice-versa]].
 
 **ptx**
 
@@ -1104,7 +1104,7 @@ ls /home/bozo | awk '{print "rm -rf " $1}' | more
 #      Hand off to the shell to execute . . .       ^^
 ```
 
-The _less_ pager has the interesting property of doing a formatted display of _man page_ source. See [[../apendix/contributed-scripts#^MANED|Example A-39]].
+The _less_ pager has the interesting property of doing a formatted display of _man page_ source. See [[contributed-scripts#^MANED|Example A-39]].
 
 [^1]: An _archive_, in the sense discussed here, is simply a set of related files stored in a single location.
 
