@@ -2,13 +2,13 @@
 title: 3. Special Characters
 ---
 
-What makes a character *special*? If it has a meaning beyond its *literal meaning*, a [[../advanced-topics/brief-introduction-to-regular-expressions#^metameaningref|meta-meaning]], then we refer to it as a *special character*. Along with commands and [[../commands/internal-commands-and-builtins#^keywordref|keywords]], *special characters* are building blocks of Bash scripts.
+What makes a character *special*? If it has a meaning beyond its *literal meaning*, a [[brief-introduction-to-regular-expressions#^metameaningref|meta-meaning]], then we refer to it as a *special character*. Along with commands and [[internal-commands-and-builtins#^keywordref|keywords]], *special characters* are building blocks of Bash scripts.
 
 ## Special Characters Found In Scripts and Elsewhere
 
 ### \# (hash)
 
-**Comments.** Lines beginning with a # (with the exception of [[../introduction/sha-bang#^magnumref|\#!]]) are comments and will *not* be executed.
+**Comments.** Lines beginning with a # (with the exception of [[sha-bang#^magnumref|\#!]]) are comments and will *not* be executed.
 
 ```bash
 # This line is a comment.
@@ -21,7 +21,7 @@ echo "A comment will follow." # Comment here.
 #                            ^ Note whitespace before #
 ```
 
-Comments may also follow [[special-characters#Whitespace|whitespace]] at the beginning of a line
+Comments may also follow [[#Whitespace|whitespace]] at the beginning of a line
 
 ```bash
     # A tab precedes this comment.
@@ -40,7 +40,7 @@ initial=( `cat "$startfile" | sed -e '/#/d' | tr -d '\n' |\
 > A command may not follow a comment on the same line. There is no method of terminating the comment, in order for "live code" to begin on the same line. Use a new line for the next command.
 
 > [!note]
-> Of course, a [[./quoting#^QUOTINGREF|quoted]] or an [[./quoting#^ESCP|escaped]] # in an [[../commands/internal-commands-and-builtins#^ECHOREF|echo]] statement does *not* begin a comment. Likewise, a # appears in [[../beyond-the-basic/parameter-substitution#^PSUB2|certain parameter-substitution constructs]] and in [[./operations-and-related-topics#^NUMCONSTANTS|numerical constant expressions]].
+> Of course, a [[quoting#^QUOTINGREF|quoted]] or an [[quoting#^ESCP|escaped]] # in an [[internal-commands-and-builtins#^ECHOREF|echo]] statement does *not* begin a comment. Likewise, a # appears in [[parameter-substitution#^PSUB2|certain parameter-substitution constructs]] and in [[operations-and-related-topics#^NUMCONSTANTS|numerical constant expressions]].
 >
 > ```bash
 > echo "The # here does not begin a comment."
@@ -56,7 +56,7 @@ initial=( `cat "$startfile" | sed -e '/#/d' | tr -d '\n' |\
 >
 > The standard [[Chapter 5. Quoting#^QUOTINGREF|quoting and escape]] characters (" ' \) escape the #.
 
-Certain [[../beyond-the-basic/parameter-substitution#^PSOREX1|pattern matching operations]] also use the #.
+Certain [[parameter-substitution#^PSOREX1|pattern matching operations]] also use the #.
 
 ### ; (semicolon)
 
@@ -74,11 +74,11 @@ else   #                       ^^
 fi; echo "File test complete."
 ```
 
-Note that the ";" [[../commands/complex-commands#^FINDREF0|sometimes needs to be *escaped*]].
+Note that the ";" [[complex-commands#^FINDREF0|sometimes needs to be *escaped*]].
 
 ### ;; (double semicolon)
 
-**Terminator in a [[../beyond-the-basic/testing-and-branching#^CASEESAC1|case]] option \[double semicolon].**
+**Terminator in a [[testing-and-branching#^CASEESAC1|case]] option \[double semicolon].**
 
 ```bash
 case "$variable" in
@@ -89,17 +89,17 @@ esac
 
 ### ;;&, ;&
 
-**[[../advanced-topics/bash-version-4#^NCTERM|Terminators]] in a *case* option ([[../advanced-topics/bash-version-4#^BASH4REF|version 4+]] of Bash).**
+**[[bash-version-4#^NCTERM|Terminators]] in a *case* option ([[bash-version-4#^BASH4REF|version 4+]] of Bash).**
 
 ### . (dot)
 
 . 
 
-**"dot" command [[internal-commands-and-builtins#^SOURCEREF|period].** Equivalent to [source]] (see [[../commands/internal-commands-and-builtins#^EX38|Example 15-22]]). This is a bash [[../commands/internal-commands-and-builtins|builtin]].
+**"dot" command [[internal-commands-and-builtins#^SOURCEREF|period].** Equivalent to [source]] (see [[internal-commands-and-builtins#^EX38|Example 15-22]]). This is a bash [[internal-commands-and-builtins|builtin]].
 
 .
 
-**"dot", as a component of a filename.** When working with filenames, a leading dot is the prefix of a "hidden" file, a file that an [[../commands/basic-commands#^LSREF|ls]] will not normally show.
+**"dot", as a component of a filename.** When working with filenames, a leading dot is the prefix of a "hidden" file, a file that an [[basic-commands#^LSREF|ls]] will not normally show.
 
 ```bash
 bash$ touch .hidden-file
@@ -144,23 +144,23 @@ bash$ cp /home/bozo/current_work/junk/* .
 	        
 ```
 
-Copy all the "junk" files to [[../beyond-the-basic/another-look-at-variables#^PWDREF|$PWD]].
+Copy all the "junk" files to [[another-look-at-variables#^PWDREF|$PWD]].
 
 .
 
-**"dot" character match.** When [[../advanced-topics/brief-introduction-to-regular-expressions#^REGEXDOT|matching characters]], as part of a [[../advanced-topics/regexp#^REGEXREF|regular expression]], a "dot" [[../advanced-topics/brief-introduction-to-regular-expressions#^REGEXDOT|matches a single character]].
+**"dot" character match.** When [[brief-introduction-to-regular-expressions#^REGEXDOT|matching characters]], as part of a [[regexp#^REGEXREF|regular expression]], a "dot" [[brief-introduction-to-regular-expressions#^REGEXDOT|matches a single character]].
 
 ### " (double quote)
 
-**[[./variables-and-parameters#^DBLQUO|partial quoting]] [[quoting|double quote].** *"STRING"* preserves (from interpretation) most of the special characters within *STRING*. See [Chapter 5]].
+**[[variables-and-parameters#^DBLQUO|partial quoting]] [[quoting|double quote].** *"STRING"* preserves (from interpretation) most of the special characters within *STRING*. See [Chapter 5]].
 
 ### ' (single quote)
 
-**[[./variables-and-parameters#^SNGLQUO|full quoting]] [[quoting|single quote].** *'STRING'* preserves all special characters within *STRING*. This is a stronger form of quoting than *"STRING"*. See [Chapter 5]].
+**[[variables-and-parameters#^SNGLQUO|full quoting]] [[quoting|single quote].** *'STRING'* preserves all special characters within *STRING*. This is a stronger form of quoting than *"STRING"*. See [Chapter 5]].
 
 ### , (comma)
 
-**[[./operations-and-related-topics#^COMMAOP|comma operator]].** The *comma operator* [^1] links together a series of arithmetic operations. All are evaluated, but only the last one is returned.
+**[[operations-and-related-topics#^COMMAOP|comma operator]].** The *comma operator* [^1] links together a series of arithmetic operations. All are evaluated, but only the last one is returned.
 
 ```bash
 let "t2 = ((a = 9, 15 / 3))"
@@ -191,11 +191,11 @@ done
 
 ### ,, ,
 
-**[[../advanced-topics/bash-version-4#^CASEMODPARAMSUB|Lowercase conversion]] in *parameter substitution* (added in [[../advanced-topics/bash-version-4#^BASH4REF|version 4]] of Bash).**
+**[[bash-version-4#^CASEMODPARAMSUB|Lowercase conversion]] in *parameter substitution* (added in [[bash-version-4#^BASH4REF|version 4]] of Bash).**
 
 ### \ (backslash)
 
-**[[./quoting#^ESCP|escape]] [backslash].** A quoting mechanism for single characters.
+**[[quoting#^ESCP|escape]] [backslash].** A quoting mechanism for single characters.
 
 **\X** *escapes* the character *X*. This has the effect of "quoting" *X*, equivalent to *'X'*. The \ may be used to quote " and ', so they are expressed literally.
 
@@ -205,7 +205,7 @@ See [[Chapter 5. Quoting|Chapter 5]] for an in-depth explanation of escaped char
 
 **Filename path separator [forward slash].** Separates the components of a filename (as in /home/bozo/projects/Makefile).
 
-This is also the division [[./operations-and-related-topics#^AROPS1|arithmetic operator]].
+This is also the division [[operations-and-related-topics#^AROPS1|arithmetic operator]].
 
 ### \` (backtick)
 
@@ -1432,6 +1432,6 @@ UNIX [[special-characters#^FILTERDEF|filters]] can target and operate on *whites
 
 [^7]: Even as in olden times a *philtre* denoted a potion alleged to have magical transformative powers, so does a UNIX *filter* transform its target in (roughly) analogous fashion. (The coder who comes up with a "love philtre" that runs on a Linux machine will likely win accolades and honors.)
 
-[^8]: Bash stores a list of commands previously issued from the command-line in a *buffer*, or memory space, for recall with the [[../commands/internal-commands-and-builtins|builtin]] *history* commands.
+[^8]: Bash stores a list of commands previously issued from the command-line in a *buffer*, or memory space, for recall with the [[internal-commands-and-builtins|builtin]] *history* commands.
 
 [^9]: A linefeed (*newline*) is also a whitespace character. This explains why a *blank line*, consisting only of a linefeed, is considered whitespace.
