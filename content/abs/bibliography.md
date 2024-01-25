@@ -13,9 +13,9 @@ title: Bibliography
 - Daniel Goldman, *[Definitive Guide to Sed](http://www.sed-book.com/)*, 1st edition, 2013.
     - This ebook is an excellent introduction to *sed*. Rather than being a conversion from a printed volume, it was specifically designed and formatted for viewing on an ebook reader. Well-written, informative, and useful as a reference as well as a tutorial. Highly recommended.
 - Dale Dougherty and Arnold Robbins, *Sed and Awk*, 2nd edition, O'Reilly and Associates, 1997, 1-156592-225-5.
-    - Unfolding the full power of shell scripting requires at least a passing familiarity with [[./apendix/a-sed-and-awk-micro-primer#^SEDREF|*sed* and *awk*]]. This is the classic tutorial. It includes an excellent introduction to *Regular Expressions*. Recommended.
+    - Unfolding the full power of shell scripting requires at least a passing familiarity with [[a-sed-and-awk-micro-primer#^SEDREF|*sed* and *awk*]]. This is the classic tutorial. It includes an excellent introduction to *Regular Expressions*. Recommended.
 - Jeffrey Friedl, *Mastering Regular Expressions*, O'Reilly and Associates, 2002, 0-596-00289-0.
-    - Still the best all-around reference on [[./advanced-topics/regexp#^REGEXREF|Regular Expressions]].
+    - Still the best all-around reference on [[regexp#^REGEXREF|Regular Expressions]].
 - Aeleen Frisch, *Essential System Administration*, 3rd edition, O'Reilly and Associates, 2002, 0-596-00343-9.
     - This excellent manual provides a decent introduction to shell scripting from a sys admin point of view. It includes comprehensive explanations of the startup and initialization scripts in a UNIX system.
 - Stephen Kochan and Patrick Wood, *Unix Shell Programming*, Hayden, 1990, 067248448X.
@@ -31,7 +31,7 @@ title: Bibliography
 - Anatole Olczak, *Bourne Shell Quick Reference Guide*, ASP, Inc., 1991, 093573922X.
     - A very handy pocket reference, despite lacking coverage of Bash-specific features.
 - Jerry Peek, Tim O'Reilly, and Mike Loukides, *Unix Power Tools*, 3rd edition, O'Reilly and Associates, Random House, 2002, 0-596-00330-7.
-    - Contains a couple of sections of very informative in-depth articles on shell programming, but falls short of being a self-teaching manual. It reproduces much of the [[./advanced-topics/regexp#^REGEXREF|Regular Expressions]] tutorial from the Dougherty and Robbins book, above. The comprehensive coverage of UNIX commands makes this book worthy of a place on your bookshelf.
+    - Contains a couple of sections of very informative in-depth articles on shell programming, but falls short of being a self-teaching manual. It reproduces much of the [[regexp#^REGEXREF|Regular Expressions]] tutorial from the Dougherty and Robbins book, above. The comprehensive coverage of UNIX commands makes this book worthy of a place on your bookshelf.
 - Clifford Pickover, *Computers, Pattern, Chaos, and Beauty*, St. Martin's Press, 1990, 0-312-04123-3.
     - A treasure trove of ideas and recipes for computer-based exploration of mathematical oddities.
 - George Polya, *How To Solve It*, Princeton University Press, 1973, 0-691-02356-5.
@@ -41,7 +41,7 @@ title: Bibliography
 - Arnold Robbins, *Bash Reference Card*, SSC, 1998, 1-58731-010-5.
     - Excellent Bash pocket reference (don't leave home without it, especially if you're a sysadmin). A bargain at $4.95, but unfortunately no longer available for free download.
 - Arnold Robbins, *Effective Awk Programming*, Free Software Foundation / O'Reilly and Associates, 2000, 1-882114-26-4.
-    - The absolute best [[./apendix/awk#^AWKREF|awk]] tutorial and reference. The free electronic version of this book is part of the *awk* documentation, and printed copies of the latest version are available from O'Reilly and Associates.
+    - The absolute best [[awk#^AWKREF|awk]] tutorial and reference. The free electronic version of this book is part of the *awk* documentation, and printed copies of the latest version are available from O'Reilly and Associates.
       This book served as an inspiration for the author of the *ABS Guide*.
 - Bill Rosenblatt, *Learning the Korn Shell*, O'Reilly and Associates, 1993, 1-56592-054-6.
     - This well-written book contains some excellent pointers on shell scripting in general.
@@ -77,7 +77,7 @@ title: Bibliography
 - Giles Orr's [Bash-Prompt HOWTO](http://www.tldp.org/HOWTO/Bash-Prompt-HOWTO/).
 - The [*Pixelbeat* command-line reference](http://www.pixelbeat.org/cmdline.html).
 - Very nice **sed**, **awk**, and regular expression tutorials at [The UNIX Grymoire](http://www.grymoire.com/Unix/index.html).
-- The GNU [sed](http://www.gnu.org/software/sed/manual/) and [gawk](http://www.gnu.org/software/gawk/manual/) manuals. As you recall, [[./advanced-topics/brief-introduction-to-regular-expressions#^GNUGAWK|gawk]] is the enhanced GNU version of **awk**.
+- The GNU [sed](http://www.gnu.org/software/sed/manual/) and [gawk](http://www.gnu.org/software/gawk/manual/) manuals. As you recall, [[brief-introduction-to-regular-expressions#^GNUGAWK|gawk]] is the enhanced GNU version of **awk**.
 - Many interesting sed scripts at the [seder's grab bag](http://sed.sourceforge.net/grabbag/).
 - Tips and tricks at [Linux Reviews](http://linuxreviews.org).
 - Trent Fisher's [groff tutorial](http://www.cs.pdx.edu/~trent/gnu/groff/groff.html).
@@ -86,7 +86,7 @@ title: Bibliography
 - YongYe's wonderfully complex [Tetris game script](http://bash.deta.in/Tetris_Game.sh).
 - Mark Komarinski's [Printing-Usage HOWTO](http://www.tldp.org/HOWTO/Printing-Usage-HOWTO.html).
 - [The Linux USB subsystem](http://www.linux-usb.org/USB-guide/book1.html) (helpful in writing scripts affecting USB peripherals).
-- There is some nice material on [[./advanced-topics/io-redirection|I/O redirection]] in [chapter 10 of the textutils documentation](http://sunsite.ualberta.ca/Documentation/Gnu/textutils-2.0/html_chapter/textutils_10.html) at the [University of Alberta site](http://sunsite.ualberta.ca/Documentation).
+- There is some nice material on [[io-redirection|I/O redirection]] in [chapter 10 of the textutils documentation](http://sunsite.ualberta.ca/Documentation/Gnu/textutils-2.0/html_chapter/textutils_10.html) at the [University of Alberta site](http://sunsite.ualberta.ca/Documentation).
 - [Rick Hohensee](mailto:humbubba@smarty.smart.net) has written the *osimpa* i386 assembler entirely as Bash scripts.
 - *dgatwood* has a very nice [shell script games](http://www.shellscriptgames.com/) site, featuring a Tetris® clone and solitaire.
 - Aurelio Marinho Jargas has written a [Regular expression wizard](http://txt2regex.sf.net). He has also written an informative [book](http://guia-er.sf.net) on Regular Expressions, in Portuguese.
@@ -96,16 +96,16 @@ title: Bibliography
 - Tim Waugh's [xmlto](http://cyberelk.net/tim/xmlto/) is an elaborate Bash script for converting Docbook XML documents to other formats.
 - Philip Patterson's [logforbash](http://www.gossiplabs.org) logging/debugging script.
 - [AuctionGallery](http://auctiongallery.sourceforge.net), an application for eBay "power sellers" coded in Bash.
-- Of historical interest are Colin Needham's *original International Movie Database (IMDB) reader polling scripts*, which nicely illustrate the use of [[./apendix/awk#^AWKREF|awk]] for string parsing. Unfortunately, the URL link is broken.
-- Fritz Mehner has written a [bash-support plugin](http://vim.sourceforge.net/scripts/script.php?script_id=365) for the _vim_ text editor. He has also also come up with his own [stylesheet for Bash](http://lug.fh-swf.de/vim/vim-bash/StyleGuideShell.en.pdf). Compare it with the [[./advanced-topics/unofficial-shell-scripting-stylesheet|ABS Guide Unofficial Stylesheet]].
+- Of historical interest are Colin Needham's *original International Movie Database (IMDB) reader polling scripts*, which nicely illustrate the use of [[awk#^AWKREF|awk]] for string parsing. Unfortunately, the URL link is broken.
+- Fritz Mehner has written a [bash-support plugin](http://vim.sourceforge.net/scripts/script.php?script_id=365) for the _vim_ text editor. He has also also come up with his own [stylesheet for Bash](http://lug.fh-swf.de/vim/vim-bash/StyleGuideShell.en.pdf). Compare it with the [[unofficial-shell-scripting-stylesheet|ABS Guide Unofficial Stylesheet]].
 - *Penguin Pete* has quite a number of shell scripting tips and hints on [his superb site](http://www.penguinpetes.com). Highly recommended.
-- The excellent *Bash Reference Manual*, by Chet Ramey and Brian Fox, distributed as part of the *bash-2-doc* package (available as an [[./commands/file-and-archiving-commands#^RPMREF|rpm]]). See especially the instructive example scripts in this package.
+- The excellent *Bash Reference Manual*, by Chet Ramey and Brian Fox, distributed as part of the *bash-2-doc* package (available as an [[file-and-archiving-commands#^RPMREF|rpm]]). See especially the instructive example scripts in this package.
 - John Lion's classic, [*A Commentary on the Sixth Edition UNIX Operating System*](http://www.lemis.com/grog/Documentation/Lions/index.html).
 - The [comp.os.unix.shell](news:comp.unix.shell) newsgroup.
 - The [*dd* thread](http://www.linuxquestions.org/questions/showthread.php?t=362506) on [Linux Questions](http://www.linuxquestions.org).
 - The [comp.os.unix.shell FAQ](http://www.newsville.com/cgi-bin/getfaq?file=comp.unix.shell/comp.unix.shell*FAQ*-*Answers*to*Frequently*Asked_Questions).
 - Assorted comp.os.unix [FAQs](http://www.faqs.org/faqs/by-newsgroup/comp/comp.unix.shell.html).
-- The [*Wikipedia* article](http://en.wikipedia.org/wiki/Dc_(Unix)) covering [[./commands/math-commands#^DCREF|dc]].
-- The [[./commands/basic-commands#^MANREF|manpages]] for **bash** and **bash2**, **date**, **expect**, **expr**, **find**, **grep**, **gzip**, **ln**, **patch**, **tar**, **tr**, **bc**, **xargs**. The *texinfo* documentation on **bash**, **dd**, **m4**, **gawk**, and **sed**.
+- The [*Wikipedia* article](http://en.wikipedia.org/wiki/Dc_(Unix)) covering [[math-commands#^DCREF|dc]].
+- The [[basic-commands#^MANREF|manpages]] for **bash** and **bash2**, **date**, **expect**, **expr**, **find**, **grep**, **gzip**, **ln**, **patch**, **tar**, **tr**, **bc**, **xargs**. The *texinfo* documentation on **bash**, **dd**, **m4**, **gawk**, and **sed**.
 
 [^1]: It was hard to resist the obvious pun. No slight intended, since the book is a pretty decent introduction to the basic concepts of shell scripting.
