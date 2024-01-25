@@ -3,9 +3,9 @@ title: 18.2. Globbing
 ---
 
 
-Bash itself cannot recognize Regular Expressions. Inside scripts, it is commands and utilities -- such as [[Appendix%20C.%20A%20Sed%20and%20Awk%20Micro-Primer#^SEDREF|sed]] and [[../apendix/awk#^AWKREF|awk]] -- that interpret RE's.
+Bash itself cannot recognize Regular Expressions. Inside scripts, it is commands and utilities -- such as [[Appendix%20C.%20A%20Sed%20and%20Awk%20Micro-Primer#^SEDREF|sed]] and [[awk#^AWKREF|awk]] -- that interpret RE's.
 
-Bash _does_ carry out _filename expansion_ [^1] -- a process known as _globbing_ -- but this does _not_ use the standard RE set. Instead, globbing recognizes and expands _wild cards_. Globbing interprets the standard wild card characters [^2] -- [[../basic/special-characters#^ASTERISKREF|*]] and [[../basic/special-characters#^WILDCARDQU|?]], character lists in square brackets, and certain other special characters (such as ^ for negating the sense of a match). There are important limitations on wild card characters in globbing, however. Strings containing _*_ will not match filenames that start with a dot, as, for example, [[sample-bashrc-and-bash-profile-files.html|.bashrc]]. [^3] Likewise, the _?_ has a different meaning in globbing than as part of an RE.
+Bash _does_ carry out _filename expansion_ [^1] -- a process known as _globbing_ -- but this does _not_ use the standard RE set. Instead, globbing recognizes and expands _wild cards_. Globbing interprets the standard wild card characters [^2] -- [[special-characters#^ASTERISKREF|*]] and [[special-characters#^WILDCARDQU|?]], character lists in square brackets, and certain other special characters (such as ^ for negating the sense of a match). There are important limitations on wild card characters in globbing, however. Strings containing _*_ will not match filenames that start with a dot, as, for example, [[sample-bashrc-and-bash-profile-files.html|.bashrc]]. [^3] Likewise, the _?_ has a different meaning in globbing than as part of an RE.
 
 ```bash
 bash$ ls -l
@@ -40,7 +40,7 @@ bash$ ls -l {b*,c*,*est*}
 	      
 ```
 
-Bash performs filename expansion on unquoted command-line arguments. The [[../commands/internal-commands-and-builtins#^ECHOREF|echo]] command demonstrates this.
+Bash performs filename expansion on unquoted command-line arguments. The [[internal-commands-and-builtins#^ECHOREF|echo]] command demonstrates this.
 
 ```bash
 bash$ echo *
@@ -55,12 +55,12 @@ t2.sh
 ```
 
 > [!note]
-> It is possible to modify the way Bash interprets special characters in globbing. A **set -f** command disables globbing, and the nocaseglob and nullglob options to [[../commands/internal-commands-and-builtins#^SHOPTREF|shopt]] change globbing behavior.
+> It is possible to modify the way Bash interprets special characters in globbing. A **set -f** command disables globbing, and the nocaseglob and nullglob options to [[internal-commands-and-builtins#^SHOPTREF|shopt]] change globbing behavior.
 
-See also [[../beyond-the-basic/loops#^LISTGLOB|Example 11-5]].
+See also [[loops#^LISTGLOB|Example 11-5]].
 
 > [!caution]
-> Filenames with embedded [[../basic/special-characters#Whitespace|whitespace]] can cause _globbing_ to choke. [David Wheeler](http://www.dwheeler.com/essays/filenames-in-shell.html) shows how to avoid many such pitfalls.
+> Filenames with embedded [[special-characters#Whitespace|whitespace]] can cause _globbing_ to choke. [David Wheeler](http://www.dwheeler.com/essays/filenames-in-shell.html) shows how to avoid many such pitfalls.
 
 ```bash
 IFS="$(printf '\n\t')"   # Remove space.
