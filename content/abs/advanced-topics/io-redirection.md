@@ -3,9 +3,9 @@ title: 20. I/O Redirection
 ---
 
 
-There are always three default _files_ [^1] open, stdin (the keyboard), stdout (the screen), and stderr (error messages output to the screen). These, and any other open files, can be redirected. Redirection simply means capturing output from a file, command, program, script, or even code block within a script (see [[../basic/special-characters#^EX8|Example 3-1]] and [[../basic/special-characters#^RPMCHECK|Example 3-2]]) and sending it as input to another file, command, program, or script.
+There are always three default _files_ [^1] open, stdin (the keyboard), stdout (the screen), and stderr (error messages output to the screen). These, and any other open files, can be redirected. Redirection simply means capturing output from a file, command, program, script, or even code block within a script (see [[special-characters#^EX8|Example 3-1]] and [[special-characters#^RPMCHECK|Example 3-2]]) and sending it as input to another file, command, program, or script.
 
-Each open file gets assigned a file descriptor. [^2] The file descriptors for stdin, stdout, and stderr are 0, 1, and 2, respectively. For opening additional files, there remain descriptors 3 to 9. It is sometimes useful to assign one of these additional file descriptors to stdin, stdout, or stderr as a temporary duplicate link. [^3] This simplifies restoration to normal after complex redirection and reshuffling (see [[./using-exec#^REDIR1|Example 20-1]]).
+Each open file gets assigned a file descriptor. [^2] The file descriptors for stdin, stdout, and stderr are 0, 1, and 2, respectively. For opening additional files, there remain descriptors 3 to 9. It is sometimes useful to assign one of these additional file descriptors to stdin, stdout, or stderr as a temporary duplicate link. [^3] This simplifies restoration to normal after complex redirection and reshuffling (see [[using-exec#^REDIR1|Example 20-1]]).
 
 ```bash
    COMMAND_OUTPUT >
@@ -144,7 +144,7 @@ command < input-file > output-file
 command1 | command2 | command3 > output-file
 ```
 
-See [[../commands/file-and-archiving-commands#^DERPM|Example 16-31]] and [[../apendix/contributed-scripts#^FIFO|Example A-14]].
+See [[file-and-archiving-commands#^DERPM|Example 16-31]] and [[contributed-scripts#^FIFO|Example A-14]].
 
 Multiple output streams may be redirected to one file.
 
@@ -197,8 +197,8 @@ exec 3>&-                              # Now close it for the remainder of the s
 
 For a more detailed introduction to I/O redirection see [[a-detailed-introduction-to-io-and-io-redirection.html|Appendix F]].
 
-[^1]: By convention in UNIX and Linux, data streams and peripherals ([[./dev#^DEVFILEREF|device files]]) are treated as files, in a fashion analogous to ordinary files.
+[^1]: By convention in UNIX and Linux, data streams and peripherals ([[dev#^DEVFILEREF|device files]]) are treated as files, in a fashion analogous to ordinary files.
 
 [^2]: A _file descriptor_ is simply a number that the operating system assigns to an open file to keep track of it. Consider it a simplified type of file pointer. It is analogous to a _file handle_ in **C**.
 
-[^3]: Using _file descriptor 5_ might cause problems. When Bash creates a child process, as with [[../commands/internal-commands-and-builtins#^EXECREF|exec]], the child inherits fd 5 (see Chet Ramey's archived e-mail, [SUBJECT: RE: File descriptor 5 is held open](http://groups.google.com/group/gnu.bash.bug/browse_thread/thread/13955daafded3b5c/18c17050087f9f37)). Best leave this particular fd alone.
+[^3]: Using _file descriptor 5_ might cause problems. When Bash creates a child process, as with [[internal-commands-and-builtins#^EXECREF|exec]], the child inherits fd 5 (see Chet Ramey's archived e-mail, [SUBJECT: RE: File descriptor 5 is held open](http://groups.google.com/group/gnu.bash.bug/browse_thread/thread/13955daafded3b5c/18c17050087f9f37)). Best leave this particular fd alone.
