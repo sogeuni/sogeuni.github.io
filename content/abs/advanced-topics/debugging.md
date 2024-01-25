@@ -36,7 +36,7 @@ Output from script:
 
 What's wrong with the above script? Hint: after the _if_.
 
-###### Example 32-2. Missing [[../commands/internal-commands-and-builtins#^keywordref|keyword]]
+###### Example 32-2. Missing [[internal-commands-and-builtins#^keywordref|keyword]]
 
 ```bash
 #!/bin/bash
@@ -110,7 +110,7 @@ Summarizing the symptoms of a buggy script,
 
 Tools for debugging non-working scripts include
 
-1. Inserting [[../commands/internal-commands-and-builtins#^ECHOREF|echo]] statements at critical points in the script to trace the variables, and otherwise give a snapshot of what is going on.
+1. Inserting [[internal-commands-and-builtins#^ECHOREF|echo]] statements at critical points in the script to trace the variables, and otherwise give a snapshot of what is going on.
 
 > [~tip]
 > Even better is an **echo** that echoes only when _debug_ is on.
@@ -134,7 +134,7 @@ Tools for debugging non-working scripts include
 > debecho $Whatever   # (Will not echo.)
 > ```
     
-2. Using the [[../commands/miscellaneous-commands#^TEEREF|tee]] filter to check processes or data flows at critical points.
+2. Using the [[miscellaneous-commands#^TEEREF|tee]] filter to check processes or data flows at critical points.
     
 3. Setting option flags -n -v -x
     
@@ -218,11 +218,11 @@ echo "This statement echoes only if the \"assert\" does not fail."
 exit $?
 ```
     
-5. Using the [[../beyond-the-basic/another-look-at-variables#^LINENOREF|$LINENO]] variable and the [[../commands/internal-commands-and-builtins#^CALLERREF|caller]] builtin.
+5. Using the [[another-look-at-variables#^LINENOREF|$LINENO]] variable and the [[internal-commands-and-builtins#^CALLERREF|caller]] builtin.
     
 6. Trapping at exit.
     
-    The [[../commands/internal-commands-and-builtins#^EXITREF|exit]] command in a script triggers a signal 0, terminating the process, that is, the script itself. [^1] It is often useful to trap the _exit_, forcing a "printout" of variables, for example. The _trap_ must be the first command in the script.
+    The [[internal-commands-and-builtins#^EXITREF|exit]] command in a script triggers a signal 0, terminating the process, that is, the script itself. [^1] It is often useful to trap the _exit_, forcing a "printout" of variables, for example. The _trap_ must be the first command in the script.
     
 
 **Trapping signals**
@@ -231,7 +231,7 @@ exit $?
 
 Specifies an action on receipt of a signal; also useful for debugging.
 
-> A _signal_ is a message sent to a process, either by the kernel or another process, telling it to take some specified action (usually to terminate). For example, hitting a [[../basic/special-characters#^CTLCREF|Control-C]] sends a user interrupt, an INT signal, to a running program.
+> A _signal_ is a message sent to a process, either by the kernel or another process, telling it to take some specified action (usually to terminate). For example, hitting a [[special-characters#^CTLCREF|Control-C]] sends a user interrupt, an INT signal, to a running program.
 
 _A simple instance:_
 
@@ -435,7 +435,7 @@ exit $?
 > VARIABLE-TRACE> $variable = "87"
 > ```
 
-Of course, the **trap** command has other uses aside from debugging, such as disabling certain keystrokes within a script (see [[../apendix/contributed-scripts#^STOPWATCH|Example A-43]]).
+Of course, the **trap** command has other uses aside from debugging, such as disabling certain keystrokes within a script (see [[contributed-scripts#^STOPWATCH|Example A-43]]).
 
 ###### Example 32-9. Running multiple processes (on an SMP box)
 
@@ -614,11 +614,11 @@ SCRIPT_AUTHOR_COMMENTS
 	
 ```
 
-> [[bashver3#^BASH3REF|Version 3]] of Bash adds the following [[../beyond-the-basic/another-look-at-variables#^INTERNALVARIABLES1|internal variables]] for use by the debugger.
+> [[bashver3#^BASH3REF|Version 3]] of Bash adds the following [[another-look-at-variables#^INTERNALVARIABLES1|internal variables]] for use by the debugger.
 >
 > 1. $BASH_ARGC
 >     
->     Number of command-line arguments passed to script, similar to [[../beyond-the-basic/another-look-at-variables#^CLACOUNTREF|$#]].
+>     Number of command-line arguments passed to script, similar to [[another-look-at-variables#^CLACOUNTREF|$#]].
 >     
 > 2. $BASH_ARGV
 >     
@@ -634,7 +634,7 @@ SCRIPT_AUTHOR_COMMENTS
 >     
 > 5. $BASH_LINENO
 >     
->     In a [[./functions|function]], indicates the line number of the function call.
+>     In a [[functions|function]], indicates the line number of the function call.
 >     
 > 6. $BASH_REMATCH
 >     
@@ -644,6 +644,6 @@ SCRIPT_AUTHOR_COMMENTS
 >     
 >     This is the name of the script, usually the same as [[othertypesv#^ARG0|$0]].
 >     
-> 8. [[../beyond-the-basic/another-look-at-variables#^BASHSUBSHELLREF|$BASH_SUBSHELL]]|
+> 8. [[another-look-at-variables#^BASHSUBSHELLREF|$BASH_SUBSHELL]]|
 
 [^1]: By convention, _signal 0_ is assigned to [[exit-and-exit-status|exit]].
