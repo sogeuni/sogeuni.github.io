@@ -16,11 +16,11 @@ The craft of scripting is not hard to master, since scripts can be built in bite
 > We now have miniaturized single-board computers with amazing capabilities, such as the [Raspberry Pi](http://www.raspberrypi.org/).
 > Bash scripting provides a way to explore the capabilities of these fascinating devices.
 
-A shell script is a quick-and-dirty method of prototyping a complex application. Getting even a limited subset of the functionality to work in a script is often a useful first stage in project development. In this way, the structure of the application can be tested and tinkered with, and the major pitfalls found before proceeding to the final coding in _C_, _C++_, _Java_, [[../advanced-topics/shell-wrappers#^PERLREF|Perl]], or _Python_.
+A shell script is a quick-and-dirty method of prototyping a complex application. Getting even a limited subset of the functionality to work in a script is often a useful first stage in project development. In this way, the structure of the application can be tested and tinkered with, and the major pitfalls found before proceeding to the final coding in _C_, _C++_, _Java_, [[shell-wrappers#^PERLREF|Perl]], or _Python_.
 
 Shell scripting hearkens back to the classic UNIX philosophy of breaking complex projects into simpler subtasks, of chaining together components and utilities. Many consider this a better, or at least more esthetically pleasing approach to problem solving than using one of the new generation of high-powered all-in-one languages, such as _Perl_, which attempt to be all things to all people, but at the cost of forcing you to alter your thinking processes to fit the tool.
 
-According to [[../bibliography#^MAYERREF|Herbert Mayer]], "a useful language needs arrays, pointers, and a generic mechanism for building data structures." By these criteria, shell scripting falls somewhat short of being "useful." Or, perhaps not. . . .
+According to [[bibliography#^MAYERREF|Herbert Mayer]], "a useful language needs arrays, pointers, and a generic mechanism for building data structures." By these criteria, shell scripting falls somewhat short of being "useful." Or, perhaps not. . . .
 
 > When not to use shell scripts
 >
@@ -36,7 +36,7 @@ According to [[../bibliography#^MAYERREF|Herbert Mayer]], "a useful language nee
 > - Need data structures, such as linked lists or trees
 > - Need to generate / manipulate graphics or GUIs
 > - Need direct access to system hardware or external peripherals
-> - Need port or [[../advanced-topics/dev#^SOCKETREF|socket]] I/O
+> - Need port or [[dev#^SOCKETREF|socket]] I/O
 > - Need to use libraries or interface with legacy code
 > - Proprietary, closed-source applications (Shell scripts put the source code right out in the open for all the world to see.)
 >
@@ -52,11 +52,11 @@ Unless otherwise noted, [the author](mailto:thegrendel.abs@gmail.com) of this bo
 >
 > --<cite>Edmund Spenser</cite>
 
-![[./sha-bang#^111|sha-bang > ^111]]
+![[sha-bang#^111|sha-bang]]
 
-[^1]: These are referred to as [[../commands/internal-commands-and-builtins|builtins]], features internal to the shell.
+[^1]: These are referred to as [[internal-commands-and-builtins|builtins]], features internal to the shell.
 
-[^2]: Although [[../advanced-topics/local-variables#^RECURSIONREF0|recursion is possible in a shell script]], it tends to be slow and its implementation is often an [[../advanced-topics/recursion-without-local-variables#Example 24-16. The Fibonacci Sequence|ugly kludge]].
+[^2]: Although [[local-variables#^RECURSIONREF0|recursion is possible in a shell script]], it tends to be slow and its implementation is often an [[recursion-without-local-variables#Example 24-16. The Fibonacci Sequence|ugly kludge]].
 
 [^3]: An _acronym_ is an _ersatz_ word formed by pasting together the initial letters of the words into a tongue-tripping phrase. This morally corrupt and pernicious practice deserves appropriately severe punishment. Public flogging suggests itself.
 
