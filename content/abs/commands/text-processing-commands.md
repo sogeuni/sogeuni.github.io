@@ -7,7 +7,7 @@ title: 16.4. Text Processing Commands
 
 **sort**
 
-File sort utility, often used as a filter in a pipe. This command sorts a _text stream_ or file forwards or backwards, or according to various keys or character positions. Using the -m option, it merges presorted input files. The _info page_ lists its many capabilities and options. See [[../beyond-the-basic/loops#^FINDSTRING|Example 11-10]], [[../beyond-the-basic/loops#^SYMLINKS|Example 11-11]], and [[../apendix/contributed-scripts#^MAKEDICT|Example A-8]].
+File sort utility, often used as a filter in a pipe. This command sorts a _text stream_ or file forwards or backwards, or according to various keys or character positions. Using the -m option, it merges presorted input files. The _info page_ lists its many capabilities and options. See [[loops#^FINDSTRING|Example 11-10]], [[loops#^SYMLINKS|Example 11-11]], and [[contributed-scripts#^MAKEDICT|Example A-8]].
 
 **tsort**
 
@@ -143,13 +143,13 @@ bash$ ./wf.sh testfile
 
 **expand**, **unexpand**
 
-The **expand** filter converts tabs to spaces. It is often used in a [[../basic/special-characters#^PIPEREF|pipe]].
+The **expand** filter converts tabs to spaces. It is often used in a [[special-characters#^PIPEREF|pipe]].
 
 The **unexpand** filter converts spaces to tabs. This reverses the effect of **expand**.
 
 **cut**
 
-A tool for extracting [[../basic/special-characters#^FIELDREF|fields]] from files. It is similar to the **print $N** command set in [[../apendix/awk#^AWKREF|awk]], but more limited. It may be simpler to use _cut_ in a script than _awk_. Particularly important are the -d (delimiter) and -f (field specifier) options.
+A tool for extracting [[special-characters#^FIELDREF|fields]] from files. It is similar to the **print $N** command set in [[awk#^AWKREF|awk]], but more limited. It may be simpler to use _cut_ in a script than _awk_. Particularly important are the -d (delimiter) and -f (field specifier) options.
 
 Using **cut** to obtain a listing of the mounted filesystems:
 
@@ -204,7 +204,7 @@ done
 >
 > Thank you, Jaka Kranjc, for pointing this out.|
 
-See also [[./math-commands#^BASE|Example 16-48]].
+See also [[math-commands#^BASE|Example 16-48]].
 
 **paste**
 
@@ -231,7 +231,7 @@ alphabet blocks $1.00/dozen
 
 Consider this a special-purpose cousin of **paste**. This powerful utility allows merging two files in a meaningful fashion, which essentially creates a simple version of a relational database.
 
-The **join** command operates on exactly two files, but pastes together only those lines with a common tagged [[../basic/special-characters#^FIELDREF|field]] (usually a numerical label), and writes the result to stdout. The files to be joined should be sorted according to the tagged field for the matchups to work properly.
+The **join** command operates on exactly two files, but pastes together only those lines with a common tagged [[special-characters#^FIELDREF|field]] (usually a numerical label), and writes the result to stdout. The files to be joined should be sorted according to the tagged field for the matchups to work properly.
 
 ```bash
 File: 1.data
@@ -388,7 +388,7 @@ head -c4 /dev/urandom | od -N4 -tu4 | sed -ne '1s/.* //p'
 exit
 ```
 
-See also [[./file-and-archiving-commands#^EX52|Example 16-39]].
+See also [[file-and-archiving-commands#^EX52|Example 16-39]].
 
 **tail**
 
@@ -415,7 +415,7 @@ exit 0
 ```
 
 > [!tip]
-> To list a specific line of a text file, [[../basic/special-characters#^PIPEREF|pipe]] the output of **head** to **tail -n 1**. For example **head -n 8 database.txt \| tail -n 1** lists the 8th line of the file database.txt.
+> To list a specific line of a text file, [[special-characters#^PIPEREF|pipe]] the output of **head** to **tail -n 1**. For example **head -n 8 database.txt \| tail -n 1** lists the 8th line of the file database.txt.
 >
 > To set a variable to a given block of a text file:
 >
@@ -430,11 +430,11 @@ exit 0
 > [!note]
 > Newer implementations of **tail** deprecate the older **tail -$LINES filename** usage. The standard **tail -n $LINES filename** is correct.
 
-See also [[./complex-commands#^EX41|Example 16-5]], [[./file-and-archiving-commands#^EX52|Example 16-39]] and [[../advanced-topics/debugging#^ONLINE|Example 32-6]].
+See also [[complex-commands#^EX41|Example 16-5]], [[file-and-archiving-commands#^EX52|Example 16-39]] and [[debugging#^ONLINE|Example 32-6]].
 
 **grep**
 
-A multi-purpose file search tool that uses [[../advanced-topics/regexp#^REGEXREF|Regular Expressions]]. It was originally a command/filter in the venerable **ed** line editor: **g/re/p** -- _global - regular expression - print_.
+A multi-purpose file search tool that uses [[regexp#^REGEXREF|Regular Expressions]]. It was originally a command/filter in the venerable **ed** line editor: **g/re/p** -- _global - regular expression - print_.
 
 **grep** _pattern_ [_file_...]
 
@@ -446,7 +446,7 @@ The GPL governs the distribution of the Linux operating system.
 	      
 ```
 
-If no target file(s) specified, **grep** works as a filter on stdout, as in a [[../basic/special-characters#^PIPEREF|pipe]].
+If no target file(s) specified, **grep** works as a filter on stdout, as in a [[special-characters#^PIPEREF|pipe]].
 
 ```bash
 bash$ ps ax | grep clock
@@ -573,7 +573,7 @@ else
 fi
 ```
 
-[[../advanced-topics/debugging#^ONLINE|Example 32-6]] demonstrates how to use **grep** to search for a word pattern in a system logfile.
+[[debugging#^ONLINE|Example 32-6]] demonstrates how to use **grep** to search for a word pattern in a system logfile.
 
 ###### Example 16-17. Emulating *grep* in a script
 
@@ -616,7 +616,7 @@ exit 0
 
 How can **grep** search for two (or more) separate patterns? What if you want **grep** to display all lines in a file or files that contain both "pattern1" _and_ "pattern2"?
 
-One method is to [[../basic/special-characters#^PIPEREF|pipe]] the result of **grep pattern1** to **grep pattern2**.
+One method is to [[special-characters#^PIPEREF|pipe]] the result of **grep pattern1** to **grep pattern2**.
 
 For example, given the following file:
 
@@ -718,7 +718,7 @@ workingman
 workingmen
 ```
 
-**egrep** -- _extended grep_ -- is the same as **grep -E**. This uses a somewhat different, extended set of [[../advanced-topics/regexp#^REGEXREF|Regular Expressions]], which can make the search a bit more flexible. It also allows the boolean | (_or_) operator.
+**egrep** -- _extended grep_ -- is the same as **grep -E**. This uses a somewhat different, extended set of [[regexp#^REGEXREF|Regular Expressions]], which can make the search a bit more flexible. It also allows the boolean | (_or_) operator.
 
 ```bash
 bash $ egrep 'matches|Matches' file.txt
@@ -728,7 +728,7 @@ Line 1 matches.
               
 ```
 
-**fgrep** -- _fast grep_ -- is the same as **grep -F**. It does a literal string search (no [[../advanced-topics/regexp#^REGEXREF|Regular Expressions]]), which generally speeds things up a bit.
+**fgrep** -- _fast grep_ -- is the same as **grep -F**. It does a literal string search (no [[regexp#^REGEXREF|Regular Expressions]]), which generally speeds things up a bit.
 
 > [!note]
 > On some Linux distros, **egrep** and **fgrep** are symbolic links to, or aliases for **grep**, but invoked with the -E and -F options, respectively.
@@ -824,14 +824,14 @@ exit $?
 ```
 
 > [!note]
-> See also [[../apendix/contributed-scripts#^QKY|Example A-41]] for an example of speedy _fgrep_ lookup on a large text file.
+> See also [[contributed-scripts#^QKY|Example A-41]] for an example of speedy _fgrep_ lookup on a large text file.
 
 **agrep** (_approximate grep_) extends the capabilities of **grep** to approximate matching. The search string may differ by a specified number of characters from the resulting matches. This utility is not part of the core Linux distribution.
 
 > [!tip]
 > To search compressed files, use **zgrep**, **zegrep**, or **zfgrep**. These also work on non-compressed files, though slower than plain **grep**, **egrep**, **fgrep**. They are handy for searching through a mixed set of files, some compressed, some not.
 >
-> To search [[./file-and-archiving-commands#^BZIPREF|bzipped]] files, use **bzgrep**.
+> To search [[file-and-archiving-commands#^BZIPREF|bzipped]] files, use **bzgrep**.
 
 **look**
 
@@ -890,13 +890,13 @@ exit 0
 
 Scripting languages especially suited for parsing text files and command output. May be embedded singly or in combination in pipes and shell scripts.
 
-**[[../apendix/a-sed-and-awk-micro-primer#^SEDREF|sed]]**
+**[[a-sed-and-awk-micro-primer#^SEDREF|sed]]**
 
-Non-interactive "stream editor", permits using many **ex** commands in [[./time-date-commands#^BATCHPROCREF|batch]] mode. It finds many uses in shell scripts.
+Non-interactive "stream editor", permits using many **ex** commands in [[time-date-commands#^BATCHPROCREF|batch]] mode. It finds many uses in shell scripts.
 
-**[[../apendix/awk#^AWKREF|awk]]**
+**[[awk#^AWKREF|awk]]**
 
-Programmable file extractor and formatter, good for manipulating and/or extracting [[../basic/special-characters#^FIELDREF|fields]] (columns) in structured text files. Its syntax is similar to C.
+Programmable file extractor and formatter, good for manipulating and/or extracting [[special-characters#^FIELDREF|fields]] (columns) in structured text files. Its syntax is similar to C.
 
 **wc**
 
@@ -946,7 +946,7 @@ bash$ grep Linux abs-book.sgml | wc -l
 138
 ```
 
-See also [[./file-and-archiving-commands#^EX52|Example 16-39]] and [[../advanced-topics/redirecting-code-blocks#^REDIR4|Example 20-8]].
+See also [[file-and-archiving-commands#^EX52|Example 16-39]] and [[redirecting-code-blocks#^REDIR4|Example 20-8]].
 
 Certain commands include some of the functionality of **wc** as options.
 
@@ -965,7 +965,7 @@ Certain commands include some of the functionality of **wc** as options.
 character translation filter.
 
 > [!caution]
-> [[../basic/special-characters#^UCREF|Must use quoting and/or brackets]], as appropriate. Quotes prevent the shell from reinterpreting the special characters in **tr** command sequences. Brackets should be quoted to prevent expansion by the shell.
+> [[special-characters#^UCREF|Must use quoting and/or brackets]], as appropriate. Quotes prevent the shell from reinterpreting the special characters in **tr** command sequences. Brackets should be quoted to prevent expansion by the shell.
 
 Either **tr "A-Z" "*" <filename** or **tr A-Z \* <filename** changes all the uppercase letters in filename to asterisks (writes to stdout). On some systems this may not work, but **tr A-Z '[**]'** will.
 
@@ -980,7 +980,7 @@ tr -d 0-9 <filename
 # Deletes all digits from the file "filename".
 ```
 
-The --squeeze-repeats (or -s) option deletes all but the first instance of a string of consecutive characters. This option is useful for removing excess [[../basic/special-characters#Whitespace|whitespace]].
+The --squeeze-repeats (or -s) option deletes all but the first instance of a string of consecutive characters. This option is useful for removing excess [[special-characters#Whitespace|whitespace]].
 
 ```bash
 bash$ echo "XXXXX" | tr --squeeze-repeats 'X'
@@ -994,7 +994,7 @@ bash$ echo "acfdeb123" | tr -c b-d +
 +c+d+b++++
 ```
 
-Note that **tr** recognizes [[../advanced-topics/brief-introduction-to-regular-expressions#^POSIXREF|POSIX character classes]]. [^1]
+Note that **tr** recognizes [[brief-introduction-to-regular-expressions#^POSIXREF|POSIX character classes]]. [^1]
 
 ```bash
 bash$ echo "abcd2ef1" | tr '[:alpha:]' -
@@ -1200,7 +1200,7 @@ echo $x | tr "a-z" 'oh, turtleneck Phrase Jar!'
 
 **fold**
 
-A filter that wraps lines of input to a specified width. This is especially useful with the -s option, which breaks lines at word spaces (see [[text-processing-commands#^EX50|Example 16-26]] and [[../apendix/contributed-scripts#^MAILFORMAT|Example A-1]]).
+A filter that wraps lines of input to a specified width. This is especially useful with the -s option, which breaks lines at word spaces (see [[text-processing-commands#^EX50|Example 16-26]] and [[contributed-scripts#^MAILFORMAT|Example A-1]]).
 
 **fmt**
 
@@ -1223,7 +1223,7 @@ echo $b | fmt -w $WIDTH
 exit 0
 ```
 
-See also [[./complex-commands#^EX41|Example 16-5]].
+See also [[complex-commands#^EX41|Example 16-5]].
 
 > [!tip]
 > A powerful alternative to **fmt** is Kamil Toman's **par** utility, available from [http://www.cs.berkeley.edu/~amc/Par/](http://www.cs.berkeley.edu/~amc/Par/).
@@ -1304,17 +1304,17 @@ A particularly useful option is -d, forcing double-spacing (same effect as **sed
 
 **gettext**
 
-The GNU **gettext** package is a set of utilities for [[../apendix/localization|localizing]] and translating the text output of programs into foreign languages. While originally intended for C programs, it now supports quite a number of programming and scripting languages.
+The GNU **gettext** package is a set of utilities for [[localization|localizing]] and translating the text output of programs into foreign languages. While originally intended for C programs, it now supports quite a number of programming and scripting languages.
 
 The **gettext** _program_ works on shell scripts. See the _info page_.
 
 **msgfmt**
 
-A program for generating binary message catalogs. It is used for [[../apendix/localization|localization]].
+A program for generating binary message catalogs. It is used for [[localization|localization]].
 
 **iconv**
 
-A utility for converting file(s) to a different encoding (character set). Its chief use is for [[../apendix/localization|localization]].
+A utility for converting file(s) to a different encoding (character set). Its chief use is for [[localization|localization]].
 
 ```bash
 # Convert a string from UTF-8 to UTF-16 and print to the BookList
@@ -1344,7 +1344,7 @@ _Ghostscript_ (**gs**) is a GPL-ed Postscript interpreter.
 
 **texexec**
 
-Utility for processing _TeX_ and _pdf_ files. Found in /usr/bin on many Linux distros, it is actually a [[../advanced-topics/shell-wrappers#^SHWRAPPER|shell wrapper]] that calls [[../advanced-topics/shell-wrappers#^PERLREF|Perl]] to invoke _Tex_.
+Utility for processing _TeX_ and _pdf_ files. Found in /usr/bin on many Linux distros, it is actually a [[shell-wrappers#^SHWRAPPER|shell wrapper]] that calls [[shell-wrappers#^PERLREF|Perl]] to invoke _Tex_.
 
 ```bash
 texexec --pdfarrange --result=Concatenated.pdf *pdf
@@ -1363,7 +1363,7 @@ For example, **enscript filename.txt -p filename.ps** produces the PostScript ou
 
 **groff**, **tbl**, **eqn**
 
-Yet another text markup and display formatting language is **groff**. This is the enhanced GNU version of the venerable UNIX **roff/troff** display and typesetting package. [[./basic-commands#^MANREF|Manpages]] use **groff**.
+Yet another text markup and display formatting language is **groff**. This is the enhanced GNU version of the venerable UNIX **roff/troff** display and typesetting package. [[basic-commands#^MANREF|Manpages]] use **groff**.
 
 The **tbl** table processing utility is considered part of **groff**, as its function is to convert table markup into **groff** commands.
 
@@ -1403,7 +1403,7 @@ groff -Tascii -man $1 | less
 exit $?   # See also the "maned.sh" script.
 ```
 
-See also [[../apendix/contributed-scripts#^MANED|Example A-39]].
+See also [[contributed-scripts#^MANED|Example A-39]].
 
 **lex**, **yacc**
 
