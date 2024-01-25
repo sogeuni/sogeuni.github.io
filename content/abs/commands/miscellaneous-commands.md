@@ -23,7 +23,7 @@ bash$ seq -s : 5
 1:2:3:4:5
 ```
 
-Both **jot** and **seq** come in handy in a [[../beyond-the-basic/loops#^FORLOOPREF1|for loop]].
+Both **jot** and **seq** come in handy in a [[loops#^FORLOOPREF1|for loop]].
 
 ###### Example 16-54. Using *seq* to generate loop arguments
 
@@ -173,7 +173,7 @@ exit $?
 
 **getopt**
 
-The **getopt** command parses command-line options preceded by a [[../basic/special-characters#^DASHREF|dash]]. This external command corresponds to the [[./internal-commands-and-builtins#^GETOPTSX|getopts]] Bash builtin. Using **getopt** permits handling long options by means of the -l flag, and this also allows parameter reshuffling.
+The **getopt** command parses command-line options preceded by a [[special-characters#^DASHREF|dash]]. This external command corresponds to the [[internal-commands-and-builtins#^GETOPTSX|getopts]] Bash builtin. Using **getopt** permits handling long options by means of the -l flag, and this also allows parameter reshuffling.
 
 ###### Example 16-56. Using *getopt* to parse command-line options
 
@@ -228,20 +228,20 @@ exit 0
 > [!note]
 > As _Peggy Russell_ points out:
 >
-> It is often necessary to include an [[./internal-commands-and-builtins#^EVALREF|eval]] to correctly process [[../basic/special-characters#Whitespace|whitespace]] and _quotes_.
+> It is often necessary to include an [[internal-commands-and-builtins#^EVALREF|eval]] to correctly process [[special-characters#Whitespace|whitespace]] and _quotes_.
 >
 > ```bash
 > args=$(getopt -o a:bc:d -- "$@")
 > eval set -- "$args"
 > ```
 
-See [[../beyond-the-basic/manipulating-strings#^GETOPTSIMPLE|Example 10-5]] for a simplified emulation of **getopt**.
+See [[manipulating-strings#^GETOPTSIMPLE|Example 10-5]] for a simplified emulation of **getopt**.
 
 **run-parts**
 
 The **run-parts** command [^1] executes all the scripts in a target directory, sequentially in ASCII-sorted filename order. Of course, the scripts need to have execute permission.
 
-The [[./system-and-administrative-commands#^CRONREF|cron]] [[./communications-commands#^DAEMONREF|daemon]] invokes **run-parts** to run the scripts in the /etc/cron.* directories.
+The [[system-and-administrative-commands#^CRONREF|cron]] [[communications-commands#^DAEMONREF|daemon]] invokes **run-parts** to run the scripts in the /etc/cron.* directories.
 
 **yes**
 
@@ -254,7 +254,7 @@ One might well ask the purpose of this. From the command-line or in a script, th
 **yes | rm -r dirname** has same effect as **rm -rf dirname** (careful!).
 
 > [!warning]
-> Caution advised when piping _yes_ to a potentially dangerous system command, such as [[./system-and-administrative-commands#^FSCKREF|fsck]] or [[./system-and-administrative-commands#^FDISKREF|fdisk]]. It might have unintended consequences.
+> Caution advised when piping _yes_ to a potentially dangerous system command, such as [[system-and-administrative-commands#^FSCKREF|fsck]] or [[system-and-administrative-commands#^FDISKREF|fdisk]]. It might have unintended consequences.
 
 > [!note]
 > The _yes_ command parses variables, or more accurately, it echoes parsed variables. For example:
@@ -278,7 +278,7 @@ One might well ask the purpose of this. From the command-line or in a script, th
 >
 > Hit **Ctl-C** _very quickly_, or you just might get more than you bargained for. . . .
 
-The _yes_ command may be emulated in a very simple script [[../advanced-topics/functions|function]].
+The _yes_ command may be emulated in a very simple script [[functions|function]].
 
 ```bash
 yes ()
@@ -298,7 +298,7 @@ yes ()
 
 **banner**
 
-Prints arguments as a large vertical banner to stdout, using an [[../basic/special-characters#^ASCIIDEF|ASCII]] character (default '#'). This may be redirected to a printer for hardcopy.
+Prints arguments as a large vertical banner to stdout, using an [[special-characters#^ASCIIDEF|ASCII]] character (default '#'). This may be redirected to a printer for hardcopy.
 
 Note that _banner_ has been dropped from many Linux distros, presumably because it is no longer considered useful.
 
@@ -321,7 +321,7 @@ It is often useful to pipe the formatted output from **pr** to **lp**.
 
 bash$ **pr -options file1.txt | lp**
 
-Formatting packages, such as [[./text-processing-commands#^GROFFREF|groff]] and _Ghostscript_ may send their output directly to **lp**.
+Formatting packages, such as [[text-processing-commands#^GROFFREF|groff]] and _Ghostscript_ may send their output directly to **lp**.
 
 bash$ **groff -Tascii file.tr | lp**
 
@@ -354,7 +354,7 @@ cat listfile* | sort | tee check.file | uniq > result.file
 
 **mkfifo**
 
-This obscure command creates a _named pipe_, a temporary _first-in-first-out buffer_ for transferring data between processes. [^4] Typically, one process writes to the FIFO, and the other reads from it. See [[../apendix/contributed-scripts#^FIFO|Example A-14]].
+This obscure command creates a _named pipe_, a temporary _first-in-first-out buffer_ for transferring data between processes. [^4] Typically, one process writes to the FIFO, and the other reads from it. See [[contributed-scripts#^FIFO|Example A-14]].
 
 ```bash
 #!/bin/bash
@@ -389,7 +389,7 @@ Mixed.msg BOZO
 
 This command checks the validity of a filename. If the filename exceeds the maximum allowable length (255 characters) or one or more of the directories in its path is not searchable, then an error message results.
 
-Unfortunately, **pathchk** does not return a recognizable error code, and it is therefore pretty much useless in a script. Consider instead the [[../basic/tests#^RTIF|file test operators]].
+Unfortunately, **pathchk** does not return a recognizable error code, and it is therefore pretty much useless in a script. Consider instead the [[tests#^RTIF|file test operators]].
 
 **dd**
 
@@ -519,7 +519,7 @@ echo -n . | dd bs=1 seek=4 of=file conv=notrunc
 # Thanks, S.C.
 ```
 
-The **dd** command can copy raw data and disk images to and from devices, such as floppies and tape drives ([[../apendix/contributed-scripts#^COPYCD|Example A-5]]). A common use is creating boot floppies.
+The **dd** command can copy raw data and disk images to and from devices, such as floppies and tape drives ([[contributed-scripts#^COPYCD|Example A-5]]). A common use is creating boot floppies.
 
 **dd if=kernel-image of=/dev/fd0H1440**
 
@@ -592,7 +592,7 @@ exit $?
 # 3) Have script sutodetect image file (*img) in $PWD.
 ```
 
-Other applications of **dd** include initializing temporary swap files ([[../advanced-topics/of-zeros-and-nulls#^EX73|Example 31-2]]) and ramdisks ([[../advanced-topics/of-zeros-and-nulls#^RAMDISK|Example 31-3]]). It can even do a low-level copy of an entire hard drive partition, although this is not necessarily recommended.
+Other applications of **dd** include initializing temporary swap files ([[of-zeros-and-nulls#^EX73|Example 31-2]]) and ramdisks ([[of-zeros-and-nulls#^RAMDISK|Example 31-3]]). It can even do a low-level copy of an entire hard drive partition, although this is not necessarily recommended.
 
 People (with presumably nothing better to do with their time) are constantly thinking of interesting applications of **dd**.
 
@@ -695,11 +695,11 @@ exit 0
 #       http://www.cs.auckland.ac.nz/~pgut001/pubs/secure_del.html
 ```
 
-See also the [[../bibliography#^DDLINK|dd thread]] entry in the [[../bibliography#^BIBLIOREF|bibliography]].
+See also the [[Bibliography#^DDLINK|dd thread]] entry in the [[bibliography.md#^BIBLIOREF|bibliography]].
 
 **od**
 
-The **od**, or _octal dump_ filter converts input (or files) to octal (base-8) or other bases. This is useful for viewing or processing binary data files or otherwise unreadable system [[../advanced-topics/dev#^DEVFILEREF|device files]], such as /dev/urandom, and as a filter for binary data.
+The **od**, or _octal dump_ filter converts input (or files) to octal (base-8) or other bases. This is useful for viewing or processing binary data files or otherwise unreadable system [[dev#^DEVFILEREF|device files]], such as /dev/urandom, and as a filter for binary data.
 
 ```bash
 head -c4 /dev/urandom | od -N4 -tu4 | sed -ne '1s/.* //p'
@@ -708,11 +708,11 @@ head -c4 /dev/urandom | od -N4 -tu4 | sed -ne '1s/.* //p'
 # From rnd.sh example script, by Stéphane Chazelas
 ```
 
-See also [[../beyond-the-basic/another-look-at-variables#^SEEDINGRANDOM|Example 9-16]] and [[../apendix/contributed-scripts#^INSERTIONSORT|Example A-36]].
+See also [[another-look-at-variables#^SEEDINGRANDOM|Example 9-16]] and [[contributed-scripts#^INSERTIONSORT|Example A-36]].
 
 **hexdump**
 
-Performs a hexadecimal, octal, decimal, or ASCII dump of a binary file. This command is the rough equivalent of **od**, above, but not nearly as useful. May be used to view the contents of a binary file, in combination with [[miscellaneous-commands#^DDREF|dd]] and [[./file-and-archiving-commands#^LESSREF|less]].
+Performs a hexadecimal, octal, decimal, or ASCII dump of a binary file. This command is the rough equivalent of **od**, above, but not nearly as useful. May be used to view the contents of a binary file, in combination with [[miscellaneous-commands#^DDREF|dd]] and [[file-and-archiving-commands#^LESSREF|less]].
 
 ```bash
 dd if=/bin/ls | hexdump -C | less
@@ -743,7 +743,7 @@ This command generates a "magic cookie," a 128-bit (32-character) pseudorandom h
 random000=$(mcookie)
 ```
 
-Of course, a script could use [[./file-and-archiving-commands#^MD5SUMREF|md5sum]] for the same purpose.
+Of course, a script could use [[file-and-archiving-commands#^MD5SUMREF|md5sum]] for the same purpose.
 
 ```bash
 # Generate md5 checksum on the script itself.
@@ -825,7 +825,7 @@ exit 0
 
 **m4**
 
-A hidden treasure, **m4** is a powerful macro [^6] processing filter, virtually a complete language. Although originally written as a pre-processor for _RatFor_, **m4** turned out to be useful as a stand-alone utility. In fact, **m4** combines some of the functionality of [[./internal-commands-and-builtins#^EVALREF|eval]], [[./text-processing-commands#^TRREF|tr]], and [[../apendix/awk#^AWKREF|awk]], in addition to its extensive macro expansion facilities.
+A hidden treasure, **m4** is a powerful macro [^6] processing filter, virtually a complete language. Although originally written as a pre-processor for _RatFor_, **m4** turned out to be useful as a stand-alone utility. In fact, **m4** combines some of the functionality of [[internal-commands-and-builtins#^EVALREF|eval]], [[text-processing-commands#^TRREF|tr]], and [[awk#^AWKREF|awk]], in addition to its extensive macro expansion facilities.
 
 The April, 2002 issue of [_Linux Journal_](http://www.linuxjournal.com) has a very nice article on **m4** and its uses.
 
@@ -851,7 +851,7 @@ exit
 
 **xmessage**
 
-This X-based variant of [[./internal-commands-and-builtins#^ECHOREF|echo]] pops up a message/query window on the desktop.
+This X-based variant of [[internal-commands-and-builtins#^ECHOREF|echo]] pops up a message/query window on the desktop.
 
 ```bash
 xmessage Left click to continue -button okay
@@ -859,7 +859,7 @@ xmessage Left click to continue -button okay
 
 **zenity**
 
-The [zenity](http://freshmeat.net/projects/zenity) utility is adept at displaying _GTK+_ dialog [[../advanced-topics/assorted-tips#^WIDGETREF|widgets]] and [[../advanced-topics/assorted-tips#^ZENITYREF2|very suitable for scripting purposes]].
+The [zenity](http://freshmeat.net/projects/zenity) utility is adept at displaying _GTK+_ dialog [[assorted-tips#^WIDGETREF|widgets]] and [[assorted-tips#^ZENITYREF2|very suitable for scripting purposes]].
 
 **doexec**
 
@@ -881,7 +881,7 @@ For example, the /usr/local/bin directory might contain a binary called "aaa". I
 
 **dialog**
 
-The [[../advanced-topics/assorted-tips#^DIALOGREF|dialog]] family of tools provide a method of calling interactive "dialog" boxes from a script. The more elaborate variations of **dialog** -- **gdialog**, **Xdialog**, and **kdialog** -- actually invoke X-Windows [[../advanced-topics/assorted-tips#^WIDGETREF|widgets]].
+The [[assorted-tips#^DIALOGREF|dialog]] family of tools provide a method of calling interactive "dialog" boxes from a script. The more elaborate variations of **dialog** -- **gdialog**, **Xdialog**, and **kdialog** -- actually invoke X-Windows [[assorted-tips#^WIDGETREF|widgets]].
 
 **sox**
 
