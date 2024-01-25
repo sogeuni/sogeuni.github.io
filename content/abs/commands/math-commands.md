@@ -290,7 +290,7 @@ fi
 exit
 ```
 
-An alternate method of invoking **bc** involves using a [[../advanced-topics/here-documents#^HEREDOCREF|here document]] embedded within a [[commandsub#^COMMANDSUBREF|command substitution]] block. This is especially appropriate when a script needs to pass a list of options and commands to **bc**.
+An alternate method of invoking **bc** involves using a [[here-documents#^HEREDOCREF|here document]] embedded within a [[commandsub#^COMMANDSUBREF|command substitution]] block. This is especially appropriate when a script needs to pass a list of options and commands to **bc**.
 
 ```bash
 variable=`bc << LIMIT_STRING
@@ -520,7 +520,7 @@ exit 0
 #+    it in a compiled high-level language.
 ```
 
-See also [[../apendix/contributed-scripts#^STDDEV|Example A-37]].
+See also [[contributed-scripts#^STDDEV|Example A-37]].
 
 **dc**
 
@@ -640,7 +640,7 @@ echo  "$1[p]s2[lip/dli%0=1dvsr]s12sid2%0=13sidvsr[dli%0=\
 
 **awk**
 
-Yet another way of doing floating point math in a script is using [[../apendix/awk#^AWKREF|awk's]] built-in math functions in a [[wrapper#^SHWRAPPER|shell wrapper]].
+Yet another way of doing floating point math in a script is using [[awk#^AWKREF|awk's]] built-in math functions in a [[wrapper#^SHWRAPPER|shell wrapper]].
 
 ###### Example 16-53. Calculating the hypotenuse of a triangle
 
