@@ -23,13 +23,13 @@ exit 0
 # Stéphane Chazelas (thanks again).
 ```
 
-Let us consider an _interactive_ script to be one that requires input from the user, usually with [[../commands/internal-commands-and-builtins#^READREF|read]] statements (see [[../commands/internal-commands-and-builtins#^EX36|Example 15-3]]). "Real life" is actually a bit messier than that. For now, assume an interactive script is bound to a tty, a script that a user has invoked from the console or an _xterm_.
+Let us consider an _interactive_ script to be one that requires input from the user, usually with [[internal-commands-and-builtins#^READREF|read]] statements (see [[internal-commands-and-builtins#^EX36|Example 15-3]]). "Real life" is actually a bit messier than that. For now, assume an interactive script is bound to a tty, a script that a user has invoked from the console or an _xterm_.
 
 Init and startup scripts are necessarily non-interactive, since they must run without human intervention. Many administrative and system maintenance scripts are likewise non-interactive. Unvarying repetitive tasks cry out for automation by non-interactive scripts.
 
-Non-interactive scripts can run in the background, but interactive ones hang, waiting for input that never comes. Handle that difficulty by having an **expect** script or embedded [[./here-documents#^HEREDOCREF|here document]] feed input to an interactive script running as a background job. In the simplest case, redirect a file to supply input to a **read** statement (**read variable <file**). These particular workarounds make possible general purpose scripts that run in either interactive or non-interactive modes.
+Non-interactive scripts can run in the background, but interactive ones hang, waiting for input that never comes. Handle that difficulty by having an **expect** script or embedded [[here-documents#^HEREDOCREF|here document]] feed input to an interactive script running as a background job. In the simplest case, redirect a file to supply input to a **read** statement (**read variable <file**). These particular workarounds make possible general purpose scripts that run in either interactive or non-interactive modes.
 
-If a script needs to test whether it is running in an interactive shell, it is simply a matter of finding whether the _prompt_ variable, [[../beyond-the-basic/another-look-at-variables#^PS1REF|$PS1]] is set. (If the user is being prompted for input, then the script needs to display a prompt.)
+If a script needs to test whether it is running in an interactive shell, it is simply a matter of finding whether the _prompt_ variable, [[another-look-at-variables#^PS1REF|$PS1]] is set. (If the user is being prompted for input, then the script needs to display a prompt.)
 
 ```bash
 if [ -z $PS1 ] # no prompt?
@@ -43,7 +43,7 @@ else
 fi
 ```
 
-Alternatively, the script can test for the presence of option "i" in the [[../beyond-the-basic/another-look-at-variables#^FLPREF|$-]] flag.
+Alternatively, the script can test for the presence of option "i" in the [[another-look-at-variables#^FLPREF|$-]] flag.
 
 ```bash
 case $- in
@@ -54,7 +54,7 @@ case $- in
 # (Courtesy of "UNIX F.A.Q.," 1993)
 ```
 
-However, John Lange describes an alternative method, using the [[../basic/tests#^TERMTEST|-t _test_ operator]].
+However, John Lange describes an alternative method, using the [[tests#^TERMTEST|-t _test_ operator]].
 
 ```bash
 # Test for a terminal!
