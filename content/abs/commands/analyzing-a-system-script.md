@@ -54,8 +54,8 @@ done
 
 That wasn't so bad. Aside from a little fancy footwork with variable matching, there is no new material there.
 
-**Exercise 1.** In /etc/rc.d/init.d, analyze the **halt** script. It is a bit longer than **killall**, but similar in concept. Make a copy of this script somewhere in your home directory and experiment with it (do _not_ run it as _root_). Do a simulated run with the -vn flags (**sh -vn scriptname**). Add extensive comments. Change the commands to [[./internal-commands-and-builtins#^ECHOREF|echos]].
+**Exercise 1.** In /etc/rc.d/init.d, analyze the **halt** script. It is a bit longer than **killall**, but similar in concept. Make a copy of this script somewhere in your home directory and experiment with it (do _not_ run it as _root_). Do a simulated run with the -vn flags (**sh -vn scriptname**). Add extensive comments. Change the commands to [[internal-commands-and-builtins#^ECHOREF|echos]].
 
 **Exercise 2.** Look at some of the more complex scripts in /etc/rc.d/init.d. Try to understand at least portions of them. Follow the above procedure to analyze them. For some additional insight, you might also examine the file sysvinitfiles in /usr/share/doc/initscripts-?.??, which is part of the "initscripts" documentation.
 
-[^1]: The _killall_ system script should not be confused with the [[./job-control-commands#^KILLALLREF|killall]] command in /usr/bin.
+[^1]: The _killall_ system script should not be confused with the [[job-control-commands#^KILLALLREF|killall]] command in /usr/bin.
