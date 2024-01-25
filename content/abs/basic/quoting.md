@@ -2,7 +2,7 @@
 title: 5. Quoting
 ---
 
-Quoting means just that, bracketing a string in quotes. This has the effect of protecting [[./special-characters|special characters]] in the string from reinterpretation or expansion by the shell or shell script. (A character is "special" if it has an interpretation other than its literal meaning. For example, the [[./special-characters#^ASTERISKREF|asterisk *]] represents a *wild card* character in [[../advanced-topics/globbing|globbing]] and [[../advanced-topics/regexp#^REGEXREF|Regular Expressions]]).
+Quoting means just that, bracketing a string in quotes. This has the effect of protecting [[special-characters|special characters]] in the string from reinterpretation or expansion by the shell or shell script. (A character is "special" if it has an interpretation other than its literal meaning. For example, the [[special-characters#^ASTERISKREF|asterisk *]] represents a *wild card* character in [[globbing|globbing]] and [[regexp#^REGEXREF|Regular Expressions]]).
 
 ```bash
 bash$ ls -l [Vv]*
@@ -26,7 +26,7 @@ file1.txt:This is the first line of file1.txt.
 
 Note that the unquoted **grep \[Ff]irst \*.txt** works under the Bash shell. [^1]
 
-Quoting can also suppress [[../commands/internal-commands-and-builtins#^ECHOREF|echo's]] "appetite" for newlines.
+Quoting can also suppress [[internal-commands-and-builtins#^ECHOREF|echo's]] "appetite" for newlines.
 
 ```bash
 bash$ echo $(ls -l)
