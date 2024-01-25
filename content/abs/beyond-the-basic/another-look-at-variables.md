@@ -206,7 +206,7 @@ internal field separator
 
 This variable determines how Bash recognizes [[special-characters#^FIELDREF|fields]], or word boundaries, when it interprets character strings.
 
-`$IFS` defaults to [[special-characters#Whitespace|whitespace]] (space, tab, and newline), but may be changed, for example, to parse a comma-separated data file. Note that [[another-look-at-variables#^APPREF|$*]] uses the first character held in $IFS. See [[quoting#^WEIRDVARS|Example 5-1]].
+`$IFS` defaults to [[special-characters#Whitespace|whitespace]] (space, tab, and newline), but may be changed, for example, to parse a comma-separated data file. Note that [[another-look-at-variables#^APPREF|$*]] uses the first character held in $IFS. See [[example 5-1|Example 5-1]].
 
 ```bash
 bash$ echo "$IFS"
@@ -874,7 +874,7 @@ See also [[example 2-3|Example 2-3]].
 
 $0, $1, $2, etc.
 
-Positional parameters, passed from command line to script, passed to a function, or [[internal-commands-and-builtins#^SETREF|set]] to a variable (see [[othertypesv#^EX17|Example 4-5]] and [[internal-commands-and-builtins#^EX34|Example 15-16]])
+Positional parameters, passed from command line to script, passed to a function, or [[internal-commands-and-builtins#^SETREF|set]] to a variable (see [[example 4-5|Example 4-5]] and [[internal-commands-and-builtins#^EX34|Example 15-16]])
 
 $#
 

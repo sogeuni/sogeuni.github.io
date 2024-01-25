@@ -62,14 +62,14 @@ A _keyword_ is a _reserved_ word, token or operator. Keywords have a special mea
 
 **echo**
 
-prints (to stdout) an expression or variable (see [[varsubn#^EX9|Example 4-1]]).
+prints (to stdout) an expression or variable (see [[example 4-1|Example 4-1]]).
 
 ```bash
 echo Hello
 echo $a
 ```
 
-An **echo** requires the -e option to print escaped characters. See [[quoting#^ESCAPED|Example 5-2]].
+An **echo** requires the -e option to print escaped characters. See [[example 5-2|Example 5-2]].
 
 Normally, each **echo** command prints a terminal newline, but the -n option suppresses this.
 
