@@ -89,133 +89,9 @@ fi
 
 - _These last two examples courtesy of Stéphane Chazelas._
 
-###### Example 7-1. What is truth?
+![[example 7-1|example 7-1]]
 
-```bash
-
-#!/bin/bash
-
-#  Tip:
-#  If you're unsure how a certain condition might evaluate,
-#+ test it in an if-test.
-
-echo
-
-echo "Testing \"0\""
-if [ 0 ]      # zero
-then
-  echo "0 is true."
-else          # Or else ...
-  echo "0 is false."
-fi            # 0 is true.
-
-echo
-
-echo "Testing \"1\""
-if [ 1 ]      # one
-then
-  echo "1 is true."
-else
-  echo "1 is false."
-fi            # 1 is true.
-
-echo
-
-echo "Testing \"-1\""
-if [ -1 ]     # minus one
-then
-  echo "-1 is true."
-else
-  echo "-1 is false."
-fi            # -1 is true.
-
-echo
-
-echo "Testing \"NULL\""
-if [ ]        # NULL (empty condition)
-then
-  echo "NULL is true."
-else
-  echo "NULL is false."
-fi            # NULL is false.
-
-echo
-
-echo "Testing \"xyz\""
-if [ xyz ]    # string
-then
-  echo "Random string is true."
-else
-  echo "Random string is false."
-fi            # Random string is true.
-
-echo
-
-echo "Testing \"\$xyz\""
-if [ $xyz ]   # Tests if $xyz is null, but...
-              # it's only an uninitialized variable.
-then
-  echo "Uninitialized variable is true."
-else
-  echo "Uninitialized variable is false."
-fi            # Uninitialized variable is false.
-
-echo
-
-echo "Testing \"-n \$xyz\""
-if [ -n "$xyz" ]            # More pedantically correct.
-then
-  echo "Uninitialized variable is true."
-else
-  echo "Uninitialized variable is false."
-fi            # Uninitialized variable is false.
-
-echo
-
-
-xyz=          # Initialized, but set to null value.
-
-echo "Testing \"-n \$xyz\""
-if [ -n "$xyz" ]
-then
-  echo "Null variable is true."
-else
-  echo "Null variable is false."
-fi            # Null variable is false.
-
-
-echo
-
-
-# When is "false" true?
-
-echo "Testing \"false\""
-if [ "false" ]              #  It seems that "false" is just a string ...
-then
-  echo "\"false\" is true." #+ and it tests true.
-else
-  echo "\"false\" is false."
-fi            # "false" is true.
-
-echo
-
-echo "Testing \"\$false\""  # Again, uninitialized variable.
-if [ "$false" ]
-then
-  echo "\"\$false\" is true."
-else
-  echo "\"\$false\" is false."
-fi            # "$false" is false.
-              # Now, we get the expected result.
-
-#  What would happen if we tested the uninitialized variable "$true"?
-
-echo
-
-exit 0
-```
-
-**Exercise.** Explain the behavior of [[tests#^EX10|Example 7-1]], above.
+**Exercise.** Explain the behavior of [[example 7-1|Example 7-1]], above.
 
 ```bash
 if [ condition-true ]
@@ -281,60 +157,9 @@ The **if test condition-true** construct is the exact equivalent of **if [ condi
 >
 > If, for some reason, you wish to use /usr/bin/test in a Bash script, then specify it by full pathname.
 
-###### Example 7-2. Equivalence of *test*, `/usr/bin/test`, `[ ]`, and `/usr/bin/[`
+![[example 7-2|example 7-2]]
 
-```bash
-#!/bin/bash
-
-echo
-
-if test -z "$1"
-then
-  echo "No command-line arguments."
-else
-  echo "First command-line argument is $1."
-fi
-
-echo
-
-if /usr/bin/test -z "$1"      # Equivalent to "test" builtin.
-#  ^^^^^^^^^^^^^              # Specifying full pathname.
-then
-  echo "No command-line arguments."
-else
-  echo "First command-line argument is $1."
-fi
-
-echo
-
-if [ -z "$1" ]                # Functionally identical to above code blocks.
-#   if [ -z "$1"                should work, but...
-#+  Bash responds to a missing close-bracket with an error message.
-then
-  echo "No command-line arguments."
-else
-  echo "First command-line argument is $1."
-fi
-
-echo
-
-
-if /usr/bin/[ -z "$1" ]       # Again, functionally identical to above.
-# if /usr/bin/[ -z "$1"       # Works, but gives an error message.
-#                             # Note:
-#                               This has been fixed in Bash, version 3.x.
-then
-  echo "No command-line arguments."
-else
-  echo "First command-line argument is $1."
-fi
-
-echo
-
-exit 0
-```
-
-> The [[ | ]] construct is the more versatile Bash version of [ ]. This is the _extended test command_, adopted from _ksh88_.
+> The `[[]]` construct is the more versatile Bash version of `[ ]`. This is the _extended test command_, adopted from _ksh88_.
 >
 > No filename expansion or word splitting takes place between [[ and | and ]], but there is parameter expansion and command substitution.
 >
@@ -347,7 +172,7 @@ exit 0
 > fi
 > ```
 >
-> Using the **[[ ... | ... ]]** test construct, rather than **[ ... ]** can prevent many logic errors in scripts. For example, the &&, \|, <, and > operators work within a [[ | ]] test, despite giving an error within a [ ] construct.
+> Using the **[[ ... | ... ]]** test construct, rather than **[ ... ]** can prevent many logic errors in scripts. For example, the &&, \|, <, and > operators work within a [[|7. Tests]] test, despite giving an error within a [ ] construct.
 >
 > _Arithmetic evaluation_ of octal / hexadecimal constants takes place automatically within a [[ ... | ... ]] construct.
 >
@@ -384,7 +209,7 @@ exit 0
 > ```
 
 > [!note]
-> Following an **if**, neither the **test** command nor the test brackets ( [ ] or [[ | ]] ) are strictly necessary.
+> Following an **if**, neither the **test** command nor the test brackets ( [ ] or [[|7. Tests]] ) are strictly necessary.
 >
 > ```bash
 > dir=/home/bozo
@@ -411,64 +236,7 @@ exit 0
 
 The [[operations-and-related-topics|(( )) construct]] expands and evaluates an arithmetic expression. If the expression evaluates as zero, it returns an [[exit-and-exit-status#^EXITSTATUSREF|exit status]] of 1, or "false". A non-zero expression returns an exit status of 0, or "true". This is in marked contrast to using the **test** and [ ] constructs previously discussed.
 
-###### Example 7-3. Arithmetic Tests using `(( ))`
-
-```bash
-#!/bin/bash
-# arith-tests.sh
-# Arithmetic tests.
-
-# The (( ... )) construct evaluates and tests numerical expressions.
-# Exit status opposite from [ ... ] construct!
-
-(( 0 ))
-echo "Exit status of \"(( 0 ))\" is $?."         # 1
-
-(( 1 ))
-echo "Exit status of \"(( 1 ))\" is $?."         # 0
-
-(( 5 > 4 ))                                      # true
-echo "Exit status of \"(( 5 > 4 ))\" is $?."     # 0
-
-(( 5 > 9 ))                                      # false
-echo "Exit status of \"(( 5 > 9 ))\" is $?."     # 1
-
-(( 5 == 5 ))                                     # true
-echo "Exit status of \"(( 5 == 5 ))\" is $?."    # 0
-# (( 5 = 5 ))  gives an error message.
-
-(( 5 - 5 ))                                      # 0
-echo "Exit status of \"(( 5 - 5 ))\" is $?."     # 1
-
-(( 5 / 4 ))                                      # Division o.k.
-echo "Exit status of \"(( 5 / 4 ))\" is $?."     # 0
-
-(( 1 / 2 ))                                      # Division result < 1.
-echo "Exit status of \"(( 1 / 2 ))\" is $?."     # Rounded off to 0.
-                                                 # 1
-
-(( 1 / 0 )) 2>/dev/null                          # Illegal division by 0.
-#           ^^^^^^^^^^^
-echo "Exit status of \"(( 1 / 0 ))\" is $?."     # 1
-
-# What effect does the "2>/dev/null" have?
-# What would happen if it were removed?
-# Try removing it, then rerunning the script.
-
-# ======================================= #
-
-# (( ... )) also useful in an if-then test.
-
-var1=5
-var2=4
-
-if (( var1 > var2 ))
-then #^      ^      Note: Not $var1, $var2. Why?
-  echo "$var1 is greater than $var2"
-fi     # 5 is greater than 4
-
-exit 0
-```
+![[example 7-3|example 7-3]]
 
 ## File test operators
 
@@ -630,67 +398,7 @@ files _f1_ and _f2_ are hard links to the same file
 
 "not" -- reverses the sense of the tests above (returns true if condition absent).
 
-###### Example 7-4. Testing for broken links
-
-```bash
-#!/bin/bash
-# broken-link.sh
-# Written by Lee bigelow <ligelowbee@yahoo.com>
-# Used in ABS Guide with permission.
-
-#  A pure shell script to find dead symlinks and output them quoted
-#+ so they can be fed to xargs and dealt with :)
-#+ eg. sh broken-link.sh /somedir /someotherdir|xargs rm
-#
-#  This, however, is a better method:
-#
-#  find "somedir" -type l -print0|\
-#  xargs -r0 file|\
-#  grep "broken symbolic"|
-#  sed -e 's/^\|: *broken symbolic.*$/"/g'
-#
-#+ but that wouldn't be pure Bash, now would it.
-#  Caution: beware the /proc file system and any circular links!
-################################################################
-
-
-#  If no args are passed to the script set directories-to-search 
-#+ to current directory.  Otherwise set the directories-to-search 
-#+ to the args passed.
-######################
-
-[ $# -eq 0 ] && directorys=`pwd` || directorys=$@
-
-
-#  Setup the function linkchk to check the directory it is passed 
-#+ for files that are links and don't exist, then print them quoted.
-#  If one of the elements in the directory is a subdirectory then 
-#+ send that subdirectory to the linkcheck function.
-##########
-
-linkchk () {
-    for element in $1/*; do
-      [ -h "$element" -a ! -e "$element" ] && echo \"$element\"
-      [ -d "$element" ] && linkchk $element
-    # Of course, '-h' tests for symbolic link, '-d' for directory.
-    done
-}
-
-#  Send each arg that was passed to the script to the linkchk() function
-#+ if it is a valid directoy.  If not, then print the error message
-#+ and usage info.
-##################
-for directory in $directorys; do
-    if [ -d $directory ]
-	then linkchk $directory
-	else 
-	    echo "$directory is not a directory"
-	    echo "Usage: $0 dir1 dir2 ..."
-    fi
-done
-
-exit $?
-```
+![[example 7-4|example 7-4]]
 
 [[zeros#COOKIES|Example 31-1]], [[loops#BINGREP|Example 11-8]], [[loops#FILEINFO|Example 11-3]], [[zeros#RAMDISK|Example 31-3]], and [[contributed-scripts#MAILFORMAT|Example A-1]] also illustrate uses of the file test operators.
 
@@ -843,167 +551,13 @@ fi     # $String is null.
 
 string is not _null._
 
-> [!caution] The **-n** test requires that the string be quoted within the test brackets. Using an unquoted string with _! -z_, or even just the unquoted string alone within test brackets (see [[other-comparison-operators#^STRTEST|Example 7-6]]) normally works, however, this is an unsafe practice. _Always_ quote a tested string. [^5]
+> [!caution] The **-n** test requires that the string be quoted within the test brackets. Using an unquoted string with _! -z_, or even just the unquoted string alone within test brackets (see [[example 7-6|Example 7-6]]) normally works, however, this is an unsafe practice. _Always_ quote a tested string. [^5]
 
-###### Example 7-5. Arithmetic and string comparisons
+![[example 7-5|example 7-5]]
 
-```bash
-#!/bin/bash
+![[example 7-6|example 7-6]]
 
-a=4
-b=5
-
-#  Here "a" and "b" can be treated either as integers or strings.
-#  There is some blurring between the arithmetic and string comparisons,
-#+ since Bash variables are not strongly typed.
-
-#  Bash permits integer operations and comparisons on variables
-#+ whose value consists of all-integer characters.
-#  Caution advised, however.
-
-echo
-
-if [ "$a" -ne "$b" ]
-then
-  echo "$a is not equal to $b"
-  echo "(arithmetic comparison)"
-fi
-
-echo
-
-if [ "$a" != "$b" ]
-then
-  echo "$a is not equal to $b."
-  echo "(string comparison)"
-  #     "4"  != "5"
-  # ASCII 52 != ASCII 53
-fi
-
-# In this particular instance, both "-ne" and "!=" work.
-
-echo
-
-exit 0
-```
-
-###### Example 7-6. Testing whether a string is *null*
-
-```bash
-#!/bin/bash
-#  str-test.sh: Testing null strings and unquoted strings,
-#+ but not strings and sealing wax, not to mention cabbages and kings . . .
-
-# Using   if [ ... ]
-
-# If a string has not been initialized, it has no defined value.
-# This state is called "null" (not the same as zero!).
-
-if [ -n $string1 ]    # string1 has not been declared or initialized.
-then
-  echo "String \"string1\" is not null."
-else  
-  echo "String \"string1\" is null."
-fi                    # Wrong result.
-# Shows $string1 as not null, although it was not initialized.
-
-echo
-
-# Let's try it again.
-
-if [ -n "$string1" ]  # This time, $string1 is quoted.
-then
-  echo "String \"string1\" is not null."
-else  
-  echo "String \"string1\" is null."
-fi                    # Quote strings within test brackets!
-
-echo
-
-if [ $string1 ]       # This time, $string1 stands naked.
-then
-  echo "String \"string1\" is not null."
-else  
-  echo "String \"string1\" is null."
-fi                    # This works fine.
-# The [ ... ] test operator alone detects whether the string is null.
-# However it is good practice to quote it (if [ "$string1" ]).
-#
-# As Stephane Chazelas points out,
-#    if [ $string1 ]    has one argument, "]"
-#    if [ "$string1" ]  has two arguments, the empty "$string1" and "]" 
-
-
-echo
-
-
-string1=initialized
-
-if [ $string1 ]       # Again, $string1 stands unquoted.
-then
-  echo "String \"string1\" is not null."
-else  
-  echo "String \"string1\" is null."
-fi                    # Again, gives correct result.
-# Still, it is better to quote it ("$string1"), because . . .
-
-
-string1="a = b"
-
-if [ $string1 ]       # Again, $string1 stands unquoted.
-then
-  echo "String \"string1\" is not null."
-else  
-  echo "String \"string1\" is null."
-fi                    # Not quoting "$string1" now gives wrong result!
-
-exit 0   # Thank you, also, Florian Wisser, for the "heads-up".
-```
-
-###### Example 7-7. *zmore*
-
-```bash
-#!/bin/bash
-# zmore
-
-# View gzipped files with 'more' filter.
-
-E_NOARGS=85
-E_NOTFOUND=86
-E_NOTGZIP=87
-
-if [ $# -eq 0 ] # same effect as:  if [ -z "$1" ]
-# $1 can exist, but be empty:  zmore "" arg2 arg3
-then
-  echo "Usage: `basename $0` filename" >&2
-  # Error message to stderr.
-  exit $E_NOARGS
-  # Returns 85 as exit status of script (error code).
-fi  
-
-filename=$1
-
-if [ ! -f "$filename" ]   # Quoting $filename allows for possible spaces.
-then
-  echo "File $filename not found!" >&2   # Error message to stderr.
-  exit $E_NOTFOUND
-fi  
-
-if [ ${filename##*.} != "gz" ]
-# Using bracket in variable substitution.
-then
-  echo "File $1 is not a gzipped file!"
-  exit $E_NOTGZIP
-fi  
-
-zcat $1 | more
-
-# Uses the 'more' filter.
-# May substitute 'less' if desired.
-
-exit $?   # Script returns exit status of pipe.
-#  Actually "exit $?" is unnecessary, as the script will, in any case,
-#+ return the exit status of the last command executed.
-```
+![[example 7-7|example 7-7]]
 
 **compound comparison**
 
