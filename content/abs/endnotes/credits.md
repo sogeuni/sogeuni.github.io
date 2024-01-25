@@ -7,7 +7,7 @@ _Community participation made this project possible._ The author gratefully ackn
 
 [Philippe Martin](mailto:feloy@free.fr) translated the first version (0.1) of this document into DocBook/SGML. While not on the job at a small French company as a software developer, he enjoys working on GNU/Linux documentation and software, reading literature, playing music, and, for his peace of mind, making merry with friends. You may run across him somewhere in France or in the Basque Country, or you can email him at [feloy@free.fr](mailto:feloy@free.fr).
 
-Philippe Martin also pointed out that positional parameters past $9 are possible using {bracket} notation. (See [[othertypesv#^EX17|Example 4-5]]).
+Philippe Martin also pointed out that positional parameters past $9 are possible using {bracket} notation. (See [[example 4-5|Example 4-5]]).
 
 [Stéphane Chazelas](mailto:stephane_chazelas@yahoo.fr) sent a long list of corrections, additions, and example scripts. More than a contributor, he had, in effect, for a while taken on the role of _co-editor_ for this document. _Merci beaucoup!_
 
