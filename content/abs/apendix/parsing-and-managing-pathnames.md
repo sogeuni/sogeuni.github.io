@@ -3,7 +3,7 @@ title: Appendix D. Parsing and Managing Pathnames
 ---
 
 
-Emmanual Rouat contributed the following example of parsing and transforming _filenames_ and, in particular, [[../basic/special-characters#^PATHNAMEREF|pathnames]]. It draws heavily on the functionality of _sed_.
+Emmanual Rouat contributed the following example of parsing and transforming _filenames_ and, in particular, [[special-characters#^PATHNAMEREF|pathnames]]. It draws heavily on the functionality of _sed_.
 
 ```bash
 #!/usr/bin/env bash
