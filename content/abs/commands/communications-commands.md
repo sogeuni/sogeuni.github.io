@@ -316,7 +316,7 @@ fi
 
 **whois**
 
-Perform a DNS (Domain Name System) lookup. The -h option permits specifying which particular _whois_ server to query. See [[othertypesv#^EX18|Example 4-6]] and [[communications-commands#^SPAMLOOKUP|Example 16-40]].
+Perform a DNS (Domain Name System) lookup. The -h option permits specifying which particular _whois_ server to query. See [[example 4-6|Example 4-6]] and [[communications-commands#^SPAMLOOKUP|Example 16-40]].
 
 **finger**
 
