@@ -8,10 +8,10 @@ Every reasonably complete programming language can test for a condition, then ac
 ## Test Constructs
 
 - An **if/then** construct tests whether the [[exit-and-exit-status#^EXITSTATUSREF|exit status]] of a list of commands is 0 (since 0 means "success" by UNIX convention), and if so, executes one or more commands.
-- There exists a dedicated command called **[[special-characters#^LEFTBRACKET|** ([left bracket]] special character). It is a synonym for **test**, and a [[../commands/internal-commands-and-builtins|builtin]] for efficiency reasons. This command considers its arguments as comparison expressions or file tests and returns an exit status corresponding to the result of the comparison (0 for true, 1 for false).
-- With version 2.02, Bash introduced the [[tests#^DBLBRACKETS|[[ ... | ... ]]]] _extended test command_, which performs comparisons in a manner more familiar to programmers from other languages. Note that **[[../commands/internal-commands-and-builtins#^keywordref|[** is a [keyword]], not a command.
+- There exists a dedicated command called **[[special-characters#^LEFTBRACKET|** ([left bracket]] special character). It is a synonym for **test**, and a [[internal-commands-and-builtins|builtin]] for efficiency reasons. This command considers its arguments as comparison expressions or file tests and returns an exit status corresponding to the result of the comparison (0 for true, 1 for false).
+- With version 2.02, Bash introduced the [[tests#^DBLBRACKETS|[[ ... | ... ]]]] _extended test command_, which performs comparisons in a manner more familiar to programmers from other languages. Note that **[[internal-commands-and-builtins#^keywordref|[** is a [keyword]], not a command.
     Bash sees **[[ $a -lt $b | $a -lt $b ]]** as a single element, which returns an exit status.
-- The [[operations-and-related-topics.html|(( ... ))]] and [[../commands/internal-commands-and-builtins#^LETREF|let ...]] constructs return an [[exit-and-exit-status#^EXITSTATUSREF|exit status]], _according to whether the arithmetic expressions they evaluate expand to a non-zero value_. These [[../beyond-the-basic/arithmetic-expansion#^ARITHEXPREF|arithmetic-expansion]] constructs may therefore be used to perform [[other-comparison-operators#^ICOMPARISON1|arithmetic comparisons]].
+- The [[operations-and-related-topics.html|(( ... ))]] and [[internal-commands-and-builtins#^LETREF|let ...]] constructs return an [[exit-and-exit-status#^EXITSTATUSREF|exit status]], _according to whether the arithmetic expressions they evaluate expand to a non-zero value_. These [[arithmetic-expansion#^ARITHEXPREF|arithmetic-expansion]] constructs may therefore be used to perform [[other-comparison-operators#^ICOMPARISON1|arithmetic comparisons]].
 
 ```bash
 (( 0 && 1 ))                 # Logical AND
@@ -232,7 +232,7 @@ fi
 ```
 
 > [!note] 
-> When _if_ and _then_ are on same line in a condition test, a semicolon must terminate the _if_ statement. Both _if_ and _then_ are [[../commands/internal-commands-and-builtins#^keywordref|keywords]]. Keywords (or commands) begin statements, and before a new statement on the same line begins, the old one must terminate.
+> When _if_ and _then_ are on same line in a condition test, a semicolon must terminate the _if_ statement. Both _if_ and _then_ are [[internal-commands-and-builtins#^keywordref|keywords]]. Keywords (or commands) begin statements, and before a new statement on the same line begins, the old one must terminate.
 >
 > ```bash
 > if [ -x "$filename" ]; then
@@ -263,7 +263,7 @@ fi
 The **if test condition-true** construct is the exact equivalent of **if [ condition-true ]**. As it happens, the left bracket, **[** , is a _token_ [^1] which invokes the **test** command. The closing right bracket, **]** , in an if/test should not therefore be strictly necessary, however newer versions of Bash require it.
 
 > [!note] 
-> The **test** command is a Bash [[../commands/internal-commands-and-builtins|builtin]] which tests file types and compares strings. Therefore, in a Bash script, **test** does _not_ call the external /usr/bin/test binary, which is part of the _sh-utils_ package. Likewise, **[** does not call /usr/bin/[, which is linked to /usr/bin/test.
+> The **test** command is a Bash [[internal-commands-and-builtins|builtin]] which tests file types and compares strings. Therefore, in a Bash script, **test** does _not_ call the external /usr/bin/test binary, which is part of the _sh-utils_ package. Likewise, **[** does not call /usr/bin/[, which is linked to /usr/bin/test.
 >
 > ```bash
 > bash$ type test
@@ -398,7 +398,7 @@ exit 0
 >
 > The "if COMMAND" construct returns the exit status of COMMAND.
 >
-> Similarly, a condition within test brackets may stand alone without an **if**, when used in combination with a [[../advanced-topics/list-constructs#^LISTCONSREF|list construct]].
+> Similarly, a condition within test brackets may stand alone without an **if**, when used in combination with a [[list-constructs#^LISTCONSREF|list construct]].
 >
 > ```bash
 > var1=20
@@ -409,7 +409,7 @@ exit 0
 > [ -d "$home" ] || echo "$home directory does not exist."
 > ```
 
-The [[./operations-and-related-topics|(( )) construct]] expands and evaluates an arithmetic expression. If the expression evaluates as zero, it returns an [[exit-and-exit-status#^EXITSTATUSREF|exit status]] of 1, or "false". A non-zero expression returns an exit status of 0, or "true". This is in marked contrast to using the **test** and [ ] constructs previously discussed.
+The [[operations-and-related-topics|(( )) construct]] expands and evaluates an arithmetic expression. If the expression evaluates as zero, it returns an [[exit-and-exit-status#^EXITSTATUSREF|exit status]] of 1, or "false". A non-zero expression returns an exit status of 0, or "true". This is in marked contrast to using the **test** and [ ] constructs previously discussed.
 
 ###### Example 7-3. Arithmetic Tests using `(( ))`
 
@@ -486,7 +486,7 @@ This is identical in effect to -e. It has been "deprecated," [^2] and its use is
 
 -f
 
-file is a _regular_ file (not a directory or [[../advanced-topics/dev#^DEVFILEREF|device file]])
+file is a _regular_ file (not a directory or [[dev#^DEVFILEREF|device file]])
 
 -s
 
@@ -498,11 +498,11 @@ file is a directory
 
 -b
 
-file is a [[../advanced-topics/dev#^BLOCKDEVREF|block device]]
+file is a [[dev#^BLOCKDEVREF|block device]]
 
 -c
 
-file is a [[../advanced-topics/dev#^CHARDEVREF|character device]]
+file is a [[dev#^CHARDEVREF|character device]]
 
 ```bash
 device0="/dev/sda2"    # /   (root directory)
@@ -526,7 +526,7 @@ fi
 
 -p
 
-file is a [[./special-characters#^PIPEREF|pipe]]
+file is a [[special-characters#^PIPEREF|pipe]]
 
 ```bash
 function show_input_type()
@@ -542,7 +542,7 @@ echo "Input" | show_input_type                    # PIPE
 
 -h
 
-file is a [[../commands/basic-commands#^SYMLINKREF|symbolic link]]
+file is a [[basic-commands#^SYMLINKREF|symbolic link]]
 
 -L
 
@@ -550,13 +550,13 @@ file is a symbolic link
 
 -S
 
-file is a [[../advanced-topics/dev#^SOCKETREF|socket]]
+file is a [[dev#^SOCKETREF|socket]]
 
 -t
 
-file ([[../advanced-topics/io-redirection#^FDREF|descriptor]]) is associated with a terminal device
+file ([[io-redirection#^FDREF|descriptor]]) is associated with a terminal device
 
-This test option [[../advanced-topics/interactive-and-non-interactive-shell-and-scripts#^II2TEST|may be used to check]] whether the stdin **[ -t 0 ]** or stdout **[ -t 1 ]** in a given script is a terminal.
+This test option [[interactive-and-non-interactive-shell-and-scripts#^II2TEST|may be used to check]] whether the stdin **[ -t 0 ]** or stdout **[ -t 1 ]** in a given script is a terminal.
 
 -r
 
@@ -692,7 +692,7 @@ done
 exit $?
 ```
 
-[[zeros#COOKIES|Example 31-1]], [[../beyond-the-basic/loops#BINGREP|Example 11-8]], [[../beyond-the-basic/loops#FILEINFO|Example 11-3]], [[zeros#RAMDISK|Example 31-3]], and [[../apendix/contributed-scripts#MAILFORMAT|Example A-1]] also illustrate uses of the file test operators.
+[[zeros#COOKIES|Example 31-1]], [[loops#BINGREP|Example 11-8]], [[loops#FILEINFO|Example 11-3]], [[zeros#RAMDISK|Example 31-3]], and [[contributed-scripts#MAILFORMAT|Example A-1]] also illustrate uses of the file test operators.
 
 ## Other Comparison Operators
 
@@ -769,7 +769,7 @@ is equal to
 **if [ "$a" = "$b" ]**
 
 > [!caution]
-> Note the [[./special-characters#Whitespace|whitespace]] framing the **=**.
+> Note the [[special-characters#Whitespace|whitespace]] framing the **=**.
 >
 > **if [ "$a"="$b" ]** is _not_ equivalent to the above.
 
@@ -804,13 +804,13 @@ This operator uses pattern matching within a [[tests#^DBLBRACKETS|[[ ... | ... ]
 
 <
 
-is less than, in [[./special-characters#^ASCIIDEF|ASCII]] alphabetical order
+is less than, in [[special-characters#^ASCIIDEF|ASCII]] alphabetical order
 
 **if [[ "$a" < "$b" | "$a" < "$b" ]]**
 
 **if [ "$a" \< "$b" ]**
 
-Note that the "<" needs to be [[./quoting#^ESCP|escaped]] within a **[ ]** construct.
+Note that the "<" needs to be [[quoting#^ESCP|escaped]] within a **[ ]** construct.
 
 >
 
@@ -822,7 +822,7 @@ is greater than, in ASCII alphabetical order
 
 Note that the ">" needs to be escaped within a **[ ]** construct.
 
-See [[../advanced-topics/arrays#^BUBBLE|Example 27-11]] for an application of this comparison operator.
+See [[arrays#^BUBBLE|Example 27-11]] for an application of this comparison operator.
 
 -z
 
@@ -1055,11 +1055,11 @@ fi
 > # Apparently && and || "short-circuit" while -a and -o do not.
 > ```
 
-Refer to [[./operations-and-related-topics#^ANDOR|Example 8-3]], [[../advanced-topics/arrays#^TWODIM|Example 27-17]], and [[../apendix/contributed-scripts#^WHX|Example A-29]] to see compound comparison operators in action.
+Refer to [[operations-and-related-topics#^ANDOR|Example 8-3]], [[arrays#^TWODIM|Example 27-17]], and [[contributed-scripts#^WHX|Example A-29]] to see compound comparison operators in action.
 
 ## Nested _if/then_ Condition Tests
 
-Condition tests using the _if/then_ construct may be nested. The net result is equivalent to using the [[./operations-and-related-topics#LOGOPS1|_&&_]] compound comparison operator.
+Condition tests using the _if/then_ construct may be nested. The net result is equivalent to using the [[operations-and-related-topics#LOGOPS1|_&&_]] compound comparison operator.
 
 ```bash
 a=3
@@ -1080,7 +1080,7 @@ then
 fi
 ```
 
-[[../advanced-topics/bash-version-2#^CARDS|Example 37-4]] and [[../commands/system-and-administrative-commands#BACKLIGHT|Example 17-11]] demonstrate nested _if/then_ condition tests.
+[[bash-version-2#^CARDS|Example 37-4]] and [[system-and-administrative-commands#BACKLIGHT|Example 17-11]] demonstrate nested _if/then_ condition tests.
 
 ## Testing Your Knowledge of Tests
 
@@ -1102,9 +1102,9 @@ else
 fi
 ```
 
-Explain the _test_ constructs in the above snippet, then examine an updated version of the file, /etc/X11/xinit/xinitrc, and analyze the _if/then_ test constructs there. You may need to refer ahead to the discussions of [[../commands/text-processing-commands#^GREPREF|grep]], [[sedawk#^SEDREF|sed]], and [[../advanced-topics/regexp#^REGEXREF|regular expressions]].
+Explain the _test_ constructs in the above snippet, then examine an updated version of the file, /etc/X11/xinit/xinitrc, and analyze the _if/then_ test constructs there. You may need to refer ahead to the discussions of [[text-processing-commands#^GREPREF|grep]], [[sedawk#^SEDREF|sed]], and [[regexp#^REGEXREF|regular expressions]].
 
-[^1]: A _token_ is a symbol or short string with a special meaning attached to it (a [[../advanced-topics/brief-introduction-to-regular-expressions#^metameaningref|meta-meaning]]). In Bash, certain tokens, such as **[[special-characters#^DOTREF|** and [. (dot-command)]], may expand to _keywords_ and commands.
+[^1]: A _token_ is a symbol or short string with a special meaning attached to it (a [[brief-introduction-to-regular-expressions#^metameaningref|meta-meaning]]). In Bash, certain tokens, such as **[[special-characters#^DOTREF|** and [. (dot-command)]], may expand to _keywords_ and commands.
 
 [^2]: Per the 1913 edition of _Webster's Dictionary_:
 
