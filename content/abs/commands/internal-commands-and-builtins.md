@@ -6,7 +6,7 @@ A _builtin_ is a **command** contained within the Bash tool set, literally _buil
 
 > When a command or the shell itself initiates (or _spawns_) a new subprocess to carry out a task, this is called _forking_. This new process is the _child_, and the process that _forked_ it off is the _parent_. While the _child process_ is doing its work, the _parent process_ is still executing.
 >
-> Note that while a _parent process_ gets the _process ID_ of the _child process_, and can thus pass arguments to it, _the reverse is not true_. [[../advanced-topics/gotchas#^PARCHILDPROBREF|This can create problems that are subtle and hard to track down.]]
+> Note that while a _parent process_ gets the _process ID_ of the _child process_, and can thus pass arguments to it, _the reverse is not true_. [[gotchas#^PARCHILDPROBREF|This can create problems that are subtle and hard to track down.]]
 >
 > **Example 15-1. A script that spawns multiple instances of itself**
 >
@@ -69,7 +69,7 @@ echo Hello
 echo $a
 ```
 
-An **echo** requires the -e option to print escaped characters. See [[../basic/quoting#^ESCAPED|Example 5-2]].
+An **echo** requires the -e option to print escaped characters. See [[quoting#^ESCAPED|Example 5-2]].
 
 Normally, each **echo** command prints a terminal newline, but the -n option suppresses this.
 
@@ -84,15 +84,15 @@ Normally, each **echo** command prints a terminal newline, but the -n option sup
 > ```
 
 > [!note]
-> An **echo**, in combination with [[../beyond-the-basic/command-substitution#^COMMANDSUBREF|command substitution]] can set a variable.
+> An **echo**, in combination with [[command-substitution#^COMMANDSUBREF|command substitution]] can set a variable.
 >
 > **a=`echo "HELLO" \| tr A-Z a-z`**
 >
-> See also [[./text-processing-commands#^LOWERCASE|Example 16-22]], [[./complex-commands#^EX57|Example 16-3]], [[./math-commands#^MONTHLYPMT|Example 16-47]], and [[./math-commands#^BASE|Example 16-48]].|
+> See also [[text-processing-commands#^LOWERCASE|Example 16-22]], [[complex-commands#^EX57|Example 16-3]], [[math-commands#^MONTHLYPMT|Example 16-47]], and [[math-commands#^BASE|Example 16-48]].|
 
 Be aware that **echo `command`** deletes any linefeeds that the output of _command_ generates.
 
-The [[../beyond-the-basic/another-look-at-variables#^IFSREF|$IFS]] (internal field separator) variable normally contains \n (linefeed) as one of its set of [[../basic/special-characters#Whitespace|whitespace]] characters. Bash therefore splits the output of _command_ at linefeeds into arguments to **echo**. Then **echo** outputs these arguments, separated by spaces.
+The [[another-look-at-variables#^IFSREF|$IFS]] (internal field separator) variable normally contains \n (linefeed) as one of its set of [[special-characters#Whitespace|whitespace]] characters. Bash therefore splits the output of _command_ at linefeeds into arguments to **echo**. Then **echo** outputs these arguments, separated by spaces.
 
 ```bash
 
@@ -174,7 +174,7 @@ The **printf**, formatted print, command is an enhanced **echo**. It is a limite
 
 **printf** _format-string_... _parameter_...
 
-This is the Bash _builtin_ version of the /bin/printf or /usr/bin/printf command. See the **printf** [[./basic-commands#^MANREF|manpage]] (of the system command) for in-depth coverage.
+This is the Bash _builtin_ version of the /bin/printf or /usr/bin/printf command. See the **printf** [[basic-commands#^MANREF|manpage]] (of the system command) for in-depth coverage.
 
 > [!caution]
 > Older versions of Bash may not support **printf**.
@@ -245,11 +245,11 @@ cd $var || error $"Can't cd to %s." "$var"
 # Thanks, S.C.
 ```
 
-See also [[../advanced-topics/assorted-tips#^PROGRESSBAR|Example 36-17]].
+See also [[assorted-tips#^PROGRESSBAR|Example 36-17]].
 
 **read**
 
-"Reads" the value of a variable from stdin, that is, interactively fetches input from the keyboard. The -a option lets **read** get array variables (see [[../advanced-topics/arrays#^EX67|Example 27-6]]).
+"Reads" the value of a variable from stdin, that is, interactively fetches input from the keyboard. The -a option lets **read** get array variables (see [[arrays#^EX67|Example 27-6]]).
 
 ###### Example 15-3. Variable assignment, using *read*
 
@@ -279,7 +279,7 @@ echo "var2 = $var2      var3 = $var3"
 exit 0
 ```
 
-A **read** without an associated variable assigns its input to the dedicated variable [[../beyond-the-basic/another-look-at-variables#^REPLYREF|$REPLY]].
+A **read** without an associated variable assigns its input to the dedicated variable [[another-look-at-variables#^REPLYREF|$REPLY]].
 
 ###### Example 15-4. What happens when *read* has no variable
 
@@ -524,13 +524,13 @@ done
 > [!note]
 > The -n option to **read** will not detect the **ENTER** (newline) key.
 
-The -t option to **read** permits timed input (see [[../beyond-the-basic/another-look-at-variables#^TOUT|Example 9-4]] and [[../apendix/contributed-scripts#^QKY|Example A-41]]).
+The -t option to **read** permits timed input (see [[another-look-at-variables#^TOUT|Example 9-4]] and [[contributed-scripts#^QKY|Example A-41]]).
 
-The -u option takes the [[../advanced-topics/io-redirection#^FDREF|file descriptor]] of the target file.
+The -u option takes the [[io-redirection#^FDREF|file descriptor]] of the target file.
 
-The **read** command may also "read" its variable value from a file [[../advanced-topics/io-redirection|redirected]] to stdin. If the file contains more than one line, only the first line is assigned to the variable. If **read** has more than one parameter, then each of these variables gets assigned a successive [[../basic/special-characters#Whitespace|whitespace-delineated]] string. Caution!
+The **read** command may also "read" its variable value from a file [[io-redirection|redirected]] to stdin. If the file contains more than one line, only the first line is assigned to the variable. If **read** has more than one parameter, then each of these variables gets assigned a successive [[special-characters#Whitespace|whitespace-delineated]] string. Caution!
 
-###### Example 15-7. Using *read* with [[../advanced-topics/io-redirection|file redirection]]
+###### Example 15-7. Using *read* with [[io-redirection|file redirection]]
 
 ```bash
 #!/bin/bash
@@ -593,9 +593,9 @@ exit 0
 ```
 
 > [!note]
-> [[../basic/special-characters#^PIPEREF|Piping]] output to a _read_, using [[internal-commands-and-builtins#^ECHOREF|echo]] to set variables [[../advanced-topics/gotchas#^BADREAD0|will fail]].
+> [[special-characters#^PIPEREF|Piping]] output to a _read_, using [[internal-commands-and-builtins#^ECHOREF|echo]] to set variables [[gotchas#^BADREAD0|will fail]].
 >
-> Yet, piping the output of [[./basic-commands#^CATREF|cat]] _seems_ to work.
+> Yet, piping the output of [[basic-commands#^CATREF|cat]] _seems_ to work.
 >
 > ```bash
 > cat file1 file2 |
@@ -655,7 +655,7 @@ exit 0
 > but its value does not persist outside the loop.
 > ```
 >
-> The _gendiff_ script, usually found in /usr/bin on many Linux distros, pipes the output of [[./complex-commands#^FINDREF|find]] to a _while read_ construct.
+> The _gendiff_ script, usually found in /usr/bin on many Linux distros, pipes the output of [[complex-commands#^FINDREF|find]] to a _while read_ construct.
 >
 > ```bash
 > find $1 \( -name "*$2" -o -name ".*$2" \) -print |
@@ -664,7 +664,7 @@ exit 0
 > ```
 
 > [!tip]
-> It is possible to _paste_ text into the input field of a _read_ (but _not_ multiple lines!). See [[../apendix/contributed-scripts#^PADSW|Example A-38]].
+> It is possible to _paste_ text into the input field of a _read_ (but _not_ multiple lines!). See [[contributed-scripts#^PADSW|Example A-38]].
 
 **Filesystem**
 
@@ -676,11 +676,11 @@ The familiar **cd** change directory command finds use in scripts where executio
 (cd /source/directory && tar cf - . ) | (cd /dest/directory && tar xpvf -)
 ```
 
-[from the [[../basic/special-characters#^COXEX|previously cited]] example by Alan Cox]
+[from the [[special-characters#^COXEX|previously cited]] example by Alan Cox]
 
 The -P (physical) option to **cd** causes it to ignore symbolic links.
 
-**cd -** changes to [[../beyond-the-basic/another-look-at-variables#^OLDPWD|$OLDPWD]], the previous working directory.
+**cd -** changes to [[another-look-at-variables#^OLDPWD|$OLDPWD]], the previous working directory.
 
 > [!caution]
 > The **cd** command does not function as expected when presented with two forward slashes.
@@ -696,17 +696,17 @@ The -P (physical) option to **cd** causes it to ignore symbolic links.
 
 **pwd**
 
-Print Working Directory. This gives the user's (or script's) current directory (see [[internal-commands-and-builtins#^EX37|Example 15-9]]). The effect is identical to reading the value of the builtin variable [[../beyond-the-basic/another-look-at-variables#^PWDREF|$PWD]].
+Print Working Directory. This gives the user's (or script's) current directory (see [[internal-commands-and-builtins#^EX37|Example 15-9]]). The effect is identical to reading the value of the builtin variable [[another-look-at-variables#^PWDREF|$PWD]].
 
 **pushd**, **popd**, **dirs**
 
-This command set is a mechanism for bookmarking working directories, a means of moving back and forth through directories in an orderly manner. A pushdown [[../beyond-the-basic/another-look-at-variables#^STACKDEFREF|stack]] is used to keep track of directory names. Options allow various manipulations of the directory stack.
+This command set is a mechanism for bookmarking working directories, a means of moving back and forth through directories in an orderly manner. A pushdown [[another-look-at-variables#^STACKDEFREF|stack]] is used to keep track of directory names. Options allow various manipulations of the directory stack.
 
 **pushd dir-name** pushes the path _dir-name_ onto the directory stack (to the _top_ of the stack) and simultaneously changes the current working directory to _dir-name_
 
 **popd** removes (pops) the top directory path name off the directory stack and simultaneously changes the current working directory to the directory now at the _top_ of the stack.
 
-**dirs** lists the contents of the directory stack (compare this with the [[../beyond-the-basic/another-look-at-variables#^DIRSTACKREF|$DIRSTACK]] variable). A successful **pushd** or **popd** will automatically invoke **dirs**.
+**dirs** lists the contents of the directory stack (compare this with the [[another-look-at-variables#^DIRSTACKREF|$DIRSTACK]] variable). A successful **pushd** or **popd** will automatically invoke **dirs**.
 
 Scripts that require various changes to the current working directory without hard-coding the directory name changes can make good use of these commands. Note that the implicit $DIRSTACK array variable, accessible from within a script, holds the contents of the directory stack.
 
@@ -745,7 +745,7 @@ exit 0
 
 **let**
 
-The **let** command carries out _arithmetic_ operations on variables. [^3] In many cases, it functions as a less complex version of [[./complex-commands#^EXPRREF|expr]].
+The **let** command carries out _arithmetic_ operations on variables. [^3] In many cases, it functions as a less complex version of [[complex-commands#^EXPRREF|expr]].
 
 ###### Example 15-10. Letting *let* do arithmetic.
 
@@ -1074,9 +1074,9 @@ Here is another example of using _eval_ to _evaluate_ a complex expression, this
 eval ${1}+=\"${x} ${y} \"
 ```
 
-[[../apendix/contributed-scripts#^SAMORSE|Example A-53]] uses _eval_ to convert [[../advanced-topics/arrays#^ARRAYREF|array]] elements into a command list.
+[[contributed-scripts#^SAMORSE|Example A-53]] uses _eval_ to convert [[arrays#^ARRAYREF|array]] elements into a command list.
 
-The _eval_ command occurs in the older version of [[../advanced-topics/indirect-references#^IVRREF|indirect referencing]].
+The _eval_ command occurs in the older version of [[indirect-references#^IVRREF|indirect referencing]].
 
 ```bash
 eval var=\$$var
@@ -1090,7 +1090,7 @@ eval var=\$$var
 
 **set**
 
-The **set** command changes the value of internal script variables/options. One use for this is to toggle [[../advanced-topics/options#^OPTIONSREF|option flags]] which help determine the behavior of the script. Another application for it is to reset the [[../beyond-the-basic/another-look-at-variables#^POSPARAMREF|positional parameters]] that a script sees as the result of a command (**set `command`**). The script can then parse the [[../basic/special-characters#^FIELDREF|fields]] of the command output.
+The **set** command changes the value of internal script variables/options. One use for this is to toggle [[options#^OPTIONSREF|option flags]] which help determine the behavior of the script. Another application for it is to reset the [[another-look-at-variables#^POSPARAMREF|positional parameters]] that a script sees as the result of a command (**set `command`**). The script can then parse the [[special-characters#^FIELDREF|fields]] of the command output.
 
 ###### Example 15-16. Using *set* with positional parameters
 
@@ -1264,7 +1264,7 @@ echo "second parameter = $second_param"           # (null value)
 exit 0
 ```
 
-See also [[../beyond-the-basic/loops#^EX22A|Example 11-2]] and [[./miscellaneous-commands#^EX33A|Example 16-56]].
+See also [[loops#^EX22A|Example 11-2]] and [[miscellaneous-commands#^EX33A|Example 16-56]].
 
 **unset**
 
@@ -1301,14 +1301,14 @@ exit 0
 ```
 
 > [!note]
-> In most contexts, an _undeclared_ variable and one that has been _unset_ are equivalent. However, the [[../beyond-the-basic/parameter-substitution#^UNDDR|${parameter:-default}]] parameter substitution construct can distinguish between the two.
+> In most contexts, an _undeclared_ variable and one that has been _unset_ are equivalent. However, the [[parameter-substitution#^UNDDR|${parameter:-default}]] parameter substitution construct can distinguish between the two.
 
 **export**
 
-The **export** [^4] command makes available variables to all child processes of the running script or shell. One important use of the **export** command is in [[../apendix/important-files#^FILESREF1|startup files]], to initialize and make accessible [[othertypesv#^ENVREF|environmental variables]] to subsequent user processes.
+The **export** [^4] command makes available variables to all child processes of the running script or shell. One important use of the **export** command is in [[important-files#^FILESREF1|startup files]], to initialize and make accessible [[othertypesv#^ENVREF|environmental variables]] to subsequent user processes.
 
 > [!caution]
-> Unfortunately, [[../advanced-topics/gotchas#^PARCHILDPROBREF|there is no way to export variables back to the parent process]], to the process that called or invoked the script or shell.
+> Unfortunately, [[gotchas#^PARCHILDPROBREF|there is no way to export variables back to the parent process]], to the process that called or invoked the script or shell.
 
 ###### Example 15-20. Using _export_ to pass a variable to an embedded *awk* script
 
@@ -1370,7 +1370,7 @@ exit 0
 > ```
 
 > [!note]
-> A variable to be exported may require special treatment. See [[../apendix/sample-bashrc-and-bash-profile-files#^BASHPROF|Example M-2]].
+> A variable to be exported may require special treatment. See [[sample-bashrc-and-bash-profile-files#^BASHPROF|Example M-2]].
 
 **declare**, **typeset**
 
@@ -1382,17 +1382,17 @@ Same as [[typing-variables.html|declare -r]], sets a variable as read-only, or, 
 
 **getopts**
 
-This powerful tool parses command-line arguments passed to the script. This is the Bash analog of the [[./miscellaneous-commands#^GETOPTY|getopt]] external command and the _getopt_ library function familiar to _C_ programmers. It permits passing and concatenating multiple options [^5] and associated arguments to a script (for example **scriptname -abc -e /usr/local**).
+This powerful tool parses command-line arguments passed to the script. This is the Bash analog of the [[miscellaneous-commands#^GETOPTY|getopt]] external command and the _getopt_ library function familiar to _C_ programmers. It permits passing and concatenating multiple options [^5] and associated arguments to a script (for example **scriptname -abc -e /usr/local**).
 
 The **getopts** construct uses two implicit variables. $OPTIND is the argument pointer (_OPTion INDex_) and $OPTARG (_OPTion ARGument_) the (optional) argument attached to an option. A colon following the option name in the declaration tags that option as having an associated argument.
 
-A **getopts** construct usually comes packaged in a [[../beyond-the-basic/loops#^WHILELOOPREF|while loop]], which processes the options and arguments one at a time, then increments the implicit $OPTIND variable to point to the next.
+A **getopts** construct usually comes packaged in a [[loops#^WHILELOOPREF|while loop]], which processes the options and arguments one at a time, then increments the implicit $OPTIND variable to point to the next.
 
 > [!note]
 >
 > 1. The arguments passed from the command-line to the script must be preceded by a dash (-). It is the prefixed - that lets **getopts** recognize command-line arguments as _options_. In fact, **getopts** will not process arguments without the prefixed -, and will terminate option processing at the first argument encountered lacking them.
-> 2. The **getopts** template differs slightly from the standard [[../beyond-the-basic/loops#^WHILELOOPREF|while loop]], in that it lacks condition brackets.
-> 3. The **getopts** construct is a highly functional replacement for the traditional [[./miscellaneous-commands#^GETOPTY|getopt]] external command.
+> 2. The **getopts** template differs slightly from the standard [[loops#^WHILELOOPREF|while loop]], in that it lacks condition brackets.
+> 3. The **getopts** construct is a highly functional replacement for the traditional [[miscellaneous-commands#^GETOPTY|getopt]] external command.
 
 ```bash
 while getopts ":abcde:fg" Option
@@ -1485,7 +1485,7 @@ exit $?
 
 **Script Behavior**
 
-**source**, . ([[../basic/special-characters#^DOTREF|dot]] command)
+**source**, . ([[special-characters#^DOTREF|dot]] command)
 
 This command, when invoked from the command-line, executes a script. Within a script, a **source file-name** loads the file file-name. _Sourcing_ a file (dot-command) _imports_ code into the script, appending to the script (same effect as the `#include` directive in a _C_ program). The net result is the same as if the "sourced" lines of code were physically present in the body of the script. This is useful in situations when multiple scripts use a common data file or function library.
 
@@ -1559,7 +1559,7 @@ print_message ()
 }
 ```
 
-If the _sourced_ file is itself an executable script, then it will run, then return control to the script that called it. A _sourced_ executable script may use a [[../advanced-topics/complex-functions-and-function-complexities#^RETURNREF|return]] for this purpose.
+If the _sourced_ file is itself an executable script, then it will run, then return control to the script that called it. A _sourced_ executable script may use a [[complex-functions-and-function-complexities#^RETURNREF|return]] for this purpose.
 
 Arguments may be (optionally) passed to the _sourced_ file as [[othertypesv#^POSPARAMREF1|positional parameters]].
 
@@ -1622,7 +1622,7 @@ Unconditionally terminates a script. [^6] The **exit** command may optionally ta
 > If a script terminates with an **exit** lacking an argument, the exit status of the script is the exit status of the last command executed in the script, not counting the **exit**. This is equivalent to an **exit $?**.
 
 > [!note]
-> An **exit** command may also be used to terminate a [[../advanced-topics/subshells#^SUBSHELLSREF|subshell]].
+> An **exit** command may also be used to terminate a [[subshells#^SUBSHELLSREF|subshell]].
 
 **exec**
 
@@ -1675,14 +1675,14 @@ exit 99                            # Will not exit here!
                                    # Exit code will not be 99!
 ```
 
-An **exec** also serves to [[../advanced-topics/using-exec#^USINGEXECREF|reassign file descriptors]]. For example, **exec <zzz-file** replaces stdin with the file zzz-file.
+An **exec** also serves to [[using-exec#^USINGEXECREF|reassign file descriptors]]. For example, **exec <zzz-file** replaces stdin with the file zzz-file.
 
 > [!note]
-> The -exec option to [[./complex-commands#^FINDREF|find]] is _not_ the same as the **exec** shell builtin.
+> The -exec option to [[complex-commands#^FINDREF|find]] is _not_ the same as the **exec** shell builtin.
 
 **shopt**
 
-This command permits changing _shell options_ on the fly (see [[../advanced-topics/aliases#^AL|Example 25-1]] and [[../advanced-topics/aliases#^UNAL|Example 25-2]]). It often appears in the Bash [[../apendix/important-files#^FILESREF1|startup files]], but also has its uses in scripts. Needs [[../advanced-topics/bash-version-2#^BASH2REF|version 2]] or later of Bash.
+This command permits changing _shell options_ on the fly (see [[aliases#^AL|Example 25-1]] and [[aliases#^UNAL|Example 25-2]]). It often appears in the Bash [[important-files#^FILESREF1|startup files]], but also has its uses in scripts. Needs [[bash-version-2#^BASH2REF|version 2]] or later of Bash.
 
 ```bash
 shopt -s cdspell
@@ -1696,7 +1696,7 @@ pwd       # /home
 
 **caller**
 
-Putting a **caller** command inside a [[../advanced-topics/functions|function]] echoes to stdout information about the _caller_ of that function.
+Putting a **caller** command inside a [[functions|function]] echoes to stdout information about the _caller_ of that function.
 
 ```bash
 #!/bin/bash
@@ -1782,7 +1782,7 @@ done
 
 **type [cmd]**
 
-Similar to the [[./file-and-archiving-commands#^WHICHREF|which]] external command, **type cmd** identifies "cmd." Unlike **which**, **type** is a Bash builtin. The useful -a option to **type** identifies _keywords_ and _builtins_, and also locates system commands with identical names.
+Similar to the [[file-and-archiving-commands#^WHICHREF|which]] external command, **type cmd** identifies "cmd." Unlike **which**, **type** is a Bash builtin. The useful -a option to **type** identifies _keywords_ and _builtins_, and also locates system commands with identical names.
 
 ```bash
 bash$ type '['
@@ -1797,11 +1797,11 @@ type is a shell builtin
 	      
 ```
 
-The **type** command can be useful for [[../basic/special-characters#^DEVNULLREDIRECT|testing whether a certain command exists]].
+The **type** command can be useful for [[special-characters#^DEVNULLREDIRECT|testing whether a certain command exists]].
 
 **hash [cmds]**
 
-Records the _path_ name of specified commands -- in the shell _hash table_ [^8] -- so the shell or script will not need to search the [[../beyond-the-basic/another-look-at-variables#^PATHREF|$PATH]] on subsequent calls to those commands. When **hash** is called with no arguments, it simply lists the commands that have been hashed. The -r option resets the hash table.
+Records the _path_ name of specified commands -- in the shell _hash table_ [^8] -- so the shell or script will not need to search the [[another-look-at-variables#^PATHREF|$PATH]] on subsequent calls to those commands. When **hash** is called with no arguments, it simply lists the commands that have been hashed. The -r option resets the hash table.
 
 **bind**
 
@@ -1809,7 +1809,7 @@ The **bind** builtin displays or modifies _readline_ [^9] key bindings.
 
 **help**
 
-Gets a short usage summary of a shell builtin. This is the counterpart to [[./file-and-archiving-commands#^WHATISREF|whatis]], but for builtins. The display of _help_ information got a much-needed update in the [[../advanced-topics/bash-version-4#^BASH4REF|version 4 release]] of Bash.
+Gets a short usage summary of a shell builtin. This is the counterpart to [[file-and-archiving-commands#^WHATISREF|whatis]], but for builtins. The display of _help_ information got a much-needed update in the [[bash-version-4#^BASH4REF|version 4 release]] of Bash.
 
 ```bash
 bash$ help exit
@@ -1821,22 +1821,22 @@ exit: exit [n]
 
 [^1]: As Nathan Coulter points out, "while forking a process is a low-cost operation, executing a new program in the newly-forked child process adds more overhead."
 
-[^2]: An exception to this is the [[./time-date-commands#^TIMREF|time]] command, listed in the official Bash documentation as a keyword ("reserved word").
+[^2]: An exception to this is the [[time-date-commands#^TIMREF|time]] command, listed in the official Bash documentation as a keyword ("reserved word").
 
-[^3]: Note that _let_ [[../advanced-topics/gotchas#^LETBAD|cannot be used for setting _string_ variables.]]
+[^3]: Note that _let_ [[gotchas#^LETBAD|cannot be used for setting _string_ variables.]]
 
-[^4]: To _Export_ information is to make it available in a more general context. See also [[../advanced-topics/subshells#^SCOPEREF|scope]].
+[^4]: To _Export_ information is to make it available in a more general context. See also [[subshells#^SCOPEREF|scope]].
 
 [^5]: An _option_ is an argument that acts as a flag, switching script behaviors on or off. The argument associated with a particular option indicates the behavior that the option (flag) switches on or off.
 
 [^6]: Technically, an **exit** only terminates the process (or shell) in which it is running _not the parent process_.
 
-[^7]: Unless the **exec** is used to [[../advanced-topics/using-exec#^USINGEXECREF|reassign file descriptors]].
+[^7]: Unless the **exec** is used to [[using-exec#^USINGEXECREF|reassign file descriptors]].
 
 [^8]: _Hashing_ is a method of creating lookup keys for data stored in a table. The _data items themselves_ are "scrambled" to create keys, using one of a number of simple mathematical _algorithms_ (methods, or recipes).
 
     An advantage of _hashing_ is that it is fast. A disadvantage is that _collisions_ -- where a single key maps to more than one data item -- are possible.
 
-    For examples of hashing see [[../apendix/contributed-scripts#^HASHLIB|Example A-20]] and [[../apendix/contributed-scripts#^HASHEXAMPLE|Example A-21]].
+    For examples of hashing see [[contributed-scripts#^HASHLIB|Example A-20]] and [[contributed-scripts#^HASHEXAMPLE|Example A-21]].
 
 [^9]: The _readline_ library is what Bash uses for reading input in an interactive shell.
