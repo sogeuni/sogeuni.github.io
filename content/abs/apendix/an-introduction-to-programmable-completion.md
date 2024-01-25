@@ -37,7 +37,7 @@ bin/     etc/     include/ libexec/ sbin/    src/
       
 ```
 
-The Bash **complete** and **compgen** [[../commands/internal-commands-and-builtins|builtins]] make it possible for _tab completion_ to recognize partial _parameters_ and _options_ to commands. In a very simple case, we can use **complete** from the command-line to specify a short list of acceptable parameters.
+The Bash **complete** and **compgen** [[internal-commands-and-builtins|builtins]] make it possible for _tab completion_ to recognize partial _parameters_ and _options_ to commands. In a very simple case, we can use **complete** from the command-line to specify a short list of acceptable parameters.
 
 ```bash
 bash$ touch sample_command
