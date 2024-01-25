@@ -13,7 +13,7 @@ Systemwide defaults, mostly setting the environment (all Bourne-type shells, not
 
 /etc/bashrc
 
-systemwide functions and [[../advanced-topics/aliases#^ALIASREF|aliases]] for Bash
+systemwide functions and [[aliases#^ALIASREF|aliases]] for Bash
 
 $HOME/.bash_profile
 
