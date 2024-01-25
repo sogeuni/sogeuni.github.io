@@ -3,7 +3,7 @@ title: 16.6. Communications Commands
 ---
 
 
-Certain of the following commands find use in network data transfer and analysis, as well as in [[../apendix/writing-scripts#^CSPAMMERS|chasing spammers]].
+Certain of the following commands find use in network data transfer and analysis, as well as in [[writing-scripts#^CSPAMMERS|chasing spammers]].
 
 **Information and Statistics**
 
@@ -269,11 +269,11 @@ exit 0
      to the 'dig' command.
 ```
 
-For a much more elaborate version of the above script, see [[../apendix/contributed-scripts#^ISSPAMMER2|Example A-28]].
+For a much more elaborate version of the above script, see [[contributed-scripts#^ISSPAMMER2|Example A-28]].
 
 **traceroute**
 
-Trace the route taken by packets sent to a remote host. This command works within a LAN, WAN, or over the Internet. The remote host may be specified by an IP address. The output of this command may be filtered by [[./text-processing-commands#^GREPREF|grep]] or [[Appendix%20C.%20A%20Sed%20and%20Awk%20Micro-Primer.md#^SEDREF|sed]] in a pipe.
+Trace the route taken by packets sent to a remote host. This command works within a LAN, WAN, or over the Internet. The remote host may be specified by an IP address. The output of this command may be filtered by [[text-processing-commands#^GREPREF|grep]] or [[Appendix%20C.%20A%20Sed%20and%20Awk%20Micro-Primer.md#^SEDREF|sed]] in a pipe.
 
 ```bash
 bash$ traceroute 81.9.6.2
@@ -365,7 +365,7 @@ The **sz** and **rz** command set serves to transfer files to and from a remote 
 
 **ftp**
 
-Utility and protocol for uploading / downloading files to or from a remote host. An ftp session can be automated in a script (see [[../advanced-topics/here-documents#^EX72|Example 19-6]] and [[../apendix/contributed-scripts#^ENCRYPTEDPW|Example A-4]]).
+Utility and protocol for uploading / downloading files to or from a remote host. An ftp session can be automated in a script (see [[here-documents#^EX72|Example 19-6]] and [[contributed-scripts#^ENCRYPTEDPW|Example A-4]]).
 
 **uucp**, **uux**, **cu**
 
@@ -447,7 +447,7 @@ exit $?
 #+   taking the user's zip code as an argument.
 ```
 
-See also [[../apendix/contributed-scripts#^WGETTER2|Example A-30]] and [[../apendix/contributed-scripts#^BASHPODDER|Example A-31]].
+See also [[contributed-scripts#^WGETTER2|Example A-30]] and [[contributed-scripts#^BASHPODDER|Example A-31]].
 
 **lynx**
 
@@ -701,14 +701,14 @@ fi
 exit $RET
 ```
 
-See also [[../apendix/contributed-scripts#^NIGHTLYBACKUP|Example A-32]].
+See also [[contributed-scripts#^NIGHTLYBACKUP|Example A-32]].
 
 > [!note]
 > Using [[communications-commands#^RCPREF|rcp]], [[communications-commands#^RSYNCREF|rsync]], and similar utilities with security implications in a shell script may not be advisable. Consider, instead, using **ssh**, [[communications-commands#^SCPREF|scp]], or an **expect** script.
 
 **ssh**
 
-_Secure shell_, logs onto a remote host and executes commands there. This secure replacement for **telnet**, **rlogin**, **rcp**, and **rsh** uses identity authentication and encryption. See its [[./basic-commands#^MANREF|manpage]] for details.
+_Secure shell_, logs onto a remote host and executes commands there. This secure replacement for **telnet**, **rlogin**, **rcp**, and **rsh** uses identity authentication and encryption. See its [[basic-commands#^MANREF|manpage]] for details.
 
 ###### Example 16-44. Using *ssh*
 
@@ -797,7 +797,7 @@ _Secure copy_, similar in function to **rcp**, copies files between two differen
 
 **write**
 
-This is a utility for terminal-to-terminal communication. It allows sending lines from your terminal (console or _xterm_) to that of another user. The [[./system-and-administrative-commands#^MESGREF|mesg]] command may, of course, be used to disable write access to a terminal
+This is a utility for terminal-to-terminal communication. It allows sending lines from your terminal (console or _xterm_) to that of another user. The [[system-and-administrative-commands#^MESGREF|mesg]] command may, of course, be used to disable write access to a terminal
 
 Since **write** is interactive, it would not normally find use in a script.
 
