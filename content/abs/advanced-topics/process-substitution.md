@@ -3,9 +3,9 @@ title: 23. Process Substitution
 ---
 
 
-[[../basic/special-characters#^PIPEREF|Piping]] the stdout of a command into the stdin of another is a powerful technique. But, what if you need to pipe the stdout of _multiple_ commands? This is where _process substitution_ comes in.
+[[special-characters#^PIPEREF|Piping]] the stdout of a command into the stdin of another is a powerful technique. But, what if you need to pipe the stdout of _multiple_ commands? This is where _process substitution_ comes in.
 
-_Process substitution_ feeds the output of a [[../basic/special-characters#^PROCESSREF|process]] (or processes) into the stdin of another process.
+_Process substitution_ feeds the output of a [[special-characters#^PROCESSREF|process]] (or processes) into the stdin of another process.
 
 **Template**
 
@@ -44,7 +44,7 @@ bash$ wc <(grep script /usr/share/dict/linux.words)
 ```
 
 > [!note]
-> Bash creates a pipe with two [[./io-redirection#^FDREF|file descriptors]], --fIn and fOut--. The stdin of [[../commands/internal-commands-and-builtins#^TRUEREF|true]] connects to fOut (dup2(fOut, 0)), then Bash passes a /dev/fd/fIn argument to **echo**. On systems lacking /dev/fd/<n> files, Bash may use temporary files. (Thanks, S.C.)
+> Bash creates a pipe with two [[io-redirection#^FDREF|file descriptors]], --fIn and fOut--. The stdin of [[internal-commands-and-builtins#^TRUEREF|true]] connects to fOut (dup2(fOut, 0)), then Bash passes a /dev/fd/fIn argument to **echo**. On systems lacking /dev/fd/<n> files, Bash may use temporary files. (Thanks, S.C.)
 
 Process substitution can compare the output of two different commands, or even the output of different options to the same command.
 
@@ -126,7 +126,7 @@ exec 3>&-
 # Thanks, Stéphane Chazelas
 ```
 
-Here is a method of circumventing the problem of an [[./gotchas#^BADREAD0|_echo_ piped to a _while-read loop_]] running in a subshell.
+Here is a method of circumventing the problem of an [[gotchas#^BADREAD0|_echo_ piped to a _while-read loop_]] running in a subshell.
 
 ###### Example 23-1. Code block redirection without forking
 
@@ -286,4 +286,4 @@ x=x < <(:)
 # That is, in effect, what the original SuSE code fragment does.
 ```
 
-[^1]: This has the same effect as a [[../commands/miscellaneous-commands#^NAMEDPIPEREF|named pipe]] (temp file), and, in fact, named pipes were at one time used in process substitution.
+[^1]: This has the same effect as a [[miscellaneous-commands#^NAMEDPIPEREF|named pipe]] (temp file), and, in fact, named pipes were at one time used in process substitution.
