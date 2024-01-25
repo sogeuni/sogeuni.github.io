@@ -52,7 +52,7 @@ Unless otherwise noted, [the author](mailto:thegrendel.abs@gmail.com) of this bo
 >
 > --<cite>Edmund Spenser</cite>
 
-![[./starting-off-with-a-sha-bang#^111|starting-off-with-a-sha-bang > ^111]]
+![[./sha-bang#^111|sha-bang > ^111]]
 
 [^1]: These are referred to as [[../commands/internal-commands-and-builtins|builtins]], features internal to the shell.
 
