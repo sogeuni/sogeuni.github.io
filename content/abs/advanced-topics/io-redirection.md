@@ -3,7 +3,7 @@ title: 20. I/O Redirection
 ---
 
 
-There are always three default _files_ [^1] open, stdin (the keyboard), stdout (the screen), and stderr (error messages output to the screen). These, and any other open files, can be redirected. Redirection simply means capturing output from a file, command, program, script, or even code block within a script (see [[special-characters#^EX8|Example 3-1]] and [[special-characters#^RPMCHECK|Example 3-2]]) and sending it as input to another file, command, program, or script.
+There are always three default _files_ [^1] open, stdin (the keyboard), stdout (the screen), and stderr (error messages output to the screen). These, and any other open files, can be redirected. Redirection simply means capturing output from a file, command, program, script, or even code block within a script (see [[example 3-1|Example 3-1]] and [[example 3-2|Example 3-2]]) and sending it as input to another file, command, program, or script.
 
 Each open file gets assigned a file descriptor. [^2] The file descriptors for stdin, stdout, and stderr are 0, 1, and 2, respectively. For opening additional files, there remain descriptors 3 to 9. It is sometimes useful to assign one of these additional file descriptors to stdin, stdout, or stderr as a temporary duplicate link. [^3] This simplifies restoration to normal after complex redirection and reshuffling (see [[using-exec#^REDIR1|Example 20-1]]).
 

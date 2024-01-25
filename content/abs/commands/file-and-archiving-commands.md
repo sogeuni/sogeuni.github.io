@@ -7,7 +7,7 @@ title: 16.5. File and Archiving Commands
 
 **tar**
 
-The standard UNIX archiving utility. [^1] Originally a _Tape ARchiving_ program, it has developed into a general purpose package that can handle all manner of archiving with all types of destination devices, ranging from tape drives to regular files to even stdout (see [[special-characters#^EX58|Example 3-4]]). GNU _tar_ has been patched to accept various compression filters, for example: **tar czvf archive_name.tar.gz ***, which recursively archives and [[file-and-archiving-commands#^GZIPREF|gzips]] all files in a directory tree except [[basic-commands#^DOTFILESREF|dotfiles]] in the current working directory ([[another-look-at-variables#^PWDREF|$PWD]]). [^2]
+The standard UNIX archiving utility. [^1] Originally a _Tape ARchiving_ program, it has developed into a general purpose package that can handle all manner of archiving with all types of destination devices, ranging from tape drives to regular files to even stdout (see [[example 3-4|Example 3-4]]). GNU _tar_ has been patched to accept various compression filters, for example: **tar czvf archive_name.tar.gz ***, which recursively archives and [[file-and-archiving-commands#^GZIPREF|gzips]] all files in a directory tree except [[basic-commands#^DOTFILESREF|dotfiles]] in the current working directory ([[another-look-at-variables#^PWDREF|$PWD]]). [^2]
 
 Some useful **tar** options:
 

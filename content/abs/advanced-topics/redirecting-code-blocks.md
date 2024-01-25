@@ -263,7 +263,7 @@ Znosko-Borowski
 #+ "redir2.sh", "redir3.sh", "redir4.sh", "redir4a.sh", "redir5.sh".
 ```
 
-Redirecting the stdout of a code block has the effect of saving its output to a file. See [[special-characters#^RPMCHECK|Example 3-2]].
+Redirecting the stdout of a code block has the effect of saving its output to a file. See [[example 3-2|Example 3-2]].
 
 [[here-documents#^HEREDOCREF|Here documents]] are a special case of redirected code blocks. That being the case, it should be possible to feed the output of a _here document_ into the stdin for a _while loop_.
 

@@ -551,7 +551,7 @@ See also [[testing-and-branching#^ISALPHA|Example 11-29]].
 
 _Redirecting the stdin of a function_
 
-A function is essentially a [[special-characters#^CODEBLOCKREF|code block]], which means its stdin can be redirected (as in [[special-characters#^EX8|Example 3-1]]).
+A function is essentially a [[special-characters#^CODEBLOCKREF|code block]], which means its stdin can be redirected (as in [[example 3-1|Example 3-1]]).
 
 ###### Example 24-11. Real name from username
 

@@ -109,7 +109,7 @@ DISKS=${1:-E_NOPARAM}   # Must specify how many disks.
 #+ or to $E_NOPARAM if that is unset.
 ```
 
-See also [[special-characters#^EX58|Example 3-4]], [[zeros#^EX73|Example 31-2]], and [[contributed-scripts#^COLLATZ|Example A-6]].
+See also [[example 3-4|Example 3-4]], [[zeros#^EX73|Example 31-2]], and [[contributed-scripts#^COLLATZ|Example A-6]].
 
 Compare this method with [[list-constructs#^ANDDEFAULT|using an _and list_ to supply a default command-line argument]].
 

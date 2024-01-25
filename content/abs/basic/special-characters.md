@@ -513,78 +513,9 @@ echo "a = $a"   # a = 321   (value inside code block)
 
 The code block enclosed in braces may have [[io-redirection|I/O redirected]] to and from it. 
 
-###### Example 3-1. Code blocks and I/O redirection
+![[example 3-1]]
 
-```bash title="Example 3-1. Code blocks and I/O redirection"
-#!/bin/bash
-# Reading lines in /etc/fstab.
-
-File=/etc/fstab
-
-{
-read line1
-read line2
-} < $File
-
-echo "First line in $File is:"
-echo "$line1"
-echo
-echo "Second line in $File is:"
-echo "$line2"
-
-exit 0
-
-# Now, how do you parse the separate fields of each line?
-# Hint: use awk, or . . .
-# . . . Hans-Joerg Diers suggests using the "set" Bash builtin.
-```
-^ex3-2
-
-###### Example 3-2. Saving the output of a code block to a file
-
-```bash
-#!/bin/bash
-# rpm-check.sh
-
-#  Queries an rpm file for description, listing,
-#+ and whether it can be installed.
-#  Saves output to a file.
-# 
-#  This script illustrates using a code block.
-
-SUCCESS=0
-E_NOARGS=65
-
-if [ -z "$1" ]
-then
-  echo "Usage: `basename $0` rpm-file"
-  exit $E_NOARGS
-fi  
-
-{ # Begin code block.
-  echo
-  echo "Archive Description:"
-  rpm -qpi $1       # Query description.
-  echo
-  echo "Archive Listing:"
-  rpm -qpl $1       # Query listing.
-  echo
-  rpm -i --test $1  # Query whether rpm file can be installed.
-  if [ "$?" -eq $SUCCESS ]
-  then
-    echo "$1 can be installed."
-  else
-    echo "$1 cannot be installed."
-  fi  
-  echo              # End code block.
-} > "$1.test"       # Redirects output of everything in block to file.
-
-echo "Results of rpm test in file $1.test"
-
-# See rpm man page for explanation of options.
-
-exit 0
-```
+![[example 3-2]]
 
 > [!note]
 > Unlike a command group within (parentheses), as above, a code block enclosed by {braces} will *not* normally launch a [[subshells#^SUBSHELLSREF|subshell]]. [^6]
@@ -830,52 +761,7 @@ bash$ sleep 10 &
 
 Within a script, commands and even [[loops#^FORLOOPREF1|loops]] may run in the background.
 
-###### Example 3-3. Running a loop in the background
-
-```bash
-#!/bin/bash
-# background-loop.sh
-
-for i in 1 2 3 4 5 6 7 8 9 10            # First loop.
-do
-  echo -n "$i "
-done & # Run this loop in background.
-       # Will sometimes execute after second loop.
-
-echo   # This 'echo' sometimes will not display.
-
-for i in 11 12 13 14 15 16 17 18 19 20   # Second loop.
-do
-  echo -n "$i "
-done  
-
-echo   # This 'echo' sometimes will not display.
-
-# ======================================================
-
-# The expected output from the script:
-# 1 2 3 4 5 6 7 8 9 10 
-# 11 12 13 14 15 16 17 18 19 20 
-
-# Sometimes, though, you get:
-# 11 12 13 14 15 16 17 18 19 20 
-# 1 2 3 4 5 6 7 8 9 10 bozo $
-# (The second 'echo' doesn't execute. Why?)
-
-# Occasionally also:
-# 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
-# (The first 'echo' doesn't execute. Why?)
-
-# Very rarely something like:
-# 11 12 13 1 2 3 4 5 6 7 8 9 10 14 15 16 17 18 19 20 
-# The foreground loop preempts the background one.
-
-exit 0
-
-#  Nasimuddin Ansari suggests adding    sleep 1
-#+ after the   echo -n "$i"   in lines 6 and 14,
-#+ for some real fun.
-```
+![[example 3-3]]
 
 > [!caution] A command run in the background within a script may cause the script to hang, waiting for a keystroke. Fortunately, there is a [[job-control-commands#^WAITHANG|remedy]] for this.|
 
@@ -1050,43 +936,7 @@ Using [[file-and-archiving-commands#^DIFFREF|diff]] to compare a file with a *se
 
 Finally, a real-world example using *-* with [[file-and-archiving-commands#^TARREF|tar]].
 
-###### Example 3-4. Backup of all files changed in last day
-
-```bash
-#!/bin/bash
-
-#  Backs up all files in current directory modified within last 24 hours
-#+ in a "tarball" (tarred and gzipped file).
-
-BACKUPFILE=backup-$(date +%m-%d-%Y)
-#                 Embeds date in backup filename.
-#                 Thanks, Joshua Tschida, for the idea.
-archive=${1:-$BACKUPFILE}
-#  If no backup-archive filename specified on command-line,
-#+ it will default to "backup-MM-DD-YYYY.tar.gz."
-
-tar cvf - `find . -mtime -1 -type f -print` > $archive.tar
-gzip $archive.tar
-echo "Directory $PWD backed up in archive file \"$archive.tar.gz\"."
-
-
-#  Stephane Chazelas points out that the above code will fail
-#+ if there are too many files found
-#+ or if any filenames contain blank characters.
-
-# He suggests the following alternatives:
-# -------------------------------------------------------------------
-#   find . -mtime -1 -type f -print0 | xargs -0 tar rvf "$archive.tar"
-#      using the GNU version of "find".
-
-
-#   find . -mtime -1 -type f -exec tar rvf "$archive.tar" '{}' \;
-#         portable to other UNIX flavors, but much slower.
-# -------------------------------------------------------------------
-
-
-exit 0
-```
+![[example 3-4]]
 
 > [!caution]
 > Filenames beginning with "-" may cause problems when coupled with the "-" redirection operator. A script should check for this and add an appropriate prefix to such filenames, for example ./-FILENAME, $PWD/-FILENAME, or $PATHNAME/-FILENAME.
