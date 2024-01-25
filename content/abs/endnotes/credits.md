@@ -29,7 +29,7 @@ Kudos to [Noah Friedman](mailto:friedman@prep.ai.mit.edu) for permission to use 
 
 Rick Boivie contributed the delightfully recursive _pb.sh_ script ([[recursion-a-script-calling-itself#^PBOOK|Example 36-11]]), revised the _tree.sh_ script ([[contributed-scripts#^TREE|Example A-16]]), and suggested performance improvements for the _monthlypmt.sh_ script ([[math-commands#^MONTHLYPMT|Example 16-47]]).
 
-Florian Wisser enlightened me on some of the fine points of testing strings (see [[other-comparison-operators#^STRTEST|Example 7-6]]), and on other matters.
+Florian Wisser enlightened me on some of the fine points of testing strings (see [[example 7-6|Example 7-6]]), and on other matters.
 
 Oleg Philon sent suggestions concerning [[text-processing-commands#^CUTREF|cut]] and [[system-and-administrative-commands#^PIDOFREF|pidof]].
 

@@ -189,7 +189,7 @@ The **zcat** filter decompresses a _gzipped_ file to stdout, as possible input t
 > [!caution]
 > On some commercial UNIX systems, **zcat** is a synonym for **uncompress -c**, and will not work on _gzipped_ files.
 
-See also [[other-comparison-operators#^EX14|Example 7-7]].
+See also [[example 7-7|Example 7-7]].
 
 **bzip2**
 

@@ -191,7 +191,7 @@ let "a = hello, you"
 echo "$a"   # 0
 ```
     
-- Sometimes variables within "test" brackets ([ ]) need to be quoted (double quotes). Failure to do so may cause unexpected behavior. See [[other-comparison-operators#^STRTEST|Example 7-6]], [[redirecting-code-blocks#^REDIR2|Example 20-5]], and [[another-look-at-variables#^ARGLIST|Example 9-6]].
+- Sometimes variables within "test" brackets ([ ]) need to be quoted (double quotes). Failure to do so may cause unexpected behavior. See [[example 7-6|Example 7-6]], [[redirecting-code-blocks#^REDIR2|Example 20-5]], and [[another-look-at-variables#^ARGLIST|Example 9-6]].
     
 - Quoting a variable containing whitespace [[quoting#^WSQUO|prevents splitting]]. Sometimes this produces [[quoting#^VARSPLITTING|unintended consequences]].
     

@@ -197,4 +197,4 @@ false && ( true | echo false )     # (nothing echoed)
 #  Thanks, S.C.
 ```
 
-See [contributed-scripts#^DAYSBETWEEN|Example A-7]] and [[tests#^BROKENLINK|Example 7-4]] for illustrations of using **and / or list** constructs to test variables.
+See [contributed-scripts#^DAYSBETWEEN|Example A-7]] and [[example 7-4|Example 7-4]] for illustrations of using **and / or list** constructs to test variables.
