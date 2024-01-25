@@ -127,7 +127,7 @@ The following reference cards provide a useful _summary_ of certain scripting co
 |expr match "$string" '.*\($substring\)'|Extract _$substring_*, searching from end of _$string_|
 |expr "$string" : '.*\($substring\)'|Extract _$substring_*, searching from end of _$string_|
 
-***** Where _$substring_ is a [[../advanced-topics/regexp#^REGEXREF|Regular Expression]].
+***** Where _$substring_ is a [[regexp#^REGEXREF|Regular Expression]].
 
 **Table B-6. Miscellaneous Constructs**
 
@@ -138,7 +138,7 @@ The following reference cards provide a useful _summary_ of certain scripting co
 |if [[special-characters#^LEFTBRACKET| CONDITION ]|[Test construct]]|
 |if [[tests#^DBLBRACKETS|[ CONDITION ]]|[Extended test construct]]|
 |Array[[arrays#^ARRAYREF|1]=element1|[Array initialization]]|
-|[[brief-introduction-to-regular-expressions#^BRACKETSREF|a-z]|[Range of characters]] within a [[../advanced-topics/regexp#^REGEXREF|Regular Expression]]|
+|[[brief-introduction-to-regular-expressions#^BRACKETSREF|a-z]|[Range of characters]] within a [[regexp#^REGEXREF|Regular Expression]]|
 |||
 |Curly Brackets||
 |${variable}|[[parameter-substitution#^PARAMSUBREF|Parameter substitution]]|
