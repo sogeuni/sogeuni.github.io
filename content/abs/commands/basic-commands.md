@@ -298,7 +298,7 @@ If a file has the c (compress) attribute set, then it will automatically be comp
 
 ## ln
 
-Creates links to pre-existings files. A "link" is a reference to a file, an alternate name for it. The **ln** command permits referencing the linked file by more than one name and is a superior alternative to aliasing (see [[othertypesv#^EX18|Example 4-6]]).
+Creates links to pre-existings files. A "link" is a reference to a file, an alternate name for it. The **ln** command permits referencing the linked file by more than one name and is a superior alternative to aliasing (see [[example 4-6|Example 4-6]]).
 
 The **ln** creates only a reference, a pointer to the file only a few bytes in size.
 
