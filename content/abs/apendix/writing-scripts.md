@@ -302,7 +302,7 @@ Write a script to continually monitor all running processes and to keep track of
 
 **Strip Comments**
 
-Strip all comments from a shell script whose name is specified on the command-line. Note that the initial [[../introduction/starting-off-with-a-sha-bang#^SHABANGREF|#! line]] must not be stripped out.
+Strip all comments from a shell script whose name is specified on the command-line. Note that the initial [[../introduction/sha-bang#^SHABANGREF|#! line]] must not be stripped out.
 
 **Strip HTML Tags**
 

@@ -44,7 +44,7 @@ cat $filename 2>/dev/null >/dev/null
 #     also works, as Baris Cicek points out.
 ```
 
-Deleting contents of a file, but preserving the file itself, with all attendant permissions (from [[../introduction/starting-off-with-a-sha-bang#^EX1|Example 2-1]] and [[../introduction/starting-off-with-a-sha-bang#^EX2|Example 2-3]]):
+Deleting contents of a file, but preserving the file itself, with all attendant permissions (from [[../example/example 2-1|Example 2-1]] and [[../example/example 2-3|Example 2-3]]):
 
 ```bash
 cat /dev/null > /var/log/messages

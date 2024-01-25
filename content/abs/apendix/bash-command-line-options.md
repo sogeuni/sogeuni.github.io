@@ -20,7 +20,7 @@ _Bash_ itself has a number of command-line options. Here are some of the more us
 
 - --posix
 
-    _Forces Bash to conform to [[../introduction/starting-off-with-a-sha-bang#^POSIX2REF|POSIX]] mode._
+    _Forces Bash to conform to [[../introduction/sha-bang#^POSIX2REF|POSIX]] mode._
 
 - --version
 

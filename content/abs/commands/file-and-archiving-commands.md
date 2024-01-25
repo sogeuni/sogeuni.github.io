@@ -234,7 +234,7 @@ A new high-efficiency compression tool, backward compatible with _lzma_, and wit
 
 **file**
 
-A utility for identifying file types. The command **file file-name** will return a file specification for file-name, such as ascii text or data. It references the [[../introduction/starting-off-with-a-sha-bang#^magnumref|magic numbers]] found in /usr/share/magic, /etc/magic, or /usr/lib/magic, depending on the Linux/UNIX distribution.
+A utility for identifying file types. The command **file file-name** will return a file specification for file-name, such as ascii text or data. It references the [[../introduction/sha-bang#^magnumref|magic numbers]] found in /usr/share/magic, /etc/magic, or /usr/lib/magic, depending on the Linux/UNIX distribution.
 
 The -f option causes **file** to run in [[./time-date-commands#^BATCHPROCREF|batch]] mode, to read from a designated file a list of filenames to analyze. The -z option, when used on a compressed target file, forces an attempt to analyze the uncompressed file type.
 

@@ -166,4 +166,4 @@ if COMMAND
 >
 > --<cite>Landon Noll</cite>
 
-[^1]: In this context, "magic numbers" have an entirely different meaning than the [[../introduction/starting-off-with-a-sha-bang#^magnumref|magic numbers]] used to designate file types.
+[^1]: In this context, "magic numbers" have an entirely different meaning than the [[../introduction/sha-bang#^magnumref|magic numbers]] used to designate file types.
