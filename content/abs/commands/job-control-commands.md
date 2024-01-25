@@ -7,10 +7,10 @@ Certain of the following job control commands take a _job identifier_ as an argu
 
 **jobs**
 
-Lists the jobs running in the background, giving the _job number_. Not as useful as [[./system-and-administrative-commands#^PPSSREF|ps]].
+Lists the jobs running in the background, giving the _job number_. Not as useful as [[system-and-administrative-commands#^PPSSREF|ps]].
 
 > [!note]
-> It is all too easy to confuse _jobs_ and _processes_. Certain [[./internal-commands-and-builtins|builtins]], such as **kill**, **disown**, and **wait** accept either a job number or a process number as an argument. The [[job-control-commands#^FGREF|fg]], [[job-control-commands#^BGREF|bg]] and **jobs** commands accept only a job number.
+> It is all too easy to confuse _jobs_ and _processes_. Certain [[internal-commands-and-builtins|builtins]], such as **kill**, **disown**, and **wait** accept either a job number or a process number as an argument. The [[job-control-commands#^FGREF|fg]], [[job-control-commands#^BGREF|bg]] and **jobs** commands accept only a job number.
 >
 > ```bash
 > bash$ sleep 100 &
@@ -20,7 +20,7 @@ Lists the jobs running in the background, giving the _job number_. Not as useful
 > [1]+  Running                 sleep 100 &
 > ```
 >
-> "1" is the job number (jobs are maintained by the current shell). "1384" is the [[../beyond-the-basic/another-look-at-variables#^PPIDREF|PID]] or _process ID number_ (processes are maintained by the system). To kill this job/process, either a **kill %1** or a **kill 1384** works.
+> "1" is the job number (jobs are maintained by the current shell). "1384" is the [[another-look-at-variables#^PPIDREF|PID]] or _process ID number_ (processes are maintained by the system). To kill this job/process, either a **kill %1** or a **kill 1384** works.
 >
 > _Thanks, S.C._
 
@@ -129,7 +129,7 @@ Optionally, **wait** can take a _job identifier_ as an argument, for example, _w
 >                
 > ```
 >
-> [[../advanced-topics/io-redirection|Redirecting]] the output of the command to a file or even to /dev/null also takes care of this problem.|
+> [[io-redirection|Redirecting]] the output of the command to a file or even to /dev/null also takes care of this problem.|
 
 **suspend**
 
@@ -151,7 +151,7 @@ This capability is of relatively limited value, since it is not common to profil
 
 **kill**
 
-Forcibly terminate a process by sending it an appropriate _terminate_ signal (see [[./system-and-administrative-commands#^KILLPROCESS|Example 17-6]]).
+Forcibly terminate a process by sending it an appropriate _terminate_ signal (see [[system-and-administrative-commands#^KILLPROCESS|Example 17-6]]).
 
 ###### Example 15-27. A script that kills itself
 
@@ -179,14 +179,14 @@ exit 0   # Normal exit? No!
 ```
 
 > [!note]
-> **kill -l** lists all the [[../advanced-topics/debugging#^SIGNALD|signals]] (as does the file /usr/include/asm/signal.h). A **kill -9** is a _sure kill_, which will usually terminate a process that stubbornly refuses to die with a plain **kill**. Sometimes, a **kill -15** works. A _zombie_ process, that is, a child process that has terminated, but that the [[./internal-commands-and-builtins#^FORKREF|parent process]] has not (yet) killed, cannot be killed by a logged-on user -- you can't kill something that is already dead -- but **init** will generally clean it up sooner or later.
+> **kill -l** lists all the [[debugging#^SIGNALD|signals]] (as does the file /usr/include/asm/signal.h). A **kill -9** is a _sure kill_, which will usually terminate a process that stubbornly refuses to die with a plain **kill**. Sometimes, a **kill -15** works. A _zombie_ process, that is, a child process that has terminated, but that the [[internal-commands-and-builtins#^FORKREF|parent process]] has not (yet) killed, cannot be killed by a logged-on user -- you can't kill something that is already dead -- but **init** will generally clean it up sooner or later.
 
 **killall**
 
-The **killall** command kills a running process by _name_, rather than by [[../basic/special-characters#^PROCESSIDREF|process ID]]. If there are multiple instances of a particular command running, then doing a _killall_ on that command will terminate them _all_.
+The **killall** command kills a running process by _name_, rather than by [[special-characters#^PROCESSIDREF|process ID]]. If there are multiple instances of a particular command running, then doing a _killall_ on that command will terminate them _all_.
 
 > [!note]
-> This refers to the **killall** command in /usr/bin, _not_ the [[./analyzing-a-system-script#^KILLALL2REF|killall script]] in /etc/rc.d/init.d.
+> This refers to the **killall** command in /usr/bin, _not_ the [[analyzing-a-system-script#^KILLALL2REF|killall script]] in /etc/rc.d/init.d.
 
 **command**
 
@@ -202,13 +202,13 @@ bash$ command ls
 
 **builtin**
 
-Invoking **builtin BUILTIN_COMMAND** runs the command _BUILTIN_COMMAND_ as a shell [[./internal-commands-and-builtins|builtin]], temporarily disabling both functions and external system commands with the same name.
+Invoking **builtin BUILTIN_COMMAND** runs the command _BUILTIN_COMMAND_ as a shell [[internal-commands-and-builtins|builtin]], temporarily disabling both functions and external system commands with the same name.
 
 **enable**
 
 This either enables or disables a shell builtin command. As an example, _enable -n kill_ disables the shell builtin [[job-control-commands#^KILLREF|kill]], so that when Bash subsequently encounters _kill_, it invokes the external command /bin/kill.
 
-The -a option to _enable_ lists all the shell builtins, indicating whether or not they are enabled. The -f filename option lets _enable_ load a [[./internal-commands-and-builtins|builtin]] as a shared library (DLL) module from a properly compiled object file. [^2].
+The -a option to _enable_ lists all the shell builtins, indicating whether or not they are enabled. The -f filename option lets _enable_ load a [[internal-commands-and-builtins|builtin]] as a shared library (DLL) module from a properly compiled object file. [^2].
 
 **autoload**
 
@@ -232,6 +232,6 @@ Note that _autoload_ is not a part of the core Bash installation. It needs to be
 
 [^2]: The C source for a number of loadable builtins is typically found in the /usr/share/doc/bash-?.??/functions directory.
 
-    Note that the -f option to **enable** is not [[../advanced-topics/portability-issues|portable]] to all systems.
+    Note that the -f option to **enable** is not [[portability-issues|portable]] to all systems.
 
 [^3]: The same effect as **autoload** can be achieved with [[typing-variables.html|typeset -fu]].

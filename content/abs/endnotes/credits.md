@@ -15,25 +15,25 @@ Paulo Marcel Coelho Aragao offered many corrections, both major and minor, and c
 
 I would like to especially thank _Patrick Callahan_, _Mike Novak_, and _Pal Domokos_ for catching bugs, pointing out ambiguities, and for suggesting clarifications and changes in the preliminary version (0.1) of this document. Their lively discussion of shell scripting and general documentation issues inspired me to try to make this document more readable.
 
-I'm grateful to Jim Van Zandt for pointing out errors and omissions in version 0.2 of this document. He also contributed an instructive [[../apendix/contributed-scripts#^ZFIFO|example script]].
+I'm grateful to Jim Van Zandt for pointing out errors and omissions in version 0.2 of this document. He also contributed an instructive [[contributed-scripts#^ZFIFO|example script]].
 
-Many thanks to [Jordi Sanfeliu](mailto:mikaku@fiwix.org) for giving permission to use his fine tree script ([[../apendix/contributed-scripts#^TREE|Example A-16]]), and to Rick Boivie for revising it.
+Many thanks to [Jordi Sanfeliu](mailto:mikaku@fiwix.org) for giving permission to use his fine tree script ([[contributed-scripts#^TREE|Example A-16]]), and to Rick Boivie for revising it.
 
-Likewise, thanks to [Michel Charpentier](mailto:charpov@cs.unh.edu) for permission to use his [[../commands/math-commands#^DCREF|dc]] factoring script ([[../commands/math-commands#^FACTR|Example 16-52]]).
+Likewise, thanks to [Michel Charpentier](mailto:charpov@cs.unh.edu) for permission to use his [[math-commands#^DCREF|dc]] factoring script ([[math-commands#^FACTR|Example 16-52]]).
 
-Kudos to [Noah Friedman](mailto:friedman@prep.ai.mit.edu) for permission to use his string function script ([[../apendix/contributed-scripts#^STRING|Example A-18]]).
+Kudos to [Noah Friedman](mailto:friedman@prep.ai.mit.edu) for permission to use his string function script ([[contributed-scripts#^STRING|Example A-18]]).
 
-[Emmanuel Rouat](mailto:emmanuel.rouat@wanadoo.fr) suggested corrections and additions on [[../beyond-the-basic/command-substitution#^COMMANDSUBREF|command substitution]], [[../advanced-topics/aliases|Chapter 25. Aliases]], and [[../apendix/parsing-and-managing-pathnames|path management]]. He also contributed a very nice sample .bashrc file ([[sample-bashrc-and-bash-profile-files.html|Appendix M]]).
+[Emmanuel Rouat](mailto:emmanuel.rouat@wanadoo.fr) suggested corrections and additions on [[command-substitution#^COMMANDSUBREF|command substitution]], [[aliases|Chapter 25. Aliases]], and [[parsing-and-managing-pathnames|path management]]. He also contributed a very nice sample .bashrc file ([[sample-bashrc-and-bash-profile-files.html|Appendix M]]).
 
-[Heiner Steven](mailto:heiner.steven@odn.de) kindly gave permission to use his base conversion script, [[../commands/math-commands#^BASE|Example 16-48]]. He also made a number of corrections and many helpful suggestions. Special thanks.
+[Heiner Steven](mailto:heiner.steven@odn.de) kindly gave permission to use his base conversion script, [[math-commands#^BASE|Example 16-48]]. He also made a number of corrections and many helpful suggestions. Special thanks.
 
-Rick Boivie contributed the delightfully recursive _pb.sh_ script ([[../advanced-topics/recursion-a-script-calling-itself#^PBOOK|Example 36-11]]), revised the _tree.sh_ script ([[../apendix/contributed-scripts#^TREE|Example A-16]]), and suggested performance improvements for the _monthlypmt.sh_ script ([[../commands/math-commands#^MONTHLYPMT|Example 16-47]]).
+Rick Boivie contributed the delightfully recursive _pb.sh_ script ([[recursion-a-script-calling-itself#^PBOOK|Example 36-11]]), revised the _tree.sh_ script ([[contributed-scripts#^TREE|Example A-16]]), and suggested performance improvements for the _monthlypmt.sh_ script ([[math-commands#^MONTHLYPMT|Example 16-47]]).
 
 Florian Wisser enlightened me on some of the fine points of testing strings (see [[other-comparison-operators#^STRTEST|Example 7-6]]), and on other matters.
 
-Oleg Philon sent suggestions concerning [[../commands/text-processing-commands#^CUTREF|cut]] and [[../commands/system-and-administrative-commands#^PIDOFREF|pidof]].
+Oleg Philon sent suggestions concerning [[text-processing-commands#^CUTREF|cut]] and [[system-and-administrative-commands#^PIDOFREF|pidof]].
 
-Michael Zick extended the [[../advanced-topics/arrays#^EMPTYARRAY|empty array]] example to demonstrate some surprising array properties. He also contributed the _isspammer_ scripts ([[../commands/communications-commands#^ISSPAMMER|Example 16-41]] and [[../apendix/contributed-scripts#^ISSPAMMER2|Example A-28]]).
+Michael Zick extended the [[arrays#^EMPTYARRAY|empty array]] example to demonstrate some surprising array properties. He also contributed the _isspammer_ scripts ([[communications-commands#^ISSPAMMER|Example 16-41]] and [[contributed-scripts#^ISSPAMMER2|Example A-28]]).
 
 Marc-Jano Knopp sent corrections and clarifications on DOS batch files.
 

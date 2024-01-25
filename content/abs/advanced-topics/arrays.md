@@ -112,7 +112,7 @@ base64_charset=( {A..Z} {a..z} {0..9} + / = )
 > # Thank you, Michael Zick, for pointing this out.
 > ```
 >
-> Once again this demonstrates that [[../basic/variables-and-parameters#^BVUNTYPED|Bash variables are untyped]].
+> Once again this demonstrates that [[variables-and-parameters#^BVUNTYPED|Bash variables are untyped]].
 
 ###### Example 27-2. Formatting a poem
 
@@ -213,7 +213,7 @@ echo ${#array2[*]}     # 3     (number of elements in array)
 exit
 ```
 
-Many of the standard [[../beyond-the-basic/manipulating-strings#^STRINGMANIP|string operations]] work on arrays.
+Many of the standard [[manipulating-strings#^STRINGMANIP|string operations]] work on arrays.
 
 ###### Example 27-4. String operations on arrays
 
@@ -338,7 +338,7 @@ exit 0
 #  Bash is more powerful than you think!
 ```
 
-[[../beyond-the-basic/command-substitution#^COMMANDSUBREF|Command substitution]] can construct the individual elements of an array.
+[[command-substitution#^COMMANDSUBREF|Command substitution]] can construct the individual elements of an array.
 
 ###### Example 27-5. Loading the contents of a script into an array
 
@@ -374,7 +374,7 @@ exit 0
 #+ complete with whitespace, line breaks, etc.
 ```
 
-In an array context, some Bash [[../commands/internal-commands-and-builtins|builtins]] have a slightly altered meaning. For example, [[../commands/internal-commands-and-builtins#^UNSETREF|unset]] deletes array elements, or even an entire array.
+In an array context, some Bash [[internal-commands-and-builtins|builtins]] have a slightly altered meaning. For example, [[internal-commands-and-builtins#^UNSETREF|unset]] deletes array elements, or even an entire array.
 
 ###### Example 27-6. Some special properties of arrays
 
@@ -608,7 +608,7 @@ echo "Elements in array10:  ${array10[@]}"
 exit
 ```
 
-The relationship of **`${array_name[@]}`** and **`${array_name[*]}`** is analogous to that between [[../beyond-the-basic/another-look-at-variables#^APPREF|$@ and $*]]. This powerful array notation has a number of uses.
+The relationship of **`${array_name[@]}`** and **`${array_name[*]}`** is analogous to that between [[another-look-at-variables#^APPREF|$@ and $*]]. This powerful array notation has a number of uses.
 
 ```bash
 # Copying an array.
@@ -640,7 +640,7 @@ array[${#array[*]}]="new element"
 ```
 
 > [!tip]
-> The **array=( element1 element2 ... elementN )** initialization operation, with the help of [[../beyond-the-basic/command-substitution#^COMMANDSUBREF|command substitution]], makes it possible to load the contents of a text file into an array.
+> The **array=( element1 element2 ... elementN )** initialization operation, with the help of [[command-substitution#^COMMANDSUBREF|command substitution]], makes it possible to load the contents of a text file into an array.
 >
 > ```bash
 > #!/bin/bash
@@ -1099,7 +1099,7 @@ exit 0
 
 --
 
-Embedded arrays in combination with [[./bash-version-2#^VARREFNEW|indirect references]] create some fascinating possibilities
+Embedded arrays in combination with [[bash-version-2#^VARREFNEW|indirect references]] create some fascinating possibilities
 
 ###### Example 27-12. Embedded arrays and indirect references
 
@@ -1357,7 +1357,7 @@ echo; echo
 exit $?
 ```
 
-Compare these array-based prime number generators with alternatives that do not use arrays, [[../apendix/contributed-scripts#^PRIMES|Example A-15]], and [[../commands/math-commands#^PRIMES2|Example 16-46]].
+Compare these array-based prime number generators with alternatives that do not use arrays, [[contributed-scripts#^PRIMES|Example A-15]], and [[math-commands#^PRIMES2|Example 16-46]].
 
 --
 
@@ -1708,15 +1708,15 @@ exit 0
 
 A two-dimensional array is essentially equivalent to a one-dimensional one, but with additional addressing modes for referencing and manipulating the individual elements by *row* and *column* position.
 
-For an even more elaborate example of simulating a two-dimensional array, see [[../apendix/contributed-scripts#^LIFESLOW|Example A-10]].
+For an even more elaborate example of simulating a two-dimensional array, see [[contributed-scripts#^LIFESLOW|Example A-10]].
 
 --
 
 For more interesting scripts using arrays, see:
 
-- [[../beyond-the-basic/command-substitution#^AGRAM2|Example 12-3]]
-- [[../commands/math-commands#^PRIMES2|Example 16-46]]
-- [[../apendix/contributed-scripts#^HASHEX2|Example A-22]]
-- [[../apendix/contributed-scripts#^HOMEWORK|Example A-44]]
-- [[../apendix/contributed-scripts#^QKY|Example A-41]]
-- [[../apendix/contributed-scripts#^NIM|Example A-42]]
+- [[command-substitution#^AGRAM2|Example 12-3]]
+- [[math-commands#^PRIMES2|Example 16-46]]
+- [[contributed-scripts#^HASHEX2|Example A-22]]
+- [[contributed-scripts#^HOMEWORK|Example A-44]]
+- [[contributed-scripts#^QKY|Example A-41]]
+- [[contributed-scripts#^NIM|Example A-42]]

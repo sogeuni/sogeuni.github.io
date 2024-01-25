@@ -5,7 +5,7 @@ title: 9. Another Look at Variables
 
 ## Internal Variables
 
-_[[../commands/internal-commands-and-builtins|Builtin]] variables:_
+_[[internal-commands-and-builtins|Builtin]] variables:_
 
 variables affecting bash script behavior
 
@@ -24,9 +24,9 @@ An [[othertypesv#^ENVREF|environmental variable]] pointing to a Bash startup fil
 
 $BASH_SUBSHELL
 
-A variable indicating the [[../advanced-topics/subshells#^SUBSHELLSREF|subshell]] level. This is a new addition to Bash, [[bashver3#^BASH3REF|version 3]].
+A variable indicating the [[subshells#^SUBSHELLSREF|subshell]] level. This is a new addition to Bash, [[bashver3#^BASH3REF|version 3]].
 
-See [[../advanced-topics/subshells#^SUBSHELL|Example 21-1]] for usage.
+See [[subshells#^SUBSHELL|Example 21-1]] for usage.
 
 $BASHPID
 
@@ -65,7 +65,7 @@ echo
 
 $BASH_VERSINFO\[n]
 
-A 6-element [[../advanced-topics/arrays#^ARRAYREF|array]] containing version information about the installed release of Bash. This is similar to $BASH_VERSION, below, but a bit more detailed.
+A 6-element [[arrays#^ARRAYREF|array]] containing version information about the installed release of Bash. This is similar to $BASH_VERSION, below, but a bit more detailed.
 
 ```bash
 # Bash version info:
@@ -104,7 +104,7 @@ Checking `$BASH_VERSION` is a good method of determining which shell is running.
 
 $CDPATH
 
-A colon-separated list of search paths available to the [[../commands/internal-commands-and-builtins#^CDREF|cd]] command, similar in function to the [[another-look-at-variables#^PATHREF|$PATH]] variable for binaries. The $CDPATH variable may be set in the local [[../apendix/sample-bashrc-and-bash-profile-files#^BASHRC|~/.bashrc]] file.
+A colon-separated list of search paths available to the [[internal-commands-and-builtins#^CDREF|cd]] command, similar in function to the [[another-look-at-variables#^PATHREF|$PATH]] variable for binaries. The $CDPATH variable may be set in the local [[sample-bashrc-and-bash-profile-files#^BASHRC|~/.bashrc]] file.
 
 ```bash
 bash$ cd bash-doc
@@ -123,9 +123,9 @@ bash$ echo $PWD
 
 $DIRSTACK
 
-The top value in the directory stack [^1] (affected by [[../commands/internal-commands-and-builtins#^PUSHDREF|pushd]] and [[../commands/internal-commands-and-builtins#^POPDREF|popd]])
+The top value in the directory stack [^1] (affected by [[internal-commands-and-builtins#^PUSHDREF|pushd]] and [[internal-commands-and-builtins#^POPDREF|popd]])
 
-This builtin variable corresponds to the [[../commands/internal-commands-and-builtins#^DIRSD|dirs]] command, however **dirs** shows the entire contents of the directory stack.
+This builtin variable corresponds to the [[internal-commands-and-builtins#^DIRSD|dirs]] command, however **dirs** shows the entire contents of the directory stack.
 
 $EDITOR
 
@@ -135,7 +135,7 @@ $EUID
 
 "effective" user ID number
 
-Identification number of whatever identity the current user has assumed, perhaps by means of [[../commands/system-and-administrative-commands#^SUREF|su]].
+Identification number of whatever identity the current user has assumed, perhaps by means of [[system-and-administrative-commands#^SUREF|su]].
 
 > [!caution] The `$EUID` is not necessarily the same as the [[another-look-at-variables#^UIDREF|$UID]].
 
@@ -155,7 +155,7 @@ echo "FUNCNAME = $FUNCNAME"        # FUNCNAME =
                                    # Null value outside a function.
 ```
 
-See also [[../apendix/contributed-scripts#^USEGETOPT|Example A-50]].
+See also [[contributed-scripts#^USEGETOPT|Example A-50]].
 
 $GLOBIGNORE
 
@@ -165,7 +165,7 @@ $GROUPS
 
 Groups current user belongs to
 
-This is a listing (array) of the group id numbers for current user, as recorded in [[../apendix/important-files#^DATAFILESREF1|/etc/passwd]] and /etc/group.
+This is a listing (array) of the group id numbers for current user, as recorded in [[important-files#^DATAFILESREF1|/etc/passwd]] and /etc/group.
 
 ```bash
 root# echo $GROUPS
@@ -183,11 +183,11 @@ root# echo ${GROUPS[5]}
 
 $HOME
 
-Home directory of the user, usually /home/username (see [[./parameter-substitution#^EX6|Example 10-7]])
+Home directory of the user, usually /home/username (see [[parameter-substitution#^EX6|Example 10-7]])
 
 $HOSTNAME
 
-The [[../commands/system-and-administrative-commands#^HNAMEREF|hostname]] command assigns the system host name at bootup in an init script. However, the gethostname() function sets the Bash internal variable $HOSTNAME. See also [[./parameter-substitution#^EX6|Example 10-7]].
+The [[system-and-administrative-commands#^HNAMEREF|hostname]] command assigns the system host name at bootup in an init script. However, the gethostname() function sets the Bash internal variable $HOSTNAME. See also [[parameter-substitution#^EX6|Example 10-7]].
 
 $HOSTTYPE
 
@@ -204,9 +204,9 @@ $IFS
 
 internal field separator
 
-This variable determines how Bash recognizes [[../basic/special-characters#^FIELDREF|fields]], or word boundaries, when it interprets character strings.
+This variable determines how Bash recognizes [[special-characters#^FIELDREF|fields]], or word boundaries, when it interprets character strings.
 
-`$IFS` defaults to [[../basic/special-characters#Whitespace|whitespace]] (space, tab, and newline), but may be changed, for example, to parse a comma-separated data file. Note that [[another-look-at-variables#^APPREF|$*]] uses the first character held in $IFS. See [[../basic/quoting#^WEIRDVARS|Example 5-1]].
+`$IFS` defaults to [[special-characters#Whitespace|whitespace]] (space, tab, and newline), but may be changed, for example, to parse a comma-separated data file. Note that [[another-look-at-variables#^APPREF|$*]] uses the first character held in $IFS. See [[quoting#^WEIRDVARS|Example 5-1]].
 
 ```bash
 bash$ echo "$IFS"
@@ -229,7 +229,7 @@ w:x:y:z
 	      
 ```
 
-Set $IFS to eliminate whitespace in [[../basic/special-characters#^PATHNAMEREF|pathnames]].
+Set $IFS to eliminate whitespace in [[special-characters#^PATHNAMEREF|pathnames]].
 
 ```bash
 IFS="$(printf '\n\t')"   # Per David Wheeler.
@@ -332,7 +332,7 @@ IFS="$(printf '\n\t')"   # Per David Wheeler.
 >
 > (Many thanks, Stéphane Chazelas, for clarification and above examples.)
 >
-> See also [[../commands/communications-commands#^ISSPAMMER|Example 16-41]], [[./loops#^BINGREP|Example 11-8]], and [[../advanced-topics/here-strings#^MAILBOXGREP|Example 19-14]] for instructive examples of using $IFS.
+> See also [[communications-commands#^ISSPAMMER|Example 16-41]], [[loops#^BINGREP|Example 11-8]], and [[here-strings#^MAILBOXGREP|Example 19-14]] for instructive examples of using $IFS.
 
 $IGNOREEOF
 
@@ -340,7 +340,7 @@ Ignore EOF: how many end-of-files (control-D) the shell will ignore before loggi
 
 $LC_COLLATE
 
-Often set in the [[../apendix/sample-bashrc-and-bash-profile-files|.bashrc]] or /etc/profile files, this variable controls collation order in filename expansion and pattern matching. If mishandled, LC_COLLATE can cause unexpected results in [[../advanced-topics/globbing|filename globbing]].
+Often set in the [[sample-bashrc-and-bash-profile-files|.bashrc]] or /etc/profile files, this variable controls collation order in filename expansion and pattern matching. If mishandled, LC_COLLATE can cause unexpected results in [[globbing|filename globbing]].
 
 > [!note]
 > As of version 2.05 of Bash, filename globbing no longer distinguishes between lowercase and uppercase letters in a character range between brackets. For example, **ls [A-M]*** would match both File1.txt and file1.txt. To revert to the customary behavior of bracket matching, set LC_COLLATE to C by an **export LC_COLLATE=C** in /etc/profile and/or ~/.bashrc.
@@ -390,7 +390,7 @@ $PATH
 
 Path to binaries, usually /usr/bin/, /usr/X11R6/bin/, /usr/local/bin, etc.
 
-When given a command, the shell automatically does a hash table search on the directories listed in the _path_ for the executable. The path is stored in the [[othertypesv#^ENVREF|environmental variable]], $PATH, a list of directories, separated by colons. Normally, the system stores the $PATH definition in /etc/profile and/or [[../apendix/sample-bashrc-and-bash-profile-files|~/.bashrc]] (see [[../apendix/important-files|Appendix H]]).
+When given a command, the shell automatically does a hash table search on the directories listed in the _path_ for the executable. The path is stored in the [[othertypesv#^ENVREF|environmental variable]], $PATH, a list of directories, separated by colons. Normally, the system stores the $PATH definition in /etc/profile and/or [[sample-bashrc-and-bash-profile-files|~/.bashrc]] (see [[important-files|Appendix H]]).
 
 ```bash
 bash$ echo $PATH
@@ -403,7 +403,7 @@ bash$ echo $PATH
 
 $PIPESTATUS
 
-[[../advanced-topics/arrays#^ARRAYREF|Array]] variable holding [[exit-and-exit-status#^EXITSTATUSREF|exit status]](es) of last executed _foreground_ [[../basic/special-characters#^PIPEREF|pipe]].
+[[arrays#^ARRAYREF|Array]] variable holding [[exit-and-exit-status#^EXITSTATUSREF|exit status]](es) of last executed _foreground_ [[special-characters#^PIPEREF|pipe]].
 
 ```bash
 bash$ echo $PIPESTATUS
@@ -455,7 +455,7 @@ The members of the $PIPESTATUS array hold the exit status of each respective com
 > 
 > ```
 >
-> Chet Ramey attributes the above output to the behavior of [[../commands/basic-commands#^LSREF|ls]]. If _ls_ writes to a _pipe_ whose output is not read, then _SIGPIPE_ kills it, and its [[exit-and-exit-status#^EXITSTATUSREF|exit status]] is 141. Otherwise its exit status is 0, as expected. This likewise is the case for [[../commands/text-processing-commands#^TRREF|tr]].
+> Chet Ramey attributes the above output to the behavior of [[basic-commands#^LSREF|ls]]. If _ls_ writes to a _pipe_ whose output is not read, then _SIGPIPE_ kills it, and its [[exit-and-exit-status#^EXITSTATUSREF|exit status]] is 141. Otherwise its exit status is 0, as expected. This likewise is the case for [[text-processing-commands#^TRREF|tr]].
 
 > [!note]
 > $PIPESTATUS is a "volatile" variable. It needs to be captured immediately after the pipe in question, before any other command intervenes.
@@ -479,7 +479,7 @@ $PPID
 
 The $PPID of a process is the process ID (pid) of its parent process. [^2]
 
-Compare this with the [[../commands/system-and-administrative-commands#^PIDOFREF|pidof]] command.
+Compare this with the [[system-and-administrative-commands#^PIDOFREF|pidof]] command.
 
 $PROMPT_COMMAND
 
@@ -495,11 +495,11 @@ The secondary prompt, seen when additional input is expected. It displays as ">"
 
 $PS3
 
-The tertiary prompt, displayed in a [[./testing-and-branching#^SELECTREF|select]] loop (see [[./testing-and-branching#^EX31|Example 11-30]]).
+The tertiary prompt, displayed in a [[testing-and-branching#^SELECTREF|select]] loop (see [[testing-and-branching#^EX31|Example 11-30]]).
 
 $PS4
 
-The quartenary prompt, shown at the beginning of each line of output when invoking a script with the -x _[[../advanced-topics/options#^OPTIONSREF|verbose trace]_ [option]]. It displays as "+".
+The quartenary prompt, shown at the beginning of each line of output when invoking a script with the -x _[[options#^OPTIONSREF|verbose trace]_ [option]]. It displays as "+".
 
 As a debugging aid, it may be useful to embed diagnostic information in $PS4.
 
@@ -514,7 +514,7 @@ $PWD
 
 Working directory (directory you are in at the time)
 
-This is the analog to the [[../commands/internal-commands-and-builtins#^PWD2REF|pwd]] builtin command.
+This is the analog to the [[internal-commands-and-builtins#^PWD2REF|pwd]] builtin command.
 
 ```bash
 #!/bin/bash
@@ -561,7 +561,7 @@ exit $result
 
 $REPLY
 
-The default value when a variable is not supplied to [[../commands/internal-commands-and-builtins#^READREF|read]]. Also applicable to [[./testing-and-branching#^SELECTREF|select]] menus, but only supplies the item number of the variable chosen, not the value of the variable itself.
+The default value when a variable is not supplied to [[internal-commands-and-builtins#^READREF|read]]. Also applicable to [[testing-and-branching#^SELECTREF|select]] menus, but only supplies the item number of the variable chosen, not the value of the variable itself.
 
 ```bash
 #!/bin/bash
@@ -627,7 +627,7 @@ exit 0
 
 $SHELLOPTS
 
-The list of enabled shell [[../advanced-topics/options#^OPTIONSREF|options]], a readonly variable.
+The list of enabled shell [[options#^OPTIONSREF|options]], a readonly variable.
 
 ```bash
 bash$ echo $SHELLOPTS
@@ -639,13 +639,13 @@ $SHLVL
 
 Shell level, how deeply Bash is nested. [^3] If, at the command-line, $SHLVL is 1, then in a script it will increment to 2.
 
-> [!note] This variable is [[../advanced-topics/subshells#^SUBSHNLEVREF|_not_ affected by subshells]]. Use [[another-look-at-variables#^BASHSUBSHELLREF|$BASH_SUBSHELL]] when you need an indication of subshell nesting.
+> [!note] This variable is [[subshells#^SUBSHNLEVREF|_not_ affected by subshells]]. Use [[another-look-at-variables#^BASHSUBSHELLREF|$BASH_SUBSHELL]] when you need an indication of subshell nesting.
 
 $TMOUT
 
 If the _$TMOUT_ environmental variable is set to a non-zero value time, then the shell prompt will time out after $time seconds. This will cause a logout.
 
-As of version 2.05b of Bash, it is now possible to use _$TMOUT_ in a script in combination with [[../commands/internal-commands-and-builtins#^READREF|read]].
+As of version 2.05b of Bash, it is now possible to use _$TMOUT_ in a script in combination with [[internal-commands-and-builtins#^READREF|read]].
 
 ```bash
 # Works in scripts for Bash, versions 2.05b and later.
@@ -665,7 +665,7 @@ fi
 echo "Your favorite song is $song."
 ```
 
-There are other, more complex, ways of implementing timed input in a script. One alternative is to set up a timing loop to signal the script when it times out. This also requires a signal handling routine to [[../advanced-topics/debugging#^TRAPREF1|trap]] (see [[../advanced-topics/debugging#^EX76|Example 32-5]]) the interrupt generated by the timing loop (whew!).
+There are other, more complex, ways of implementing timed input in a script. One alternative is to set up a timing loop to signal the script when it times out. This also requires a signal handling routine to [[debugging#^TRAPREF1|trap]] (see [[debugging#^EX76|Example 32-5]]) the interrupt generated by the timing loop (whew!).
 
 ###### Example 9-2. Timed Input
 
@@ -730,7 +730,7 @@ PrintAnswer
 exit 0
 ```
 
-An alternative is using [[../commands/system-and-administrative-commands#^STTYREF|stty]].
+An alternative is using [[system-and-administrative-commands#^STTYREF|stty]].
 
 ###### Example 9-3. Once more, timed input
 
@@ -777,7 +777,7 @@ echo
 exit 0
 ```
 
-Perhaps the simplest method is using the -t option to [[../commands/internal-commands-and-builtins#^READREF|read]].
+Perhaps the simplest method is using the -t option to [[internal-commands-and-builtins#^READREF|read]].
 
 ###### Example 9-4. Timed *read*
 
@@ -810,9 +810,9 @@ $UID
 
 User ID number
 
-Current user's user identification number, as recorded in [[../apendix/important-files#^DATAFILESREF1|/etc/passwd]]
+Current user's user identification number, as recorded in [[important-files#^DATAFILESREF1|/etc/passwd]]
 
-This is the current user's real id, even if she has temporarily assumed another identity through [[../commands/system-and-administrative-commands#^SUREF|su]]. $UID is a readonly variable, not subject to change from the command line or within a script, and is the counterpart to the [[../commands/system-and-administrative-commands#^IDREF|id]] builtin.
+This is the current user's real id, even if she has temporarily assumed another identity through [[system-and-administrative-commands#^SUREF|su]]. $UID is a readonly variable, not subject to change from the command line or within a script, and is the counterpart to the [[system-and-administrative-commands#^IDREF|id]] builtin.
 
 ###### Example 9-5. Am I root?
 
@@ -848,10 +848,10 @@ else
 fi
 ```
 
-See also [[../example/example 2-3|Example 2-3]].
+See also [[example 2-3|Example 2-3]].
 
 > [!note]
-> The variables $ENV, $LOGNAME, $MAIL, $TERM, $USER, and $USERNAME are _not_ Bash [[../commands/internal-commands-and-builtins|builtins]]. These are, however, often set as [[othertypesv#^ENVREF|environmental variables]] in one of the [[../apendix/important-files#^FILESREF1|Bash]] or _login_ startup files. $SHELL, the name of the user's login shell, may be set from /etc/passwd or in an "init" script, and it is likewise not a Bash builtin.
+> The variables $ENV, $LOGNAME, $MAIL, $TERM, $USER, and $USERNAME are _not_ Bash [[internal-commands-and-builtins|builtins]]. These are, however, often set as [[othertypesv#^ENVREF|environmental variables]] in one of the [[important-files#^FILESREF1|Bash]] or _login_ startup files. $SHELL, the name of the user's login shell, may be set from /etc/passwd or in an "init" script, and it is likewise not a Bash builtin.
 >
 > ```bash
 > tcsh% echo $LOGNAME
@@ -874,11 +874,11 @@ See also [[../example/example 2-3|Example 2-3]].
 
 $0, $1, $2, etc.
 
-Positional parameters, passed from command line to script, passed to a function, or [[../commands/internal-commands-and-builtins#^SETREF|set]] to a variable (see [[othertypesv#^EX17|Example 4-5]] and [[../commands/internal-commands-and-builtins#^EX34|Example 15-16]])
+Positional parameters, passed from command line to script, passed to a function, or [[internal-commands-and-builtins#^SETREF|set]] to a variable (see [[othertypesv#^EX17|Example 4-5]] and [[internal-commands-and-builtins#^EX34|Example 15-16]])
 
 $#
 
-Number of command-line arguments [[../advanced-topics/shell-wrappers#^EX4|^4] or positional parameters (see [Example 36-2]])
+Number of command-line arguments [[shell-wrappers#^EX4|^4] or positional parameters (see [Example 36-2]])
 
 $*
 
@@ -963,7 +963,7 @@ echo "$@"    # 3 4 5
 # "$@" then contains the remaining parameters.
 ```
 
-The $@ special parameter finds use as a tool for filtering input into shell scripts. The **cat "$@"** construction accepts input to a script either from stdin or from files given as parameters to the script. See [[../commands/text-processing-commands#^ROT13|Example 16-24]] and [[../commands/text-processing-commands#^CRYPTOQUOTE|Example 16-25]].
+The $@ special parameter finds use as a tool for filtering input into shell scripts. The **cat "$@"** construction accepts input to a script either from stdin or from files given as parameters to the script. See [[text-processing-commands#^ROT13|Example 16-24]] and [[text-processing-commands#^CRYPTOQUOTE|Example 16-25]].
 
 > [!caution] The $* and $@ parameters sometimes display inconsistent and puzzling behavior, depending on the setting of [[another-look-at-variables#^IFSREF|$IFS]].
 
@@ -1149,13 +1149,13 @@ exit
 
 $-
 
-Flags passed to script (using [[../commands/internal-commands-and-builtins#^SETREF|set]]). See [[../commands/internal-commands-and-builtins#^EX34|Example 15-16]].
+Flags passed to script (using [[internal-commands-and-builtins#^SETREF|set]]). See [[internal-commands-and-builtins#^EX34|Example 15-16]].
 
-> [!caution] This was originally a _ksh_ construct adopted into Bash, and unfortunately it does not seem to work reliably in Bash scripts. One possible use for it is to have a script [[../advanced-topics/interactive-and-non-interactive-shell-and-scripts#^IITEST|self-test whether it is interactive]].
+> [!caution] This was originally a _ksh_ construct adopted into Bash, and unfortunately it does not seem to work reliably in Bash scripts. One possible use for it is to have a script [[interactive-and-non-interactive-shell-and-scripts#^IITEST|self-test whether it is interactive]].
 
 $!
 
-[[../basic/special-characters#^PROCESSIDDEF|PID]] (process ID) of last job run in background
+[[special-characters#^PROCESSIDDEF|PID]] (process ID) of last job run in background
 
 ```bash
 LOG=$0.log
@@ -1259,15 +1259,15 @@ echo $_              #  :
 
 $?
 
-[[exit-and-exit-status#^EXITSTATUSREF|Exit status]] of a command, [[../advanced-topics/functions|function]], or the script itself (see [[../advanced-topics/complex-functions-and-function-complexities#^MAX|Example 24-7]])
+[[exit-and-exit-status#^EXITSTATUSREF|Exit status]] of a command, [[functions|function]], or the script itself (see [[complex-functions-and-function-complexities#^MAX|Example 24-7]])
 
 `$$`
 
-Process ID (_PID_) of the script itself. [[../advanced-topics/debugging#^ONLINE|^5] The $ variable often finds use in scripts to construct "unique" temp file names (see [Example 32-6]], [[../commands/file-and-archiving-commands#^DERPM|Example 16-31]], and [[../commands/job-control-commands#^SELFDESTRUCT|Example 15-27]]). This is usually simpler than invoking [[../commands/file-and-archiving-commands#^MKTEMPREF|mktemp]].
+Process ID (_PID_) of the script itself. [[debugging#^ONLINE|^5] The $ variable often finds use in scripts to construct "unique" temp file names (see [Example 32-6]], [[file-and-archiving-commands#^DERPM|Example 16-31]], and [[job-control-commands#^SELFDESTRUCT|Example 15-27]]). This is usually simpler than invoking [[file-and-archiving-commands#^MKTEMPREF|mktemp]].
 
 ## Typing variables: **declare** or **typeset**
 
-The _declare_ or _typeset_ [[../commands/internal-commands-and-builtins|builtins]], which are exact synonyms, permit modifying the properties of variables. This is a very weak form of the _typing_ [^6] available in certain programming languages. The _declare_ command is specific to version 2 or later of Bash. The _typeset_ command also works in ksh scripts.
+The _declare_ or _typeset_ [[internal-commands-and-builtins|builtins]], which are exact synonyms, permit modifying the properties of variables. This is a very weak form of the _typing_ [^6] available in certain programming languages. The _declare_ command is specific to version 2 or later of Bash. The _typeset_ command also works in ksh scripts.
 
 **declare/typeset options**
 
@@ -1298,7 +1298,7 @@ echo "Number = $number"     # Number = 0
 # Tries to evaluate the string "three" as an integer.
 ```
 
-Certain arithmetic operations are permitted for declared integer variables without the need for [[../commands/complex-commands#^EXPRREF|expr]] or [[../commands/internal-commands-and-builtins#^LETREF|let]].
+Certain arithmetic operations are permitted for declared integer variables without the need for [[complex-commands#^EXPRREF|expr]] or [[internal-commands-and-builtins#^LETREF|let]].
 
 ```bash
 n=6/3
@@ -1315,7 +1315,7 @@ echo "n = $n"       # n = 2
 declare -a indices
 ```
 
-The variable _indices_ will be treated as an [[../advanced-topics/arrays#^ARRAYREF|array]].
+The variable _indices_ will be treated as an [[arrays#^ARRAYREF|array]].
 
 -f _function(s)_
 
@@ -1323,7 +1323,7 @@ The variable _indices_ will be treated as an [[../advanced-topics/arrays#^ARRAYR
 declare -f
 ```
 
-A **declare -f** line with no arguments in a script causes a listing of all the [[../advanced-topics/functions|functions]] previously defined in that script.
+A **declare -f** line with no arguments in a script causes a listing of all the [[functions|functions]] previously defined in that script.
 
 ```bash
 declare -f function_name
@@ -1331,7 +1331,7 @@ declare -f function_name
 
 A **declare -f function_name** in a script lists just the function named.
 
--x [[../commands/internal-commands-and-builtins#^EXPORTREF|export]]
+-x [[internal-commands-and-builtins#^EXPORTREF|export]]
 
 ```bash
 declare -x var3
@@ -1384,7 +1384,7 @@ exit 0                        # Script will not exit here.
 ```
 
 > [!caution]
-> Using the _declare_ builtin restricts the [[../advanced-topics/subshells#^SCOPEREF|scope]] of a variable.
+> Using the _declare_ builtin restricts the [[subshells#^SCOPEREF|scope]] of a variable.
 >
 > ```bash
 > foo ()
@@ -1422,7 +1422,7 @@ exit 0                        # Script will not exit here.
 
 ### 9.2.1. Another use for _declare_
 
-The _declare_ command can be helpful in identifying variables, [[othertypesv#^ENVREF|environmental]] or otherwise. This can be especially useful with [[../advanced-topics/arrays#^ARRAYREF|arrays]].
+The _declare_ command can be helpful in identifying variables, [[othertypesv#^ENVREF|environmental]] or otherwise. This can be especially useful with [[arrays#^ARRAYREF|arrays]].
 
 ```bash
 bash$ declare | grep HOME
@@ -1448,7 +1448,7 @@ Colors=([0]="purple" [1]="reddish-orange" [2]="light green")
 >
 > --<cite>John von Neumann</cite>
 
-$RANDOM is an internal Bash [[../advanced-topics/functions|function]] (not a constant) that returns a _pseudorandom_ [^7] integer in the range 0 - 32767. It should _not_ be used to generate an encryption key.
+$RANDOM is an internal Bash [[functions|function]] (not a constant) that returns a _pseudorandom_ [^7] integer in the range 0 - 32767. It should _not_ be used to generate an encryption key.
 
 ###### Example 9-11. Generating random numbers
 
@@ -2110,11 +2110,11 @@ exit 0
 ```
 
 > [!note]
-> The /dev/urandom pseudo-device file provides a method of generating much more "random" pseudorandom numbers than the $RANDOM variable. **dd if=/dev/urandom of=targetfile bs=1 count=XX** creates a file of well-scattered pseudorandom numbers. However, assigning these numbers to a variable in a script requires a workaround, such as filtering through [[../commands/miscellaneous-commands#^ODREF|od]] (as in above example, [[../commands/text-processing-commands#^RND|Example 16-14]], and [[../apendix/contributed-scripts#^INSERTIONSORT|Example A-36]]), or even piping to [[../commands/file-and-archiving-commands#^MD5SUMREF|md5sum]] (see [[../advanced-topics/colorizing-scripts#^HORSERACE|Example 36-16]]).
+> The /dev/urandom pseudo-device file provides a method of generating much more "random" pseudorandom numbers than the $RANDOM variable. **dd if=/dev/urandom of=targetfile bs=1 count=XX** creates a file of well-scattered pseudorandom numbers. However, assigning these numbers to a variable in a script requires a workaround, such as filtering through [[miscellaneous-commands#^ODREF|od]] (as in above example, [[text-processing-commands#^RND|Example 16-14]], and [[contributed-scripts#^INSERTIONSORT|Example A-36]]), or even piping to [[file-and-archiving-commands#^MD5SUMREF|md5sum]] (see [[colorizing-scripts#^HORSERACE|Example 36-16]]).
 >
 > There are also other ways to generate pseudorandom numbers in a script. **Awk** provides a convenient means of doing this.
 >
-> **Example 9-17. Pseudorandom numbers, using [[../apendix/awk#^AWKREF|awk]]**
+> **Example 9-17. Pseudorandom numbers, using [[awk#^AWKREF|awk]]**
 >
 > ```bash
 > #!/bin/bash
@@ -2148,19 +2148,19 @@ exit 0
 > # 3) Same as exercise #2, above, but generate random integers this time.
 > ```
 >
-> The [[../commands/time-date-commands#^DATEREF|date]] command also lends itself to [[../commands/time-date-commands#^DATERANDREF|generating pseudorandom integer sequences]].
+> The [[time-date-commands#^DATEREF|date]] command also lends itself to [[time-date-commands#^DATERANDREF|generating pseudorandom integer sequences]].
 
 [^1]: A _stack register_ is a set of consecutive memory locations, such that the values stored (_pushed_) are retrieved (_popped_) in _reverse_ order. The last value stored is the first retrieved. This is sometimes called a _LIFO_ (_last-in-first-out_) or _pushdown_ stack.
 
 [^2]: The PID of the currently running script is `$$`, of course.
 
-[^3]: Somewhat analogous to [[../advanced-topics/local-variables#^RECURSIONREF|recursion]], in this context _nesting_ refers to a pattern embedded within a larger pattern. One of the definitions of _nest_, according to the 1913 edition of _Webster's Dictionary_, illustrates this beautifully: "_A collection of boxes, cases, or the like, of graduated size, each put within the one next larger._"
+[^3]: Somewhat analogous to [[local-variables#^RECURSIONREF|recursion]], in this context _nesting_ refers to a pattern embedded within a larger pattern. One of the definitions of _nest_, according to the 1913 edition of _Webster's Dictionary_, illustrates this beautifully: "_A collection of boxes, cases, or the like, of graduated size, each put within the one next larger._"
 
 [^4]: The words "argument" and "parameter" are often used interchangeably. In the context of this document, they have the same precise meaning: _a variable passed to a script or function._
 
 [^5]: Within a script, inside a subshell, `$$` [[another-look-at-variables#^BASHPIDREF|returns the PID of the script]], not the subshell.
 
-[^6]: In this context, _typing_ a variable means to classify it and restrict its properties. For example, a variable _declared_ or _typed_ as an integer is no longer available for [[../apendix/reference-cards#^STRINGOPSTAB|string operations]].
+[^6]: In this context, _typing_ a variable means to classify it and restrict its properties. For example, a variable _declared_ or _typed_ as an integer is no longer available for [[reference-cards#^STRINGOPSTAB|string operations]].
 
     ```bash
     declare -i intvar

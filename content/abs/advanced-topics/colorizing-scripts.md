@@ -3,7 +3,7 @@ title: 36.5. "Colorizing" Scripts
 ---
 
 
-The ANSI [^1] escape sequences set screen attributes, such as bold text, and color of foreground and background. [[../apendix/converting-dos-batch-files-to-shell-scripts#^DOSBATCH1|DOS batch files]] commonly used ANSI escape codes for _color_ output, and so can Bash scripts.
+The ANSI [^1] escape sequences set screen attributes, such as bold text, and color of foreground and background. [[converting-dos-batch-files-to-shell-scripts#^DOSBATCH1|DOS batch files]] commonly used ANSI escape codes for _color_ output, and so can Bash scripts.
 
 ###### Example 36-13. A "colorized" address database
 
@@ -237,7 +237,7 @@ exit 0
 # Add the option of printing text within the drawn box.
 ```
 
-The simplest, and perhaps most useful ANSI escape sequence is bold text, **\033[1m ... \033[0m**. The \033 represents an [[../basic/quoting#^ESCP|escape]], the "[1" turns on the bold attribute, while the "[0" switches it off. The "m" terminates each term of the escape sequence.
+The simplest, and perhaps most useful ANSI escape sequence is bold text, **\033[1m ... \033[0m**. The \033 represents an [[quoting#^ESCP|escape]], the "[1" turns on the bold attribute, while the "[0" switches it off. The "m" terminates each term of the escape sequence.
 
 ```bash
 bash$ echo -e "\033[1mThis is bold text.\033[0m"
@@ -758,10 +758,10 @@ tput cup 19 0
 exit 0
 ```
 
-See also [[../apendix/contributed-scripts#^HASHEXAMPLE|Example A-21]], [[../apendix/contributed-scripts#^HOMEWORK|Example A-44]], [[../apendix/contributed-scripts#^SHOWALLC|Example A-52]], and [[../apendix/contributed-scripts#^PETALS|Example A-40]].
+See also [[contributed-scripts#^HASHEXAMPLE|Example A-21]], [[contributed-scripts#^HOMEWORK|Example A-44]], [[contributed-scripts#^SHOWALLC|Example A-52]], and [[contributed-scripts#^PETALS|Example A-40]].
 
 > [!caution]
-> There is, however, a major problem with all this. _ANSI escape sequences are emphatically [[./portability-issues|non-portable]]._ What works fine on some terminal emulators (or the console) may work differently, or not at all, on others. A "colorized" script that looks stunning on the script author's machine may produce unreadable output on someone else's. This somewhat compromises the usefulness of colorizing scripts, and possibly relegates this technique to the status of a gimmick. Colorized scripts are probably inappropriate in a commercial setting, i.e., your supervisor might disapprove.
+> There is, however, a major problem with all this. _ANSI escape sequences are emphatically [[portability-issues|non-portable]]._ What works fine on some terminal emulators (or the console) may work differently, or not at all, on others. A "colorized" script that looks stunning on the script author's machine may produce unreadable output on someone else's. This somewhat compromises the usefulness of colorizing scripts, and possibly relegates this technique to the status of a gimmick. Colorized scripts are probably inappropriate in a commercial setting, i.e., your supervisor might disapprove.
 
 Alister's [ansi-color](http://code.google.com/p/ansi-color/) utility (based on [Moshe Jacobson's color utility](http://bash.deta.in/color-1.1.tar.gz) considerably simplifies using ANSI escape sequences. It substitutes a clean and logical syntax for the clumsy constructs just discussed.
 

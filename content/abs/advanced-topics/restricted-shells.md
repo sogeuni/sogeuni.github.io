@@ -14,7 +14,7 @@ The following commands and actions are disabled:
 - Reading or changing the _$SHELLOPTS_, shell environmental options.
 - Output redirection.
 - Invoking commands containing one or more /'s.
-- Invoking [[../commands/internal-commands-and-builtins#^EXECREF|exec]] to substitute a different process for the shell.
+- Invoking [[internal-commands-and-builtins#^EXECREF|exec]] to substitute a different process for the shell.
 - Various other commands that would enable monkeying with or attempting to subvert the script for an unintended purpose.
 - Getting out of restricted mode within the script.
 

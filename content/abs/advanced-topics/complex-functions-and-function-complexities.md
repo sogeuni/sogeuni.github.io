@@ -9,7 +9,7 @@ Functions may process arguments passed to them and return an [[exit-and-exit-sta
 function_name $arg1 $arg2
 ```
 
-The function refers to the passed arguments by position (as if they were [[../beyond-the-basic/another-look-at-variables#^POSPARAMREF|positional parameters]]), that is, $1, $2, and so forth.
+The function refers to the passed arguments by position (as if they were [[another-look-at-variables#^POSPARAMREF|positional parameters]]), that is, $1, $2, and so forth.
 
 ###### Example 24-2. Function Taking Parameters
 
@@ -107,7 +107,7 @@ exit 0
 
 In contrast to certain other programming languages, shell scripts normally pass only value parameters to functions. Variable names (which are actually _pointers_), if passed as parameters to functions, will be treated as string literals. _Functions interpret their arguments literally._
 
-[[./indirect-references#^IVRREF|Indirect variable references]] (see [[./bash-version-2#^EX78|Example 37-2]]) provide a clumsy sort of mechanism for passing variable pointers to functions.
+[[indirect-references#^IVRREF|Indirect variable references]] (see [[bash-version-2#^EX78|Example 37-2]]) provide a clumsy sort of mechanism for passing variable pointers to functions.
 
 ###### Example 24-4. Passing an indirect reference to a function
 
@@ -213,11 +213,11 @@ exit 0
 
 **exit status**
 
-Functions return a value, called an _exit status_. This is analogous to the [[exit-and-exit-status#^EXITSTATUSREF|exit status]] returned by a command. The exit status may be explicitly specified by a **return** statement, otherwise it is the exit status of the last command in the function (0 if successful, and a non-zero error code if not). This [[exit-and-exit-status#^EXITSTATUSREF|exit status]] may be used in the script by referencing it as [[../beyond-the-basic/another-look-at-variables#^XSTATVARREF|$?]]. This mechanism effectively permits script functions to have a "return value" similar to C functions.
+Functions return a value, called an _exit status_. This is analogous to the [[exit-and-exit-status#^EXITSTATUSREF|exit status]] returned by a command. The exit status may be explicitly specified by a **return** statement, otherwise it is the exit status of the last command in the function (0 if successful, and a non-zero error code if not). This [[exit-and-exit-status#^EXITSTATUSREF|exit status]] may be used in the script by referencing it as [[another-look-at-variables#^XSTATVARREF|$?]]. This mechanism effectively permits script functions to have a "return value" similar to C functions.
 
 **return**
 
-Terminates a function. A **return** command [^1] optionally takes an _integer_ argument, which is returned to the calling script as the "exit status" of the function, and this exit status is assigned to the variable [[../beyond-the-basic/another-look-at-variables#^XSTATVARREF|$?]].
+Terminates a function. A **return** command [^1] optionally takes an _integer_ argument, which is returned to the calling script as the "exit status" of the function, and this exit status is assigned to the variable [[another-look-at-variables#^XSTATVARREF|$?]].
 
 ###### Example 24-7. Maximum of two numbers
 
@@ -373,7 +373,7 @@ echo
 exit
 ```
 
-See also [[../beyond-the-basic/testing-and-branching#^ISALPHA|Example 11-29]].
+See also [[testing-and-branching#^ISALPHA|Example 11-29]].
 
 > [!important]
 > The largest positive integer a function can return is 255. The **return** command is closely tied to the concept of [[exit-and-exit-status#^EXITSTATUSREF|exit status]], which accounts for this particular limitation. Fortunately, there are various [[assortedtips#^RVT|workarounds]] for those situations requiring a large integer return value from a function.
@@ -441,7 +441,7 @@ See also [[../beyond-the-basic/testing-and-branching#^ISALPHA|Example 11-29]].
 > echo "return value = $Return_Val"    #25701
 > ```
 >
-> A more elegant method is to have the function **echo** its "return value to stdout," and then capture it by [[../beyond-the-basic/command-substitution#^COMMANDSUBREF|command substitution]]. See the [[./assorted-tips#^RVT|discussion of this]] in [[./assorted-tips|Section 36.7]].
+> A more elegant method is to have the function **echo** its "return value to stdout," and then capture it by [[command-substitution#^COMMANDSUBREF|command substitution]]. See the [[assorted-tips#^RVT|discussion of this]] in [[assorted-tips|Section 36.7]].
 >
 > **Example 24-10. Comparing two large integers**
 >
@@ -512,7 +512,7 @@ See also [[../beyond-the-basic/testing-and-branching#^ISALPHA|Example 11-29]].
 > #  3) Rewrite the script to take input from command-line parameters.
 > ```
 >
-> Here is another example of capturing a function "return value." Understanding it requires[[C.2.%20Awk.md#^AWKREF|C.2. Awk]] [[../apendix/awk#^AWKREF|awk]].
+> Here is another example of capturing a function "return value." Understanding it requires[[C.2.%20Awk.md#^AWKREF|C.2. Awk]] [[awk#^AWKREF|awk]].
 >
 > ```bash
 > month_length ()  # Takes month number as an argument.
@@ -543,7 +543,7 @@ See also [[../beyond-the-basic/testing-and-branching#^ISALPHA|Example 11-29]].
 > # ----------------------------------------------
 > ```
 >
-> See also [[../apendix/contributed-scripts#^DAYSBETWEEN|Example A-7]] and [[../apendix/contributed-scripts#^STDDEV|Example A-37]].
+> See also [[contributed-scripts#^DAYSBETWEEN|Example A-7]] and [[contributed-scripts#^STDDEV|Example A-37]].
 >
 > **Exercise:** Using what we have just learned, extend the previous [[complex-functions-and-function-complexities#^EX61|Roman numerals example]] to accept arbitrarily large input.
 
@@ -551,7 +551,7 @@ See also [[../beyond-the-basic/testing-and-branching#^ISALPHA|Example 11-29]].
 
 _Redirecting the stdin of a function_
 
-A function is essentially a [[../basic/special-characters#^CODEBLOCKREF|code block]], which means its stdin can be redirected (as in [[../basic/special-characters#^EX8|Example 3-1]]).
+A function is essentially a [[special-characters#^CODEBLOCKREF|code block]], which means its stdin can be redirected (as in [[special-characters#^EX8|Example 3-1]]).
 
 ###### Example 24-11. Real name from username
 
@@ -634,4 +634,4 @@ Function ()  # This doesn't work.
 > [!note]
 > Emmanuel Rouat's [[sample-bashrc-and-bash-profile-files.html|sample bashrc file]] contains some instructive examples of functions.
 
-[^1]: The **return** command is a Bash [[../commands/internal-commands-and-builtins|builtin]].
+[^1]: The **return** command is a Bash [[internal-commands-and-builtins|builtin]].

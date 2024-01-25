@@ -109,38 +109,38 @@ An address range followed by one or more operations may require open and closed 
 This deletes only the first of each set of consecutive blank lines. That might be useful for single-spacing a text file, but retaining the blank line(s) between paragraphs.
 
 > [!note]
-> The usual delimiter that _sed_ uses is /. However, _sed_ allows other delimiters, such as %. This is useful when / is part of a replacement string, as in a file pathname. See [[../beyond-the-basic/loops#^FINDSTRING|Example 11-10]] and [[../commands/file-and-archiving-commands#^STRIPC|Example 16-32]].
+> The usual delimiter that _sed_ uses is /. However, _sed_ allows other delimiters, such as %. This is useful when / is part of a replacement string, as in a file pathname. See [[loops#^FINDSTRING|Example 11-10]] and [[file-and-archiving-commands#^STRIPC|Example 16-32]].
 
 > [!tip]
 > A quick way to double-space a text file is **sed G filename**.
 
 For illustrative examples of sed within shell scripts, see:
 
-1. [[../advanced-topics/shell-wrappers#^EX3|Example 36-1]]
-2. [[../advanced-topics/shell-wrappers#^EX4|Example 36-2]]
-3. [[../commands/complex-commands#^EX57|Example 16-3]]
-4. [[./contributed-scripts#^RN|Example A-2]]
-5. [[../commands/text-processing-commands#^GRP|Example 16-17]]
-6. [[../commands/text-processing-commands#^COL|Example 16-27]]
-7. [[./contributed-scripts#^BEHEAD|Example A-12]]
-8. [[./contributed-scripts#^TREE|Example A-16]]
-9. [[./contributed-scripts#^TREE2|Example A-17]]
-10. [[../commands/file-and-archiving-commands#^STRIPC|Example 16-32]]
-11. [[../beyond-the-basic/loops#^FINDSTRING|Example 11-10]]
-12. [[../commands/math-commands#^BASE|Example 16-48]]
-13. [[./contributed-scripts#^MAILFORMAT|Example A-1]]
-14. [[../commands/text-processing-commands#^RND|Example 16-14]]
-15. [[../commands/text-processing-commands#^WF|Example 16-12]]
-16. [[./contributed-scripts#^LIFESLOW|Example A-10]]
-17. [[../advanced-topics/here-documents#^SELFDOCUMENT|Example 19-12]]
-18. [[../commands/text-processing-commands#^DICTLOOKUP|Example 16-19]]
-19. [[./contributed-scripts#^WHX|Example A-29]]
-20. [[./contributed-scripts#^BASHPODDER|Example A-31]]
-21. [[./contributed-scripts#^TOHTML|Example A-24]]
-22. [[./contributed-scripts#^STOPWATCH|Example A-43]]
-23. [[./contributed-scripts#^SEDAPPEND|Example A-55]]
+1. [[shell-wrappers#^EX3|Example 36-1]]
+2. [[shell-wrappers#^EX4|Example 36-2]]
+3. [[complex-commands#^EX57|Example 16-3]]
+4. [[contributed-scripts#^RN|Example A-2]]
+5. [[text-processing-commands#^GRP|Example 16-17]]
+6. [[text-processing-commands#^COL|Example 16-27]]
+7. [[contributed-scripts#^BEHEAD|Example A-12]]
+8. [[contributed-scripts#^TREE|Example A-16]]
+9. [[contributed-scripts#^TREE2|Example A-17]]
+10. [[file-and-archiving-commands#^STRIPC|Example 16-32]]
+11. [[loops#^FINDSTRING|Example 11-10]]
+12. [[math-commands#^BASE|Example 16-48]]
+13. [[contributed-scripts#^MAILFORMAT|Example A-1]]
+14. [[text-processing-commands#^RND|Example 16-14]]
+15. [[text-processing-commands#^WF|Example 16-12]]
+16. [[contributed-scripts#^LIFESLOW|Example A-10]]
+17. [[here-documents#^SELFDOCUMENT|Example 19-12]]
+18. [[text-processing-commands#^DICTLOOKUP|Example 16-19]]
+19. [[contributed-scripts#^WHX|Example A-29]]
+20. [[contributed-scripts#^BASHPODDER|Example A-31]]
+21. [[contributed-scripts#^TOHTML|Example A-24]]
+22. [[contributed-scripts#^STOPWATCH|Example A-43]]
+23. [[contributed-scripts#^SEDAPPEND|Example A-55]]
 
-For a more extensive treatment of _sed_, refer to the [[../bibliography#^DGSEDREF|pertinent references]] in the [[../bibliography|_Bibliography_]].
+For a more extensive treatment of _sed_, refer to the [[bibliography#^DGSEDREF|pertinent references]] in the [[bibliography|_Bibliography_]].
 
 [^1]: _Sed_ executes without user intervention.
 

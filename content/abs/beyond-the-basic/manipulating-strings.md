@@ -3,7 +3,7 @@ title: 10.1. Manipulating Strings
 ---
 
 
-Bash supports a surprising number of string manipulation operations. Unfortunately, these tools lack a unified focus. Some are a subset of [[./parameter-substitution#^PARAMSUBREF|parameter substitution]], and others fall under the functionality of the UNIX [[../commands/complex-commands#^EXPRREF|expr]] command. This results in inconsistent command syntax and overlap of functionality, not to mention confusion.
+Bash supports a surprising number of string manipulation operations. Unfortunately, these tools lack a unified focus. Some are a subset of [[parameter-substitution#^PARAMSUBREF|parameter substitution]], and others fall under the functionality of the UNIX [[complex-commands#^EXPRREF|expr]] command. This results in inconsistent command syntax and overlap of functionality, not to mention confusion.
 
 **String Length**
 
@@ -65,7 +65,7 @@ exit
 
 expr match "$string" '$substring'
 
-_$substring_ is a [[../advanced-topics/regexp#^REGEXREF|regular expression]].
+_$substring_ is a [[regexp#^REGEXREF|regular expression]].
 
 expr "$string" : '$substring'
 
@@ -104,7 +104,7 @@ ${string:position}
 
 Extracts substring from _$string_ at _$position_.
 
-If the $string parameter is "*" or "@", then this extracts the [[./another-look-at-variables#^POSPARAMREF|positional parameters]], [^1] starting at $position.
+If the $string parameter is "*" or "@", then this extracts the [[another-look-at-variables#^POSPARAMREF|positional parameters]], [^1] starting at $position.
 
 ${string:position:length}
 
@@ -199,7 +199,7 @@ echo `expr substr $stringZ 4 3`              # ABC
 
 expr match "$string" '\($substring\)'
 
-Extracts _$substring_ at beginning of _$string_, where _$substring_ is a [[../advanced-topics/regexp#^REGEXREF|regular expression]].
+Extracts _$substring_ at beginning of _$string_, where _$substring_ is a [[regexp#^REGEXREF|regular expression]].
 
 expr "$string" : '\($substring\)'
 
@@ -425,7 +425,7 @@ exit $?
 #+ and convert them on the fly.
 ```
 
-A simple emulation of [[../commands/miscellaneous-commands#^GETOPTY|getopt]] using substring-extraction constructs.
+A simple emulation of [[miscellaneous-commands#^GETOPTY|getopt]] using substring-extraction constructs.
 
 ###### Example 10-5. Emulating *getopt*
 
@@ -537,7 +537,7 @@ echo ${stringZ/%abc/XYZ}          # abcABC123ABCXYZ
 
 ## 10.1.1. Manipulating strings using awk
 
-A Bash script may invoke the string manipulation facilities of [[../apendix/awk#^AWKREF|awk]] as an alternative to using its built-in operations.
+A Bash script may invoke the string manipulation facilities of [[awk#^AWKREF|awk]] as an alternative to using its built-in operations.
 
 ###### Example 10-6. Alternate ways of extracting and locating substrings
 
@@ -577,18 +577,18 @@ exit 0
 
 ## 10.1.2. Further Reference
 
-For more on string manipulation in scripts, refer to [[./parameter-substitution|Section 10.2]] and the [[../commands/complex-commands#^EXPEXTRSUB|relevant section]] of the [[../commands/complex-commands#^EXPRREF|expr]] command listing.
+For more on string manipulation in scripts, refer to [[parameter-substitution|Section 10.2]] and the [[complex-commands#^EXPEXTRSUB|relevant section]] of the [[complex-commands#^EXPRREF|expr]] command listing.
 
 Script examples:
 
-1. [[../commands/complex-commands#^EX45|Example 16-9]]
-2. [[./parameter-substitution#^LENGTH|Example 10-9]]
-3. [[./parameter-substitution#^PATTMATCHING|Example 10-10]]
-4. [[./parameter-substitution#^RFE|Example 10-11]]
-5. [[./parameter-substitution#^VARMATCH|Example 10-13]]
-6. [[../apendix/contributed-scripts#^INSERTIONSORT|Example A-36]]
-7. [[../apendix/contributed-scripts#^QKY|Example A-41]]
+1. [[complex-commands#^EX45|Example 16-9]]
+2. [[parameter-substitution#^LENGTH|Example 10-9]]
+3. [[parameter-substitution#^PATTMATCHING|Example 10-10]]
+4. [[parameter-substitution#^RFE|Example 10-11]]
+5. [[parameter-substitution#^VARMATCH|Example 10-13]]
+6. [[contributed-scripts#^INSERTIONSORT|Example A-36]]
+7. [[contributed-scripts#^QKY|Example A-41]]
 
-[^1]: This applies to either command-line arguments or parameters passed to a [[../advanced-topics/functions|function]].
+[^1]: This applies to either command-line arguments or parameters passed to a [[functions|function]].
 
 [^2]: Note that _$substring_ and _$replacement_ may refer to either _literal strings_ or _variables_, depending on context. See the first usage example.

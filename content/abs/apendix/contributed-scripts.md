@@ -65,7 +65,7 @@ exit $?
 
 ###### Example A-2. *rn*: A simple-minded file renaming utility
 
-This script is a modification of [[../commands/text-processing-commands#^LOWERCASE|Example 16-22]].
+This script is a modification of [[text-processing-commands#^LOWERCASE|Example 16-22]].
 
 ```bash
 #! /bin/bash
@@ -1125,7 +1125,7 @@ _..___..__
 
 +++
 
-The following script is by Mark Moraes of the University of Toronto. See the file Moraes-COPYRIGHT for permissions and restrictions. This file is included in the combined [[./download-and-mirror-sites#^WHERE_TARBALL|HTML/source tarball]] of the _ABS Guide_.
+The following script is by Mark Moraes of the University of Toronto. See the file Moraes-COPYRIGHT for permissions and restrictions. This file is included in the combined [[download-and-mirror-sites#^WHERE_TARBALL|HTML/source tarball]] of the _ABS Guide_.
 
 ###### Example A-12. *behead*: Removing mail and news message headers
 
@@ -1801,7 +1801,7 @@ echo
 exit 0
 ```
 
-Michael Zick's complex array example uses the [[../commands/file-and-archiving-commands#^MD5SUMREF|md5sum]] check sum command to encode directory information.
+Michael Zick's complex array example uses the [[file-and-archiving-commands#^MD5SUMREF|md5sum]] check sum command to encode directory information.
 
 ###### Example A-19. Directory information
 
@@ -2358,7 +2358,7 @@ exit 0
 
 St�phane Chazelas demonstrates object-oriented programming in a Bash script.
 
-Mariusz Gniazdowski contributed a [[../commands/internal-commands-and-builtins#^HASHREF|hash]] library for use in scripts.
+Mariusz Gniazdowski contributed a [[internal-commands-and-builtins#^HASHREF|hash]] library for use in scripts.
 
 ###### Example A-20. Library of hash functions
 
@@ -5889,7 +5889,7 @@ exit 0
 #@  Thank you!
 ```
 
-"Little Monster's" front end to [[../commands/communications-commands#^WGETREF|wget]].
+"Little Monster's" front end to [[communications-commands#^WGETREF|wget]].
 
 ###### Example A-30. Making *wget* easier to use
 
@@ -10912,7 +10912,7 @@ exit $E_NOEXIT   # Shouldn't exit here.
 #+ Fix this.
 ```
 
-###### Example A-50. An alternate version of the [[../beyond-the-basic/manipulating-strings#^GETOPTSIMPLE|getopt-simple.sh]] script
+###### Example A-50. An alternate version of the [[manipulating-strings#^GETOPTSIMPLE|getopt-simple.sh]] script
 
 ```bash
 #!/bin/bash

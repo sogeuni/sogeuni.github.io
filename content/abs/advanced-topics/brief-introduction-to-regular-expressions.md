@@ -17,7 +17,7 @@ The main uses for Regular Expressions (_RE_s) are text searches and string manip
     "1133*" matches _11 + one or more 3's_: _113_, _1133_, _1133333_, and so forth.
 - The _dot_ -- . -- matches any one character, except a newline. [^2]
     "13." matches _13 + at least one of any character (including a space)_: _1133_, _11333_, but not _13_ (additional character missing).
-    See [[../commands/text-processing-commands#^CWSOLVER|Example 16-18]] for a demonstration of _dot single-character_ matching.
+    See [[text-processing-commands#^CWSOLVER|Example 16-18]] for a demonstration of _dot single-character_ matching.
 - The caret -- ^ -- matches the beginning of a line, but sometimes, depending on context, negates the meaning of a set of characters in an RE.
 - The dollar sign -- $ -- at the end of an RE matches the end of a line.
     "XXX$" matches XXX at the end of a line.
@@ -31,10 +31,10 @@ The main uses for Regular Expressions (_RE_s) are text searches and string manip
     
     Combined sequences of bracketed characters match common word patterns. "[Yy][Ee][Ss]" matches _yes_, _Yes_, _YES_, _yEs_, and so forth. "[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]" matches any Social Security number.
     
-- The backslash -- \ -- [[../basic/quoting#^ESCP|escapes]] a special character, which means that character gets interpreted literally (and is therefore no longer _special_).
+- The backslash -- \ -- [[quoting#^ESCP|escapes]] a special character, which means that character gets interpreted literally (and is therefore no longer _special_).
     A "\$" reverts back to its literal meaning of "$", rather than its RE meaning of end-of-line. Likewise a "\\" has the literal meaning of "\".
     
-- [[../basic/quoting#^ESCP|Escaped]] "angle brackets" -- \<...\> -- mark word boundaries.
+- [[quoting#^ESCP|Escaped]] "angle brackets" -- \<...\> -- mark word boundaries.
     The angle brackets must be escaped, since otherwise they have only their literal character meaning.
     "\<the\>" matches the word "the," but not the words "them," "there," "other," etc.
     
@@ -81,7 +81,7 @@ This is the only instance of line 2.
 >  This line contains the number 113312312.    # Match.
 > ```
 
-- **Extended REs.** Additional metacharacters added to the basic set. Used in [[../commands/text-processing-commands#^EGREPREF|egrep]], [[../apendix/awk#^AWKREF|awk]], and [[./shell-wrappers#^PERLREF|Perl]].
+- **Extended REs.** Additional metacharacters added to the basic set. Used in [[text-processing-commands#^EGREPREF|egrep]], [[awk#^AWKREF|awk]], and [[shell-wrappers#^PERLREF|Perl]].
     
 - The question mark -- ? -- matches zero or one of the previous RE. It is generally used for matching single characters.
     
@@ -99,14 +99,14 @@ echo a111b \| gawk '/a1+b/'
 # Thanks, S.C.
 ```
     
-- [[../basic/quoting#^ESCP|Escaped]] "curly brackets" -- \{ \} -- indicate the number of occurrences of a preceding RE to match.
+- [[quoting#^ESCP|Escaped]] "curly brackets" -- \{ \} -- indicate the number of occurrences of a preceding RE to match.
     
     It is necessary to escape the curly brackets since they have only their literal character meaning otherwise. This usage is technically not part of the basic RE set.
     
     "[0-9]\{5\}" matches exactly five digits (characters in the range of 0 to 9).
     
 > [!note]
-> Curly brackets are not available as an RE in the "classic" (non-POSIX compliant) version of [[../apendix/awk#^AWKREF|awk]]. However, the GNU extended version of _awk_, **gawk**, has the --re-interval option that permits them (without being escaped).
+> Curly brackets are not available as an RE in the "classic" (non-POSIX compliant) version of [[awk#^AWKREF|awk]]. However, the GNU extended version of _awk_, **gawk**, has the --re-interval option that permits them (without being escaped).
 >
 > ```bash
 > bash$ echo 2222 | gawk --re-interval '/2{3}/'
@@ -115,7 +115,7 @@ echo a111b \| gawk '/a1+b/'
 >
 > **Perl** and some **egrep** versions do not require escaping the curly brackets.
     
-- Parentheses -- **( )** -- enclose a group of REs. They are useful with the following "|" operator and in [[../beyond-the-basic/manipulating-strings#^EXPRPAREN|substring extraction]] using [[../commands/complex-commands#^EXPRREF|expr]].
+- Parentheses -- **( )** -- enclose a group of REs. They are useful with the following "|" operator and in [[manipulating-strings#^EXPRPAREN|substring extraction]] using [[complex-commands#^EXPRREF|expr]].
     
 - The -- **|** -- "or" RE operator matches any of a set of alternate characters.
     
@@ -142,7 +142,7 @@ People who read seem to be better informed than those who do not.
     
 - **[:digit:]** matches (decimal) digits. This is equivalent to **0-9**.
     
-- **[:graph:]** (graphic printable characters). Matches characters in the range of [[../basic/special-characters#^ASCIIDEF|ASCII]] 33 - 126. This is the same as **[:print:]**, below, but excluding the space character.
+- **[:graph:]** (graphic printable characters). Matches characters in the range of [[special-characters#^ASCIIDEF|ASCII]] 33 - 126. This is the same as **[:print:]**, below, but excluding the space character.
     
 - **[:lower:]** matches lowercase alphabetic characters. This is equivalent to **a-z**.
     
@@ -155,7 +155,7 @@ People who read seem to be better informed than those who do not.
 - **[:xdigit:]** matches hexadecimal digits. This is equivalent to **0-9A-Fa-f**.
     
 > [!important]
-> POSIX character classes generally require quoting or [[../basic/tests#^DBLBRACKETS|double brackets]] ([[ | ]]).
+> POSIX character classes generally require quoting or [[tests#^DBLBRACKETS|double brackets]] ([[ | ]]).
 
 ```bash
 bash$ grep [[:digit:]] test.file
@@ -181,13 +181,13 @@ bash$ **ls -l ?[[:digit:]][[:digit:]]?**
     POSIX character classes are used in [[text-processing-commands#^EX49|Example 16-21]] and [[text-processing-commands#^LOWERCASE|Example 16-22]].
     
 
-[[../apendix/a-sed-and-awk-micro-primer#^SEDREF|Sed]], [[../apendix/awk#^AWKREF|awk]], and [[./shell-wrappers#^PERLREF|Perl]], used as filters in scripts, take REs as arguments when "sifting" or transforming files or I/O streams. See [[../apendix/contributed-scripts#^BEHEAD|Example A-12]] and [[../apendix/contributed-scripts#^TREE|Example A-16]] for illustrations of this.
+[[a-sed-and-awk-micro-primer#^SEDREF|Sed]], [[awk#^AWKREF|awk]], and [[shell-wrappers#^PERLREF|Perl]], used as filters in scripts, take REs as arguments when "sifting" or transforming files or I/O streams. See [[contributed-scripts#^BEHEAD|Example A-12]] and [[contributed-scripts#^TREE|Example A-16]] for illustrations of this.
 
-The standard reference on this complex topic is Friedl's _Mastering Regular Expressions_. _Sed & Awk_, by Dougherty and Robbins, also gives a very lucid treatment of REs. See the [[../bibliography|_Bibliography_]] for more information on these books.
+The standard reference on this complex topic is Friedl's _Mastering Regular Expressions_. _Sed & Awk_, by Dougherty and Robbins, also gives a very lucid treatment of REs. See the [[bibliography|_Bibliography_]] for more information on these books.
 
 [^1]: A _meta-meaning_ is the meaning of a term or expression on a higher level of abstraction. For example, the _literal_ meaning of _regular expression_ is an ordinary expression that conforms to accepted usage. The _meta-meaning_ is drastically different, as discussed at length in this chapter.
 
-[^2]: Since [[../apendix/a-sed-and-awk-micro-primer#^SEDREF|sed]], [[../apendix/awk#^AWKREF|awk]], and [[../commands/text-processing-commands#^GREPREF|grep]] process single lines, there will usually not be a newline to match. In those cases where there is a newline in a multiple line expression, the dot will match the newline.
+[^2]: Since [[a-sed-and-awk-micro-primer#^SEDREF|sed]], [[awk#^AWKREF|awk]], and [[text-processing-commands#^GREPREF|grep]] process single lines, there will usually not be a newline to match. In those cases where there is a newline in a multiple line expression, the dot will match the newline.
     
     ```bash
     #!/bin/bash

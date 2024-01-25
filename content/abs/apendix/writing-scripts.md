@@ -11,15 +11,15 @@ Write a script to carry out each of the following tasks.
 
 Write a script that backs itself up, that is, copies itself to a file named backup.sh.
 
-Hint: Use the [[../commands/basic-commands#^CATREF|cat]] command and the appropriate [[othertypesv#^SCRNAMEPARAM|positional parameter]].
+Hint: Use the [[basic-commands#^CATREF|cat]] command and the appropriate [[othertypesv#^SCRNAMEPARAM|positional parameter]].
 
 **Home Directory Listing**
 
-Perform a recursive directory listing on the user's home directory and save the information to a file. Compress the file, have the script prompt the user to insert a USB flash drive, then press **ENTER**. Finally, save the file to the flash drive after making certain the flash drive has properly mounted by parsing the output of [[../commands/system-and-administrative-commands#^DFREF|df]]. Note that the flash drive must be _unmounted_ before it is removed.
+Perform a recursive directory listing on the user's home directory and save the information to a file. Compress the file, have the script prompt the user to insert a USB flash drive, then press **ENTER**. Finally, save the file to the flash drive after making certain the flash drive has properly mounted by parsing the output of [[system-and-administrative-commands#^DFREF|df]]. Note that the flash drive must be _unmounted_ before it is removed.
 
-**Converting [[../beyond-the-basic/loops#^FORLOOPREF1|for]] loops to [[../beyond-the-basic/loops#^WHILELOOPREF|while]] and [[../beyond-the-basic/loops#^UNTILLOOPREF|until]] loops**
+**Converting [[loops#^FORLOOPREF1|for]] loops to [[loops#^WHILELOOPREF|while]] and [[loops#^UNTILLOOPREF|until]] loops**
 
-Convert the _for loops_ in [[../beyond-the-basic/loops#^EX22|Example 11-1]] to _while loops_. Hint: store the data in an [[../advanced-topics/arrays#^ARRAYREF|array]] and step through the array elements.
+Convert the _for loops_ in [[loops#^EX22|Example 11-1]] to _while loops_. Hint: store the data in an [[arrays#^ARRAYREF|array]] and step through the array elements.
 
 Having already done the "heavy lifting," now convert the loops in the example to _until loops_.
 
@@ -39,25 +39,25 @@ Write a script that echoes itself to stdout, but _backwards_.
 
 **Automatically Decompressing Files**
 
-Given a list of filenames as input, this script queries each target file (parsing the output of the [[../commands/file-and-archiving-commands#^FILEREF|file]] command) for the type of compression used on it. Then the script automatically invokes the appropriate decompression command (**gunzip**, **bunzip2**, **unzip**, **uncompress**, or whatever). If a target file is not compressed, the script emits a warning message, but takes no other action on that particular file.
+Given a list of filenames as input, this script queries each target file (parsing the output of the [[file-and-archiving-commands#^FILEREF|file]] command) for the type of compression used on it. Then the script automatically invokes the appropriate decompression command (**gunzip**, **bunzip2**, **unzip**, **uncompress**, or whatever). If a target file is not compressed, the script emits a warning message, but takes no other action on that particular file.
 
 **Unique System ID**
 
-Generate a "unique" 6-digit hexadecimal identifier for your computer. Do _not_ use the flawed [[../commands/system-and-administrative-commands#^HOSTIDREF|hostid]] command. Hint: **[[../commands/file-and-archiving-commands#^MD5SUMREF|md5sum]] [[./important-files#^DATAFILESREF1|/etc/passwd]]**, then select the first 6 digits of output.
+Generate a "unique" 6-digit hexadecimal identifier for your computer. Do _not_ use the flawed [[system-and-administrative-commands#^HOSTIDREF|hostid]] command. Hint: **[[file-and-archiving-commands#^MD5SUMREF|md5sum]] [[important-files#^DATAFILESREF1|/etc/passwd]]**, then select the first 6 digits of output.
 
 **Backup**
 
-Archive as a "tarball" (*.tar.gz file) all the files in your home directory tree (/home/your-name) that have been modified in the last 24 hours. Hint: use [[../commands/complex-commands#^FINDREF|find]].
+Archive as a "tarball" (*.tar.gz file) all the files in your home directory tree (/home/your-name) that have been modified in the last 24 hours. Hint: use [[complex-commands#^FINDREF|find]].
 
 Optional: you may use this as the basis of a _backup_ script.
 
 **Checking whether a process is still running**
 
-Given a [[../basic/special-characters#^PROCESSIDREF|process ID]] (_PID_) as an argument, this script will check, at user-specified intervals, whether the given process is still running. You may use the [[../commands/system-and-administrative-commands#^PPSSREF|ps]] and [[../commands/time-date-commands#^SLEEPREF|sleep]] commands.
+Given a [[special-characters#^PROCESSIDREF|process ID]] (_PID_) as an argument, this script will check, at user-specified intervals, whether the given process is still running. You may use the [[system-and-administrative-commands#^PPSSREF|ps]] and [[time-date-commands#^SLEEPREF|sleep]] commands.
 
 **Primes**
 
-Print (to stdout) all prime numbers between 60000 and 63000. The output should be nicely formatted in columns (hint: use [[../commands/internal-commands-and-builtins#^PRINTFREF|printf]]).
+Print (to stdout) all prime numbers between 60000 and 63000. The output should be nicely formatted in columns (hint: use [[internal-commands-and-builtins#^PRINTFREF|printf]]).
 
 **Lottery Numbers**
 
@@ -67,13 +67,13 @@ One type of lottery involves picking five different numbers, in the range of 1 -
 
 **Integer or String**
 
-Write a script [[../advanced-topics/functions|function]] that determines if an argument passed to it is an integer or a string. The function will return TRUE (0) if passed an integer, and FALSE (1) if passed a string.
+Write a script [[functions|function]] that determines if an argument passed to it is an integer or a string. The function will return TRUE (0) if passed an integer, and FALSE (1) if passed a string.
 
 Hint: What does the following expression return when $1 is _not_ an integer?
 
 expr $1 + 0
 
-**[[../basic/special-characters#^ASCIIDEF|ASCII]] to Integer**
+**[[special-characters#^ASCIIDEF|ASCII]] to Integer**
 
 The _atoi_ function in **C** converts a string character to an integer. Write a shell script function that performs the same operation. Likewise, write a shell script function that does the inverse, mirroring the **C** _itoa_ function which converts an integer into an ASCII character.
 
@@ -83,53 +83,53 @@ List, one at a time, all files larger than 100K in the /home/username directory 
 
 **Banner**
 
-Simulate the functionality of the deprecated [[../commands/miscellaneous-commands#^BANNERREF|banner]] command in a script.
+Simulate the functionality of the deprecated [[miscellaneous-commands#^BANNERREF|banner]] command in a script.
 
 **Removing Inactive Accounts**
 
-Inactive accounts on a network server waste disk space and may become a security risk. Write an administrative script (to be invoked by _root_ or the [[../commands/system-and-administrative-commands#^CRONREF|cron daemon]]) that checks for and deletes user accounts that have not been accessed within the last 90 days.
+Inactive accounts on a network server waste disk space and may become a security risk. Write an administrative script (to be invoked by _root_ or the [[system-and-administrative-commands#^CRONREF|cron daemon]]) that checks for and deletes user accounts that have not been accessed within the last 90 days.
 
 **Enforcing Disk Quotas**
 
 Write a script for a multi-user system that checks users' disk usage. If a user surpasses a preset limit (500 MB, for example) in her /home/username directory, then the script automatically sends her a "pigout" warning e-mail.
 
-The script will use the [[../commands/system-and-administrative-commands#^DUREF|du]] and [[../commands/communications-commands#^COMMMAIL1|mail]] commands. As an option, it will allow setting and enforcing quotas using the [[../commands/system-and-administrative-commands#^QUOTAREF|quota]] and [[../commands/system-and-administrative-commands#^SETQUOTAREF|setquota]] commands.
+The script will use the [[system-and-administrative-commands#^DUREF|du]] and [[communications-commands#^COMMMAIL1|mail]] commands. As an option, it will allow setting and enforcing quotas using the [[system-and-administrative-commands#^QUOTAREF|quota]] and [[system-and-administrative-commands#^SETQUOTAREF|setquota]] commands.
 
 **Logged in User Information**
 
 For all logged in users, show their real names and the time and date of their last login.
 
-Hint: use [[../commands/system-and-administrative-commands#^WHOREF|who]], [[../commands/system-and-administrative-commands#^LASTLOGREF|lastlog]], and parse [[./important-files#^DATAFILESREF1|/etc/passwd]].
+Hint: use [[system-and-administrative-commands#^WHOREF|who]], [[system-and-administrative-commands#^LASTLOGREF|lastlog]], and parse [[important-files#^DATAFILESREF1|/etc/passwd]].
 
 **Safe Delete**
 
-Implement, as a script, a "safe" delete command, sdel.sh. Filenames passed as command-line arguments to this script are not deleted, but instead [[../commands/file-and-archiving-commands#^GZIPREF|gzipped]] if not already compressed (use [[../commands/file-and-archiving-commands#^FILEREF|file]] to check), then moved to a ~/TRASH directory. Upon invocation, the script checks the ~/TRASH directory for files older than 48 hours and [[../commands/basic-commands#^RMREF|permanently deletes]] them. (An better alternative might be to have a second script handle this, periodically invoked by the [[../commands/system-and-administrative-commands#^CRONREF|cron daemon]].)
+Implement, as a script, a "safe" delete command, sdel.sh. Filenames passed as command-line arguments to this script are not deleted, but instead [[file-and-archiving-commands#^GZIPREF|gzipped]] if not already compressed (use [[file-and-archiving-commands#^FILEREF|file]] to check), then moved to a ~/TRASH directory. Upon invocation, the script checks the ~/TRASH directory for files older than 48 hours and [[basic-commands#^RMREF|permanently deletes]] them. (An better alternative might be to have a second script handle this, periodically invoked by the [[system-and-administrative-commands#^CRONREF|cron daemon]].)
 
-_Extra credit:_ Write the script so it can handle files and directories [[../commands/basic-commands#^RMRECURS|recursively]]. This would give it the capability of "safely deleting" entire directory structures.
+_Extra credit:_ Write the script so it can handle files and directories [[basic-commands#^RMRECURS|recursively]]. This would give it the capability of "safely deleting" entire directory structures.
 
 **Making Change**
 
 What is the most efficient way to make change for $1.68, using only coins in common circulations (up to 25c)? It's 6 quarters, 1 dime, a nickel, and three cents.
 
-Given any arbitrary command-line input in dollars and cents ($*.??), calculate the change, using the minimum number of coins. If your home country is not the United States, you may use your local currency units instead. The script will need to parse the command-line input, then change it to multiples of the smallest monetary unit (cents or whatever). Hint: look at [[../advanced-topics/complex-functions-and-function-complexities#^EX61|Example 24-8]].
+Given any arbitrary command-line input in dollars and cents ($*.??), calculate the change, using the minimum number of coins. If your home country is not the United States, you may use your local currency units instead. The script will need to parse the command-line input, then change it to multiples of the smallest monetary unit (cents or whatever). Hint: look at [[complex-functions-and-function-complexities#^EX61|Example 24-8]].
 
 **Quadratic Equations**
 
 Solve a _quadratic_ equation of the form _Ax^2 + Bx + C = 0_. Have a script take as arguments the coefficients, **A**, **B**, and **C**, and return the solutions to five decimal places.
 
-Hint: pipe the coefficients to [[../commands/math-commands#^BCREF|bc]], using the well-known formula, _x = ( -B +/- sqrt( B^2 - 4AC ) ) / 2A_.
+Hint: pipe the coefficients to [[math-commands#^BCREF|bc]], using the well-known formula, _x = ( -B +/- sqrt( B^2 - 4AC ) ) / 2A_.
 
 **Table of Logarithms**
 
-Using the [[../commands/math-commands#^BCREF|bc]] and [[../commands/internal-commands-and-builtins#^PRINTFREF|printf]] commands, print out a nicely-formatted table of eight-place natural logarithms in the interval between 0.00 and 100.00, in steps of .01.
+Using the [[math-commands#^BCREF|bc]] and [[internal-commands-and-builtins#^PRINTFREF|printf]] commands, print out a nicely-formatted table of eight-place natural logarithms in the interval between 0.00 and 100.00, in steps of .01.
 
 Hint: _bc_ requires the -l option to load the math library.
 
 **Unicode Table**
 
-Using [[./ascii-table#^ASCIISH|Example T-1]] as a template, write a script that prints to a file a complete [[../advanced-topics/bash-version-4#^UNICODEREF|Unicode]] table.
+Using [[ascii-table#^ASCIISH|Example T-1]] as a template, write a script that prints to a file a complete [[bash-version-4#^UNICODEREF|Unicode]] table.
 
-Hint: Use the -e option to [[../commands/internal-commands-and-builtins#^ECHOREF|echo]]: **echo -e '\uXXXX'**, where _XXXX_ is the Unicode numerical character designation. This requires [[../advanced-topics/bash-version-4#^BASH42|version 4.2]] or later of Bash.
+Hint: Use the -e option to [[internal-commands-and-builtins#^ECHOREF|echo]]: **echo -e '\uXXXX'**, where _XXXX_ is the Unicode numerical character designation. This requires [[bash-version-4#^BASH42|version 4.2]] or later of Bash.
 
 **Sum of Matching Numbers**
 
@@ -143,7 +143,7 @@ A _lucky number_ is one whose individual digits add up to 7, in successive addit
 
 **Craps**
 
-Borrowing the ASCII graphics from [[./contributed-scripts#^PETALS|Example A-40]], write a script that plays the well-known gambling game of _craps_. The script will accept bets from one or more players, roll the dice, and keep track of wins and losses, as well as of each player's bankroll.
+Borrowing the ASCII graphics from [[contributed-scripts#^PETALS|Example A-40]], write a script that plays the well-known gambling game of _craps_. The script will accept bets from one or more players, roll the dice, and keep track of wins and losses, as well as of each player's bankroll.
 
 **Tic-tac-toe**
 
@@ -165,7 +165,7 @@ Alphabetize (in ASCII order) an arbitrary string read from the command-line.
 
 **Parsing**
 
-Parse [[./important-files#^DATAFILESREF1|/etc/passwd]], and output its contents in nice, easy-to-read tabular form.
+Parse [[important-files#^DATAFILESREF1|/etc/passwd]], and output its contents in nice, easy-to-read tabular form.
 
 **Logging Logins**
 
@@ -175,7 +175,7 @@ Parse /var/log/messages to produce a nicely formatted file of user logins and lo
 
 Certain database and spreadsheet packages use save-files with the fields separated by commas, commonly referred to as _comma-separated values_ or CSVs. Other applications often need to parse these files.
 
-Given a data file with comma-separated [[../basic/special-characters#^FIELDREF|fields]], of the form:
+Given a data file with comma-separated [[special-characters#^FIELDREF|fields]], of the form:
 
 |   |
 |---|
@@ -191,7 +191,7 @@ Given ASCII text input either from stdin or a file, adjust the word spacing to r
 
 **Mailing List**
 
-Using the [[../commands/communications-commands#^COMMMAIL1|mail]] command, write a script that manages a simple mailing list. The script automatically e-mails the monthly company newsletter, read from a specified text file, and sends it to all the addresses on the mailing list, which the script reads from another specified file.
+Using the [[communications-commands#^COMMMAIL1|mail]] command, write a script that manages a simple mailing list. The script automatically e-mails the monthly company newsletter, read from a specified text file, and sends it to all the addresses on the mailing list, which the script reads from another specified file.
 
 **Generating Passwords**
 
@@ -201,11 +201,11 @@ Generate pseudorandom 8-character passwords, using characters in the ranges [0-9
 
 You suspect that one particular user on the network has been abusing her privileges and possibly attempting to hack the system. Write a script to automatically monitor and log her activities when she's signed on. The log file will save entries for the previous week, and delete those entries more than seven days old.
 
-You may use [[../commands/system-and-administrative-commands#^LASTREF|last]], [[../commands/system-and-administrative-commands#^LASTLOGREF|lastlog]], and [[../commands/system-and-administrative-commands#^LASTCOMMREF|lastcomm]] to aid your surveillance of the suspected fiend.
+You may use [[system-and-administrative-commands#^LASTREF|last]], [[system-and-administrative-commands#^LASTLOGREF|lastlog]], and [[system-and-administrative-commands#^LASTCOMMREF|lastcomm]] to aid your surveillance of the suspected fiend.
 
 **Checking for Broken Links**
 
-Using [[../commands/communications-commands#^LYNXREF|lynx]] with the -traversal option, write a script that checks a Web site for broken links.
+Using [[communications-commands#^LYNXREF|lynx]] with the -traversal option, write a script that checks a Web site for broken links.
 
 **DIFFICULT**
 
@@ -226,20 +226,20 @@ Optional:
 
 - Do a dictionary check on every sequence of at least four consecutive alphabetic characters in the password under test. This will eliminate passwords containing embedded "words" found in a standard dictionary.
     
-- Enable the script to check all the passwords on your system. These do not reside in [[./important-files#^DATAFILESREF1|/etc/passwd]].
+- Enable the script to check all the passwords on your system. These do not reside in [[important-files#^DATAFILESREF1|/etc/passwd]].
     
 
-This exercise tests mastery of [[../advanced-topics/regexp#^REGEXREF|Regular Expressions]].
+This exercise tests mastery of [[regexp#^REGEXREF|Regular Expressions]].
 
 **Cross Reference**
 
-Write a script that generates a _cross-reference_ (_concordance_) on a target file. The output will be a listing of all word occurrences in the target file, along with the line numbers in which each word occurs. Traditionally, _linked list_ constructs would be used in such applications. Therefore, you should investigate [[../advanced-topics/arrays#^ARRAYREF|arrays]] in the course of this exercise. [[../commands/text-processing-commands#^WF|Example 16-12]] is probably _not_ a good place to start.
+Write a script that generates a _cross-reference_ (_concordance_) on a target file. The output will be a listing of all word occurrences in the target file, along with the line numbers in which each word occurs. Traditionally, _linked list_ constructs would be used in such applications. Therefore, you should investigate [[arrays#^ARRAYREF|arrays]] in the course of this exercise. [[text-processing-commands#^WF|Example 16-12]] is probably _not_ a good place to start.
 
 **Square Root**
 
 Write a script to calculate square roots of numbers using _Newton's Method_.
 
-The algorithm for this, expressed as a snippet of Bash [[../advanced-topics/assorted-tips#^PSEUDOCODEREF|pseudo-code]] is:
+The algorithm for this, expressed as a snippet of Bash [[assorted-tips#^PSEUDOCODEREF|pseudo-code]] is:
 
 |   |
 |---|
@@ -290,7 +290,7 @@ do
    (( loopcnt++ ))     # Update loop counter.
 done|
 
-It's a simple enough recipe, and _seems_ at first glance easy enough to convert into a working Bash script. The problem, though, is that Bash has [[../basic/operations-and-related-topics#^NOFLOATINGPOINT|no native support for floating point numbers]]. So, the script writer needs to use [[../commands/math-commands#^BCREF|bc]] or possibly [[./awk#^AWKREF|awk]] to convert the numbers and do the calculations. It could get rather messy . . .
+It's a simple enough recipe, and _seems_ at first glance easy enough to convert into a working Bash script. The problem, though, is that Bash has [[operations-and-related-topics#^NOFLOATINGPOINT|no native support for floating point numbers]]. So, the script writer needs to use [[math-commands#^BCREF|bc]] or possibly [[awk#^AWKREF|awk]] to convert the numbers and do the calculations. It could get rather messy . . .
 
 **Logging File Accesses**
 
@@ -302,7 +302,7 @@ Write a script to continually monitor all running processes and to keep track of
 
 **Strip Comments**
 
-Strip all comments from a shell script whose name is specified on the command-line. Note that the initial [[../introduction/sha-bang#^SHABANGREF|#! line]] must not be stripped out.
+Strip all comments from a shell script whose name is specified on the command-line. Note that the initial [[sha-bang#^SHABANGREF|#! line]] must not be stripped out.
 
 **Strip HTML Tags**
 
@@ -318,33 +318,33 @@ Optional: A script that converts Docbook/SGML to XML.
 
 Write a script that analyzes a spam e-mail by doing DNS lookups on the IP addresses in the headers to identify the relay hosts as well as the originating ISP. The script will forward the unaltered spam message to the responsible ISPs. Of course, it will be necessary to filter out _your own ISP's IP address_, so you don't end up complaining about yourself.
 
-As necessary, use the appropriate [[../commands/communications-commands#^COMMUNINFO1|network analysis commands]].
+As necessary, use the appropriate [[communications-commands#^COMMUNINFO1|network analysis commands]].
 
-For some ideas, see [[../commands/communications-commands#^ISSPAMMER|Example 16-41]] and [[./contributed-scripts#^ISSPAMMER2|Example A-28]].
+For some ideas, see [[communications-commands#^ISSPAMMER|Example 16-41]] and [[contributed-scripts#^ISSPAMMER2|Example A-28]].
 
 Optional: Write a script that searches through a list of e-mail messages and deletes the spam according to specified filters.
 
 **Creating man pages**
 
-Write a script that automates the process of creating [[../commands/basic-commands#^MANREF|man pages]].
+Write a script that automates the process of creating [[basic-commands#^MANREF|man pages]].
 
-Given a text file which contains information to be formatted into a _man page_, the script will read the file, then invoke the appropriate [[../commands/text-processing-commands#^GROFFREF|groff]] commands to output the corresponding _man page_ to stdout. The text file contains blocks of information under the standard _man page_ headings, i.e., NAME, SYNOPSIS, DESCRIPTION, etc.
+Given a text file which contains information to be formatted into a _man page_, the script will read the file, then invoke the appropriate [[text-processing-commands#^GROFFREF|groff]] commands to output the corresponding _man page_ to stdout. The text file contains blocks of information under the standard _man page_ headings, i.e., NAME, SYNOPSIS, DESCRIPTION, etc.
 
-[[./contributed-scripts#^MANED|Example A-39]] is an instructive first step.
+[[contributed-scripts#^MANED|Example A-39]] is an instructive first step.
 
 **Hex Dump**
 
-Do a hex(adecimal) dump on a binary file specified as an argument to the script. The output should be in neat tabular [[../basic/special-characters#^FIELDREF|fields]], with the first field showing the address, each of the next 8 fields a 4-byte hex number, and the final field the ASCII equivalent of the previous 8 fields.
+Do a hex(adecimal) dump on a binary file specified as an argument to the script. The output should be in neat tabular [[special-characters#^FIELDREF|fields]], with the first field showing the address, each of the next 8 fields a 4-byte hex number, and the final field the ASCII equivalent of the previous 8 fields.
 
 The obvious followup to this is to extend the hex dump script into a disassembler. Using a lookup table, or some other clever gimmick, convert the hex values into 80x86 op codes.
 
 **Emulating a Shift Register**
 
-Using [[../advanced-topics/arrays#^STACKEX|Example 27-15]] as an inspiration, write a script that emulates a 64-bit shift register as an [[../advanced-topics/arrays#^ARRAYREF|array]]. Implement functions to _load_ the register, _shift left_, _shift right_, and _rotate_ it. Finally, write a function that interprets the register contents as eight 8-bit ASCII characters.
+Using [[arrays#^STACKEX|Example 27-15]] as an inspiration, write a script that emulates a 64-bit shift register as an [[arrays#^ARRAYREF|array]]. Implement functions to _load_ the register, _shift left_, _shift right_, and _rotate_ it. Finally, write a function that interprets the register contents as eight 8-bit ASCII characters.
 
 **Calculating Determinants**
 
-Write a script that calculates determinants [[../advanced-topics/local-variables#^RECURSIONREF0|^1] by [recursively]] expanding the _minors_. Use a 4 x 4 determinant as a test case.
+Write a script that calculates determinants [[local-variables#^RECURSIONREF0|^1] by [recursively]] expanding the _minors_. Use a 4 x 4 determinant as a test case.
 
 **Hidden Words**
 
@@ -400,9 +400,9 @@ A strict interpretation of the Gunning fog index does not count compound words a
 
 The Eighteenth Century French mathematician de Buffon came up with a novel experiment. Repeatedly drop a needle of length _n_ onto a wooden floor composed of long and narrow parallel boards. The cracks separating the equal-width floorboards are a fixed distance _d_ apart. Keep track of the total drops and the number of times the needle intersects a crack on the floor. The ratio of these two quantities turns out to be a fractional multiple of PI.
 
-In the spirit of [[../commands/math-commands#^CANNON|Example 16-50]], write a script that runs a Monte Carlo simulation of _Buffon's Needle_. To simplify matters, set the needle length equal to the distance between the cracks, _n = d_.
+In the spirit of [[math-commands#^CANNON|Example 16-50]], write a script that runs a Monte Carlo simulation of _Buffon's Needle_. To simplify matters, set the needle length equal to the distance between the cracks, _n = d_.
 
-Hint: there are actually two critical variables: the distance from the center of the needle to the nearest crack, and the inclination angle of the needle to that crack. You may use [[../commands/math-commands#^BCREF|bc]] to handle the calculations.
+Hint: there are actually two critical variables: the distance from the center of the needle to the nearest crack, and the inclination angle of the needle to that crack. You may use [[math-commands#^BCREF|bc]] to handle the calculations.
 
 **Playfair Cipher**
 
@@ -488,13 +488,13 @@ This script will have three main sections
 3. Decrypting encrypted text.
     
 
-The script will make extensive use of [[../advanced-topics/arrays#^ARRAYREF|arrays]] and [[../advanced-topics/functions|functions]]. You may use [[./contributed-scripts#^GRONSFELD|Example A-56]] as an inspiration.
+The script will make extensive use of [[arrays#^ARRAYREF|arrays]] and [[functions|functions]]. You may use [[contributed-scripts#^GRONSFELD|Example A-56]] as an inspiration.
 
 --
 
 Please do not send the author your solutions to these exercises. There are more appropriate ways to impress him with your cleverness, such as submitting bugfixes and suggestions for improving the book.
 
-|[[writing-scripts#^AEN25254|[1]]]|For all you clever types who failed intermediate algebra, a _determinant_ is a numerical value associated with a multidimensional _matrix_ ([[../advanced-topics/arrays#^ARRAYREF|array]] of numbers).
+|[[writing-scripts#^AEN25254|[1]]]|For all you clever types who failed intermediate algebra, a _determinant_ is a numerical value associated with a multidimensional _matrix_ ([[arrays#^ARRAYREF|array]] of numbers).
 
 |   |
 |---|

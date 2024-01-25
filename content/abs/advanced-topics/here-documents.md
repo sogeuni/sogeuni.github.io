@@ -7,7 +7,7 @@ title: 19. Here Documents
 >
 >--<cite>Aldous Huxley, _Island_</cite>
 
-A _here document_ is a special-purpose code block. It uses a form of [[./io-redirection|I/O redirection]] to feed a command list to an interactive program or a command, such as [[../commands/communications-commands#^FTPREF|ftp]], [[../commands/basic-commands#^CATREF|cat]], or the _ex_ text editor.
+A _here document_ is a special-purpose code block. It uses a form of [[io-redirection|I/O redirection]] to feed a command list to an interactive program or a command, such as [[communications-commands#^FTPREF|ftp]], [[basic-commands#^CATREF|cat]], or the _ex_ text editor.
 
 ```bash
 COMMAND <<InputComesFromHERE
@@ -37,7 +37,7 @@ LimitString
 
 Choose a _limit string_ sufficiently unusual that it will not occur anywhere in the command list and confuse matters.
 
-Note that _here documents_ may sometimes be used to good effect with non-interactive utilities and commands, such as, for example, [[../commands/system-and-administrative-commands#^WALLREF|wall]].
+Note that _here documents_ may sometimes be used to good effect with non-interactive utilities and commands, such as, for example, [[system-and-administrative-commands#^WALLREF|wall]].
 
 ###### Example 19-1. *broadcast*: Sends message to everyone logged in
 
@@ -285,7 +285,7 @@ End-Of-Session
 exit 0
 ```
 
-Quoting or escaping the "limit string" at the head of a here document disables parameter substitution within its body. The reason for this is that _quoting/escaping the limit string_ effectively [[../basic/quoting#^ESCP|escapes]] the $, `, and \ [[special-characters#^SCHARLIST|special characters]], and causes them to be interpreted literally. (Thank you, Allen Halsey, for pointing this out.)
+Quoting or escaping the "limit string" at the head of a here document disables parameter substitution within its body. The reason for this is that _quoting/escaping the limit string_ effectively [[quoting#^ESCP|escapes]] the $, `, and \ [[special-characters#^SCHARLIST|special characters]], and causes them to be interpreted literally. (Thank you, Allen Halsey, for pointing this out.)
 
 ###### Example 19-7. Parameter substitution turned off
 

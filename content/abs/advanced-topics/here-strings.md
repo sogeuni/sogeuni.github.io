@@ -7,7 +7,7 @@ title: 19.1. Here Strings
 > It consists of nothing more than **COMMAND <<< $WORD**,  
 > where $WORD is expanded and fed to the stdin of **COMMAND**.
 
-As a simple example, consider this alternative to the [[../commands/internal-commands-and-builtins#^ECHOGREPREF|echo-grep]] construction.
+As a simple example, consider this alternative to the [[internal-commands-and-builtins#^ECHOGREPREF|echo-grep]] construction.
 
 ```bash
 # Instead of:
@@ -22,7 +22,7 @@ fi
 # Thank you, Sebastian Kaminski, for the suggestion.
 ```
 
-Or, in combination with [[../commands/internal-commands-and-builtins#^READREF|read]]:
+Or, in combination with [[internal-commands-and-builtins#^READREF|read]]:
 
 ```bash
 String="This is a string of words."
@@ -43,7 +43,7 @@ echo "Seventh word in String is:  ${Words[6]}"   # (null)
 # Thank you, Francisco Lobo, for the suggestion.
 ```
 
-It is, of course, possible to feed the output of a _here string_ into the stdin of a [[../beyond-the-basic/loops-and-branches#^LOOPREF00|loop]].
+It is, of course, possible to feed the output of a _here string_ into the stdin of a [[loops-and-branches#^LOOPREF00|loop]].
 
 ```bash
 # As Seamus points out . . .
@@ -187,4 +187,4 @@ $ mailbox_grep.sh scam_mail
   IP address of sender: 196.3.62.4
 ```
 
-Exercise: Find other uses for _here strings_, such as, for example, [[../commands/math-commands#^GOLDENRATIO|feeding input to _dc_]].
+Exercise: Find other uses for _here strings_, such as, for example, [[math-commands#^GOLDENRATIO|feeding input to _dc_]].

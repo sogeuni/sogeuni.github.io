@@ -93,13 +93,13 @@ exit $?   # In this case, exit code = 99, since that is function return.
     See [[contributed-scripts#^SAMORSE|Example A-53]] for an interesting usage of an _associative array_.
     
 > [!caution]
-> Elements of the _index_ array may include embedded [[../basic/special-characters#Whitespace|space characters]], or even leading and/or trailing space characters. However, index array elements containing _only_ _whitespace_ are _not_ permitted.
+> Elements of the _index_ array may include embedded [[special-characters#Whitespace|space characters]], or even leading and/or trailing space characters. However, index array elements containing _only_ _whitespace_ are _not_ permitted.
 >
 > ```bash
 > address[   ]="Blank"   # Error!
 > ```
     
-- Enhancements to the [[../beyond-the-basic/testing-and-branching#^CASEESAC1|case]] construct: the _;;&_ and _;&_ terminators.
+- Enhancements to the [[testing-and-branching#^CASEESAC1|case]] construct: the _;;&_ and _;&_ terminators.
     
     **Example 37-7. Testing characters**
     
@@ -146,7 +146,7 @@ echo
 # The ;& is somewhat less useful.
 ```
     
-- The new **coproc** builtin enables two parallel [[../basic/special-characters#^PROCESSREF|processes]] to communicate and interact. As Chet Ramey states in the [[../bibliography#^BASHFAQ|Bash FAQ]] [^2] , ver. 4.01:
+- The new **coproc** builtin enables two parallel [[special-characters#^PROCESSREF|processes]] to communicate and interact. As Chet Ramey states in the [[bibliography#^BASHFAQ|Bash FAQ]] [^2] , ver. 4.01:
     
     >     There is a new 'coproc' reserved word that specifies a coprocess:  
     >     an asynchronous command run with two pipes connected to the creating  
@@ -161,7 +161,7 @@ echo
     >     just being a behind-the-scenes mechanism used by Bash.  
     >       
     
-    Coprocesses use _file descriptors_. [[./io-redirection#^FDREF2|File descriptors enable processes and pipes to communicate]].
+    Coprocesses use _file descriptors_. [[io-redirection#^FDREF2|File descriptors enable processes and pipes to communicate]].
     
 ```bash
 #!/bin/bash4
@@ -255,7 +255,7 @@ echo
 > #+ waits for the other to finish writing in its own write-enabled pipe.
 > ```
     
-- The new **mapfile** builtin makes it possible to load an array with the contents of a text file without using a loop or [[./arrays#^ARRAYINITCS|command substitution]].
+- The new **mapfile** builtin makes it possible to load an array with the contents of a text file without using a loop or [[arrays#^ARRAYINITCS|command substitution]].
 
 ```bash
 #!/bin/bash4
@@ -273,9 +273,9 @@ echo "${Arr2[@]}"  # Reads only first line of script into the array.
 exit
 ```
     
-- The [[../commands/internal-commands-and-builtins#^READREF|read]] builtin got a minor facelift. The -t [[../commands/internal-commands-and-builtins#^READTIMED|timeout]] option now accepts (decimal) fractional values [^3] and the -i option permits preloading the edit buffer. [^4] Unfortunately, these enhancements are still a work in progress and not (yet) usable in scripts.
+- The [[internal-commands-and-builtins#^READREF|read]] builtin got a minor facelift. The -t [[internal-commands-and-builtins#^READTIMED|timeout]] option now accepts (decimal) fractional values [^3] and the -i option permits preloading the edit buffer. [^4] Unfortunately, these enhancements are still a work in progress and not (yet) usable in scripts.
     
-- [[../beyond-the-basic/parameter-substitution#^PARAMSUBREF|Parameter substitution]] gets _case-modification_ operators.
+- [[parameter-substitution#^PARAMSUBREF|Parameter substitution]] gets _case-modification_ operators.
     
 ```bash
 #!/bin/bash4
@@ -308,7 +308,7 @@ echo "$var2"               # Originally_lowercase
 # NOT the same effect as     echo $var2 | tr a-z A-Z
 ```
     
-- [[../basic/special-characters#^BRACEEXPREF|Brace expansion]] has more options.
+- [[special-characters#^BRACEEXPREF|Brace expansion]] has more options.
     
     _Increment/decrement_, specified in the final term within braces.
     
@@ -372,7 +372,7 @@ echo ${@:0}
 # $0                $1  $2  $3
 ```
     
-- The new ** [[globbing.html|globbing]] operator matches filenames and directories [[./local-variables#^RECURSIONREF0|recursively]].
+- The new ** [[globbing.html|globbing]] operator matches filenames and directories [[local-variables#^RECURSIONREF0|recursively]].
     
 ```bash
 #!/bin/bash4
@@ -418,9 +418,9 @@ allmyfiles/my_pictures/picnic-with-Melissa.png
 filelist.bash4
 ```
     
-- The new [[../beyond-the-basic/another-look-at-variables#^BASHPIDREF|$BASHPID]] internal variable.
+- The new [[another-look-at-variables#^BASHPIDREF|$BASHPID]] internal variable.
     
-- There is a new [[../commands/internal-commands-and-builtins|builtin]] error-handling function named **command_not_found_handle**.
+- There is a new [[internal-commands-and-builtins|builtin]] error-handling function named **command_not_found_handle**.
     
 ```bash
 #!/bin/bash4
@@ -447,11 +447,11 @@ bad_command arg1 arg2
 
 Version 4.1 of Bash, released in May, 2010, was primarily a bugfix update.
 
-- The [[../commands/internal-commands-and-builtins#^PRINTFREF|printf]] command now accepts a -v option for setting [[./arrays#^ARRAYREF|array]] indices.
+- The [[internal-commands-and-builtins#^PRINTFREF|printf]] command now accepts a -v option for setting [[arrays#^ARRAYREF|array]] indices.
     
-- Within [[../basic/tests#^DBLBRACKETS|double brackets]], the **>** and **<** string comparison operators now conform to the [[../apendix/localization#^LOCALEREF|locale]]. Since the locale setting may affect the sorting order of string expressions, this has side-effects on comparison tests within _[[ ... | ... ]]_ expressions.
+- Within [[tests#^DBLBRACKETS|double brackets]], the **>** and **<** string comparison operators now conform to the [[localization#^LOCALEREF|locale]]. Since the locale setting may affect the sorting order of string expressions, this has side-effects on comparison tests within _[[ ... | ... ]]_ expressions.
     
-- The [[../commands/internal-commands-and-builtins#^READREF|read]] builtin now takes a -N option (_read -N chars_), which causes the _read_ to terminate after _chars_ characters.
+- The [[internal-commands-and-builtins#^READREF|read]] builtin now takes a -N option (_read -N chars_), which causes the _read_ to terminate after _chars_ characters.
     
     **Example 37-8. Reading N characters**
     
@@ -473,7 +473,7 @@ exit
 num_chars=61
 ```
     
-- [[./here-documents#^HEREDOCREF|Here documents]] embedded in [[varassignment#^COMMANDSUBREF0|**$( ... )** command substitution]] constructs may terminate with a simple **)**.
+- [[here-documents#^HEREDOCREF|Here documents]] embedded in [[varassignment#^COMMANDSUBREF0|**$( ... )** command substitution]] constructs may terminate with a simple **)**.
     
     **Example 37-9. Using a _here document_ to set a variable**
     
@@ -568,11 +568,11 @@ echo
 ```
 
 > [!note]
-> The above example uses the [[../basic/quoting#^STRQ|** ... '**]] _string-expansion_ construct.
+> The above example uses the [[quoting#^STRQ|** ... '**]] _string-expansion_ construct.
     
-- When the _lastpipe_ shell option is set, the last command in a [[../basic/special-characters#^PIPEREF|pipe]] _doesn't run in a subshell_.
+- When the _lastpipe_ shell option is set, the last command in a [[special-characters#^PIPEREF|pipe]] _doesn't run in a subshell_.
     
-    **Example 37-10. Piping input to a [[../commands/internal-commands-and-builtins#^READREF|read]]**
+    **Example 37-10. Piping input to a [[internal-commands-and-builtins#^READREF|read]]**
 
 ```bash
 #!/bin/bash
@@ -599,7 +599,7 @@ echo "\$line = "$line""
     
     This option offers possible "fixups" for these example scripts: [[gotchas#^BADREAD|Example 34-3]] and [[internal-commands-and-builtins#^READPIPE|Example 15-8]].
     
-- Negative [[./arrays#^ARRAYREF|array]] indices permit counting backwards from the end of an array.
+- Negative [[arrays#^ARRAYREF|array]] indices permit counting backwards from the end of an array.
     
     **Example 37-11. Negative array indices**
     
@@ -646,7 +646,7 @@ echo
 # See also neg-offset.sh.
 ```
     
-- [[../beyond-the-basic/manipulating-strings#^SUBSTREXTR01|Substring extraction]] uses a negative _length_ parameter to specify an offset from the _end_ of the target string.
+- [[manipulating-strings#^SUBSTREXTR01|Substring extraction]] uses a negative _length_ parameter to specify an offset from the _end_ of the target string.
     
     **Example 37-12. Negative parameter in string-extraction construct**
 
@@ -679,12 +679,12 @@ echo ${stringZ:3:-6}                         #    ABC123
 #  See also neg-array.sh.
 ```
 
-[^1]: To be more specific, Bash 4+ has _limited_ support for associative arrays. It's a bare-bones implementation, and it lacks the much of the functionality of such arrays in other programming languages. Note, however, that [[./optimizations#^ASSOCARRTST|associative arrays in Bash seem to execute faster and more efficiently than numerically-indexed arrays]].
+[^1]: To be more specific, Bash 4+ has _limited_ support for associative arrays. It's a bare-bones implementation, and it lacks the much of the functionality of such arrays in other programming languages. Note, however, that [[optimizations#^ASSOCARRTST|associative arrays in Bash seem to execute faster and more efficiently than numerically-indexed arrays]].
 
 [^2]: Copyright 1995-2009 by Chester Ramey.
 
-[^3]: This only works with [[../basic/special-characters#^PIPEREF|pipes]] and certain other _special_ files.
+[^3]: This only works with [[special-characters#^PIPEREF|pipes]] and certain other _special_ files.
 
-[^4]: But only in conjunction with [[../commands/internal-commands-and-builtins#^READLINEREF|readline]], i.e., from the command-line.
+[^4]: But only in conjunction with [[internal-commands-and-builtins#^READLINEREF|readline]], i.e., from the command-line.
 
-[^5]: And while you're at it, consider fixing the notorious [[../commands/internal-commands-and-builtins#^PIPEREADREF0|piped read]] problem.
+[^5]: And while you're at it, consider fixing the notorious [[internal-commands-and-builtins#^PIPEREADREF0|piped read]] problem.

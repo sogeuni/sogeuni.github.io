@@ -18,5 +18,5 @@ The exercises that follow test and extend your knowledge of scripting. Think of 
   
       (Alas, the author of the _ABS Guide_ is not represented among the exhibits.  
       This is possibly due to malicious rumors abou[lack of credentials](38.2.%20About%20the%20Author.md#^NOCREDS)s]] and  
-      [[./contributed-scripts#^KTOUR0|deficient scripting skills]].)  
+      [[contributed-scripts#^KTOUR0|deficient scripting skills]].)  
       

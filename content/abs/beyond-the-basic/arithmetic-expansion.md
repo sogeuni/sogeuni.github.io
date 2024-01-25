@@ -7,15 +7,15 @@ Arithmetic expansion provides a powerful tool for performing (integer) arithmeti
 
 **Variations**
 
-Arithmetic expansion with [[./command-substitution#^BACKQUOTESREF|backticks]] (often used in conjunction with [[../commands/complex-commands#^EXPRREF|expr]])
+Arithmetic expansion with [[command-substitution#^BACKQUOTESREF|backticks]] (often used in conjunction with [[complex-commands#^EXPRREF|expr]])
 
 ```bash
 z=`expr $z + 3`          # The 'expr' command performs the expansion.
 ```
 
-Arithmetic expansion with [[../basic/operations-and-related-topics|double parentheses]], and using [[../commands/internal-commands-and-builtins#^LETREF|let]]
+Arithmetic expansion with [[operations-and-related-topics|double parentheses]], and using [[internal-commands-and-builtins#^LETREF|let]]
 
-The use of _backticks_ (_backquotes_) in arithmetic expansion has been superseded by _double parentheses_ -- **((...))** and **$((...))** -- and also by the very convenient [[../commands/internal-commands-and-builtins#^LETREF|let]] construction.
+The use of _backticks_ (_backquotes_) in arithmetic expansion has been superseded by _double parentheses_ -- **((...))** and **$((...))** -- and also by the very convenient [[internal-commands-and-builtins#^LETREF|let]] construction.
 
 ```bash
 z=$(($z+3))
@@ -47,8 +47,8 @@ let "z += 3"  #  Quotes permit the use of spaces in variable assignment.
 
 Examples of arithmetic expansion in scripts:
 
-1. [[../commands/complex-commands#^EX45|Example 16-9]]
-2. [[./loops#^EX25|Example 11-15]]
-3. [[../advanced-topics/arrays#^EX66|Example 27-1]]
-4. [[../advanced-topics/arrays#^BUBBLE|Example 27-11]]
-5. [[../apendix/contributed-scripts#^TREE|Example A-16]]
+1. [[complex-commands#^EX45|Example 16-9]]
+2. [[loops#^EX25|Example 11-15]]
+3. [[arrays#^EX66|Example 27-1]]
+4. [[arrays#^BUBBLE|Example 27-11]]
+5. [[contributed-scripts#^TREE|Example A-16]]

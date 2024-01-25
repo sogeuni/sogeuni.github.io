@@ -7,7 +7,7 @@ Most shell scripts are quick 'n dirty solutions to non-complex problems. As such
 
 Check the loops in the script. Time consumed by repetitive operations adds up quickly. If at all possible, remove time-consuming operations from within loops.
 
-Use [[../commands/internal-commands-and-builtins|builtin]] commands in preference to system commands. Builtins execute faster and usually do not launch a subshell when invoked.
+Use [[internal-commands-and-builtins|builtin]] commands in preference to system commands. Builtins execute faster and usually do not launch a subshell when invoked.
 
 Avoid unnecessary commands, particularly in a [[special-chars.html#PIPEREF|pipe]].
 
@@ -184,4 +184,4 @@ Write your scripts in a modular and coherent form, [^1] so they can be reorganiz
 
 For an excellent demonstration of how optimization can dramatically reduce the execution time of a script, see [[mathc.html#MONTHLYPMT|Example 16-47]].
 
-[^1]: This usually means liberal use of [[./functions|functions]].
+[^1]: This usually means liberal use of [[functions|functions]].

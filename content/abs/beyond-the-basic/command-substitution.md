@@ -12,7 +12,7 @@ script_name=`basename $0`
 echo "The name of this script is $script_name."
 ```
 
-**The output of commands can be used as arguments to another command, to set a variable, and even for generating the argument list in a [[./loops#^FORLOOPREF1|for]] loop.**
+**The output of commands can be used as arguments to another command, to set a variable, and even for generating the argument list in a [[loops#^FORLOOPREF1|for]] loop.**
 
 ```bash
 rm `cat filename`   # "filename" contains a list of files to delete.
@@ -40,10 +40,10 @@ echo $textfile_listing2
 ```
 
 > [!note]
-> Command substitution invokes a [[../advanced-topics/subshells#^SUBSHELLSREF|subshell]].
+> Command substitution invokes a [[subshells#^SUBSHELLSREF|subshell]].
 
 > [!caution]
-> Command substitution may result in [[../basic/quoting#^WSPLITREF|word splitting]].
+> Command substitution may result in [[quoting#^WSPLITREF|word splitting]].
 >
 > ```bash
 > COMMAND `echo a b`     # 2 args: a and b
@@ -116,7 +116,7 @@ echo $textfile_listing2
 > # -rwxr-xr-x    1 bozo      217 Mar  5 21:13 wi.sh
 > ```
 
-Command substitution even permits setting a variable to the contents of a file, using either [[../advanced-topics/io-redirection|redirection]] or the [[../commands/basic-commands#^CATREF|cat]] command.
+Command substitution even permits setting a variable to the contents of a file, using either [[io-redirection|redirection]] or the [[basic-commands#^CATREF|cat]] command.
 
 ```bash
 variable1=`<file1`      #  Set "variable1" to contents of "file1".
@@ -193,7 +193,7 @@ fi
 >
 > Notice that a _buffer overrun_ does not occur. This is one instance where an interpreted language, such as Bash, provides more protection from programmer mistakes than a compiled language.
 
-Command substitution permits setting a variable to the output of a [[./loops#^FORLOOPREF1|loop]]. The key to this is grabbing the output of an [[../commands/internal-commands-and-builtins#^ECHOREF|echo]] command within the loop.
+Command substitution permits setting a variable to the output of a [[loops#^FORLOOPREF1|loop]]. The key to this is grabbing the output of an [[internal-commands-and-builtins#^ECHOREF|echo]] command within the loop.
 
 ###### Example 12-2. Generating a variable from a loop
 
@@ -335,24 +335,24 @@ exit 0
 
 Examples of command substitution in shell scripts:
 
-1. [[./loops#^BINGREP|Example 11-8]]
-2. [[./testing-and-branching#^CASECMD|Example 11-27]]
-3. [[./another-look-at-variables#^SEEDINGRANDOM|Example 9-16]]
-4. [[../commands/complex-commands#^EX57|Example 16-3]]
-5. [[../commands/text-processing-commands#^LOWERCASE|Example 16-22]]
-6. [[../commands/text-processing-commands#^GRP|Example 16-17]]
-7. [[../commands/miscellaneous-commands#^EX53|Example 16-54]]
-8. [[./loops#^EX24|Example 11-14]]
-9. [[./loops#^SYMLINKS|Example 11-11]]
-10. [[../commands/file-and-archiving-commands#^STRIPC|Example 16-32]]
-11. [[../advanced-topics/redirecting-code-blocks#^REDIR4|Example 20-8]]
-12. [[../apendix/contributed-scripts#^TREE|Example A-16]]
-13. [[../advanced-topics/proc#^PIDID|Example 29-3]]
-14. [[../commands/math-commands#^MONTHLYPMT|Example 16-47]]
-15. [[../commands/math-commands#^BASE|Example 16-48]]
-16. [[../commands/math-commands#^ALTBC|Example 16-49]]
+1. [[loops#^BINGREP|Example 11-8]]
+2. [[testing-and-branching#^CASECMD|Example 11-27]]
+3. [[another-look-at-variables#^SEEDINGRANDOM|Example 9-16]]
+4. [[complex-commands#^EX57|Example 16-3]]
+5. [[text-processing-commands#^LOWERCASE|Example 16-22]]
+6. [[text-processing-commands#^GRP|Example 16-17]]
+7. [[miscellaneous-commands#^EX53|Example 16-54]]
+8. [[loops#^EX24|Example 11-14]]
+9. [[loops#^SYMLINKS|Example 11-11]]
+10. [[file-and-archiving-commands#^STRIPC|Example 16-32]]
+11. [[redirecting-code-blocks#^REDIR4|Example 20-8]]
+12. [[contributed-scripts#^TREE|Example A-16]]
+13. [[proc#^PIDID|Example 29-3]]
+14. [[math-commands#^MONTHLYPMT|Example 16-47]]
+15. [[math-commands#^BASE|Example 16-48]]
+16. [[math-commands#^ALTBC|Example 16-49]]
 
-[^1]: For purposes of _command substitution_, a **command** may be an external system command, an internal scripting [[../commands/internal-commands-and-builtins|builtin]], or even [[../advanced-topics/assorted-tips#^RVT|a script function]].
+[^1]: For purposes of _command substitution_, a **command** may be an external system command, an internal scripting [[internal-commands-and-builtins|builtin]], or even [[assorted-tips#^RVT|a script function]].
 
 [^2]: In a more technically correct sense, _command substitution_ extracts the stdout of a command, then assigns it to a variable using the = operator.
 

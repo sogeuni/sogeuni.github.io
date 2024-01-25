@@ -61,7 +61,7 @@ do_something do_something
 # All this is legal, but highly confusing.
 ```
     
-- Using [[../basic/special-characters#Whitespace|whitespace]] inappropriately. In contrast to other programming languages, Bash can be quite finicky about whitespace.
+- Using [[special-characters#Whitespace|whitespace]] inappropriately. In contrast to other programming languages, Bash can be quite finicky about whitespace.
     
 ```bash
 var1 = 23   # 'var1=23' is correct.
@@ -75,7 +75,7 @@ if [ $a -le 5]    # if [ $a -le 5 ]   is correct.
                   # [[ $a -le 5 ]] also works.
 ```
     
-- Not terminating with a [[../basic/special-characters#^SEMICOLONREF|semicolon]] the final command in a [[../basic/special-characters#^CODEBLOCKREF|code block within curly brackets]].
+- Not terminating with a [[special-characters#^SEMICOLONREF|semicolon]] the final command in a [[special-characters#^CODEBLOCKREF|code block within curly brackets]].
     
 ```bash
 { ls -l; df; echo "Done." }
@@ -184,16 +184,16 @@ echo
 exit 0
 ```
     
-- Attempting to use [[../commands/internal-commands-and-builtins#^LETREF|let]] to set string variables.
+- Attempting to use [[internal-commands-and-builtins#^LETREF|let]] to set string variables.
 
 ```bash
 let "a = hello, you"
 echo "$a"   # 0
 ```
     
-- Sometimes variables within "test" brackets ([ ]) need to be quoted (double quotes). Failure to do so may cause unexpected behavior. See [[other-comparison-operators#^STRTEST|Example 7-6]], [[./redirecting-code-blocks#^REDIR2|Example 20-5]], and [[../beyond-the-basic/another-look-at-variables#^ARGLIST|Example 9-6]].
+- Sometimes variables within "test" brackets ([ ]) need to be quoted (double quotes). Failure to do so may cause unexpected behavior. See [[other-comparison-operators#^STRTEST|Example 7-6]], [[redirecting-code-blocks#^REDIR2|Example 20-5]], and [[another-look-at-variables#^ARGLIST|Example 9-6]].
     
-- Quoting a variable containing whitespace [[../basic/quoting#^WSQUO|prevents splitting]]. Sometimes this produces [[../basic/quoting#^VARSPLITTING|unintended consequences]].
+- Quoting a variable containing whitespace [[quoting#^WSQUO|prevents splitting]]. Sometimes this produces [[quoting#^VARSPLITTING|unintended consequences]].
     
 - Commands issued from a script may fail to execute because the script owner lacks execute permission for them. If a user cannot invoke a command from the command-line, then putting it into a script will likewise fail. Try changing the attributes of the command in question, perhaps even setting the suid bit (as _root_, of course).
     
@@ -229,13 +229,13 @@ fi
 ...
 ```
     
-- Using Bash-specific functionality in a [[../introduction/shell-programming#^BASHDEF|Bourne shell]] script (**#!/bin/sh**) on a non-Linux machine [[gotchas#^BINSH|may cause unexpected behavior]]. A Linux system usually aliases **sh** to **bash**, but this does not necessarily hold true for a generic UNIX machine.
+- Using Bash-specific functionality in a [[shell-programming#^BASHDEF|Bourne shell]] script (**#!/bin/sh**) on a non-Linux machine [[gotchas#^BINSH|may cause unexpected behavior]]. A Linux system usually aliases **sh** to **bash**, but this does not necessarily hold true for a generic UNIX machine.
     
-- Using undocumented features in Bash turns out to be a dangerous practice. In previous releases of this book there were several scripts that depended on the "feature" that, although the maximum value of an [[exit-and-exit-status#^EXITSTATUSREF|exit]] or [[./complex-functions-and-function-complexities#^RETURNREF|return]] value was 255, that limit did not apply to _negative_ integers. Unfortunately, in version 2.05b and later, that loophole disappeared. See [[./complex-functions-and-function-complexities#^RETURNTEST|Example 24-9]].
+- Using undocumented features in Bash turns out to be a dangerous practice. In previous releases of this book there were several scripts that depended on the "feature" that, although the maximum value of an [[exit-and-exit-status#^EXITSTATUSREF|exit]] or [[complex-functions-and-function-complexities#^RETURNREF|return]] value was 255, that limit did not apply to _negative_ integers. Unfortunately, in version 2.05b and later, that loophole disappeared. See [[complex-functions-and-function-complexities#^RETURNTEST|Example 24-9]].
     
-- In certain contexts, a misleading [[exit-and-exit-status#^EXITSTATUSREF|exit status]] may be returned. This may occur when [[./local-variables#^EXITVALANOMALY01|setting a local variable within a function]] or when [[../commands/internal-commands-and-builtins#^EXITVALANOMALY02|assigning an arithmetic value to a variable]].
+- In certain contexts, a misleading [[exit-and-exit-status#^EXITSTATUSREF|exit status]] may be returned. This may occur when [[local-variables#^EXITVALANOMALY01|setting a local variable within a function]] or when [[internal-commands-and-builtins#^EXITVALANOMALY02|assigning an arithmetic value to a variable]].
     
-- The [[../basic/tests#^ARXS|exit status of an arithmetic expression]] is _not_ equivalent to an _error code_.
+- The [[tests#^ARXS|exit status of an arithmetic expression]] is _not_ equivalent to an _error code_.
 
 ```bash
 var=1 && ((--var)) && echo $var
@@ -265,9 +265,9 @@ exit 0
     
 - A shell script headed by **#!/bin/sh** will not run in full Bash-compatibility mode. Some Bash-specific functions might be disabled. Scripts that need complete access to all the Bash-specific extensions should start with **#!/bin/bash**.
     
-- [[./here-documents#^INDENTEDLS|Putting whitespace in front of the terminating limit string]] of a [[./here-documents#^HEREDOCREF|here document]] will cause unexpected behavior in a script.
+- [[here-documents#^INDENTEDLS|Putting whitespace in front of the terminating limit string]] of a [[here-documents#^HEREDOCREF|here document]] will cause unexpected behavior in a script.
     
-- Putting more than one _echo_ statement in a function [[./assorted-tips#^RVT|whose output is captured]].
+- Putting more than one _echo_ statement in a function [[assorted-tips#^RVT|whose output is captured]].
 
 ```bash
 add2 ()
@@ -289,7 +289,7 @@ add2 ()
     
     This [[assortedtips#^RVTCAUTION|will not work]].
     
-- A script may not **export** variables back to its [[../commands/internal-commands-and-builtins#^FORKREF|parent process]], the shell, or to the environment. Just as we learned in biology, a child process can inherit from a parent, but not vice versa.
+- A script may not **export** variables back to its [[internal-commands-and-builtins#^FORKREF|parent process]], the shell, or to the environment. Just as we learned in biology, a child process can inherit from a parent, but not vice versa.
 
 ```bash
 WHATEVER=/home/bozo
@@ -304,7 +304,7 @@ bash$
     
     Sure enough, back at the command prompt, $WHATEVER remains unset.
     
-- Setting and manipulating variables in a [[./subshells#^SUBSHELLSREF|subshell]], then attempting to use those same variables outside the scope of the subshell will result an unpleasant surprise.
+- Setting and manipulating variables in a [[subshells#^SUBSHELLSREF|subshell]], then attempting to use those same variables outside the scope of the subshell will result an unpleasant surprise.
     
     **Example 34-2. Subshell Pitfalls**
 
@@ -345,7 +345,7 @@ exit 0
 # Does it make a difference?
 ```
     
-- [[../basic/special-characters#^PIPEREF|Piping]] **echo** output to a [[../commands/internal-commands-and-builtins#^READREF|read]] may produce unexpected results. In this scenario, the **read** acts as if it were running in a subshell. Instead, use the [[../commands/internal-commands-and-builtins#^SETREF|set]] command (as in [[../commands/internal-commands-and-builtins#^SETPOS|Example 15-18]]).
+- [[special-characters#^PIPEREF|Piping]] **echo** output to a [[internal-commands-and-builtins#^READREF|read]] may produce unexpected results. In this scenario, the **read** acts as if it were running in a subshell. Instead, use the [[internal-commands-and-builtins#^SETREF|set]] command (as in [[internal-commands-and-builtins#^SETPOS|Example 15-18]]).
     
     **Example 34-3. Piping the output of _echo_ to a _read_**
 
@@ -496,11 +496,11 @@ tail -f /var/log/messages | grep "$ERROR_MSG" >> error.log
     
 - Using shell scripts for CGI programming may be problematic. Shell script variables are not "typesafe," and this can cause undesirable behavior as far as CGI is concerned. Moreover, it is difficult to "cracker-proof" shell scripts.
     
-- Bash does not handle the [[../commands/internal-commands-and-builtins#^DOUBLESLASHREF|double slash (//) string]] correctly.
+- Bash does not handle the [[internal-commands-and-builtins#^DOUBLESLASHREF|double slash (//) string]] correctly.
     
-- Bash scripts written for Linux or BSD systems may need fixups to run on a commercial UNIX machine. Such scripts often employ the GNU set of commands and filters, which have greater functionality than their generic UNIX counterparts. This is particularly true of such text processing utilites as [[../commands/text-processing-commands#^TRREF|tr]].
+- Bash scripts written for Linux or BSD systems may need fixups to run on a commercial UNIX machine. Such scripts often employ the GNU set of commands and filters, which have greater functionality than their generic UNIX counterparts. This is particularly true of such text processing utilites as [[text-processing-commands#^TRREF|tr]].
     
-- Sadly, updates to Bash itself have broken older scripts that [[../beyond-the-basic/manipulating-strings#^PARAGRAPHSPACE|used to work perfectly fine]]. Let us recall [[gotchas#^UNDOCF|how risky it is to use undocumented Bash features]].
+- Sadly, updates to Bash itself have broken older scripts that [[manipulating-strings#^PARAGRAPHSPACE|used to work perfectly fine]]. Let us recall [[gotchas#^UNDOCF|how risky it is to use undocumented Bash features]].
 
 > Danger is near thee --
 >
@@ -514,4 +514,4 @@ tail -f /var/log/messages | grep "$ERROR_MSG" >> error.log
 >
 > --<cite>A.J. Lamb and H.W. Petrie</cite>
 
-[^1]: Setting the [[../basic/tests#^SUIDREF|suid]] permission on the script itself has no effect in Linux and most other UNIX flavors.
+[^1]: Setting the [[tests#^SUIDREF|suid]] permission on the script itself has no effect in Linux and most other UNIX flavors.

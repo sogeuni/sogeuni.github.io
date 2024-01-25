@@ -3,7 +3,7 @@ title: 29.2. /proc
 ---
 
 
-The /proc directory is actually a pseudo-filesystem. The files in /proc mirror currently running system and kernel [[../basic/special-characters#^PROCESSREF|processes]] and contain information and statistics about them.
+The /proc directory is actually a pseudo-filesystem. The files in /proc mirror currently running system and kernel [[special-characters#^PROCESSREF|processes]] and contain information and statistics about them.
 
 ```bash
 bash$ cat /proc/devices
@@ -176,7 +176,7 @@ fi
 >
 > Of course, caution is advised when writing to /proc.
 
-The /proc directory contains subdirectories with unusual numerical names. Every one of these names maps to the [[../beyond-the-basic/another-look-at-variables#^PPIDREF|process ID]] of a currently running process. Within each of these subdirectories, there are a number of files that hold useful information about the corresponding process. The stat and status files keep running statistics on the process, the cmdline file holds the command-line arguments the process was invoked with, and the exe file is a symbolic link to the complete path name of the invoking process. There are a few more such files, but these seem to be the most interesting from a scripting standpoint.
+The /proc directory contains subdirectories with unusual numerical names. Every one of these names maps to the [[another-look-at-variables#^PPIDREF|process ID]] of a currently running process. Within each of these subdirectories, there are a number of files that hold useful information about the corresponding process. The stat and status files keep running statistics on the process, the cmdline file holds the command-line arguments the process was invoked with, and the exe file is a symbolic link to the complete path name of the invoking process. There are a few more such files, but these seem to be the most interesting from a scripting standpoint.
 
 ###### Example 29-3. Finding the process associated with a PID
 
@@ -336,4 +336,4 @@ exit 0
 > [!warning]
 > In general, it is dangerous to _write_ to the files in /proc, as this can corrupt the filesystem or crash the machine.
 
-[^1]: Certain system commands, such as [[../commands/system-and-administrative-commands#^PROCINFOREF|procinfo]], [[../commands/system-and-administrative-commands#^FREEREF|free]], [[../commands/system-and-administrative-commands#^VMSTATREF|vmstat]], [[../commands/system-and-administrative-commands#^LSDEVREF|lsdev]], and [[../commands/system-and-administrative-commands#^UPTIMEREF|uptime]] do this as well.
+[^1]: Certain system commands, such as [[system-and-administrative-commands#^PROCINFOREF|procinfo]], [[system-and-administrative-commands#^FREEREF|free]], [[system-and-administrative-commands#^VMSTATREF|vmstat]], [[system-and-administrative-commands#^LSDEVREF|lsdev]], and [[system-and-administrative-commands#^UPTIMEREF|uptime]] do this as well.

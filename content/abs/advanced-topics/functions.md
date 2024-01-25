@@ -3,7 +3,7 @@ title: 24. Functions
 ---
 
 
-Like "real" programming languages, Bash has functions, though in a somewhat limited implementation. A function is a subroutine, a [[../basic/special-characters#^CODEBLOCKREF|code block]] that implements a set of operations, a "black box" that performs a specified task. Wherever there is repetitive code, when a task repeats with only slight variations in procedure, then consider using a function.
+Like "real" programming languages, Bash has functions, though in a somewhat limited implementation. A function is a subroutine, a [[special-characters#^CODEBLOCKREF|code block]] that implements a set of operations, a "black box" that performs a specified task. Wherever there is repetitive code, when a task repeats with only slight variations in procedure, then consider using a function.
 
 **function** _function_name_ {  
 _command_...  
@@ -15,7 +15,7 @@ _function_name_ () {
 _command_...  
 }  
 
-This second form will cheer the hearts of C programmers (and is more [[./portability-issues|portable]]).
+This second form will cheer the hearts of C programmers (and is more [[portability-issues|portable]]).
 
 As in C, the function's opening bracket may optionally appear on the second line.
 
@@ -255,7 +255,7 @@ Function names can take strange forms.
 # It's a devious way to obfuscate the code in a script.
 ```
 
-See also [[../apendix/contributed-scripts#^GRONSFELD|Example A-56]]
+See also [[contributed-scripts#^GRONSFELD|Example A-56]]
 
 > [!note]
 > What happens when different versions of the same function appear in a script?

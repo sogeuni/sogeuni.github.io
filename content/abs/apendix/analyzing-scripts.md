@@ -60,7 +60,7 @@ exit 0
 
 ---
 
-Examine and explain the following script. For hints, you might refer to the listings for [[../commands/complex-commands#^FINDREF|find]] and [[../commands/system-and-administrative-commands#^STATREF|stat]].
+Examine and explain the following script. For hints, you might refer to the listings for [[complex-commands#^FINDREF|find]] and [[system-and-administrative-commands#^STATREF|stat]].
 
 ```bash
 #!/bin/bash
@@ -91,7 +91,7 @@ do
 done < `tail -f /var/log/messages`
 ```
 
-He wished to write a script tracking changes to the system log file, /var/log/messages. Unfortunately, the above code block hangs and does nothing useful. Why? Fix this so it does work. (Hint: rather than [[../advanced-topics/redirecting-code-blocks#^REDIRREF|redirecting the stdin of the loop]], try a [[../basic/special-characters#^PIPEREF|pipe]].)
+He wished to write a script tracking changes to the system log file, /var/log/messages. Unfortunately, the above code block hangs and does nothing useful. Why? Fix this so it does work. (Hint: rather than [[redirecting-code-blocks#^REDIRREF|redirecting the stdin of the loop]], try a [[special-characters#^PIPEREF|pipe]].)
 
 ---
 
@@ -102,10 +102,10 @@ export SUM=0; for f in $(find src -name "*.java");
 do export SUM=$(($SUM + $(wc -l $f | awk '{ print $1 }'))); done; echo $SUM
 ```
 
-Hint: First, break the script up into bite-sized sections. Then, carefully examine its use of [[operations-and-related-topics.html|double-parentheses]] arithmetic, the [[../commands/internal-commands-and-builtins#^EXPORTREF|export]] command, the [[../commands/complex-commands#^FINDREF|find]] command, the [[../commands/text-processing-commands#^WCREF|wc]] command, and [[./awk#^AWKREF|awk]].
+Hint: First, break the script up into bite-sized sections. Then, carefully examine its use of [[operations-and-related-topics.html|double-parentheses]] arithmetic, the [[internal-commands-and-builtins#^EXPORTREF|export]] command, the [[complex-commands#^FINDREF|find]] command, the [[text-processing-commands#^WCREF|wc]] command, and [[awk#^AWKREF|awk]].
 
 ---
 
-Analyze [[./contributed-scripts#^LIFESLOW|Example A-10]], and reorganize it in a simplified and more logical style. See how many of the variables can be eliminated, and try to optimize the script to speed up its execution time.
+Analyze [[contributed-scripts#^LIFESLOW|Example A-10]], and reorganize it in a simplified and more logical style. See how many of the variables can be eliminated, and try to optimize the script to speed up its execution time.
 
 Alter the script so that it accepts any ordinary ASCII text file as input for its initial "generation". The script will read the first _$ROW*$COL_ characters, and set the occurrences of vowels as "living" cells. Hint: be sure to translate the spaces in the input file to underscore characters.

@@ -64,7 +64,7 @@ Other common options are:
     
     --compress
     
-    _Compress_: apply compression (usually [[../commands/file-and-archiving-commands#^GZIPREF|gzip]]).
+    _Compress_: apply compression (usually [[file-and-archiving-commands.md#^GZIPREF|gzip]]).
     
 
 However:

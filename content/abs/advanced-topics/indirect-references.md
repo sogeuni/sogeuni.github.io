@@ -93,7 +93,7 @@ exit 0
 
 > Indirect referencing in Bash is a multi-step process. First, take the name of a variable: varname. Then, reference it: $varname. Then, reference the reference: $$varname. Then, _escape_ the first $: \$$varname. Finally, force a reevaluation of the expression and assign it: **eval newvar=\$$varname**.
 
-Of what practical use is indirect referencing of variables? It gives Bash a little of the functionality of [[varsubn.html#POINTERREF|pointers]] in _C_, for instance, in [[./bash-version-2#^RESISTOR|table lookup]]. And, it also has some other very interesting applications. . . .
+Of what practical use is indirect referencing of variables? It gives Bash a little of the functionality of [[varsubn.html#POINTERREF|pointers]] in _C_, for instance, in [[bash-version-2#^RESISTOR|table lookup]]. And, it also has some other very interesting applications. . . .
 
 Nils Radtke shows how to build "dynamic" variable names and evaluate their contents. This can be useful when [[internal.html#SOURCEREF|sourcing]] configuration files.
 
