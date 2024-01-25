@@ -8,7 +8,7 @@ What makes a character *special*? If it has a meaning beyond its *literal meanin
 
 ### \# (hash)
 
-**Comments.** Lines beginning with a # (with the exception of [[../introduction/starting-off-with-a-sha-bang#^magnumref|\#!]]) are comments and will *not* be executed.
+**Comments.** Lines beginning with a # (with the exception of [[../introduction/sha-bang#^magnumref|\#!]]) are comments and will *not* be executed.
 
 ```bash
 # This line is a comment.
@@ -336,7 +336,7 @@ In yet another context, from the *command line*, the ! invokes the Bash *history
 
 *
 
-**wild card [[globbing|asterisk]].** The * character serves as a "wild card" for filename expansion in [[globbing]]. By itself, it matches every filename in a given directory.
+**wild card [[globbing|asterisk]].** The * character serves as a "wild card" for filename expansion in [[globbing|18.2. Globbing]]. By itself, it matches every filename in a given directory.
 
 ```bash
 bash$ echo *
