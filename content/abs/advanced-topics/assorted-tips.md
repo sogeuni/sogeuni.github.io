@@ -38,7 +38,7 @@ if [ $# -ne "$ARGCOUNT" ]
   echo "Usage: `basename $0` name"
 ```
 
-For an example of using pseudo-code, see the [[../apendix/writing-scripts#^NEWTONSQRT|Square Root]] exercise.
+For an example of using pseudo-code, see the [[writing-scripts#^NEWTONSQRT|Square Root]] exercise.
 
 - To keep a record of which user scripts have run during a particular session or over a number of sessions, add the following lines to each script you want to keep track of. This will keep a continuing file record of the script names and invocation times.
 
@@ -66,13 +66,13 @@ echo $title | cat - $file >$file.new
 #+ to write a new file with $title appended at *beginning*.
 ```
 
-This is a simplified variant of the [[./here-strings#^PREPENDEX|Example 19-13]] script given earlier. And, of course, [[sedawk#^SEDREF|sed]] can also do this.
+This is a simplified variant of the [[here-strings#^PREPENDEX|Example 19-13]] script given earlier. And, of course, [[sedawk#^SEDREF|sed]] can also do this.
 
-- A shell script may act as an embedded command inside another shell script, a *Tcl* or *wish* script, or even a [[../commands/file-and-archiving-commands#^MAKEFILEREF|Makefile]]. It can be invoked as an external shell command in a C program using the *system()* call, i.e., *system("script_name");*.
+- A shell script may act as an embedded command inside another shell script, a *Tcl* or *wish* script, or even a [[file-and-archiving-commands#^MAKEFILEREF|Makefile]]. It can be invoked as an external shell command in a C program using the *system()* call, i.e., *system("script_name");*.
 
-- Setting a variable to the contents of an embedded _sed_ or _awk_ script increases the readability of the surrounding [[./shell-wrappers#^SHWRAPPER|shell wrapper]]. See [[../apendix/contributed-scripts#^MAILFORMAT|Example A-1]] and [[../commands/internal-commands-and-builtins#^COLTOTALER3|Example 15-20]].
+- Setting a variable to the contents of an embedded _sed_ or _awk_ script increases the readability of the surrounding [[shell-wrappers#^SHWRAPPER|shell wrapper]]. See [[contributed-scripts#^MAILFORMAT|Example A-1]] and [[internal-commands-and-builtins#^COLTOTALER3|Example 15-20]].
 
-- Put together files containing your favorite and most useful definitions and functions. As necessary, "include" one or more of these "library files" in scripts with either the [[../basic/special-characters#^DOTREF|dot]] (**.**) or [[../commands/internal-commands-and-builtins#^SOURCEREF|source]] command.
+- Put together files containing your favorite and most useful definitions and functions. As necessary, "include" one or more of these "library files" in scripts with either the [[special-characters#^DOTREF|dot]] (**.**) or [[internal-commands-and-builtins#^SOURCEREF|source]] command.
 
 ```bash
 # SCRIPT LIBRARY
@@ -261,7 +261,7 @@ echo ""
 exit
 ```
 
-- A particularly clever use of [[../basic/tests#^TESTCONSTRUCTS1|if-test]] constructs is for comment blocks.
+- A particularly clever use of [[tests#^TESTCONSTRUCTS1|if-test]] constructs is for comment blocks.
 
 ```bash
 #!/bin/bash
@@ -290,9 +290,9 @@ echo "No more comments, please."
 exit 0
 ```
 
-Compare this with [[./here-documents#^CBLOCK1|using here documents to comment out code blocks]].
+Compare this with [[here-documents#^CBLOCK1|using here documents to comment out code blocks]].
 
-- Using the [[../beyond-the-basic/another-look-at-variables#^XSTATVARREF|$? exit status variable]], a script may test if a parameter contains only digits, so it can be treated as an integer.
+- Using the [[another-look-at-variables#^XSTATVARREF|$? exit status variable]], a script may test if a parameter contains only digits, so it can be treated as an integer.
 
 ```bash
 #!/bin/bash
@@ -318,7 +318,7 @@ echo "Sum = $sum"
 exit 0
 ```
 
-- The 0 - 255 range for function return values is a severe limitation. Global variables and other workarounds are often problematic. An alternative method for a function to communicate a value back to the main body of the script is to have the function write to stdout (usually with [[../commands/internal-commands-and-builtins#^ECHOREF|echo]]) the "return value," and assign this to a variable. This is actually a variant of [[../beyond-the-basic/command-substitution#^COMMANDSUBREF|command substitution.]]
+- The 0 - 255 range for function return values is a severe limitation. Global variables and other workarounds are often problematic. An alternative method for a function to communicate a value back to the main body of the script is to have the function write to stdout (usually with [[internal-commands-and-builtins#^ECHOREF|echo]]) the "return value," and assign this to a variable. This is actually a variant of [[command-substitution#^COMMANDSUBREF|command substitution.]]
 
     **Example 36-18. Return value trickery**
 
@@ -427,9 +427,9 @@ exit 0
 > # Now, this will not work correctly.
 > ```
 
-- Next in our bag of tricks are techniques for passing an [[./arrays#^ARRAYREF|array]] to a [[./functions|function]], then "returning" an array back to the main body of the script.
+- Next in our bag of tricks are techniques for passing an [[arrays#^ARRAYREF|array]] to a [[functions|function]], then "returning" an array back to the main body of the script.
 
-    Passing an array involves loading the space-separated elements of the array into a variable with [[../beyond-the-basic/command-substitution#^COMMANDSUBREF|command substitution]]. Getting an array back as the "return value" from a function uses the previously mentioned strategem of [[../commands/internal-commands-and-builtins#^ECHOREF|echoing]] the array in the function, then invoking command substitution and the **( ... )** operator to assign it to an array.
+    Passing an array involves loading the space-separated elements of the array into a variable with [[command-substitution#^COMMANDSUBREF|command substitution]]. Getting an array back as the "return value" from a function uses the previously mentioned strategem of [[internal-commands-and-builtins#^ECHOREF|echoing]] the array in the function, then invoking command substitution and the **( ... )** operator to assign it to an array.
 
     **Example 36-20. Passing and returning arrays**
 
@@ -514,11 +514,11 @@ exit 0
 #+ whitespace breaks this example.
 ```
 
-For a more elaborate example of passing arrays to functions, see [[../apendix/contributed-scripts#^LIFESLOW|Example A-10]].
+For a more elaborate example of passing arrays to functions, see [[contributed-scripts#^LIFESLOW|Example A-10]].
 
-- Using the [[../basic/operations-and-related-topics|double-parentheses construct]], it is possible to use C-style syntax for setting and incrementing/decrementing variables and in [[../beyond-the-basic/loops#^FORLOOPREF1|for]] and [[../beyond-the-basic/loops#^WHILELOOPREF|while]] loops. See [[../beyond-the-basic/loops#^FORLOOPC|Example 11-13]] and [[../beyond-the-basic/loops#^WHLOOPC|Example 11-18]].
+- Using the [[operations-and-related-topics|double-parentheses construct]], it is possible to use C-style syntax for setting and incrementing/decrementing variables and in [[loops#^FORLOOPREF1|for]] and [[loops#^WHILELOOPREF|while]] loops. See [[loops#^FORLOOPC|Example 11-13]] and [[loops#^WHLOOPC|Example 11-18]].
 
-- Setting the [[../beyond-the-basic/another-look-at-variables#^PATHREF|path]] and [[../commands/system-and-administrative-commands#^UMASKREF|umask]] at the beginning of a script makes it more [[./portability-issues|portable]] -- more likely to run on a "foreign" machine whose user may have bollixed up the $PATH and **umask**.
+- Setting the [[another-look-at-variables#^PATHREF|path]] and [[system-and-administrative-commands#^UMASKREF|umask]] at the beginning of a script makes it more [[portability-issues|portable]] -- more likely to run on a "foreign" machine whose user may have bollixed up the $PATH and **umask**.
 
 ```bash
 #!/bin/bash
@@ -528,7 +528,7 @@ umask 022   # Files that the script creates will have 755 permission.
 # Thanks to Ian D. Allen, for this tip.
 ```
 
-- A useful scripting technique is to _repeatedly_ feed the output of a filter (by piping) back to the _same filter_, but with a different set of arguments and/or options. Especially suitable for this are [[../commands/text-processing-commands#^TRREF|tr]] and [[../commands/text-processing-commands#^GREPREF|grep]].
+- A useful scripting technique is to _repeatedly_ feed the output of a filter (by piping) back to the _same filter_, but with a different set of arguments and/or options. Especially suitable for this are [[text-processing-commands#^TRREF|tr]] and [[text-processing-commands#^GREPREF|grep]].
 
 ```bash
 # From "wstrings.sh" example.
@@ -581,11 +581,11 @@ isotheral
 #+ see the agram2.sh script.
 ```
     
-See also [[./proc#^CONSTAT|Example 29-4]], [[../commands/text-processing-commands#^CRYPTOQUOTE|Example 16-25]], and [[../apendix/contributed-scripts#^SOUNDEX|Example A-9]].
+See also [[proc#^CONSTAT|Example 29-4]], [[text-processing-commands#^CRYPTOQUOTE|Example 16-25]], and [[contributed-scripts#^SOUNDEX|Example A-9]].
 
-- Use "[[./here-documents#^ANONHEREDOC0|anonymous here documents]]" to comment out blocks of code, to save having to individually comment out each line with a #. See [[./here-documents#^COMMENTBLOCK|Example 19-11]].
+- Use "[[here-documents#^ANONHEREDOC0|anonymous here documents]]" to comment out blocks of code, to save having to individually comment out each line with a #. See [[here-documents#^COMMENTBLOCK|Example 19-11]].
 
-- Running a script on a machine that relies on a command that might not be installed is dangerous. Use [[../commands/file-and-archiving-commands#^WHATISREF|whatis]] to avoid potential problems with this.
+- Running a script on a machine that relies on a command that might not be installed is dangerous. Use [[file-and-archiving-commands#^WHATISREF|whatis]] to avoid potential problems with this.
 
 ```bash
 CMD=command1                 # First choice.
@@ -611,7 +611,7 @@ else                         #  Otherwise,
 fi
 ```
 
-- An [[../basic/tests#^IFGREPREF|if-grep test]] may not return expected results in an error case, when text is output to stderr, rather that stdout.
+- An [[tests#^IFGREPREF|if-grep test]] may not return expected results in an error case, when text is output to stderr, rather that stdout.
 
 ```bash
 if ls -l nonexistent_filename | grep -q 'No such file or directory'
@@ -619,7 +619,7 @@ if ls -l nonexistent_filename | grep -q 'No such file or directory'
 fi
 ```
 
-[[./io-redirection|Redirecting]] stderr to stdout fixes this.
+[[io-redirection|Redirecting]] stderr to stdout fixes this.
 
 ```bash
 if ls -l nonexistent_filename 2>&1 | grep -q 'No such file or directory'
@@ -653,7 +653,7 @@ rm -f "$TMPFILE"                 # Get rid of temp file.
 echo "$inner_variable"           # It's an ugly kludge, but it works.
 ```
 
-- The [[../commands/miscellaneous-commands#^RUNPARTSREF|run-parts]] command is handy for running a set of command scripts in a particular sequence, especially in combination with [[../commands/system-and-administrative-commands#^CRONREF|cron]] or [[../commands/time-date-commands#^ATREF|at]].
+- The [[miscellaneous-commands#^RUNPARTSREF|run-parts]] command is handy for running a set of command scripts in a particular sequence, especially in combination with [[system-and-administrative-commands#^CRONREF|cron]] or [[time-date-commands#^ATREF|at]].
 
 - For doing multiple revisions on a complex script, use the _rcs_ Revision Control System package.
 
@@ -668,7 +668,7 @@ echo "$inner_variable"           # It's an ugly kludge, but it works.
 It would be nice to be able to invoke X-Windows widgets from a shell script. There happen to exist several packages that purport to do so, namely _Xscript_, _Xmenu_, and _widtools_. The first two of these no longer seem to be maintained. Fortunately, it is still possible to obtain _widtools_ [here](http://www.batse.msfc.nasa.gov/~mallozzi/home/software/xforms/src/widtools-2.0.tgz).
 
 > [!caution]
-> The _widtools_ (widget tools) package requires the _XForms_ library to be installed. Additionally, the [[../commands/file-and-archiving-commands#^MAKEFILEREF|Makefile]] needs some judicious editing before the package will build on a typical Linux system. Finally, three of the six widgets offered do not work (and, in fact, segfault).
+> The _widtools_ (widget tools) package requires the _XForms_ library to be installed. Additionally, the [[file-and-archiving-commands#^MAKEFILEREF|Makefile]] needs some judicious editing before the package will build on a typical Linux system. Finally, three of the six widgets offered do not work (and, in fact, segfault).
 
 The _dialog_ family of tools offers a method of calling "dialog" widgets from a shell script. The original _dialog_ utility works in a text console, but its successors, _gdialog_, _Xdialog_, and _kdialog_ use X-Windows-based widget sets.
 
@@ -734,13 +734,13 @@ exit $?
 # Exercise: Rewrite this script using the 'zenity' widget set.
 ```
 
-The [[../commands/miscellaneous-commands#^XMESSAGEREF|xmessage]] command is a simple method of popping up a message/query window. For example:
+The [[miscellaneous-commands#^XMESSAGEREF|xmessage]] command is a simple method of popping up a message/query window. For example:
 
 ```bash
 xmessage Fatal error in script! -button exit
 ```
 
-The latest entry in the widget sweepstakes is [[../commands/miscellaneous-commands#^ZENITYREF|zenity]]. This utility pops up _GTK+_ dialog widgets-and-windows, and it works very nicely within a script.
+The latest entry in the widget sweepstakes is [[miscellaneous-commands#^ZENITYREF|zenity]]. This utility pops up _GTK+_ dialog widgets-and-windows, and it works very nicely within a script.
 
 ```bash
 get_info ()
