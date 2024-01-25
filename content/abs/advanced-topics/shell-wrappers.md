@@ -2,9 +2,9 @@
 title: 36.2. Shell Wrappers
 ---
 
-A _wrapper_ is a shell script that embeds a system command or utility, that accepts and passes a set of parameters to that command. [^1] Wrapping a script around a complex command-line simplifies invoking it. This is expecially useful with [[../apendix/a-sed-and-awk-micro-primer#^SEDREF|sed]] and [[../apendix/awk#^AWKREF|awk]].
+A _wrapper_ is a shell script that embeds a system command or utility, that accepts and passes a set of parameters to that command. [^1] Wrapping a script around a complex command-line simplifies invoking it. This is expecially useful with [[a-sed-and-awk-micro-primer#^SEDREF|sed]] and [[awk#^AWKREF|awk]].
 
-A **sed** or **awk** script would normally be invoked from the command-line by a **sed -e _'commands'_** or **awk _'commands'_**. Embedding such a script in a Bash script permits calling it more simply, and makes it _reusable_. This also enables combining the functionality of _sed_ and _awk_, for example [[../basic/special-characters#^PIPEREF|piping]] the output of a set of _sed_ commands to _awk_. As a saved executable file, you can then repeatedly invoke it in its original form or modified, without the inconvenience of retyping it on the command-line.
+A **sed** or **awk** script would normally be invoked from the command-line by a **sed -e _'commands'_** or **awk _'commands'_**. Embedding such a script in a Bash script permits calling it more simply, and makes it _reusable_. This also enables combining the functionality of _sed_ and _awk_, for example [[special-characters#^PIPEREF|piping]] the output of a set of _sed_ commands to _awk_. As a saved executable file, you can then repeatedly invoke it in its original form or modified, without the inconvenience of retyping it on the command-line.
 
 ###### Example 36-1. *shell wrapper*
 
@@ -231,7 +231,7 @@ END {
 exit 0
 ```
 
-For those scripts needing a single do-it-all tool, a Swiss army knife, there is _Perl_. Perl combines the capabilities of [[../apendix/a-sed-and-awk-micro-primer#^SEDREF|sed]] and [[../apendix/awk#^AWKREF|awk]], and throws in a large subset of **C**, to boot. It is modular and contains support for everything ranging from object-oriented programming up to and including the kitchen sink. Short Perl scripts lend themselves to embedding within shell scripts, and there may be some substance to the claim that Perl can totally replace shell scripting (though the author of the _ABS Guide_ remains skeptical). ^PERLREF
+For those scripts needing a single do-it-all tool, a Swiss army knife, there is _Perl_. Perl combines the capabilities of [[a-sed-and-awk-micro-primer#^SEDREF|sed]] and [[awk#^AWKREF|awk]], and throws in a large subset of **C**, to boot. It is modular and contains support for everything ranging from object-oriented programming up to and including the kitchen sink. Short Perl scripts lend themselves to embedding within shell scripts, and there may be some substance to the claim that Perl can totally replace shell scripting (though the author of the _ABS Guide_ remains skeptical). ^PERLREF
 
 ###### Example 36-6. Perl embedded in a *Bash* script
 
