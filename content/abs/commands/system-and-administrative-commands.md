@@ -13,7 +13,7 @@ Show all logged on users. This is the approximate equivalent of **who -q**.
 
 ## groups
 
-Lists the current user and the groups she belongs to. This corresponds to the [[../beyond-the-basic/another-look-at-variables#^GROUPSREF|$GROUPS]] internal variable, but gives the group names, rather than the numbers.
+Lists the current user and the groups she belongs to. This corresponds to the [[another-look-at-variables#^GROUPSREF|$GROUPS]] internal variable, but gives the group names, rather than the numbers.
 
 ```bash
 bash$ groups
@@ -56,7 +56,7 @@ Modify a given group. The group name and/or ID number may be changed using this 
 
 ## id
 
-The **id** command lists the real and effective user IDs and the group IDs of the user associated with the current process. This is the counterpart to the [[../beyond-the-basic/another-look-at-variables#^UIDREF|$UID]], [[../beyond-the-basic/another-look-at-variables#^EUIDREF|$EUID]], and [[../beyond-the-basic/another-look-at-variables#^GROUPSREF|$GROUPS]] internal Bash variables.
+The **id** command lists the real and effective user IDs and the group IDs of the user associated with the current process. This is the counterpart to the [[another-look-at-variables#^UIDREF|$UID]], [[another-look-at-variables#^EUIDREF|$EUID]], and [[another-look-at-variables#^GROUPSREF|$GROUPS]] internal Bash variables.
 
 ```bash
 bash$ id
@@ -69,7 +69,7 @@ bash$ echo $UID
 > [!note]
 > The **id** command shows the _effective_ IDs only when they differ from the _real_ ones.
 
-Also see [[../beyond-the-basic/another-look-at-variables#^AMIROOT|Example 9-5]].
+Also see [[another-look-at-variables#^AMIROOT|Example 9-5]].
 
 ## lid
 
@@ -119,7 +119,7 @@ bozo
 
 **w**
 
-Show all logged on users and the processes belonging to them. This is an extended version of **who**. The output of **w** may be piped to [[./text-processing-commands#^GREPREF|grep]] to find a specific user and/or process.
+Show all logged on users and the processes belonging to them. This is an extended version of **who**. The output of **w** may be piped to [[text-processing-commands#^GREPREF|grep]] to find a specific user and/or process.
 
 ```bash
 bash$ w | grep startx
@@ -155,7 +155,7 @@ bozo
 
 **su**
 
-Runs a program or script as a **s**ubstitute **u**ser. **su rjones** starts a shell as user _rjones_. A naked **su** defaults to _root_. See [[../apendix/contributed-scripts#^FIFO|Example A-14]].
+Runs a program or script as a **s**ubstitute **u**ser. **su rjones** starts a shell as user _rjones_. A naked **su** defaults to _root_. See [[contributed-scripts#^FIFO|Example A-14]].
 
 **sudo**
 
@@ -360,7 +360,7 @@ stty "$old_tty_settings"      # Restore old settings.
 exit 0
 ```
 
-Also see [[../beyond-the-basic/another-look-at-variables#^TIMEOUT|Example 9-3]] and [[../apendix/contributed-scripts#^STOPWATCH|Example A-43]].
+Also see [[another-look-at-variables#^TIMEOUT|Example 9-3]] and [[contributed-scripts#^STOPWATCH|Example A-43]].
 
 > **terminals and modes**
 >
@@ -407,7 +407,7 @@ bash$
 	   
 ```
 
-The **setterm** command can be used within a script to change the appearance of text written to stdout, although there are certainly [[../advanced-topics/colorizing-scripts#^COLORIZINGREF|better tools]] available for this purpose.
+The **setterm** command can be used within a script to change the appearance of text written to stdout, although there are certainly [[colorizing-scripts#^COLORIZINGREF|better tools]] available for this purpose.
 
 ```bash
 setterm -bold on
@@ -446,14 +446,14 @@ The initialization process for a terminal uses **getty** or **agetty** to set it
 
 **mesg**
 
-Enables or disables write access to the current user's terminal. Disabling access would prevent another user on the network to [[./communications-commands#^WRITEREF|write]] to the terminal.
+Enables or disables write access to the current user's terminal. Disabling access would prevent another user on the network to [[communications-commands#^WRITEREF|write]] to the terminal.
 
 > [!tip]
 > It can be quite annoying to have a message about ordering pizza suddenly appear in the middle of the text file you are editing. On a multi-user network, you might therefore wish to disable write access to your terminal when you need to avoid interruptions.
 
 **wall**
 
-This is an acronym for "[[./communications-commands#^WRITEREF|write]] all," i.e., sending a message to all users at every terminal logged into the network. It is primarily a system administrator's tool, useful, for example, when warning everyone that the system will shortly go down due to a problem (see [[../advanced-topics/here-documents#^EX70|Example 19-1]]).
+This is an acronym for "[[communications-commands#^WRITEREF|write]] all," i.e., sending a message to all users at every terminal logged into the network. It is primarily a system administrator's tool, useful, for example, when warning everyone that the system will shortly go down due to a problem (see [[here-documents#^EX70|Example 19-1]]).
 
 ```bash
 bash$ wall System going down for maintenance in 5 minutes!
@@ -470,7 +470,7 @@ Broadcast message from bozo (pts/1) Sun Jul  8 13:53:27 2001...
 
 **uname**
 
-Output system specifications (OS, kernel version, etc.) to stdout. Invoked with the -a option, gives verbose system info (see [[./complex-commands#^EX41|Example 16-5]]). The -s option shows only the OS type.
+Output system specifications (OS, kernel version, etc.) to stdout. Invoked with the -a option, gives verbose system info (see [[complex-commands#^EX41|Example 16-5]]). The -s option shows only the OS type.
 
 ```bash
 bash$ uname
@@ -487,7 +487,7 @@ Linux iron.bozo 2.6.15-1.2054_FC5 #1 Tue Mar 14 15:48:33 EST 2006
 
 **arch**
 
-Show system architecture. Equivalent to **uname -m**. See [[../beyond-the-basic/testing-and-branching#^CASECMD|Example 11-27]].
+Show system architecture. Equivalent to **uname -m**. See [[testing-and-branching#^CASECMD|Example 11-27]].
 
 ```bash
 bash$ arch
@@ -525,7 +525,7 @@ root          tty1                      Fri Dec  7 18:43:21 -0700 2001
 
 **lsof**
 
-List open files. This command outputs a detailed table of all currently open files and gives information about their owner, size, the processes associated with them, and more. Of course, **lsof** may be piped to [[./text-processing-commands#^GREPREF|grep]] and/or [[../apendix/awk#^AWKREF|awk]] to parse and analyze its results.
+List open files. This command outputs a detailed table of all currently open files and gives information about their owner, size, the processes associated with them, and more. Of course, **lsof** may be piped to [[text-processing-commands#^GREPREF|grep]] and/or [[awk#^AWKREF|awk]] to parse and analyze its results.
 
 ```bash
 bash$ lsof
@@ -548,7 +548,7 @@ COMMAND  PID USER  FD  TYPE DEVICE SIZE NODE NAME
 	      
 ```
 
-See [[../../../network-programming#^IPADDRESSES|Example 30-2]] for an effective use of **lsof**.
+See [[network-programming#^IPADDRESSES|Example 30-2]] for an effective use of **lsof**.
 
 **strace**
 
@@ -593,7 +593,7 @@ bash$ nc localhost.localdomain 25
  Thu, 31 Mar 2005 15:41:35 -0700
 ```
 
-A real-life [[../advanced-topics/process-substitution#^NETCATEXAMPLE|usage example]].
+A real-life [[process-substitution#^NETCATEXAMPLE|usage example]].
 
 ###### Example 17-5. Checking a remote server for *identd*
 
@@ -675,7 +675,7 @@ echo clone | nc thunk.org 5000 > e2fsprogs.dat
 
 **free**
 
-Shows memory and cache usage in tabular form. The output of this command lends itself to parsing, using [[./text-processing-commands#^GREPREF|grep]], [[../apendix/awk#^AWKREF|awk]] or **Perl**. The **procinfo** command shows all the information that **free** does, and much more.
+Shows memory and cache usage in tabular form. The output of this command lends itself to parsing, using [[text-processing-commands#^GREPREF|grep]], [[awk#^AWKREF|awk]] or **Perl**. The **procinfo** command shows all the information that **free** does, and much more.
 
 ```bash
 bash$ free
@@ -746,7 +746,7 @@ Filesystem           1k-blocks      Used Available Use% Mounted on
 
 **dmesg**
 
-Lists all system bootup messages to stdout. Handy for debugging and ascertaining which device drivers were installed and which system interrupts in use. The output of **dmesg** may, of course, be parsed with [[./text-processing-commands#^GREPREF|grep]], [[../apendix/a-sed-and-awk-micro-primer#^SEDREF|sed]], or [[../apendix/awk#^AWKREF|awk]] from within a script.
+Lists all system bootup messages to stdout. Handy for debugging and ascertaining which device drivers were installed and which system interrupts in use. The output of **dmesg** may, of course, be parsed with [[text-processing-commands#^GREPREF|grep]], [[a-sed-and-awk-micro-primer#^SEDREF|sed]], or [[awk#^AWKREF|awk]] from within a script.
 
 ```bash
 bash$ dmesg | grep hda
@@ -847,7 +847,7 @@ bash$ uptime
 
 **hostname**
 
-Lists the system's host name. This command sets the host name in an /etc/rc.d setup script (/etc/rc.d/rc.sysinit or similar). It is equivalent to **uname -n**, and a counterpart to the [[../beyond-the-basic/another-look-at-variables#^HOSTNAMEREF|$HOSTNAME]] internal variable.
+Lists the system's host name. This command sets the host name in an /etc/rc.d setup script (/etc/rc.d/rc.sysinit or similar). It is equivalent to **uname -n**, and a counterpart to the [[another-look-at-variables#^HOSTNAMEREF|$HOSTNAME]] internal variable.
 
 ```bash
 bash$ hostname
@@ -970,7 +970,7 @@ Adding an appropriate entry to /etc/logrotate.conf makes it possible to manage p
 
 **ps**
 
-_P_rocess _S_tatistics: lists currently executing processes by owner and PID (process ID). This is usually invoked with ax or aux options, and may be piped to [[./text-processing-commands#^GREPREF|grep]] or [[../apendix/a-sed-and-awk-micro-primer#^SEDREF|sed]] to search for a specific process (see [[./internal-commands-and-builtins#^EX44|Example 15-14]] and [[../advanced-topics/proc#^PIDID|Example 29-3]]).
+_P_rocess _S_tatistics: lists currently executing processes by owner and PID (process ID). This is usually invoked with ax or aux options, and may be piped to [[text-processing-commands#^GREPREF|grep]] or [[a-sed-and-awk-micro-primer#^SEDREF|sed]] to search for a specific process (see [[internal-commands-and-builtins#^EX44|Example 15-14]] and [[proc#^PIDID|Example 29-3]]).
 
 ```bash
 bash$  ps ax | grep sendmail
@@ -981,7 +981,7 @@ To display system processes in graphical "tree" format: **ps afjx** or **ps ax -
 
 **pgrep**, **pkill**
 
-Combining the **ps** command with [[./text-processing-commands#^GREPREF|grep]] or [[./job-control-commands#^KILLREF|kill]].
+Combining the **ps** command with [[text-processing-commands#^GREPREF|grep]] or [[job-control-commands#^KILLREF|kill]].
 
 ```bash
 bash$ ps a | grep mingetty
@@ -1002,7 +1002,7 @@ bash$ pgrep mingetty
 	      
 ```
 
-Compare the action of **pkill** with [[./job-control-commands#^KILLALLREF|killall]].
+Compare the action of **pkill** with [[job-control-commands#^KILLALLREF|killall]].
 
 **pstree**
 
@@ -1030,15 +1030,15 @@ bash$ top -b
 
 **nice**
 
-Run a background job with an altered priority. Priorities run from 19 (lowest) to -20 (highest). Only _root_ may set the negative (higher) priorities. Related commands are **renice** and **snice**, which change the priority of a running process or processes, and **skill**, which sends a [[./job-control-commands#^KILLREF|kill]] signal to a process or processes.
+Run a background job with an altered priority. Priorities run from 19 (lowest) to -20 (highest). Only _root_ may set the negative (higher) priorities. Related commands are **renice** and **snice**, which change the priority of a running process or processes, and **skill**, which sends a [[job-control-commands#^KILLREF|kill]] signal to a process or processes.
 
 **nohup**
 
-Keeps a command running even after user logs off. The command will run as a foreground process unless followed by &. If you use **nohup** within a script, consider coupling it with a [[./job-control-commands#^WAITREF|wait]] to avoid creating an _orphan_ or [[./job-control-commands#^ZOMBIEREF|zombie]] process.
+Keeps a command running even after user logs off. The command will run as a foreground process unless followed by &. If you use **nohup** within a script, consider coupling it with a [[job-control-commands#^WAITREF|wait]] to avoid creating an _orphan_ or [[job-control-commands#^ZOMBIEREF|zombie]] process.
 
 **pidof**
 
-Identifies _process ID (PID)_ of a running job. Since job control commands, such as [[./job-control-commands#^KILLREF|kill]] and [[system-and-administrative-commands#^NICE2REF|renice]] act on the _PID_ of a process (not its name), it is sometimes necessary to identify that _PID_. The **pidof** command is the approximate counterpart to the [[../beyond-the-basic/another-look-at-variables#^PPIDREF|$PPID]] internal variable.
+Identifies _process ID (PID)_ of a running job. Since job control commands, such as [[job-control-commands#^KILLREF|kill]] and [[system-and-administrative-commands#^NICE2REF|renice]] act on the _PID_ of a process (not its name), it is sometimes necessary to identify that _PID_. The **pidof** command is the approximate counterpart to the [[another-look-at-variables#^PPIDREF|$PPID]] internal variable.
 
 ```bash
 bash$ pidof xclock
@@ -1136,7 +1136,7 @@ root# ps ax | grep 2095 | grep -v grep
 
 **cron**
 
-Administrative program scheduler, performing such duties as cleaning up and deleting system log files and updating the slocate database. This is the _superuser_ version of [[./time-date-commands#^ATREF|at]] (although each user may have their own crontab file which can be changed with the **crontab** command). It runs as a [[./communications-commands#^DAEMONREF|daemon]] and executes scheduled entries from /etc/crontab.
+Administrative program scheduler, performing such duties as cleaning up and deleting system log files and updating the slocate database. This is the _superuser_ version of [[time-date-commands#^ATREF|at]] (although each user may have their own crontab file which can be changed with the **crontab** command). It runs as a [[communications-commands#^DAEMONREF|daemon]] and executes scheduled entries from /etc/crontab.
 
 > [!note]
 > Some flavors of Linux run **crond**, Matthew Dillon's version of **cron**.
@@ -1145,7 +1145,7 @@ Administrative program scheduler, performing such duties as cleaning up and dele
 
 **init**
 
-The **init** command is the [[./internal-commands-and-builtins#^FORKREF|parent]] of all processes. Called in the final step of a bootup, **init** determines the runlevel of the system from /etc/inittab. Invoked by its alias **telinit**, and by _root_ only.
+The **init** command is the [[internal-commands-and-builtins#^FORKREF|parent]] of all processes. Called in the final step of a bootup, **init** determines the runlevel of the system from /etc/inittab. Invoked by its alias **telinit**, and by _root_ only.
 
 **telinit**
 
@@ -1243,11 +1243,11 @@ echo `/sbin/ifconfig | grep ^[a-z] | awk '{print $1}'`
 #  Thanks, S.C., for additional comments.
 ```
 
-See also [[../advanced-topics/debugging#^ONLINE|Example 32-6]].
+See also [[debugging#^ONLINE|Example 32-6]].
 
 **netstat**
 
-Show current network statistics and information, such as routing tables and active connections. This utility accesses information in /proc/net ([[dev-and-proc|Chapter 29]]). See [[../advanced-topics/proc#^CONSTAT|Example 29-4]].
+Show current network statistics and information, such as routing tables and active connections. This utility accesses information in /proc/net ([[dev-and-proc|Chapter 29]]). See [[proc#^CONSTAT|Example 29-4]].
 
 **netstat -r** is equivalent to [[system-and-administrative-commands#^ROUTEREF|route]].
 
@@ -1264,7 +1264,7 @@ Active Internet connections (w/o servers)
 ```
 
 > [!note]
-> A **netstat -lptu** shows [[../advanced-topics/dev#^SOCKETREF|sockets]] that are listening to ports, and the associated processes. This can be useful for determining whether a computer has been hacked or compromised.
+> A **netstat -lptu** shows [[dev#^SOCKETREF|sockets]] that are listening to ports, and the associated processes. This can be useful for determining whether a computer has been hacked or compromised.
 
 **iwconfig**
 
@@ -1342,7 +1342,7 @@ Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
 
 The **iptables** command set is a packet filtering tool used mainly for such security purposes as setting up network firewalls. This is a complex tool, and a detailed explanation of its use is beyond the scope of this document. [Oskar Andreasson's tutorial](http://www.frozentux.net/iptables-tutorial/iptables-tutorial.html) is a reasonable starting point.
 
-See also [[system-and-administrative-commands#^IPTABLES01|shutting down _iptables_]] and [[../../../network-programming#^IPADDRESSES|Example 30-2]].
+See also [[system-and-administrative-commands#^IPTABLES01|shutting down _iptables_]] and [[network-programming#^IPADDRESSES|Example 30-2]].
 
 **chkconfig**
 
@@ -1369,7 +1369,7 @@ bash$ tcpdump ip host bozoville and caduceus
 	  
 ```
 
-Of course, the output of **tcpdump** can be parsed with certain of the previously discussed [[./text-processing-commands#^TPCOMMANDLISTING1|text processing utilities]].
+Of course, the output of **tcpdump** can be parsed with certain of the previously discussed [[text-processing-commands#^TPCOMMANDLISTING1|text processing utilities]].
 
 **Filesystem**
 
@@ -1386,7 +1386,7 @@ mount /mnt/cdrom
 # Shortcut, if /mnt/cdrom listed in /etc/fstab
 ```
 
-The versatile _mount_ command can even mount an ordinary file on a block device, and the file will act as if it were a filesystem. _Mount_ accomplishes that by associating the file with a [[../advanced-topics/dev#^LOOPBACKREF|loopback device]]. One application of this is to mount and examine an ISO9660 filesystem image before burning it onto a CDR. [^3]
+The versatile _mount_ command can even mount an ordinary file on a block device, and the file will act as if it were a filesystem. _Mount_ accomplishes that by associating the file with a [[dev#^LOOPBACKREF|loopback device]]. One application of this is to mount and examine an ISO9660 filesystem image before burning it onto a CDR. [^3]
 
 ###### Example 17-7. Checking a CD image
 
@@ -1416,7 +1416,7 @@ umount /mnt/cdrom
 
 **gnome-mount**
 
-The newer Linux distros have deprecated **mount** and **umount**. The successor, for command-line mounting of removable storage devices, is **gnome-mount**. It can take the -d option to mount a [[../advanced-topics/dev#^DEVFILEREF|device file]] by its listing in /dev.
+The newer Linux distros have deprecated **mount** and **umount**. The successor, for command-line mounting of removable storage devices, is **gnome-mount**. It can take the -d option to mount a [[dev#^DEVFILEREF|device file]] by its listing in /dev.
 
 For example, to mount a USB flash drive:
 
@@ -1435,11 +1435,11 @@ bash$ df
 
 Forces an immediate write of all updated data from buffers to hard drive (synchronize drive with buffers). While not strictly necessary, a **sync** assures the sys admin or user that the data just changed will survive a sudden power failure. In the olden days, a **sync; sync** (twice, just to make absolutely sure) was a useful precautionary measure before a system reboot.
 
-At times, you may wish to force an immediate buffer flush, as when securely deleting a file (see [[./miscellaneous-commands#^BLOTOUT|Example 16-61]]) or when the lights begin to flicker.
+At times, you may wish to force an immediate buffer flush, as when securely deleting a file (see [[miscellaneous-commands#^BLOTOUT|Example 16-61]]) or when the lights begin to flicker.
 
 **losetup**
 
-Sets up and configures [[../advanced-topics/dev#^LOOPBACKREF|loopback devices]].
+Sets up and configures [[dev#^LOOPBACKREF|loopback devices]].
 
 ###### Example 17-8. Creating a filesystem in a file
 
@@ -1512,7 +1512,7 @@ chmod 777 $MOUNTPOINT  # Makes new drive accessible to all users.
 exit
 ```
 
-See also [[system-and-administrative-commands#^CREATEFS|Example 17-8]] and [[../advanced-topics/of-zeros-and-nulls#^RAMDISK|Example 31-3]].
+See also [[system-and-administrative-commands#^CREATEFS|Example 17-8]] and [[of-zeros-and-nulls#^RAMDISK|Example 31-3]].
 
 **mkdosfs**
 
@@ -1621,11 +1621,11 @@ Creates an _ISO9660_ filesystem suitable for a CDR image.
 
 **chroot**
 
-CHange ROOT directory. Normally commands are fetched from [[../beyond-the-basic/another-look-at-variables#^PATHREF|$PATH]], relative to /, the default _root directory_. This changes the _root_ directory to a different one (and also changes the working directory to there). This is useful for security purposes, for instance when the system administrator wishes to restrict certain users, such as those [[./communications-commands#^TELNETREF|telnetting]] in, to a secured portion of the filesystem (this is sometimes referred to as confining a guest user to a "chroot jail"). Note that after a **chroot**, the execution path for system binaries is no longer valid.
+CHange ROOT directory. Normally commands are fetched from [[another-look-at-variables#^PATHREF|$PATH]], relative to /, the default _root directory_. This changes the _root_ directory to a different one (and also changes the working directory to there). This is useful for security purposes, for instance when the system administrator wishes to restrict certain users, such as those [[communications-commands#^TELNETREF|telnetting]] in, to a secured portion of the filesystem (this is sometimes referred to as confining a guest user to a "chroot jail"). Note that after a **chroot**, the execution path for system binaries is no longer valid.
 
 A **chroot /opt** would cause references to /usr/bin to be translated to /opt/usr/bin. Likewise, **chroot /aaa/bbb /bin/ls** would redirect future instances of **ls** to /aaa/bbb as the base directory, rather than / as is normally the case. An **alias XX 'chroot /aaa/bbb ls'** in a user's [[sample-bashrc-and-bash-profile-files.html|~/.bashrc]] effectively restricts which portion of the filesystem she may run command "XX" on.
 
-The **chroot** command is also handy when running from an emergency boot floppy (**chroot** to /dev/fd0), or as an option to **lilo** when recovering from a system crash. Other uses include installation from a different filesystem (an [[./file-and-archiving-commands#^RPMREF|rpm]] option) or running a readonly filesystem from a CD ROM. Invoke only as _root_, and use with care.
+The **chroot** command is also handy when running from an emergency boot floppy (**chroot** to /dev/fd0), or as an option to **lilo** when recovering from a system crash. Other uses include installation from a different filesystem (an [[file-and-archiving-commands#^RPMREF|rpm]] option) or running a readonly filesystem from a CD ROM. Invoke only as _root_, and use with care.
 
 > [!caution]
 > It might be necessary to copy certain system files to a _chrooted_ directory, since the normal $PATH can no longer be relied upon.
@@ -1675,7 +1675,7 @@ flock $0 cat $0 > lockfile__$0
 
 **mknod**
 
-Creates block or character [[../advanced-topics/dev#^DEVFILEREF|device files]] (may be necessary when installing new hardware on the system). The **MAKEDEV** utility has virtually all of the functionality of **mknod**, and is easier to use.
+Creates block or character [[dev#^DEVFILEREF|device files]] (may be necessary when installing new hardware on the system). The **MAKEDEV** utility has virtually all of the functionality of **mknod**, and is easier to use.
 
 **MAKEDEV**
 
@@ -1699,7 +1699,7 @@ Perform a low-level format on a floppy disk (/dev/fd0*).
 
 **ulimit**
 
-Sets an _upper limit_ on use of system resources. Usually invoked with the -f option, which sets a limit on file size (**ulimit -f 1000** limits files to 1 meg maximum). [^7] The -t option limits the coredump size (**ulimit -c 0** eliminates coredumps). Normally, the value of **ulimit** would be set in /etc/profile and/or ~/.bash_profile (see [[../apendix/important-files|Appendix H]]).
+Sets an _upper limit_ on use of system resources. Usually invoked with the -f option, which sets a limit on file size (**ulimit -f 1000** limits files to 1 meg maximum). [^7] The -t option limits the coredump size (**ulimit -c 0** eliminates coredumps). Normally, the value of **ulimit** would be set in /etc/profile and/or ~/.bash_profile (see [[important-files|Appendix H]]).
 
 > [!important]
 > Judicious use of **ulimit** can protect a system against the dreaded _fork bomb_.
@@ -1731,7 +1731,7 @@ Set user or group disk quotas from the command-line.
 
 **umask**
 
-User file creation permissions _mask_. Limit the default file attributes for a particular user. All files created by that user take on the attributes specified by **umask**. The (octal) value passed to **umask** defines the file permissions _disabled_. For example, **umask 022** ensures that new files will have at most 755 permissions (777 NAND 022). [^8] Of course, the user may later change the attributes of particular files with [[./basic-commands#^CHMODREF|chmod]]. The usual practice is to set the value of **umask** in /etc/profile and/or ~/.bash_profile (see [[../apendix/important-files|Appendix H]]).
+User file creation permissions _mask_. Limit the default file attributes for a particular user. All files created by that user take on the attributes specified by **umask**. The (octal) value passed to **umask** defines the file permissions _disabled_. For example, **umask 022** ensures that new files will have at most 755 permissions (777 NAND 022). [^8] Of course, the user may later change the attributes of particular files with [[basic-commands#^CHMODREF|chmod]]. The usual practice is to set the value of **umask** in /etc/profile and/or ~/.bash_profile (see [[important-files|Appendix H]]).
 
 ###### Example 17-10. Using *umask* to hide an output file from prying eyes
 
@@ -1868,13 +1868,13 @@ watch -n 5 tail /var/log/messages
 ```
 
 > [!note]
-> Unfortunately, [[../basic/special-characters#^PIPEREF|piping]] the output of **watch command** to [[./text-processing-commands#^GREPREF|grep]] does not work.
+> Unfortunately, [[special-characters#^PIPEREF|piping]] the output of **watch command** to [[text-processing-commands#^GREPREF|grep]] does not work.
 
 **strip**
 
 Remove the debugging symbolic references from an executable binary. This decreases its size, but makes debugging it impossible.
 
-This command often occurs in a [[./file-and-archiving-commands#^MAKEFILEREF|Makefile]], but rarely in a shell script.
+This command often occurs in a [[file-and-archiving-commands#^MAKEFILEREF|Makefile]], but rarely in a shell script.
 
 **nm**
 
@@ -2034,7 +2034,7 @@ Remote distribution client: synchronizes, clones, or backs up a file system on a
 
 [^6]: Operators of single-user Linux systems generally prefer something simpler for backups, such as **tar**.
 
-[^7]: As of the [[../advanced-topics/bash-version-4#^BASH4REF|version 4 update]] of Bash, the -f and -c options take a block size of 512 when in [[../introduction/sha-bang#^POSIX2REF|POSIX]] mode. Additionally, there are two new options: -b for [[../advanced-topics/dev#^SOCKETREF|socket]] buffer size, and -T for the limit on the number of _threads_.
+[^7]: As of the [[bash-version-4#^BASH4REF|version 4 update]] of Bash, the -f and -c options take a block size of 512 when in [[sha-bang#^POSIX2REF|POSIX]] mode. Additionally, there are two new options: -b for [[dev#^SOCKETREF|socket]] buffer size, and -T for the limit on the number of _threads_.
 
 [^8]: NAND is the logical _not-and_ operator. Its effect is somewhat similar to subtraction.
 
