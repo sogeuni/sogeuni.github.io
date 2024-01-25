@@ -21,7 +21,7 @@ category=minerals  # No spaces allowed after the "=".
 ```
 
 > [!caution]
-> Do not confuse the "=" assignment operator with the [[./tests#EQUALSIGNREF|= test operator]].
+> Do not confuse the "=" assignment operator with the [[tests#EQUALSIGNREF|= test operator]].
 >
 > ```bash
 > #   =  as a test operator
@@ -77,7 +77,7 @@ bash$ expr 5 % 3
 
 _5/3 = 1, with remainder 2_
 
-This operator finds use in, among other things, generating numbers within a specific range (see [[../beyond-the-basic/another-look-at-variables#EX21|Example 9-11]] and [[../beyond-the-basic/another-look-at-variables#RANDOMTEST|Example 9-15]]) and formatting program output (see [[../advanced-topics/arrays#^QFUNCTION|Example 27-16]] and [[../apendix/contributed-scripts#COLLATZ|Example A-6]]). It can even be used to generate prime numbers, (see [[../apendix/contributed-scripts#PRIMES|Example A-15]]). Modulo turns up surprisingly often in numerical recipes.
+This operator finds use in, among other things, generating numbers within a specific range (see [[another-look-at-variables#EX21|Example 9-11]] and [[another-look-at-variables#RANDOMTEST|Example 9-15]]) and formatting program output (see [[arrays#^QFUNCTION|Example 27-16]] and [[contributed-scripts#COLLATZ|Example A-6]]). It can even be used to generate prime numbers, (see [[contributed-scripts#PRIMES|Example A-15]]). Modulo turns up surprisingly often in numerical recipes.
 
 ###### Example 8-1. Greatest common divisor
 
@@ -263,9 +263,9 @@ exit 0
 > echo "b = $b"       # b=1
 > ```
 >
-> Use [[../commands/math-commands#BCREF|bc]] in scripts that that need floating point calculations or math library functions.
+> Use [[math-commands#BCREF|bc]] in scripts that that need floating point calculations or math library functions.
 
-**bitwise operators.** The bitwise operators seldom make an appearance in shell scripts. Their chief use seems to be manipulating and testing values read from ports or [[../advanced-topics/dev#SOCKETREF|sockets]]. "Bit flipping" is more relevant to compiled languages, such as C and C++, which provide direct access to system hardware. However, see _vladz's_ ingenious use of bitwise operators in his _base64.sh_ ([[../apendix/contributed-scripts#BASE64|Example A-54]]) script.
+**bitwise operators.** The bitwise operators seldom make an appearance in shell scripts. Their chief use seems to be manipulating and testing values read from ports or [[dev#SOCKETREF|sockets]]. "Bit flipping" is more relevant to compiled languages, such as C and C++, which provide direct access to system hardware. However, see _vladz's_ ingenious use of bitwise operators in his _base64.sh_ ([[contributed-scripts#BASE64|Example A-54]]) script.
 
 **bitwise operators**
 
@@ -341,7 +341,7 @@ if [[ $condition1 && $condition2 ]]    # Also works.
 #+ of [ ... ] construct.
 ```
 
-> [!note] && may also be used, depending on context, in an [[../advanced-topics/list-constructs#LISTCONSREF|and list]] to concatenate commands.
+> [!note] && may also be used, depending on context, in an [[list-constructs#LISTCONSREF|and list]] to concatenate commands.
 
 ||
 
@@ -451,7 +451,7 @@ let "t2 = ((a = 9, 15 / 3))"      # Set "a" and calculate "t2".
 echo "t2 = $t2    a = $a"         # t2 = 5    a = 9
 ```
 
-The comma operator finds use mainly in [[../beyond-the-basic/loops#FORLOOPREF1|for loops]]. See [[loops.html#FORLOOPC|Example 11-13]].
+The comma operator finds use mainly in [[loops#FORLOOPREF1|for loops]]. See [[loops.html#FORLOOPC|Example 11-13]].
 
 ## Numerical Constants
 
@@ -526,7 +526,7 @@ exit $?   # Exit value = 1 (error)
 
 ## The Double-Parentheses Construct
 
-Similar to the [[../commands/internal-commands-and-builtins#^LETREF|let]] command, the **(( ... ))** construct permits arithmetic expansion and evaluation. In its simplest form, **a=$(( 5 + 3 ))** would set **a** to **5 + 3**, or **8**. However, this double-parentheses construct is also a mechanism for allowing C-style manipulation of variables in Bash, for example, (( var++ )).
+Similar to the [[internal-commands-and-builtins#^LETREF|let]] command, the **(( ... ))** construct permits arithmetic expansion and evaluation. In its simplest form, **a=$(( 5 + 3 ))** would set **a** to **5 + 3**, or **8**. However, this double-parentheses construct is also a mechanism for allowing C-style manipulation of variables in Bash, for example, (( var++ )).
 
 ###### Example 8-5. C-style manipulation of variables
 
@@ -593,7 +593,7 @@ echo
 exit
 ```
 
-See also [[../beyond-the-basic/loops#^FORLOOPC|Example 11-13]] and [[operations-and-related-topics#^NUMBERS|Example 8-4]].
+See also [[loops#^FORLOOPC|Example 11-13]] and [[operations-and-related-topics#^NUMBERS|Example 8-4]].
 
 ## Operator Precedence
 
@@ -602,7 +602,7 @@ In a script, operations execute in order of _precedence_: the higher precedence 
 | Operator | Meaning | Comments |
 | :--- | :--- | :--- |
 |  |  | **HIGHEST PRECEDENCE** |
-| var++ var-- | post-increment, post-decrement | [[../advanced-topics/assorted-tips#^CSTYLE\|C-style]] operators |
+| var++ var-- | post-increment, post-decrement | [[assorted-tips#^CSTYLE\|C-style]] operators |
 | ++var --var | pre-increment, pre-decrement |  |
 |  |  |  |
 | ! ~ | [[special-chars#NOTREF\|negation]] | logical / bitwise, inverts sense of following operator |
@@ -613,11 +613,11 @@ In a script, operations execute in order of _precedence_: the higher precedence 
 |  |  |  |
 | << >> | left, right shift | [[ops#BITWSOPS1\|bitwise]] |
 |  |  |  |
-| -z -n | _unary_ comparison | string is/is-not [[./tests#STRINGNULL\|null]] |
+| -z -n | _unary_ comparison | string is/is-not [[tests#STRINGNULL\|null]] |
 | -e -f -t -x, etc. | _unary_ comparison | [[fto\|file-test]] |
 | < -lt > -gt <= -le >= -ge | _compound_ comparison | string and integer |
 | -nt -ot -ef | _compound_ comparison | file-test |
-| == -eq [[./tests#NOTEQUAL\|!=]] -ne | equality / inequality | test operators, string and integer |
+| == -eq [[tests#NOTEQUAL\|!=]] -ne | equality / inequality | test operators, string and integer |
 |  |  |  |
 | & | AND | bitwise |
 | ^ | XOR | _exclusive_ OR, bitwise |
@@ -702,7 +702,7 @@ if [ -f /etc/sysconfig/i18n -a -z "${NOLOCALE:-}" ] ; then
 > # Much better -- the condition tests are grouped in logical sections.
 > ```
 
-[^1]: In a different context, **+=** can serve as a _string concatenation_ operator. This can be useful for [[../advanced-topics/bash-version-3#^PATHAPPEND|modifying _environmental variables_]].
+[^1]: In a different context, **+=** can serve as a _string concatenation_ operator. This can be useful for [[bash-version-3#^PATHAPPEND|modifying _environmental variables_]].
 
 [^2]: _Side effects_ are, of course, unintended -- and usually undesirable -- consequences.
 
