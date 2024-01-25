@@ -3,7 +3,7 @@ title: "36.4. Recursion: a script calling itself"
 ---
 
 
-Can a script [[./local-variables#^RECURSIONREF|recursively]] call itself? Indeed.
+Can a script [[local-variables#^RECURSIONREF|recursively]] call itself? Indeed.
 
 ###### Example 36-10. A (useless) script that recursively calls itself
 
