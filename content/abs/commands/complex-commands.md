@@ -75,7 +75,7 @@ find /etc -type f -exec cat '{}' \; | tr -c '.[:digit:]' '\n' \
 > [!note]
 > The -exec option to **find** should not be confused with the [[internal#^EXECREF|exec]] shell builtin.
 
-###### Example 16-3. *Badname*, eliminate file names in current directory containing bad characters and [[../basic/special-characters#Whitespace|whitespace]].
+###### Example 16-3. *Badname*, eliminate file names in current directory containing bad characters and [[special-characters#Whitespace|whitespace]].
 
 ```bash
 #!/bin/bash
@@ -181,7 +181,7 @@ do
 done
 ```
 
-See [[./file-and-archiving-commands#^EX48|Example 16-30]], [[special-chars#^EX58|Example 3-4]], and [[loops1#^FINDSTRING|Example 11-10]] for scripts using **find**. Its [[basic#^MANREF|manpage]] provides more detail on this complex and powerful command.
+See [[file-and-archiving-commands#^EX48|Example 16-30]], [[special-chars#^EX58|Example 3-4]], and [[loops1#^FINDSTRING|Example 11-10]] for scripts using **find**. Its [[basic#^MANREF|manpage]] provides more detail on this complex and powerful command.
 
 **xargs**
 
@@ -212,7 +212,7 @@ bash$ find ~/mail -type f | xargs grep "Linux"
 	      
 ```
 
-**ls | xargs -p -l gzip** [[./file-and-archiving-commands#^GZIPREF|gzips]] every file in current directory, one at a time, prompting before each operation.
+**ls | xargs -p -l gzip** [[file-and-archiving-commands#^GZIPREF|gzips]] every file in current directory, one at a time, prompting before each operation.
 
 > [!note]
 > Note that _xargs_ processes the arguments passed to it sequentially, _one at a time_.
@@ -464,7 +464,7 @@ The multiplication operator must be escaped when used in an arithmetic expressio
 
 **y=`expr $y + 1`**
 
-Increment a variable, with the same effect as **let y=y+1** and **y=$(($y+1))**. This is an example of [[../beyond-the-basic/arithmetic-expansion#^ARITHEXPREF|arithmetic expansion]].
+Increment a variable, with the same effect as **let y=y+1** and **y=$(($y+1))**. This is an example of [[arithmetic-expansion#^ARITHEXPREF|arithmetic expansion]].
 
 **z=`expr substr $string $position $length`**
 
@@ -628,7 +628,7 @@ exit 0
 > exit 0
 > ```
 
-The above script illustrates how **expr** uses the _escaped parentheses -- \( ... \) --_ grouping operator in tandem with [[../advanced-topics/regexp#^REGEXREF|regular expression]] parsing to match a substring. Here is a another example, this time from "real life."
+The above script illustrates how **expr** uses the _escaped parentheses -- \( ... \) --_ grouping operator in tandem with [[regexp#^REGEXREF|regular expression]] parsing to match a substring. Here is a another example, this time from "real life."
 
 ```bash
 # Strip the whitespace from the beginning and end.
@@ -639,8 +639,8 @@ LRFDATE=`expr "$LRFDATE" : '[[:space:]]*\(.*\)[[:space:]]*$'`
 #  (http://booklistgensh.peterknowles.com)
 ```
 
-[[wrapper#^PERLREF|Perl]], [[sedawk#^SEDREF|sed]], and [[../apendix/awk#^AWKREF|awk]] have far superior string parsing facilities. A short **sed** or **awk** "subroutine" within a script (see [[wrapper|Section 36.2]]) is an attractive alternative to **expr**.
+[[wrapper#^PERLREF|Perl]], [[sedawk#^SEDREF|sed]], and [[awk#^AWKREF|awk]] have far superior string parsing facilities. A short **sed** or **awk** "subroutine" within a script (see [[wrapper|Section 36.2]]) is an attractive alternative to **expr**.
 
 See [[string-manipulation|Section 10.1]] for more on using **expr** in string operations.
 
-[^1]: And even when _xargs_ is not strictly necessary, it can speed up execution of a command involving [[./time-date-commands#^BATCHPROCREF|batch-processing]] of multiple files.
+[^1]: And even when _xargs_ is not strictly necessary, it can speed up execution of a command involving [[time-date-commands#^BATCHPROCREF|batch-processing]] of multiple files.
