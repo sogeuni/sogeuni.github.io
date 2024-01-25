@@ -2034,7 +2034,7 @@ Remote distribution client: synchronizes, clones, or backs up a file system on a
 
 [^6]: Operators of single-user Linux systems generally prefer something simpler for backups, such as **tar**.
 
-[^7]: As of the [[../advanced-topics/bash-version-4#^BASH4REF|version 4 update]] of Bash, the -f and -c options take a block size of 512 when in [[../introduction/starting-off-with-a-sha-bang#^POSIX2REF|POSIX]] mode. Additionally, there are two new options: -b for [[../advanced-topics/dev#^SOCKETREF|socket]] buffer size, and -T for the limit on the number of _threads_.
+[^7]: As of the [[../advanced-topics/bash-version-4#^BASH4REF|version 4 update]] of Bash, the -f and -c options take a block size of 512 when in [[../introduction/sha-bang#^POSIX2REF|POSIX]] mode. Additionally, there are two new options: -b for [[../advanced-topics/dev#^SOCKETREF|socket]] buffer size, and -T for the limit on the number of _threads_.
 
 [^8]: NAND is the logical _not-and_ operator. Its effect is somewhat similar to subtraction.
 
