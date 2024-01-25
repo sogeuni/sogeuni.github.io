@@ -25,7 +25,7 @@ bash$ echo $variable1
 23
 ```
 
-The only times a variable appears "naked" -- without the $ prefix -- is when declared or assigned, when *unset*, when [[../commands/internal-commands-and-builtins#^EXPORTREF|exported]], in an arithmetic expression within [[operations-and-related-topics.html|double parentheses (( ... ))]], or in the special case of a variable representing a [[../advanced-topics/debugging#^SIGNALD|signal]] (see [[../advanced-topics/debugging#^EX76|Example 32-5]]). Assignment may be with an = (as in *var1=27*), in a [[../commands/internal-commands-and-builtins#^READREF|read]] statement, and at the head of a loop (*for var2 in 1 2 3*).
+The only times a variable appears "naked" -- without the $ prefix -- is when declared or assigned, when *unset*, when [[internal-commands-and-builtins#^EXPORTREF|exported]], in an arithmetic expression within [[operations-and-related-topics.html|double parentheses (( ... ))]], or in the special case of a variable representing a [[debugging#^SIGNALD|signal]] (see [[debugging#^EX76|Example 32-5]]). Assignment may be with an = (as in *var1=27*), in a [[internal-commands-and-builtins#^READREF|read]] statement, and at the head of a loop (*for var2 in 1 2 3*).
 
 Enclosing a referenced value in *double quotes* (" ... ") does not interfere with variable substitution. This is called *partial quoting*, sometimes referred to as "weak quoting." Using single quotes (' ... ') causes the variable name to be used literally, and no substitution will take place. This is *full quoting*, sometimes referred to as 'strong quoting.' See [[Chapter 5. Quoting|Chapter 5]] for a detailed discussion.
 
@@ -167,7 +167,7 @@ exit 0
 > #+ however it evaluates as 0 in an arithmetic operation.
 > ```
 >
-> See also [[../commands/internal-commands-and-builtins#^SELFSOURCE|Example 15-23]].
+> See also [[internal-commands-and-builtins#^SELFSOURCE|Example 15-23]].
 
 ## Variable Assignment
 
@@ -176,7 +176,7 @@ exit 0
 the assignment operator (*no space before and after*)
 
 > [!caution]
-> Do not confuse this with [[other-comparison-operators#^EQUALSIGNREF|=]] and [[other-comparison-operators#^EQUALREF|-eq]], which [[./tests#^IFTHEN|test]], rather than assign!
+> Do not confuse this with [[other-comparison-operators#^EQUALSIGNREF|=]] and [[other-comparison-operators#^EQUALREF|-eq]], which [[tests#^IFTHEN|test]], rather than assign!
 >
 > Note that = can be either an *assignment* or a *test* operator, depending on context.
 
@@ -249,7 +249,7 @@ echo "$a"         # The quoted variable preserves whitespace.
 exit 0
 ```
 
-Variable assignment using the *$(...)* mechanism (a newer method than [[../beyond-the-basic/command-substitution#^BACKQUOTESREF|backquotes]]). This is likewise a form of [[../beyond-the-basic/command-substitution#^COMMANDSUBREF|command substitution]].
+Variable assignment using the *$(...)* mechanism (a newer method than [[command-substitution#^BACKQUOTESREF|backquotes]]). This is likewise a form of [[command-substitution#^COMMANDSUBREF|command substitution]].
 
 ```bash
 # From /etc/rc.d/rc.local
@@ -338,14 +338,14 @@ To lighten the burden of keeping track of variable types in a script, Bash *does
 
 ### *Local variables*
 
-Variables [[../advanced-topics/subshells#^SCOPEREF|visible]] only within a [[./special-characters#^CODEBLOCKREF|code block]] or function (see also [[../advanced-topics/local-variables#^LOCALREF|local variables]] in [[../advanced-topics/functions|functions]])
+Variables [[subshells#^SCOPEREF|visible]] only within a [[special-characters#^CODEBLOCKREF|code block]] or function (see also [[local-variables#^LOCALREF|local variables]] in [[functions|functions]])
 
 ### *Environmental variables*
 
 Variables that affect the behavior of the shell and user interface
 
 > [!note]
-> In a more general context, each [[./special-characters#^PROCESSREF|process]] has an "environment", that is, a group of variables that the process may reference. In this sense, the shell behaves like any other process.
+> In a more general context, each [[special-characters#^PROCESSREF|process]] has an "environment", that is, a group of variables that the process may reference. In this sense, the shell behaves like any other process.
 > 
 > Every time a shell starts, it creates shell variables that correspond to its own environmental variables. Updating or adding new environmental variables causes the shell to update its environment, and all the shell's *child processes* (the commands it executes) inherit this environment.
 
@@ -363,12 +363,12 @@ Variables that affect the behavior of the shell and user interface
 >
 > (Thank you, Stéphane Chazelas for the clarification, and for providing the above example.)
 
-If a script sets environmental variables, they need to be "exported," that is, reported to the *environment* local to the script. This is the function of the [[../commands/internal-commands-and-builtins#^EXPORTREF|export]] command.
+If a script sets environmental variables, they need to be "exported," that is, reported to the *environment* local to the script. This is the function of the [[internal-commands-and-builtins#^EXPORTREF|export]] command.
 
 > [!note]
-> A script can **export** variables only to child [[./special-characters#^PROCESSREF|processes]], that is, only to commands or processes which that particular script initiates. A script invoked from the command-line *cannot* export variables back to the command-line environment. *[[../commands/internal-commands-and-builtins#^FORKREF|Child processes]] cannot export variables back to the parent processes that spawned them.*
+> A script can **export** variables only to child [[special-characters#^PROCESSREF|processes]], that is, only to commands or processes which that particular script initiates. A script invoked from the command-line *cannot* export variables back to the command-line environment. *[[internal-commands-and-builtins#^FORKREF|Child processes]] cannot export variables back to the parent processes that spawned them.*
 >
-> **Definition:** A *child process* is a subprocess launched by another process, its [[../commands/internal-commands-and-builtins#^PARENTREF|parent]].|
+> **Definition:** A *child process* is a subprocess launched by another process, its [[internal-commands-and-builtins#^PARENTREF|parent]].|
 
 ### *Positional parameters*
 
@@ -376,7 +376,7 @@ Arguments passed to the script from the command line [^2] : $0, $1, $2, $3 . . .
 
 $0 is the name of the script itself, $1 is the first argument, $2 the second, $3 the third, and so forth. [^3] After $9, the arguments must be enclosed in brackets, for example, ${10}, ${11}, ${12}.
 
-The special variables [[../beyond-the-basic/another-look-at-variables#^APPREF|$* and $@]] denote *all* the positional parameters.
+The special variables [[another-look-at-variables#^APPREF|$* and $@]] denote *all* the positional parameters.
 
 ###### Example 4-5. Positional Parameters
 
@@ -446,7 +446,7 @@ lastarg=${!args}
 # Note that lastarg=${!$#} doesn't work.
 ```
 
-Some scripts can perform different operations, depending on which name they are invoked with. For this to work, the script needs to check $0, the name it was invoked by. [^4] There must also exist symbolic links to all the alternate names of the script. See [[../commands/basic-commands#^HELLOL|Example 16-2]].
+Some scripts can perform different operations, depending on which name they are invoked with. For this to work, the script needs to check $0, the name it was invoked by. [^4] There must also exist symbolic links to all the alternate names of the script. See [[basic-commands#^HELLOL|Example 16-2]].
 
 > [!tip]
 > If a script expects a command-line parameter but is invoked without one, this may cause a *null variable assignment*, generally an undesirable result. One way to prevent this is to append an extra character to both sides of the assignment statement using the expected positional parameter.
@@ -595,15 +595,15 @@ $ sh shift-past.sh 1 2 3 4 5
 #                    ^^^^^^^^
 ```
 
-> [!note] The **shift** command works in a similar fashion on parameters passed to a [[../advanced-topics/functions|function]]. See [[assortedtips#^MULTIPLICATION|Example 36-18]].
+> [!note] The **shift** command works in a similar fashion on parameters passed to a [[functions|function]]. See [[assortedtips#^MULTIPLICATION|Example 36-18]].
 
 [^1]: Technically, the *name* of a variable is called an *lvalue*, meaning that it appears on the *left* side of an assignment statment, as in **VARIABLE=23**. A variable's *value* is an *rvalue*, meaning that it appears on the *right* side of an assignment statement, as in **VAR2=$VARIABLE**.
 
     A variable's *name* is, in fact, a *reference*, a *pointer* to the memory location(s) where the actual data associated with that variable is kept.
 
-[^2]: Note that [[../advanced-topics/complex-functions-and-function-complexities#^PASSEDARGS|*functions* also take positional parameters]].
+[^2]: Note that [[complex-functions-and-function-complexities#^PASSEDARGS|*functions* also take positional parameters]].
 
-[^3]: The process calling the script sets the $0 parameter. By convention, this parameter is the name of the script. See the [[../commands/basic-commands#^MANREF|manpage]] (manual page) for **execv**.
+[^3]: The process calling the script sets the $0 parameter. By convention, this parameter is the name of the script. See the [[basic-commands#^MANREF|manpage]] (manual page) for **execv**.
 
     From the *command-line*, however, $0 is the name of the shell.
 
@@ -615,4 +615,4 @@ $ sh shift-past.sh 1 2 3 4 5
     tcsh
     ```
 
-[^4]: If the the script is [[../commands/internal-commands-and-builtins#^SOURCEREF|sourced]] or [[../commands/basic-commands#^SYMLINKREF|symlinked]], then this will not work. It is safer to check [[../advanced-topics/debugging#^BASHSOURCEREF|$BASH_Source]].
+[^4]: If the the script is [[internal-commands-and-builtins#^SOURCEREF|sourced]] or [[basic-commands#^SYMLINKREF|symlinked]], then this will not work. It is safer to check [[debugging#^BASHSOURCEREF|$BASH_Source]].
