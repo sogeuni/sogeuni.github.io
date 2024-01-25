@@ -5,9 +5,9 @@ title: C.2. Awk
 
 _Awk_ [^1] is a full-featured text processing language with a syntax reminiscent of _C_. While it possesses an extensive set of operators and capabilities, we will cover only a few of these here - the ones most useful in shell scripts.
 
-Awk breaks each line of input passed to it into [[../basic/special-characters#^FIELDREF|fields]]. By default, a field is a string of consecutive characters delimited by [[../basic/special-characters#Whitespace|whitespace]], though there are options for changing this. Awk parses and operates on each separate field. This makes it ideal for handling structured text files -- especially tables -- data organized into consistent chunks, such as rows and columns.
+Awk breaks each line of input passed to it into [[special-characters#^FIELDREF|fields]]. By default, a field is a string of consecutive characters delimited by [[special-characters#Whitespace|whitespace]], though there are options for changing this. Awk parses and operates on each separate field. This makes it ideal for handling structured text files -- especially tables -- data organized into consistent chunks, such as rows and columns.
 
-[[varsubn#^SNGLQUO|Strong quoting]] and [[../basic/special-characters#^CODEBLOCKREF|curly brackets]] enclose blocks of awk code within a shell script.
+[[varsubn#^SNGLQUO|Strong quoting]] and [[special-characters#^CODEBLOCKREF|curly brackets]] enclose blocks of awk code within a shell script.
 
 ```bash
 # $1 is field #1, $2 is field #2, etc.
@@ -127,25 +127,25 @@ exit $?
 
 For simpler examples of awk within shell scripts, see:
 
-1. [[../commands/internal-commands-and-builtins#^EX44|Example 15-14]]
-2. [[../advanced-topics/redirecting-code-blocks#^REDIR4|Example 20-8]]
-3. [[../commands/file-and-archiving-commands#^STRIPC|Example 16-32]]
-4. [[../advanced-topics/shell-wrappers#^COLTOTALER|Example 36-5]]
-5. [[../advanced-topics/indirect-references#^COLTOTALER2|Example 28-2]]
-6. [[../commands/internal-commands-and-builtins#^COLTOTALER3|Example 15-20]]
-7. [[../advanced-topics/proc#^PIDID|Example 29-3]]
-8. [[../advanced-topics/proc#^CONSTAT|Example 29-4]]
-9. [[../beyond-the-basic/loops#^FILEINFO|Example 11-3]]
-10. [[../commands/miscellaneous-commands#^BLOTOUT|Example 16-61]]
-11. [[../beyond-the-basic/another-look-at-variables#^SEEDINGRANDOM|Example 9-16]]
-12. [[../commands/complex-commands#^IDELETE|Example 16-4]]
-13. [[../beyond-the-basic/manipulating-strings#^SUBSTRINGEX|Example 10-6]]
-14. [[../advanced-topics/assorted-tips#^SUMPRODUCT|Example 36-19]]
-15. [[../beyond-the-basic/loops#^USERLIST|Example 11-9]]
-16. [[../advanced-topics/shell-wrappers#^PRASC|Example 36-4]]
-17. [[../commands/math-commands#^HYPOT|Example 16-53]]
-18. [[./ascii-table#^ASCII3SH|Example T-3]]
+1. [[internal-commands-and-builtins#^EX44|Example 15-14]]
+2. [[redirecting-code-blocks#^REDIR4|Example 20-8]]
+3. [[file-and-archiving-commands#^STRIPC|Example 16-32]]
+4. [[shell-wrappers#^COLTOTALER|Example 36-5]]
+5. [[indirect-references#^COLTOTALER2|Example 28-2]]
+6. [[internal-commands-and-builtins#^COLTOTALER3|Example 15-20]]
+7. [[proc#^PIDID|Example 29-3]]
+8. [[proc#^CONSTAT|Example 29-4]]
+9. [[loops#^FILEINFO|Example 11-3]]
+10. [[miscellaneous-commands#^BLOTOUT|Example 16-61]]
+11. [[another-look-at-variables#^SEEDINGRANDOM|Example 9-16]]
+12. [[complex-commands#^IDELETE|Example 16-4]]
+13. [[manipulating-strings#^SUBSTRINGEX|Example 10-6]]
+14. [[assorted-tips#^SUMPRODUCT|Example 36-19]]
+15. [[loops#^USERLIST|Example 11-9]]
+16. [[shell-wrappers#^PRASC|Example 36-4]]
+17. [[math-commands#^HYPOT|Example 16-53]]
+18. [[ascii-table#^ASCII3SH|Example T-3]]
 
-That's all the awk we'll cover here, folks, but there's lots more to learn. See the appropriate references in the [[../bibliography|_Bibliography_]].
+That's all the awk we'll cover here, folks, but there's lots more to learn. See the appropriate references in the [[bibliography|_Bibliography_]].
 
 [^1]: Its name derives from the initials of its authors, **A**ho, **W**einberg, and **K**ernighan.
