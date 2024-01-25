@@ -3,7 +3,7 @@ title: Appendix T. ASCII Table
 ---
 
 
-Traditionally, a book of this sort has an [[../basic/special-characters#^ASCIIDEF|ASCII]] Table appendix. This book does not. Instead, here are several short scripts, each of which generates a complete ASCII table.
+Traditionally, a book of this sort has an [[special-characters#^ASCIIDEF|ASCII]] Table appendix. This book does not. Instead, here are several short scripts, each of which generates a complete ASCII table.
 
 ###### Example T-1. A script that generates an ASCII table
 
