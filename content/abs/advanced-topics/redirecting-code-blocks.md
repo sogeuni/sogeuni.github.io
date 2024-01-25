@@ -3,7 +3,7 @@ title: 20.2. Redirecting Code Blocks
 ---
 
 
-Blocks of code, such as [[../beyond-the-basic/loops#^WHILELOOPREF|while]], [[../beyond-the-basic/loops#^UNTILLOOPREF|until]], and [[../beyond-the-basic/loops#^FORLOOPREF1|for]] loops, even [[../basic/tests#^IFTHEN|if/then]] test blocks can also incorporate redirection of stdin. Even a function may use this form of redirection (see [[./complex-functions-and-function-complexities#^REALNAME|Example 24-11]]). The < operator at the end of the code block accomplishes this.
+Blocks of code, such as [[loops#^WHILELOOPREF|while]], [[loops#^UNTILLOOPREF|until]], and [[loops#^FORLOOPREF1|for]] loops, even [[tests#^IFTHEN|if/then]] test blocks can also incorporate redirection of stdin. Even a function may use this form of redirection (see [[complex-functions-and-function-complexities#^REALNAME|Example 24-11]]). The < operator at the end of the code block accomplishes this.
 
 ###### Example 20-5. Redirected *while* loop
 
@@ -263,9 +263,9 @@ Znosko-Borowski
 #+ "redir2.sh", "redir3.sh", "redir4.sh", "redir4a.sh", "redir5.sh".
 ```
 
-Redirecting the stdout of a code block has the effect of saving its output to a file. See [[../basic/special-characters#^RPMCHECK|Example 3-2]].
+Redirecting the stdout of a code block has the effect of saving its output to a file. See [[special-characters#^RPMCHECK|Example 3-2]].
 
-[[./here-documents#^HEREDOCREF|Here documents]] are a special case of redirected code blocks. That being the case, it should be possible to feed the output of a _here document_ into the stdin for a _while loop_.
+[[here-documents#^HEREDOCREF|Here documents]] are a special case of redirected code blocks. That being the case, it should be possible to feed the output of a _here document_ into the stdin for a _while loop_.
 
 ```bash
 # This example by Albert Siersema
