@@ -23,7 +23,7 @@ exit 0
 # Stéphane Chazelas (thanks again).
 ```
 
-Let us consider an _interactive_ script to be one that requires input from the user, usually with [[internal-commands-and-builtins#^READREF|read]] statements (see [[internal-commands-and-builtins#^EX36|Example 15-3]]). "Real life" is actually a bit messier than that. For now, assume an interactive script is bound to a tty, a script that a user has invoked from the console or an _xterm_.
+Let us consider an _interactive_ script to be one that requires input from the user, usually with [[internal-commands-and-builtins#^READREF|read]] statements (see [[Example 15-3|Example 15-3]]). "Real life" is actually a bit messier than that. For now, assume an interactive script is bound to a tty, a script that a user has invoked from the console or an _xterm_.
 
 Init and startup scripts are necessarily non-interactive, since they must run without human intervention. Many administrative and system maintenance scripts are likewise non-interactive. Unvarying repetitive tasks cry out for automation by non-interactive scripts.
 
