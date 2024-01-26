@@ -3,9 +3,9 @@ title: 20. I/O Redirection
 ---
 
 
-There are always three default _files_ [^1] open, stdin (the keyboard), stdout (the screen), and stderr (error messages output to the screen). These, and any other open files, can be redirected. Redirection simply means capturing output from a file, command, program, script, or even code block within a script (see [[example 3-1|Example 3-1]] and [[example 3-2|Example 3-2]]) and sending it as input to another file, command, program, or script.
+There are always three default _files_ [^1] open, stdin (the keyboard), stdout (the screen), and stderr (error messages output to the screen). These, and any other open files, can be redirected. Redirection simply means capturing output from a file, command, program, script, or even code block within a script (see [[Example 3-1|Example 3-1]] and [[Example 3-2|Example 3-2]]) and sending it as input to another file, command, program, or script.
 
-Each open file gets assigned a file descriptor. [^2] The file descriptors for stdin, stdout, and stderr are 0, 1, and 2, respectively. For opening additional files, there remain descriptors 3 to 9. It is sometimes useful to assign one of these additional file descriptors to stdin, stdout, or stderr as a temporary duplicate link. [^3] This simplifies restoration to normal after complex redirection and reshuffling (see [[using-exec#^REDIR1|Example 20-1]]).
+Each open file gets assigned a file descriptor. [^2] The file descriptors for stdin, stdout, and stderr are 0, 1, and 2, respectively. For opening additional files, there remain descriptors 3 to 9. It is sometimes useful to assign one of these additional file descriptors to stdin, stdout, or stderr as a temporary duplicate link. [^3] This simplifies restoration to normal after complex redirection and reshuffling (see [[Example 20-1|Example 20-1]]).
 
 ```bash
    COMMAND_OUTPUT >
@@ -144,7 +144,7 @@ command < input-file > output-file
 command1 | command2 | command3 > output-file
 ```
 
-See [[file-and-archiving-commands#^DERPM|Example 16-31]] and [[contributed-scripts#^FIFO|Example A-14]].
+See [[Example 16-31|Example 16-31]] and [[Example A-14|Example A-14]].
 
 Multiple output streams may be redirected to one file.
 
