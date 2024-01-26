@@ -137,16 +137,16 @@ else
 fi
 ```
 
-For additional examples of using the **=~** operator, see [[contributed-scripts#^WHX|Example A-29]], [[here-strings#^MAILBOXGREP|Example 19-14]], [[contributed-scripts#^FINDSPLIT|Example A-35]], and [[contributed-scripts#^TOHTML|Example A-24]].
+For additional examples of using the **=~** operator, see [[Example A-29|Example A-29]], [[Example 19-14|Example 19-14]], [[Example A-35|Example A-35]], and [[Example A-24|Example A-24]].
 
 - The new `set -o pipefail` option is useful for debugging [[special-characters#^PIPEREF|pipes]]. If this option is set, then the [[exit-and-exit-status#^EXITSTATUSREF|exit status]] of a pipe is the exit status of the last command in the pipe to _fail_ (return a non-zero value), rather than the actual final command in the pipe.
 
-    See [[communications-commands#^FC4UPD|Example 16-43]].
+    See [[Example 16-43|Example 16-43]].
 
 > [!caution]
 > The update to version 3 of Bash breaks a few scripts that worked under earlier versions. _Test critical legacy scripts to make sure they still work!_
 
-As it happens, a couple of the scripts in the _Advanced Bash Scripting Guide_ had to be fixed up (see [[another-look-at-variables#^TOUT|Example 9-4]], for instance).|
+As it happens, a couple of the scripts in the _Advanced Bash Scripting Guide_ had to be fixed up (see [[Example 9-4|Example 9-4]], for instance).|
 
 ## 37.2.1. Bash, version 3.1
 
