@@ -520,7 +520,7 @@ exit 0
 #+    it in a compiled high-level language.
 ```
 
-See also [[contributed-scripts#^STDDEV|Example A-37]].
+See also [[Example A-37|Example A-37]].
 
 **dc**
 
