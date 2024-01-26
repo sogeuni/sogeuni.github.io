@@ -25,11 +25,11 @@ Some interesting options to _tput_ are:
 
 Example scripts using _tput_:
 
-1. [[colorizing-scripts#^COLORECHO|Example 36-15]]
-2. [[colorizing-scripts#^EX30A|Example 36-13]]
-3. [[contributed-scripts#^HOMEWORK|Example A-44]]
-4. [[contributed-scripts#^NIM|Example A-42]]
-5. [[arrays#^POEM|Example 27-2]]
+1. [[Example 36-15|Example 36-15]]
+2. [[Example 36-13|Example 36-13]]
+3. [[Example A-44|Example A-44]]
+4. [[Example A-42|Example A-42]]
+5. [[Example 27-2|Example 27-2]]
 
 Note that [[system-and-administrative-commands#^STTYREF|stty]] offers a more powerful command set for controlling a terminal.
 
@@ -58,7 +58,7 @@ Reset terminal parameters and clear text screen. As with **clear**, the cursor a
 
 **clear**
 
-The **clear** command simply clears the text screen at the console or in an _xterm_. The prompt and cursor reappear at the upper lefthand corner of the screen or xterm window. This command may be used either at the command line or in a script. See [[testing-and-branching#^EX30|Example 11-26]].
+The **clear** command simply clears the text screen at the console or in an _xterm_. The prompt and cursor reappear at the upper lefthand corner of the screen or xterm window. This command may be used either at the command line or in a script. See [[Example 11-26|Example 11-26]].
 
 **resize**
 
