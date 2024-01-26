@@ -15,4 +15,4 @@ title: 38.3. Where to Go For Help
 > 
 > --<cite>CI-300 printer manual</cite>
 
-[^1]: Well, if you _absolutely_ insist, you can try modifying [[contributed-scripts#^HOMEWORK|Example A-44]] to suit your purposes.
+[^1]: Well, if you _absolutely_ insist, you can try modifying [[Example A-44|Example A-44]] to suit your purposes.
