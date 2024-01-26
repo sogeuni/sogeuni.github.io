@@ -64,63 +64,13 @@ Following the execution of a [[special-characters#^PIPEREF|pipe]], a $? gives th
 
 After a script terminates, a $? from the command-line gives the exit status of the script, that is, the last command executed in the script, which is, by convention, **0** on success or an integer in the range 1 - 255 on error.
 
-###### Example 6-1. exit / exit status
+![[example 6-1|example 6-1]]
 
-```bash
-#!/bin/bash
-
-echo hello
-echo $?    # Exit status 0 returned because command executed successfully.
-
-lskdf      # Unrecognized command.
-echo $?    # Non-zero exit status returned -- command failed to execute.
-
-echo
-
-exit 113   # Will return 113 to shell.
-           # To verify this, type "echo $?" after script terminates.
-
-#  By convention, an 'exit 0' indicates success,
-#+ while a non-zero exit value means an error or anomalous condition.
-#  See the "Exit Codes With Special Meanings" appendix.
-```
-
-[[another-look-at-variables#^XSTATVARREF|$?]] is especially useful for testing the result of a command in a script (see [[file-and-archiving-commands#^FILECOMP|Example 16-35]] and [[text-processing-commands#^LOOKUP|Example 16-20]]).
+[[another-look-at-variables#^XSTATVARREF|$?]] is especially useful for testing the result of a command in a script (see [[Example 16-35|Example 16-35]] and [[Example 16-20|Example 16-20]]).
 
 > [!note] The [[special-characters#^NOTREF|!]], the _logical not_ qualifier, reverses the outcome of a test or command, and this affects its [[exit-and-exit-status#^EXITSTATUSREF|exit status]].
 >
-> ###### Example 6-2. Negating a condition using `!`
->
-> ```bash
-> true    # The "true" builtin.
-> echo "exit status of \"true\" = $?"     # 0
-> 
-> ! true
-> echo "exit status of \"! true\" = $?"   # 1
-> # Note that the "!" needs a space between it and the command.
-> #    !true   leads to a "command not found" error
-> #
-> # The '!' operator prefixing a command invokes the Bash history mechanism.
-> 
-> true
-> !true
-> # No error this time, but no negation either.
-> # It just repeats the previous command (true).
-> 
-> 
-> # =========================================================== #
-> # Preceding a _pipe_ with ! inverts the exit status returned.
-> ls | bogus_command     # bash: bogus_command: command not found
-> echo $?                # 127
-> 
-> ! ls | bogus_command   # bash: bogus_command: command not found
-> echo $?                # 0
-> # Note that the ! does not change the execution of the pipe.
-> # Only the exit status changes.
-> # =========================================================== #
-> 
-> # Thanks, Stéphane Chazelas and Kristopher Newsome.
-> ```
+> ![[example 6-2|example 6-2]]
 
 > [!caution] Certain exit status codes have [[exit-codes-with-special-meanings#^EXITCODESREF|reserved meanings]] and should not be user-specified in a script.
 
