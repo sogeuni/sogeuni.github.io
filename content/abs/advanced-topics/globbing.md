@@ -57,7 +57,7 @@ t2.sh
 > [!note]
 > It is possible to modify the way Bash interprets special characters in globbing. A **set -f** command disables globbing, and the nocaseglob and nullglob options to [[internal-commands-and-builtins#^SHOPTREF|shopt]] change globbing behavior.
 
-See also [[loops#^LISTGLOB|Example 11-5]].
+See also [[Example 11-5|Example 11-5]].
 
 > [!caution]
 > Filenames with embedded [[special-characters#Whitespace|whitespace]] can cause _globbing_ to choke. [David Wheeler](http://www.dwheeler.com/essays/filenames-in-shell.html) shows how to avoid many such pitfalls.
