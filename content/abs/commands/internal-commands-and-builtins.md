@@ -62,14 +62,14 @@ A _keyword_ is a _reserved_ word, token or operator. Keywords have a special mea
 
 **echo**
 
-prints (to stdout) an expression or variable (see [[example 4-1|Example 4-1]]).
+prints (to stdout) an expression or variable (see [[Example 4-1|Example 4-1]]).
 
 ```bash
 echo Hello
 echo $a
 ```
 
-An **echo** requires the -e option to print escaped characters. See [[example 5-2|Example 5-2]].
+An **echo** requires the -e option to print escaped characters. See [[Example 5-2|Example 5-2]].
 
 Normally, each **echo** command prints a terminal newline, but the -n option suppresses this.
 
@@ -88,7 +88,7 @@ Normally, each **echo** command prints a terminal newline, but the -n option sup
 >
 > **a=`echo "HELLO" \| tr A-Z a-z`**
 >
-> See also [[text-processing-commands#^LOWERCASE|Example 16-22]], [[complex-commands#^EX57|Example 16-3]], [[math-commands#^MONTHLYPMT|Example 16-47]], and [[math-commands#^BASE|Example 16-48]].|
+> See also [[Example 16-22|Example 16-22]], [[Example 16-3|Example 16-3]], [[Example 16-47|Example 16-47]], and [[Example 16-48|Example 16-48]].|
 
 Be aware that **echo `command`** deletes any linefeeds that the output of _command_ generates.
 
@@ -245,11 +245,11 @@ cd $var || error $"Can't cd to %s." "$var"
 # Thanks, S.C.
 ```
 
-See also [[assorted-tips#^PROGRESSBAR|Example 36-17]].
+See also [[Example 36-17|Example 36-17]].
 
 **read**
 
-"Reads" the value of a variable from stdin, that is, interactively fetches input from the keyboard. The -a option lets **read** get array variables (see [[arrays#^EX67|Example 27-6]]).
+"Reads" the value of a variable from stdin, that is, interactively fetches input from the keyboard. The -a option lets **read** get array variables (see [[Example 27-6|Example 27-6]]).
 
 ###### Example 15-3. Variable assignment, using *read*
 
@@ -524,7 +524,7 @@ done
 > [!note]
 > The -n option to **read** will not detect the **ENTER** (newline) key.
 
-The -t option to **read** permits timed input (see [[another-look-at-variables#^TOUT|Example 9-4]] and [[contributed-scripts#^QKY|Example A-41]]).
+The -t option to **read** permits timed input (see [[Example 9-4|Example 9-4]] and [[Example A-41|Example A-41]]).
 
 The -u option takes the [[io-redirection#^FDREF|file descriptor]] of the target file.
 
@@ -664,7 +664,7 @@ exit 0
 > ```
 
 > [!tip]
-> It is possible to _paste_ text into the input field of a _read_ (but _not_ multiple lines!). See [[contributed-scripts#^PADSW|Example A-38]].
+> It is possible to _paste_ text into the input field of a _read_ (but _not_ multiple lines!). See [[Example A-38|Example A-38]].
 
 **Filesystem**
 
@@ -696,7 +696,7 @@ The -P (physical) option to **cd** causes it to ignore symbolic links.
 
 **pwd**
 
-Print Working Directory. This gives the user's (or script's) current directory (see [[internal-commands-and-builtins#^EX37|Example 15-9]]). The effect is identical to reading the value of the builtin variable [[another-look-at-variables#^PWDREF|$PWD]].
+Print Working Directory. This gives the user's (or script's) current directory (see [[Example 15-9|Example 15-9]]). The effect is identical to reading the value of the builtin variable [[another-look-at-variables#^PWDREF|$PWD]].
 
 **pushd**, **popd**, **dirs**
 
@@ -1074,7 +1074,7 @@ Here is another example of using _eval_ to _evaluate_ a complex expression, this
 eval ${1}+=\"${x} ${y} \"
 ```
 
-[[contributed-scripts#^SAMORSE|Example A-53]] uses _eval_ to convert [[arrays#^ARRAYREF|array]] elements into a command list.
+[[Example A-53|Example A-53]] uses _eval_ to convert [[arrays#^ARRAYREF|array]] elements into a command list.
 
 The _eval_ command occurs in the older version of [[indirect-references#^IVRREF|indirect referencing]].
 
@@ -1264,7 +1264,7 @@ echo "second parameter = $second_param"           # (null value)
 exit 0
 ```
 
-See also [[loops#^EX22A|Example 11-2]] and [[miscellaneous-commands#^EX33A|Example 16-56]].
+See also [[Example 11-2|Example 11-2]] and [[Example 16-56|Example 16-56]].
 
 **unset**
 
@@ -1370,7 +1370,7 @@ exit 0
 > ```
 
 > [!note]
-> A variable to be exported may require special treatment. See [[sample-bashrc-and-bash-profile-files#^BASHPROF|Example M-2]].
+> A variable to be exported may require special treatment. See [[Example M-2|Example M-2]].
 
 **declare**, **typeset**
 
@@ -1519,7 +1519,7 @@ print_message This is the message-print function in the data-file.
 exit $?
 ```
 
-File data-file for [[internal-commands-and-builtins#^EX38|Example 15-22]], above. Must be present in same directory.
+File data-file for [[Example 15-22|Example 15-22]], above. Must be present in same directory.
 
 ```bash
 # This is a data file loaded by a script.
@@ -1682,7 +1682,7 @@ An **exec** also serves to [[using-exec#^USINGEXECREF|reassign file descriptors]
 
 **shopt**
 
-This command permits changing _shell options_ on the fly (see [[aliases#^AL|Example 25-1]] and [[aliases#^UNAL|Example 25-2]]). It often appears in the Bash [[important-files#^FILESREF1|startup files]], but also has its uses in scripts. Needs [[bash-version-2#^BASH2REF|version 2]] or later of Bash.
+This command permits changing _shell options_ on the fly (see [[Example 25-1|Example 25-1]] and [[Example 25-2|Example 25-2]]). It often appears in the Bash [[important-files#^FILESREF1|startup files]], but also has its uses in scripts. Needs [[bash-version-2#^BASH2REF|version 2]] or later of Bash.
 
 ```bash
 shopt -s cdspell
@@ -1837,6 +1837,6 @@ exit: exit [n]
 
     An advantage of _hashing_ is that it is fast. A disadvantage is that _collisions_ -- where a single key maps to more than one data item -- are possible.
 
-    For examples of hashing see [[contributed-scripts#^HASHLIB|Example A-20]] and [[contributed-scripts#^HASHEXAMPLE|Example A-21]].
+    For examples of hashing see [[Example A-20|Example A-20]] and [[Example A-21|Example A-21]].
 
 [^9]: The _readline_ library is what Bash uses for reading input in an interactive shell.
