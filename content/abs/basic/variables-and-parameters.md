@@ -25,7 +25,7 @@ bash$ echo $variable1
 23
 ```
 
-The only times a variable appears "naked" -- without the $ prefix -- is when declared or assigned, when *unset*, when [[internal-commands-and-builtins#^EXPORTREF|exported]], in an arithmetic expression within [[operations-and-related-topics.html|double parentheses (( ... ))]], or in the special case of a variable representing a [[debugging#^SIGNALD|signal]] (see [[debugging#^EX76|Example 32-5]]). Assignment may be with an = (as in *var1=27*), in a [[internal-commands-and-builtins#^READREF|read]] statement, and at the head of a loop (*for var2 in 1 2 3*).
+The only times a variable appears "naked" -- without the $ prefix -- is when declared or assigned, when *unset*, when [[internal-commands-and-builtins#^EXPORTREF|exported]], in an arithmetic expression within [[operations-and-related-topics.html|double parentheses (( ... ))]], or in the special case of a variable representing a [[debugging#^SIGNALD|signal]] (see [[Example 32-5|Example 32-5]]). Assignment may be with an = (as in *var1=27*), in a [[internal-commands-and-builtins#^READREF|read]] statement, and at the head of a loop (*for var2 in 1 2 3*).
 
 Enclosing a referenced value in *double quotes* (" ... ") does not interfere with variable substitution. This is called *partial quoting*, sometimes referred to as "weak quoting." Using single quotes (' ... ') causes the variable name to be used literally, and no substitution will take place. This is *full quoting*, sometimes referred to as 'strong quoting.' See [[Chapter 5. Quoting|Chapter 5]] for a detailed discussion.
 
@@ -55,7 +55,7 @@ Note that **$variable** is actually a simplified form of **${variable}**. In con
 > #+ however it evaluates as 0 in an arithmetic operation.
 > ```
 >
-> See also [[internal-commands-and-builtins#^SELFSOURCE|Example 15-23]].
+> See also [[Example 15-23|Example 15-23]].
 
 ## Variable Assignment
 
@@ -149,7 +149,7 @@ lastarg=${!args}
 # Note that lastarg=${!$#} doesn't work.
 ```
 
-Some scripts can perform different operations, depending on which name they are invoked with. For this to work, the script needs to check $0, the name it was invoked by. [^4] There must also exist symbolic links to all the alternate names of the script. See [[basic-commands#^HELLOL|Example 16-2]].
+Some scripts can perform different operations, depending on which name they are invoked with. For this to work, the script needs to check $0, the name it was invoked by. [^4] There must also exist symbolic links to all the alternate names of the script. See [[Example 16-2|Example 16-2]].
 
 > [!tip]
 > If a script expects a command-line parameter but is invoked without one, this may cause a *null variable assignment*, generally an undesirable result. One way to prevent this is to append an extra character to both sides of the assignment statement using the expected positional parameter.
@@ -233,7 +233,7 @@ $ sh shift-past.sh 1 2 3 4 5
 #                    ^^^^^^^^
 ```
 
-> [!note] The **shift** command works in a similar fashion on parameters passed to a [[functions|function]]. See [[assortedtips#^MULTIPLICATION|Example 36-18]].
+> [!note] The **shift** command works in a similar fashion on parameters passed to a [[functions|function]]. See [[Example 36-18|Example 36-18]].
 
 [^1]: Technically, the *name* of a variable is called an *lvalue*, meaning that it appears on the *left* side of an assignment statment, as in **VARIABLE=23**. A variable's *value* is an *rvalue*, meaning that it appears on the *right* side of an assignment statement, as in **VAR2=$VARIABLE**.
 
