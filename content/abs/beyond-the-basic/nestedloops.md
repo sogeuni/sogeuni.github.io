@@ -38,4 +38,4 @@ done
 exit 0
 ```
 
-See [[arrays#^BUBBLE|Example 27-11]] for an illustration of nested [[loops#^WHILELOOPREF|while loops]], and [[arrays#^EX68|Example 27-13]] to see a while loop nested inside an [[loops#^UNTILLOOPREF|until loop]].
+See [[Example 27-11|Example 27-11]] for an illustration of nested [[loops#^WHILELOOPREF|while loops]], and [[Example 27-13|Example 27-13]] to see a while loop nested inside an [[loops#^UNTILLOOPREF|until loop]].
