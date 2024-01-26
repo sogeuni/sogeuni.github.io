@@ -207,6 +207,6 @@ END {
 exit $?
 ```
 
-> [!caution] This method of indirect referencing is a bit tricky. If the second order variable changes its value, then the first order variable must be properly dereferenced (as in the above example). Fortunately, the _${!variable}_ notation introduced with [[bashver2#^BASH2REF|version 2]] of Bash (see [[bashver2#^EX78|Example 37-2]] and [[contributed-scripts.html#HASHEX2|Example A-22]]) makes indirect referencing more intuitive.
+> [!caution] This method of indirect referencing is a bit tricky. If the second order variable changes its value, then the first order variable must be properly dereferenced (as in the above example). Fortunately, the _${!variable}_ notation introduced with [[bashver2#^BASH2REF|version 2]] of Bash (see [[Example 37-2|Example 37-2]] and [[contributed-scripts.html#HASHEX2|Example A-22]]) makes indirect referencing more intuitive.
 
 > Bash does not support pointer arithmetic, and this severely limits the usefulness of indirect referencing. In fact, indirect referencing in a scripting language is, at best, something of an afterthought.
