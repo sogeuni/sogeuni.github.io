@@ -26,7 +26,7 @@ $BASH_SUBSHELL
 
 A variable indicating the [[subshells#^SUBSHELLSREF|subshell]] level. This is a new addition to Bash, [[bashver3#^BASH3REF|version 3]].
 
-See [[subshells#^SUBSHELL|Example 21-1]] for usage.
+See [[Example 21-1|Example 21-1]] for usage.
 
 $BASHPID
 
@@ -155,7 +155,7 @@ echo "FUNCNAME = $FUNCNAME"        # FUNCNAME =
                                    # Null value outside a function.
 ```
 
-See also [[contributed-scripts#^USEGETOPT|Example A-50]].
+See also [[Example A-50|Example A-50]].
 
 $GLOBIGNORE
 
@@ -183,11 +183,11 @@ root# echo ${GROUPS[5]}
 
 $HOME
 
-Home directory of the user, usually /home/username (see [[parameter-substitution#^EX6|Example 10-7]])
+Home directory of the user, usually /home/username (see [[Example 10-7|Example 10-7]])
 
 $HOSTNAME
 
-The [[system-and-administrative-commands#^HNAMEREF|hostname]] command assigns the system host name at bootup in an init script. However, the gethostname() function sets the Bash internal variable $HOSTNAME. See also [[parameter-substitution#^EX6|Example 10-7]].
+The [[system-and-administrative-commands#^HNAMEREF|hostname]] command assigns the system host name at bootup in an init script. However, the gethostname() function sets the Bash internal variable $HOSTNAME. See also [[Example 10-7|Example 10-7]].
 
 $HOSTTYPE
 
@@ -206,7 +206,7 @@ internal field separator
 
 This variable determines how Bash recognizes [[special-characters#^FIELDREF|fields]], or word boundaries, when it interprets character strings.
 
-`$IFS` defaults to [[special-characters#Whitespace|whitespace]] (space, tab, and newline), but may be changed, for example, to parse a comma-separated data file. Note that [[another-look-at-variables#^APPREF|$*]] uses the first character held in $IFS. See [[example 5-1|Example 5-1]].
+`$IFS` defaults to [[special-characters#Whitespace|whitespace]] (space, tab, and newline), but may be changed, for example, to parse a comma-separated data file. Note that [[another-look-at-variables#^APPREF|$*]] uses the first character held in $IFS. See [[Example 5-1|Example 5-1]].
 
 ```bash
 bash$ echo "$IFS"
@@ -237,102 +237,11 @@ IFS="$(printf '\n\t')"   # Per David Wheeler.
 
 > [!caution] $IFS does not handle whitespace the same as it does other characters.
 >
-> **Example 9-1. $IFS and whitespace**
->
-> ```bash
-> #!/bin/bash
-> # ifs.sh
-> 
-> 
-> var1="a+b+c"
-> var2="d-e-f"
-> var3="g,h,i"
-> 
-> IFS=+
-> # The plus sign will be interpreted as a separator.
-> echo $var1     # a b c
-> echo $var2     # d-e-f
-> echo $var3     # g,h,i
-> 
-> echo
-> 
-> IFS="-"
-> # The plus sign reverts to default interpretation.
-> # The minus sign will be interpreted as a separator.
-> echo $var1     # a+b+c
-> echo $var2     # d e f
-> echo $var3     # g,h,i
-> 
-> echo
-> 
-> IFS=","
-> # The comma will be interpreted as a separator.
-> # The minus sign reverts to default interpretation.
-> echo $var1     # a+b+c
-> echo $var2     # d-e-f
-> echo $var3     # g h i
-> 
-> echo
-> 
-> IFS=" "
-> # The space character will be interpreted as a separator.
-> # The comma reverts to default interpretation.
-> echo $var1     # a+b+c
-> echo $var2     # d-e-f
-> echo $var3     # g,h,i
-> 
-> # ======================================================== #
-> 
-> # However ...
-> # $IFS treats whitespace differently than other characters.
-> 
-> output_args_one_per_line()
-> {
->   for arg
->   do
->     echo "[$arg]"
->   done #  ^    ^   Embed within brackets, for your viewing pleasure.
-> }
-> 
-> echo; echo "IFS=\" \""
-> echo "-------"
-> 
-> IFS=" "
-> var=" a  b c   "
-> #    ^ ^^   ^^^
-> output_args_one_per_line $var  # output_args_one_per_line `echo " a  b c   "`
-> # [a]
-> # [b]
-> # [c]
-> 
-> 
-> echo; echo "IFS=:"
-> echo "-----"
-> 
-> IFS=:
-> var=":a::b:c:::"               # Same pattern as above,
-> #    ^ ^^   ^^^                #+ but substituting ":" for " "  ...
-> output_args_one_per_line $var
-> # []
-> # [a]
-> # []
-> # [b]
-> # [c]
-> # []
-> # []
-> 
-> # Note "empty" brackets.
-> # The same thing happens with the "FS" field separator in awk.
-> 
-> 
-> echo
-> 
-> exit
-> ```
+> ![[example 9-1|example 9-1]]
 >
 > (Many thanks, Stéphane Chazelas, for clarification and above examples.)
 >
-> See also [[communications-commands#^ISSPAMMER|Example 16-41]], [[loops#^BINGREP|Example 11-8]], and [[here-strings#^MAILBOXGREP|Example 19-14]] for instructive examples of using $IFS.
+> See also [[Example 16-41|Example 16-41]], [[Example 11-8|Example 11-8]], and [[Example 19-14|Example 19-14]] for instructive examples of using $IFS.
 
 $IGNOREEOF
 
@@ -495,7 +404,7 @@ The secondary prompt, seen when additional input is expected. It displays as ">"
 
 $PS3
 
-The tertiary prompt, displayed in a [[testing-and-branching#^SELECTREF|select]] loop (see [[testing-and-branching#^EX31|Example 11-30]]).
+The tertiary prompt, displayed in a [[testing-and-branching#^SELECTREF|select]] loop (see [[Example 11-30|Example 11-30]]).
 
 $PS4
 
@@ -665,146 +574,17 @@ fi
 echo "Your favorite song is $song."
 ```
 
-There are other, more complex, ways of implementing timed input in a script. One alternative is to set up a timing loop to signal the script when it times out. This also requires a signal handling routine to [[debugging#^TRAPREF1|trap]] (see [[debugging#^EX76|Example 32-5]]) the interrupt generated by the timing loop (whew!).
+There are other, more complex, ways of implementing timed input in a script. One alternative is to set up a timing loop to signal the script when it times out. This also requires a signal handling routine to [[debugging#^TRAPREF1|trap]] (see [[Example 32-5|Example 32-5]]) the interrupt generated by the timing loop (whew!).
 
-###### Example 9-2. Timed Input
-
-```bash
-#!/bin/bash
-# timed-input.sh
-
-# TMOUT=3    Also works, as of newer versions of Bash.
-
-TIMER_INTERRUPT=14
-TIMELIMIT=3  # Three seconds in this instance.
-             # May be set to different value.
-
-PrintAnswer()
-{
-  if [ "$answer" = TIMEOUT ]
-  then
-    echo $answer
-  else       # Don't want to mix up the two instances. 
-    echo "Your favorite veggie is $answer"
-    kill $!  #  Kills no-longer-needed TimerOn function
-             #+ running in background.
-             #  $! is PID of last job running in background.
-  fi
-
-}  
-
-
-TimerOn()
-{
-  sleep $TIMELIMIT && kill -s 14 $$ &
-  # Waits 3 seconds, then sends sigalarm to script.
-}  
-
-
-Int14Vector()
-{
-  answer="TIMEOUT"
-  PrintAnswer
-  exit $TIMER_INTERRUPT
-}  
-
-trap Int14Vector $TIMER_INTERRUPT
-# Timer interrupt (14) subverted for our purposes.
-
-echo "What is your favorite vegetable "
-TimerOn
-read answer
-PrintAnswer
-
-
-#  Admittedly, this is a kludgy implementation of timed input.
-#  However, the "-t" option to "read" simplifies this task.
-#  See the "t-out.sh" script.
-#  However, what about timing not just single user input,
-#+ but an entire script?
-
-#  If you need something really elegant ...
-#+ consider writing the application in C or C++,
-#+ using appropriate library functions, such as 'alarm' and 'setitimer.'
-
-exit 0
-```
+![[example 9-2|example 9-2]]
 
 An alternative is using [[system-and-administrative-commands#^STTYREF|stty]].
 
-###### Example 9-3. Once more, timed input
-
-```bash
-#!/bin/bash
-# timeout.sh
-
-#  Written by Stephane Chazelas,
-#+ and modified by the document author.
-
-INTERVAL=5                # timeout interval
-
-timedout_read() {
-  timeout=$1
-  varname=$2
-  old_tty_settings=`stty -g`
-  stty -icanon min 0 time ${timeout}0
-  eval read $varname      # or just  read $varname
-  stty "$old_tty_settings"
-  # See man page for "stty."
-}
-
-echo; echo -n "What's your name? Quick! "
-timedout_read $INTERVAL your_name
-
-#  This may not work on every terminal type.
-#  The maximum timeout depends on the terminal.
-#+ (it is often 25.5 seconds).
-
-echo
-
-if [ ! -z "$your_name" ]  # If name input before timeout ...
-then
-  echo "Your name is $your_name."
-else
-  echo "Timed out."
-fi
-
-echo
-
-# The behavior of this script differs somewhat from "timed-input.sh."
-# At each keystroke, the counter resets.
-
-exit 0
-```
+![[example 9-3|example 9-3]]
 
 Perhaps the simplest method is using the -t option to [[internal-commands-and-builtins#^READREF|read]].
 
-###### Example 9-4. Timed *read*
-
-```bash
-#!/bin/bash
-# t-out.sh [time-out]
-# Inspired by a suggestion from "syngin seven" (thanks).
-
-
-TIMELIMIT=4         # 4 seconds
-
-read -t $TIMELIMIT variable <&1
-#                           ^^^
-#  In this instance, "<&1" is needed for Bash 1.x and 2.x,
-#  but unnecessary for Bash 3+.
-
-echo
-
-if [ -z "$variable" ]  # Is null?
-then
-  echo "Timed out, variable still unset."
-else  
-  echo "variable = $variable"
-fi  
-
-exit 0
-```
+![[example 9-4|example 9-4]]
 
 $UID
 
@@ -814,41 +594,9 @@ Current user's user identification number, as recorded in [[important-files#^DAT
 
 This is the current user's real id, even if she has temporarily assumed another identity through [[system-and-administrative-commands#^SUREF|su]]. $UID is a readonly variable, not subject to change from the command line or within a script, and is the counterpart to the [[system-and-administrative-commands#^IDREF|id]] builtin.
 
-###### Example 9-5. Am I root?
+![[example 9-5|example 9-5]]
 
-```bash
-#!/bin/bash
-# am-i-root.sh:   Am I root or not?
-
-ROOT_UID=0   # Root has $UID 0.
-
-if [ "$UID" -eq "$ROOT_UID" ]  # Will the real "root" please stand up?
-then
-  echo "You are root."
-else
-  echo "You are just an ordinary user (but mom loves you just the same)."
-fi
-
-exit 0
-
-
-# ============================================================= #
-# Code below will not execute, because the script already exited.
-
-# An alternate method of getting to the root of matters:
-
-ROOTUSER_NAME=root
-
-username=`id -nu`              # Or...   username=`whoami`
-if [ "$username" = "$ROOTUSER_NAME" ]
-then
-  echo "Rooty, toot, toot. You are root."
-else
-  echo "You are just a regular fella."
-fi
-```
-
-See also [[example 2-3|Example 2-3]].
+See also [[Example 2-3|Example 2-3]].
 
 > [!note]
 > The variables $ENV, $LOGNAME, $MAIL, $TERM, $USER, and $USERNAME are _not_ Bash [[internal-commands-and-builtins|builtins]]. These are, however, often set as [[othertypesv#^ENVREF|environmental variables]] in one of the [[important-files#^FILESREF1|Bash]] or _login_ startup files. $SHELL, the name of the user's login shell, may be set from /etc/passwd or in an "init" script, and it is likewise not a Bash builtin.
@@ -874,7 +622,7 @@ See also [[example 2-3|Example 2-3]].
 
 $0, $1, $2, etc.
 
-Positional parameters, passed from command line to script, passed to a function, or [[internal-commands-and-builtins#^SETREF|set]] to a variable (see [[example 4-5|Example 4-5]] and [[internal-commands-and-builtins#^EX34|Example 15-16]])
+Positional parameters, passed from command line to script, passed to a function, or [[internal-commands-and-builtins#^SETREF|set]] to a variable (see [[Example 4-5|Example 4-5]] and [[Example 15-16|Example 15-16]])
 
 $#
 
@@ -892,60 +640,7 @@ Same as $*, but each parameter is a quoted string, that is, the parameters are p
 
 > [!note] Of course, "$@" should be quoted.
 
-###### Example 9-6. *arglist*: Listing arguments with $* and $@
-
-```bash
-#!/bin/bash
-# arglist.sh
-# Invoke this script with several arguments, such as "one two three" ...
-
-E_BADARGS=85
-
-if [ ! -n "$1" ]
-then
-  echo "Usage: `basename $0` argument1 argument2 etc."
-  exit $E_BADARGS
-fi  
-
-echo
-
-index=1          # Initialize count.
-
-echo "Listing args with \"\$*\":"
-for arg in "$*"  # Doesn't work properly if "$*" isn't quoted.
-do
-  echo "Arg #$index = $arg"
-  let "index+=1"
-done             # $* sees all arguments as single word. 
-echo "Entire arg list seen as single word."
-
-echo
-
-index=1          # Reset count.
-                 # What happens if you forget to do this?
-
-echo "Listing args with \"\$@\":"
-for arg in "$@"
-do
-  echo "Arg #$index = $arg"
-  let "index+=1"
-done             # $@ sees arguments as separate words. 
-echo "Arg list seen as separate words."
-
-echo
-
-index=1          # Reset count.
-
-echo "Listing args with \$* (unquoted):"
-for arg in $*
-do
-  echo "Arg #$index = $arg"
-  let "index+=1"
-done             # Unquoted $* sees arguments as separate words. 
-echo "Arg list seen as separate words."
-
-exit 0
-```
+![[example 9-6|example 9-6]]
 
 Following a **shift**, the $@ holds the remaining command-line parameters, lacking the previous $1, which was lost.
 
@@ -963,193 +658,21 @@ echo "$@"    # 3 4 5
 # "$@" then contains the remaining parameters.
 ```
 
-The $@ special parameter finds use as a tool for filtering input into shell scripts. The **cat "$@"** construction accepts input to a script either from stdin or from files given as parameters to the script. See [[text-processing-commands#^ROT13|Example 16-24]] and [[text-processing-commands#^CRYPTOQUOTE|Example 16-25]].
+The `$@` special parameter finds use as a tool for filtering input into shell scripts. The **`cat "$@"`** construction accepts input to a script either from stdin or from files given as parameters to the script. See [[Example 16-24|Example 16-24]] and [[Example 16-25|Example 16-25]].
 
-> [!caution] The $* and $@ parameters sometimes display inconsistent and puzzling behavior, depending on the setting of [[another-look-at-variables#^IFSREF|$IFS]].
+> [!caution] The `$*` and `$@` parameters sometimes display inconsistent and puzzling behavior, depending on the setting of [[another-look-at-variables#^IFSREF|$IFS]].
 
-###### Example 9-7. Inconsistent $* and $@ behavior
-
-```bash
-#!/bin/bash
-
-#  Erratic behavior of the "$*" and "$@" internal Bash variables,
-#+ depending on whether or not they are quoted.
-#  Demonstrates inconsistent handling of word splitting and linefeeds.
-
-
-set -- "First one" "second" "third:one" "" "Fifth: :one"
-# Setting the script arguments, $1, $2, $3, etc.
-
-echo
-
-echo 'IFS unchanged, using "$*"'
-c=0
-for i in "$*"               # quoted
-do echo "$((c+=1)): [$i]"   # This line remains the same in every instance.
-                            # Echo args.
-done
-echo ---
-
-echo 'IFS unchanged, using $*'
-c=0
-for i in $*                 # unquoted
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-echo 'IFS unchanged, using "$@"'
-c=0
-for i in "$@"
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-echo 'IFS unchanged, using $@'
-c=0
-for i in $@
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-IFS=:
-echo 'IFS=":", using "$*"'
-c=0
-for i in "$*"
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-echo 'IFS=":", using $*'
-c=0
-for i in $*
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-var=$*
-echo 'IFS=":", using "$var" (var=$*)'
-c=0
-for i in "$var"
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-echo 'IFS=":", using $var (var=$*)'
-c=0
-for i in $var
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-var="$*"
-echo 'IFS=":", using $var (var="$*")'
-c=0
-for i in $var
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-echo 'IFS=":", using "$var" (var="$*")'
-c=0
-for i in "$var"
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-echo 'IFS=":", using "$@"'
-c=0
-for i in "$@"
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-echo 'IFS=":", using $@'
-c=0
-for i in $@
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-var=$@
-echo 'IFS=":", using $var (var=$@)'
-c=0
-for i in $var
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-echo 'IFS=":", using "$var" (var=$@)'
-c=0
-for i in "$var"
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-var="$@"
-echo 'IFS=":", using "$var" (var="$@")'
-c=0
-for i in "$var"
-do echo "$((c+=1)): [$i]"
-done
-echo ---
-
-echo 'IFS=":", using $var (var="$@")'
-c=0
-for i in $var
-do echo "$((c+=1)): [$i]"
-done
-
-echo
-
-# Try this script with ksh or zsh -y.
-
-exit 0
-
-#  This example script written by Stephane Chazelas,
-#+ and slightly modified by the document author.
-```
+![[example 9-7|example 9-7]]
 
 > [!note] The **$@** and **$*** parameters differ only when between double quotes.
 
-###### Example 9-8. $* and $@ when $IFS is empty
-
-```bash
-#!/bin/bash
-
-#  If $IFS set, but empty,
-#+ then "$*" and "$@" do not echo positional params as expected.
-
-mecho ()       # Echo positional parameters.
-{
-echo "$1,$2,$3";
-}
-
-
-IFS=""         # Set, but empty.
-set a b c      # Positional parameters.
-
-mecho "$*"     # abc,,
-#                   ^^
-mecho $*       # a,b,c
-
-mecho $@       # a,b,c
-mecho "$@"     # a,b,c
-
-#  The behavior of $* and $@ when $IFS is empty depends
-#+ on which Bash or sh version being run.
-#  It is therefore inadvisable to depend on this "feature" in a script.
-
-
-# Thanks, Stephane Chazelas.
-
-exit
-```
+![[example 9-8|example 9-8]]
 
 **Other Special Parameters**
 
 $-
 
-Flags passed to script (using [[internal-commands-and-builtins#^SETREF|set]]). See [[internal-commands-and-builtins#^EX34|Example 15-16]].
+Flags passed to script (using [[internal-commands-and-builtins#^SETREF|set]]). See [[Example 15-16|Example 15-16]].
 
 > [!caution] This was originally a _ksh_ construct adopted into Bash, and unfortunately it does not seem to work reliably in Bash scripts. One possible use for it is to have a script [[interactive-and-non-interactive-shell-and-scripts#^IITEST|self-test whether it is interactive]].
 
@@ -1237,33 +760,15 @@ $_
 
 Special variable set to final argument of previous command executed.
 
-###### Example 9-9. Underscore variable
-
-```bash
-#!/bin/bash
-
-echo $_              #  /bin/bash
-                     #  Just called /bin/bash to run the script.
-                     #  Note that this will vary according to
-                     #+ how the script is invoked.
-
-du >/dev/null        #  So no output from command.
-echo $_              #  du
-
-ls -al >/dev/null    #  So no output from command.
-echo $_              #  -al  (last argument)
-
-:
-echo $_              #  :
-```
+![[example 9-9|example 9-9]]
 
 $?
 
-[[exit-and-exit-status#^EXITSTATUSREF|Exit status]] of a command, [[functions|function]], or the script itself (see [[complex-functions-and-function-complexities#^MAX|Example 24-7]])
+[[exit-and-exit-status#^EXITSTATUSREF|Exit status]] of a command, [[functions|function]], or the script itself (see [[Example 24-7|Example 24-7]])
 
 `$$`
 
-Process ID (_PID_) of the script itself. [[debugging#^ONLINE|^5] The $ variable often finds use in scripts to construct "unique" temp file names (see [Example 32-6]], [[file-and-archiving-commands#^DERPM|Example 16-31]], and [[job-control-commands#^SELFDESTRUCT|Example 15-27]]). This is usually simpler than invoking [[file-and-archiving-commands#^MKTEMPREF|mktemp]].
+Process ID (_PID_) of the script itself. [[debugging#^ONLINE|^5] The $ variable often finds use in scripts to construct "unique" temp file names (see [Example 32-6]], [[Example 16-31|Example 16-31]], and [[Example 15-27|Example 15-27]]). This is usually simpler than invoking [[file-and-archiving-commands#^MKTEMPREF|mktemp]].
 
 ## Typing variables: **declare** or **typeset**
 
@@ -1347,41 +852,7 @@ declare -x var3=373
 
 The **declare** command permits assigning a value to a variable in the same statement as setting its properties.
 
-###### Example 9-10. Using *declare* to type variables
-
-```bash
-#!/bin/bash
-
-func1 ()
-{
-  echo This is a function.
-}
-
-declare -f        # Lists the function above.
-
-echo
-
-declare -i var1   # var1 is an integer.
-var1=2367
-echo "var1 declared as $var1"
-var1=var1+1       # Integer declaration eliminates the need for 'let'.
-echo "var1 incremented by 1 is $var1."
-# Attempt to change variable declared as integer.
-echo "Attempting to change var1 to floating point value, 2367.1."
-var1=2367.1       # Results in error message, with no change to variable.
-echo "var1 is still $var1"
-
-echo
-
-declare -r var2=13.36         # 'declare' permits setting a variable property
-                              #+ and simultaneously assigning it a value.
-echo "var2 declared as $var2" # Attempt to change readonly variable.
-var2=13.37                    # Generates error message, and exit from script.
-
-echo "var2 is still $var2"    # This line will not execute.
-
-exit 0                        # Script will not exit here.
-```
+![[example 9-10|example 9-10]]
 
 > [!caution]
 > Using the _declare_ builtin restricts the [[subshells#^SCOPEREF|scope]] of a variable.
@@ -1450,296 +921,11 @@ Colors=([0]="purple" [1]="reddish-orange" [2]="light green")
 
 $RANDOM is an internal Bash [[functions|function]] (not a constant) that returns a _pseudorandom_ [^7] integer in the range 0 - 32767. It should _not_ be used to generate an encryption key.
 
-###### Example 9-11. Generating random numbers
+![[example 9-11|example 9-11]]
 
-```bash
-#!/bin/bash
+![[example 9-12|example 9-12]]
 
-# $RANDOM returns a different random integer at each invocation.
-# Nominal range: 0 - 32767 (signed 16-bit integer).
-
-MAXCOUNT=10
-count=1
-
-echo
-echo "$MAXCOUNT random numbers:"
-echo "-----------------"
-while [ "$count" -le $MAXCOUNT ]      # Generate 10 ($MAXCOUNT) random integers.
-do
-  number=$RANDOM
-  echo $number
-  let "count += 1"  # Increment count.
-done
-echo "-----------------"
-
-# If you need a random int within a certain range, use the 'modulo' operator.
-# This returns the remainder of a division operation.
-
-RANGE=500
-
-echo
-
-number=$RANDOM
-let "number %= $RANGE"
-#           ^^
-echo "Random number less than $RANGE  ---  $number"
-
-echo
-
-
-
-#  If you need a random integer greater than a lower bound,
-#+ then set up a test to discard all numbers below that.
-
-FLOOR=200
-
-number=0   #initialize
-while [ "$number" -le $FLOOR ]
-do
-  number=$RANDOM
-done
-echo "Random number greater than $FLOOR ---  $number"
-echo
-
-   # Let's examine a simple alternative to the above loop, namely
-   #       let "number = $RANDOM + $FLOOR"
-   # That would eliminate the while-loop and run faster.
-   # But, there might be a problem with that. What is it?
-
-
-
-# Combine above two techniques to retrieve random number between two limits.
-number=0   #initialize
-while [ "$number" -le $FLOOR ]
-do
-  number=$RANDOM
-  let "number %= $RANGE"  # Scales $number down within $RANGE.
-done
-echo "Random number between $FLOOR and $RANGE ---  $number"
-echo
-
-
-
-# Generate binary choice, that is, "true" or "false" value.
-BINARY=2
-T=1
-number=$RANDOM
-
-let "number %= $BINARY"
-#  Note that    let "number >>= 14"    gives a better random distribution
-#+ (right shifts out everything except last binary digit).
-if [ "$number" -eq $T ]
-then
-  echo "TRUE"
-else
-  echo "FALSE"
-fi  
-
-echo
-
-
-# Generate a toss of the dice.
-SPOTS=6   # Modulo 6 gives range 0 - 5.
-          # Incrementing by 1 gives desired range of 1 - 6.
-          # Thanks, Paulo Marcel Coelho Aragao, for the simplification.
-die1=0
-die2=0
-# Would it be better to just set SPOTS=7 and not add 1? Why or why not?
-
-# Tosses each die separately, and so gives correct odds.
-
-    let "die1 = $RANDOM % $SPOTS +1" # Roll first one.
-    let "die2 = $RANDOM % $SPOTS +1" # Roll second one.
-    #  Which arithmetic operation, above, has greater precedence --
-    #+ modulo (%) or addition (+)?
-
-
-let "throw = $die1 + $die2"
-echo "Throw of the dice = $throw"
-echo
-
-
-exit 0
-```
-
-###### Example 9-12. Picking a random card from a deck
-
-```bash
-#!/bin/bash
-# pick-card.sh
-
-# This is an example of choosing random elements of an array.
-
-
-# Pick a card, any card.
-
-Suites="Clubs
-Diamonds
-Hearts
-Spades"
-
-Denominations="2
-3
-4
-5
-6
-7
-8
-9
-10
-Jack
-Queen
-King
-Ace"
-
-# Note variables spread over multiple lines.
-
-
-suite=($Suites)                # Read into array variable.
-denomination=($Denominations)
-
-num_suites=${#suite[*]}        # Count how many elements.
-num_denominations=${#denomination[*]}
-
-echo -n "${denomination[$((RANDOM%num_denominations))]} of "
-echo ${suite[$((RANDOM%num_suites))]}
-
-
-# $bozo sh pick-cards.sh
-# Jack of Clubs
-
-
-# Thank you, "jipe," for pointing out this use of $RANDOM.
-exit 0
-```
-
-###### Example 9-13. Brownian Motion Simulation
-
-```bash
-#!/bin/bash
-# brownian.sh
-# Author: Mendel Cooper
-# Reldate: 10/26/07
-# License: GPL3
-
-#  ----------------------------------------------------------------
-#  This script models Brownian motion:
-#+ the random wanderings of tiny particles in a fluid,
-#+ as they are buffeted by random currents and collisions.
-#+ This is colloquially known as the "Drunkard's Walk."
-
-#  It can also be considered as a stripped-down simulation of a
-#+ Galton Board, a slanted board with a pattern of pegs,
-#+ down which rolls a succession of marbles, one at a time.
-#+ At the bottom is a row of slots or catch basins in which
-#+ the marbles come to rest at the end of their journey.
-#  Think of it as a kind of bare-bones Pachinko game.
-#  As you see by running the script,
-#+ most of the marbles cluster around the center slot.
-#+ This is consistent with the expected binomial distribution.
-#  As a Galton Board simulation, the script
-#+ disregards such parameters as
-#+ board tilt-angle, rolling friction of the marbles,
-#+ angles of impact, and elasticity of the pegs.
-#  To what extent does this affect the accuracy of the simulation?
-#  ----------------------------------------------------------------
-
-PASSES=500            #  Number of particle interactions / marbles.
-ROWS=10               #  Number of "collisions" (or horiz. peg rows).
-RANGE=3               #  0 - 2 output range from $RANDOM.
-POS=0                 #  Left/right position.
-RANDOM=$$             #  Seeds the random number generator from PID
-                      #+ of script.
-
-declare -a Slots      # Array holding cumulative results of passes.
-NUMSLOTS=21           # Number of slots at bottom of board.
-
-
-Initialize_Slots () { # Zero out all elements of the array.
-for i in $( seq $NUMSLOTS )
-do
-  Slots[$i]=0
-done
-
-echo                  # Blank line at beginning of run.
-  }
-
-
-Show_Slots () {
-echo; echo
-echo -n " "
-for i in $( seq $NUMSLOTS )   # Pretty-print array elements.
-do
-  printf "%3d" ${Slots[$i]}   # Allot three spaces per result.
-done
-
-echo # Row of slots:
-echo " |__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|__|"
-echo "                                ||"
-echo #  Note that if the count within any particular slot exceeds 99,
-     #+ it messes up the display.
-     #  Running only(!) 500 passes usually avoids this.
-  }
-
-
-Move () {              # Move one unit right / left, or stay put.
-  Move=$RANDOM         # How random is $RANDOM? Well, let's see ...
-  let "Move %= RANGE"  # Normalize into range of 0 - 2.
-  case "$Move" in
-    0 ) ;;                   # Do nothing, i.e., stay in place.
-    1 ) ((POS--));;          # Left.
-    2 ) ((POS++));;          # Right.
-    * ) echo -n "Error ";;   # Anomaly! (Should never occur.)
-  esac
-  }
-
-
-Play () {                    # Single pass (inner loop).
-i=0
-while [ "$i" -lt "$ROWS" ]   # One event per row.
-do
-  Move
-  ((i++));
-done
-
-SHIFT=11                     # Why 11, and not 10?
-let "POS += $SHIFT"          # Shift "zero position" to center.
-(( Slots[$POS]++ ))          # DEBUG: echo $POS
-
-# echo -n "$POS "
-
-  }
-
-
-Run () {                     # Outer loop.
-p=0
-while [ "$p" -lt "$PASSES" ]
-do
-  Play
-  (( p++ ))
-  POS=0                      # Reset to zero. Why?
-done
-  }
-
-
-# --------------
-# main ()
-Initialize_Slots
-Run
-Show_Slots
-# --------------
-
-exit $?
-
-#  Exercises:
-#  ---------
-#  1) Show the results in a vertical bar graph, or as an alternative,
-#+    a scattergram.
-#  2) Alter the script to use /dev/urandom instead of $RANDOM.
-#     Will this make the results more random?
-#  3) Provide some sort of "animation" or graphic output
-#     for each marble played.
-```
+![[example 9-13|example 9-13]]
 
 _Jipe_ points out a set of techniques for generating random numbers within a range.
 
@@ -1766,387 +952,22 @@ rnumber=$(((RANDOM%(max-min+divisibleBy))/divisibleBy*divisibleBy+min))
 
 Here Bill presents a versatile function that returns a random number between two specified values.
 
-###### Example 9-14. Random between values
-
-```bash
-#!/bin/bash
-# random-between.sh
-# Random number between two specified values. 
-# Script by Bill Gradwohl, with minor modifications by the document author.
-# Corrections in lines 187 and 189 by Anthony Le Clezio.
-# Used with permission.
-
-
-randomBetween() {
-   #  Generates a positive or negative random number
-   #+ between $min and $max
-   #+ and divisible by $divisibleBy.
-   #  Gives a "reasonably random" distribution of return values.
-   #
-   #  Bill Gradwohl - Oct 1, 2003
-
-   syntax() {
-   # Function embedded within function.
-      echo
-      echo    "Syntax: randomBetween [min] [max] [multiple]"
-      echo
-      echo -n "Expects up to 3 passed parameters, "
-      echo    "but all are completely optional."
-      echo    "min is the minimum value"
-      echo    "max is the maximum value"
-      echo -n "multiple specifies that the answer must be "
-      echo     "a multiple of this value."
-      echo    "    i.e. answer must be evenly divisible by this number."
-      echo    
-      echo    "If any value is missing, defaults area supplied as: 0 32767 1"
-      echo -n "Successful completion returns 0, "
-      echo     "unsuccessful completion returns"
-      echo    "function syntax and 1."
-      echo -n "The answer is returned in the global variable "
-      echo    "randomBetweenAnswer"
-      echo -n "Negative values for any passed parameter are "
-      echo    "handled correctly."
-   }
-
-   local min=${1:-0}
-   local max=${2:-32767}
-   local divisibleBy=${3:-1}
-   # Default values assigned, in case parameters not passed to function.
-
-   local x
-   local spread
-
-   # Let's make sure the divisibleBy value is positive.
-   [ ${divisibleBy} -lt 0 ] && divisibleBy=$((0-divisibleBy))
-
-   # Sanity check.
-   if [ $# -gt 3 -o ${divisibleBy} -eq 0 -o  ${min} -eq ${max} ]; then 
-      syntax
-      return 1
-   fi
-
-   # See if the min and max are reversed.
-   if [ ${min} -gt ${max} ]; then
-      # Swap them.
-      x=${min}
-      min=${max}
-      max=${x}
-   fi
-
-   #  If min is itself not evenly divisible by $divisibleBy,
-   #+ then fix the min to be within range.
-   if [ $((min/divisibleBy*divisibleBy)) -ne ${min} ]; then 
-      if [ ${min} -lt 0 ]; then
-         min=$((min/divisibleBy*divisibleBy))
-      else
-         min=$((((min/divisibleBy)+1)*divisibleBy))
-      fi
-   fi
-
-   #  If max is itself not evenly divisible by $divisibleBy,
-   #+ then fix the max to be within range.
-   if [ $((max/divisibleBy*divisibleBy)) -ne ${max} ]; then 
-      if [ ${max} -lt 0 ]; then
-         max=$((((max/divisibleBy)-1)*divisibleBy))
-      else
-         max=$((max/divisibleBy*divisibleBy))
-      fi
-   fi
-
-   #  ---------------------------------------------------------------------
-   #  Now, to do the real work.
-
-   #  Note that to get a proper distribution for the end points,
-   #+ the range of random values has to be allowed to go between
-   #+ 0 and abs(max-min)+divisibleBy, not just abs(max-min)+1.
-
-   #  The slight increase will produce the proper distribution for the
-   #+ end points.
-
-   #  Changing the formula to use abs(max-min)+1 will still produce
-   #+ correct answers, but the randomness of those answers is faulty in
-   #+ that the number of times the end points ($min and $max) are returned
-   #+ is considerably lower than when the correct formula is used.
-   #  ---------------------------------------------------------------------
-
-   spread=$((max-min))
-   #  Omair Eshkenazi points out that this test is unnecessary,
-   #+ since max and min have already been switched around.
-   [ ${spread} -lt 0 ] && spread=$((0-spread))
-   let spread+=divisibleBy
-   randomBetweenAnswer=$(((RANDOM%spread)/divisibleBy*divisibleBy+min))   
-
-   return 0
-
-   #  However, Paulo Marcel Coelho Aragao points out that
-   #+ when $max and $min are not divisible by $divisibleBy,
-   #+ the formula fails.
-   #
-   #  He suggests instead the following formula:
-   #    rnumber = $(((RANDOM%(max-min+1)+min)/divisibleBy*divisibleBy))
-
-}
-
-# Let's test the function.
-min=-14
-max=20
-divisibleBy=3
-
-
-#  Generate an array of expected answers and check to make sure we get
-#+ at least one of each answer if we loop long enough.
-
-declare -a answer
-minimum=${min}
-maximum=${max}
-   if [ $((minimum/divisibleBy*divisibleBy)) -ne ${minimum} ]; then 
-      if [ ${minimum} -lt 0 ]; then
-         minimum=$((minimum/divisibleBy*divisibleBy))
-      else
-         minimum=$((((minimum/divisibleBy)+1)*divisibleBy))
-      fi
-   fi
-
-
-   #  If max is itself not evenly divisible by $divisibleBy,
-   #+ then fix the max to be within range.
-
-   if [ $((maximum/divisibleBy*divisibleBy)) -ne ${maximum} ]; then 
-      if [ ${maximum} -lt 0 ]; then
-         maximum=$((((maximum/divisibleBy)-1)*divisibleBy))
-      else
-         maximum=$((maximum/divisibleBy*divisibleBy))
-      fi
-   fi
-
-
-#  We need to generate only positive array subscripts,
-#+ so we need a displacement that that will guarantee
-#+ positive results.
-
-disp=$((0-minimum))
-for ((i=${minimum}; i<=${maximum}; i+=divisibleBy)); do
-   answer[i+disp]=0
-done
-
-
-# Now loop a large number of times to see what we get.
-loopIt=1000   #  The script author suggests 100000,
-              #+ but that takes a good long while.
-
-for ((i=0; i<${loopIt}; ++i)); do
-
-   #  Note that we are specifying min and max in reversed order here to
-   #+ make the function correct for this case.
-
-   randomBetween ${max} ${min} ${divisibleBy}
-
-   # Report an error if an answer is unexpected.
-   [ ${randomBetweenAnswer} -lt ${min} -o ${randomBetweenAnswer} -gt ${max} ] \
-   && echo MIN or MAX error - ${randomBetweenAnswer}!
-   [ $((randomBetweenAnswer%${divisibleBy})) -ne 0 ] \
-   && echo DIVISIBLE BY error - ${randomBetweenAnswer}!
-
-   # Store the answer away statistically.
-   answer[randomBetweenAnswer+disp]=$((answer[randomBetweenAnswer+disp]+1))
-done
-
-
-
-# Let's check the results
-
-for ((i=${minimum}; i<=${maximum}; i+=divisibleBy)); do
-   [ ${answer[i+disp]} -eq 0 ] \
-   && echo "We never got an answer of $i." \
-   || echo "${i} occurred ${answer[i+disp]} times."
-done
-
-
-exit 0
-```
+![[example 9-14|example 9-14]]
 
 Just how random is $RANDOM? The best way to test this is to write a script that tracks the distribution of "random" numbers generated by $RANDOM. Let's roll a $RANDOM die a few times . . .
 
-###### Example 9-15. Rolling a single die with RANDOM
-
-```bash
-#!/bin/bash
-# How random is RANDOM?
-
-RANDOM=$$       # Reseed the random number generator using script process ID.
-
-PIPS=6          # A die has 6 pips.
-MAXTHROWS=600   # Increase this if you have nothing better to do with your time.
-throw=0         # Number of times the dice have been cast.
-
-ones=0          #  Must initialize counts to zero,
-twos=0          #+ since an uninitialized variable is null, NOT zero.
-threes=0
-fours=0
-fives=0
-sixes=0
-
-print_result ()
-{
-echo
-echo "ones =   $ones"
-echo "twos =   $twos"
-echo "threes = $threes"
-echo "fours =  $fours"
-echo "fives =  $fives"
-echo "sixes =  $sixes"
-echo
-}
-
-update_count()
-{
-case "$1" in
-  0) ((ones++));;   # Since a die has no "zero", this corresponds to 1.
-  1) ((twos++));;   # And this to 2.
-  2) ((threes++));; # And so forth.
-  3) ((fours++));;
-  4) ((fives++));;
-  5) ((sixes++));;
-esac
-}
-
-echo
-
-
-while [ "$throw" -lt "$MAXTHROWS" ]
-do
-  let "die1 = RANDOM % $PIPS"
-  update_count $die1
-  let "throw += 1"
-done  
-
-print_result
-
-exit $?
-
-#  The scores should distribute evenly, assuming RANDOM is random.
-#  With $MAXTHROWS at 600, all should cluster around 100,
-#+ plus-or-minus 20 or so.
-#
-#  Keep in mind that RANDOM is a ***pseudorandom*** generator,
-#+ and not a spectacularly good one at that.
-
-#  Randomness is a deep and complex subject.
-#  Sufficiently long "random" sequences may exhibit
-#+ chaotic and other "non-random" behavior.
-
-# Exercise (easy):
-# ---------------
-# Rewrite this script to flip a coin 1000 times.
-# Choices are "HEADS" and "TAILS."
-```
+![[example 9-15|example 9-15]]
 
 As we have seen in the last example, it is best to _reseed_ the _RANDOM_ generator each time it is invoked. Using the same seed for _RANDOM_ repeats the same series of numbers. [^8] (This mirrors the behavior of the _random()_ function in _C_.)
 
-###### Example 9-16. Reseeding RANDOM
-
-```bash
-#!/bin/bash
-# seeding-random.sh: Seeding the RANDOM variable.
-# v 1.1, reldate 09 Feb 2013
-
-MAXCOUNT=25       # How many numbers to generate.
-SEED=
-
-random_numbers ()
-{
-local count=0
-local number
-
-while [ "$count" -lt "$MAXCOUNT" ]
-do
-  number=$RANDOM
-  echo -n "$number "
-  let "count++"
-done  
-}
-
-echo; echo
-
-SEED=1
-RANDOM=$SEED      # Setting RANDOM seeds the random number generator.
-echo "Random seed = $SEED"
-random_numbers
-
-
-RANDOM=$SEED      # Same seed for RANDOM . . .
-echo; echo "Again, with same random seed ..."
-echo "Random seed = $SEED"
-random_numbers    # . . . reproduces the exact same number series.
-                  #
-                  # When is it useful to duplicate a "random" series?
-
-echo; echo
-
-SEED=2
-RANDOM=$SEED      # Trying again, but with a different seed . . .
-echo "Random seed = $SEED"
-random_numbers    # . . . gives a different number series.
-
-echo; echo
-
-# RANDOM=$$  seeds RANDOM from process id of script.
-# It is also possible to seed RANDOM from 'time' or 'date' commands.
-
-# Getting fancy...
-SEED=$(head -1 /dev/urandom | od -N 1 | awk '{ print $2 }'| sed s/^0*//)
-#  Pseudo-random output fetched
-#+ from /dev/urandom (system pseudo-random device-file),
-#+ then converted to line of printable (octal) numbers by "od",
-#+ then "awk" retrieves just one number for SEED,
-#+ finally "sed" removes any leading zeros.
-RANDOM=$SEED
-echo "Random seed = $SEED"
-random_numbers
-
-echo; echo
-
-exit 0
-```
+![[example 9-16|example 9-16]]
 
 > [!note]
-> The /dev/urandom pseudo-device file provides a method of generating much more "random" pseudorandom numbers than the $RANDOM variable. **dd if=/dev/urandom of=targetfile bs=1 count=XX** creates a file of well-scattered pseudorandom numbers. However, assigning these numbers to a variable in a script requires a workaround, such as filtering through [[miscellaneous-commands#^ODREF|od]] (as in above example, [[text-processing-commands#^RND|Example 16-14]], and [[contributed-scripts#^INSERTIONSORT|Example A-36]]), or even piping to [[file-and-archiving-commands#^MD5SUMREF|md5sum]] (see [[colorizing-scripts#^HORSERACE|Example 36-16]]).
+> The /dev/urandom pseudo-device file provides a method of generating much more "random" pseudorandom numbers than the $RANDOM variable. **dd if=/dev/urandom of=targetfile bs=1 count=XX** creates a file of well-scattered pseudorandom numbers. However, assigning these numbers to a variable in a script requires a workaround, such as filtering through [[miscellaneous-commands#^ODREF|od]] (as in above example, [[Example 16-14|Example 16-14]], and [[Example A-36|Example A-36]]), or even piping to [[file-and-archiving-commands#^MD5SUMREF|md5sum]] (see [[Example 36-16|Example 36-16]]).
 >
 > There are also other ways to generate pseudorandom numbers in a script. **Awk** provides a convenient means of doing this.
 >
-> **Example 9-17. Pseudorandom numbers, using [[awk#^AWKREF|awk]]**
->
-> ```bash
-> #!/bin/bash
-> #  random2.sh: Returns a pseudorandom number in the range 0 - 1,
-> #+ to 6 decimal places. For example: 0.822725
-> #  Uses the awk rand() function.
-> 
-> AWKSCRIPT=' { srand(); print rand() } '
-> #           Command(s)/parameters passed to awk
-> # Note that srand() reseeds awk's random number generator.
-> 
-> 
-> echo -n "Random number between 0 and 1 = "
-> 
-> echo | awk "$AWKSCRIPT"
-> # What happens if you leave out the 'echo'?
-> 
-> exit 0
-> 
-> 
-> # Exercises:
-> # ---------
-> 
-> # 1) Using a loop construct, print out 10 different random numbers.
-> #      (Hint: you must reseed the srand() function with a different seed
-> #+     in each pass through the loop. What happens if you omit this?)
-> 
-> # 2) Using an integer multiplier as a scaling factor, generate random numbers 
-> #+   in the range of 10 to 100.
-> 
-> # 3) Same as exercise #2, above, but generate random integers this time.
-> ```
+> ![[example 9-17|example 9-17]]
 >
 > The [[time-date-commands#^DATEREF|date]] command also lends itself to [[time-date-commands#^DATERANDREF|generating pseudorandom integer sequences]].
 
