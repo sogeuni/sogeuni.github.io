@@ -90,7 +90,7 @@ fetch_address "Bozo Bozeman"
 exit $?   # In this case, exit code = 99, since that is function return.
 ```
     
-    See [[contributed-scripts#^SAMORSE|Example A-53]] for an interesting usage of an _associative array_.
+    See [[Example A-53|Example A-53]] for an interesting usage of an _associative array_.
     
 > [!caution]
 > Elements of the _index_ array may include embedded [[special-characters#Whitespace|space characters]], or even leading and/or trailing space characters. However, index array elements containing _only_ _whitespace_ are _not_ permitted.
@@ -597,7 +597,7 @@ echo "\$line = "$line""
 # Bash version 4.2          $line = #!/bin/bash
 ```
     
-    This option offers possible "fixups" for these example scripts: [[gotchas#^BADREAD|Example 34-3]] and [[internal-commands-and-builtins#^READPIPE|Example 15-8]].
+    This option offers possible "fixups" for these example scripts: [[Example 34-3|Example 34-3]] and [[Example 15-8|Example 15-8]].
     
 - Negative [[arrays#^ARRAYREF|array]] indices permit counting backwards from the end of an array.
     
