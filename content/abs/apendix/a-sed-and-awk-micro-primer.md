@@ -12,4 +12,4 @@ This is a very brief introduction to the **sed** and **awk** text processing uti
 For all their differences, the two utilities share a similar invocation syntax, use [[regexp#^REGEXREF|regular expressions]] , read input by default from stdin, and output to stdout. These are well-behaved UNIX tools, and they work together well. The output from one can be piped to the other, and their combined capabilities give shell scripts some of the power of [[shell-wrappers#^PERLREF|Perl]].
 
 > [!Note]
-> One important difference between the utilities is that while shell scripts can easily pass arguments to sed, it is more cumbersome for awk (see [[shell-wrappers#^COLTOTALER|Example 36-5]] and [[indirect-references#^COLTOTALER2|Example 28-2]]).
+> One important difference between the utilities is that while shell scripts can easily pass arguments to sed, it is more cumbersome for awk (see [[Example 36-5|Example 36-5]] and [[Example 28-2|Example 28-2]]).

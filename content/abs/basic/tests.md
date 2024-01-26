@@ -91,7 +91,7 @@ fi
 
 ![[example 7-1|example 7-1]]
 
-**Exercise.** Explain the behavior of [[example 7-1|Example 7-1]], above.
+**Exercise.** Explain the behavior of [[Example 7-1|Example 7-1]], above.
 
 ```bash
 if [ condition-true ]
@@ -400,7 +400,7 @@ files _f1_ and _f2_ are hard links to the same file
 
 ![[example 7-4|example 7-4]]
 
-[[zeros#COOKIES|Example 31-1]], [[loops#BINGREP|Example 11-8]], [[loops#FILEINFO|Example 11-3]], [[zeros#RAMDISK|Example 31-3]], and [[contributed-scripts#MAILFORMAT|Example A-1]] also illustrate uses of the file test operators.
+[[Example 31-1|Example 31-1]], [[Example 11-8|Example 11-8]], [[Example 11-3|Example 11-3]], [[Example 31-3|Example 31-3]], and [[Example A-1|Example A-1]] also illustrate uses of the file test operators.
 
 ## Other Comparison Operators
 
@@ -530,7 +530,7 @@ is greater than, in ASCII alphabetical order
 
 Note that the ">" needs to be escaped within a **[ ]** construct.
 
-See [[arrays#^BUBBLE|Example 27-11]] for an application of this comparison operator.
+See [[Example 27-11|Example 27-11]] for an application of this comparison operator.
 
 -z
 
@@ -551,7 +551,7 @@ fi     # $String is null.
 
 string is not _null._
 
-> [!caution] The **-n** test requires that the string be quoted within the test brackets. Using an unquoted string with _! -z_, or even just the unquoted string alone within test brackets (see [[example 7-6|Example 7-6]]) normally works, however, this is an unsafe practice. _Always_ quote a tested string. [^5]
+> [!caution] The **-n** test requires that the string be quoted within the test brackets. Using an unquoted string with _! -z_, or even just the unquoted string alone within test brackets (see [[Example 7-6|Example 7-6]]) normally works, however, this is an unsafe practice. _Always_ quote a tested string. [^5]
 
 ![[example 7-5|example 7-5]]
 
@@ -609,7 +609,7 @@ fi
 > # Apparently && and || "short-circuit" while -a and -o do not.
 > ```
 
-Refer to [[operations-and-related-topics#^ANDOR|Example 8-3]], [[arrays#^TWODIM|Example 27-17]], and [[contributed-scripts#^WHX|Example A-29]] to see compound comparison operators in action.
+Refer to [[Example 8-3|Example 8-3]], [[Example 27-17|Example 27-17]], and [[Example A-29|Example A-29]] to see compound comparison operators in action.
 
 ## Nested _if/then_ Condition Tests
 
@@ -634,7 +634,7 @@ then
 fi
 ```
 
-[[bash-version-2#^CARDS|Example 37-4]] and [[system-and-administrative-commands#BACKLIGHT|Example 17-11]] demonstrate nested _if/then_ condition tests.
+[[Example 37-4|Example 37-4]] and [[Example 17-11|Example 17-11]] demonstrate nested _if/then_ condition tests.
 
 ## Testing Your Knowledge of Tests
 

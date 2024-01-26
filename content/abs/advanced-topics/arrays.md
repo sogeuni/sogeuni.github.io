@@ -1357,7 +1357,7 @@ echo; echo
 exit $?
 ```
 
-Compare these array-based prime number generators with alternatives that do not use arrays, [[contributed-scripts#^PRIMES|Example A-15]], and [[math-commands#^PRIMES2|Example 16-46]].
+Compare these array-based prime number generators with alternatives that do not use arrays, [[Example 16-46|Example 16-46]].
 
 --
 
@@ -1708,15 +1708,15 @@ exit 0
 
 A two-dimensional array is essentially equivalent to a one-dimensional one, but with additional addressing modes for referencing and manipulating the individual elements by *row* and *column* position.
 
-For an even more elaborate example of simulating a two-dimensional array, see [[contributed-scripts#^LIFESLOW|Example A-10]].
+For an even more elaborate example of simulating a two-dimensional array, see [[Example A-10|Example A-10]].
 
 --
 
 For more interesting scripts using arrays, see:
 
-- [[command-substitution#^AGRAM2|Example 12-3]]
-- [[math-commands#^PRIMES2|Example 16-46]]
-- [[contributed-scripts#^HASHEX2|Example A-22]]
-- [[contributed-scripts#^HOMEWORK|Example A-44]]
-- [[contributed-scripts#^QKY|Example A-41]]
-- [[contributed-scripts#^NIM|Example A-42]]
+- [[Example 12-3|Example 12-3]]
+- [[Example 16-46|Example 16-46]]
+- [[Example A-22|Example A-22]]
+- [[Example A-44|Example A-44]]
+- [[Example A-41|Example A-41]]
+- [[Example A-42|Example A-42]]

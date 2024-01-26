@@ -151,7 +151,7 @@ This capability is of relatively limited value, since it is not common to profil
 
 **kill**
 
-Forcibly terminate a process by sending it an appropriate _terminate_ signal (see [[system-and-administrative-commands#^KILLPROCESS|Example 17-6]]).
+Forcibly terminate a process by sending it an appropriate _terminate_ signal (see [[Example 17-6|Example 17-6]]).
 
 ###### Example 15-27. A script that kills itself
 

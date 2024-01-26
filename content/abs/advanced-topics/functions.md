@@ -255,7 +255,7 @@ Function names can take strange forms.
 # It's a devious way to obfuscate the code in a script.
 ```
 
-See also [[contributed-scripts#^GRONSFELD|Example A-56]]
+See also [[Example A-56|Example A-56]]
 
 > [!note]
 > What happens when different versions of the same function appear in a script?

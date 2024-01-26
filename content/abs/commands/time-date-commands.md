@@ -132,7 +132,7 @@ OneMonthAgo=$(date --date='1 month ago')  # Four weeks back (not a month!)
 OneYearAgo=$(date --date='1 year ago')
 ```
 
-See also [[special-chars#^EX58|Example 3-4]] and [[contributed-scripts#^STOPWATCH|Example A-43]].
+See also [[Example 3-4|Example 3-4]] and [[Example A-43|Example A-43]].
 
 ## zdump
 
@@ -199,7 +199,7 @@ Prints a neatly formatted monthly calendar to stdout. Will do current year or a 
 
 ## sleep
 
-This is the shell equivalent of a _wait loop_. It pauses for a specified number of seconds, doing nothing. It can be useful for timing or in processes running in the background, checking for a specific event every so often (polling), as in [[debugging#^ONLINE|Example 32-6]].
+This is the shell equivalent of a _wait loop_. It pauses for a specified number of seconds, doing nothing. It can be useful for timing or in processes running in the background, checking for a specific event every so often (polling), as in [[Example 32-6|Example 32-6]].
 
 ```bash
 sleep 3     # Pauses 3 seconds.

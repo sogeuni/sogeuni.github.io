@@ -133,7 +133,7 @@ exit 0
 #+ to modify or access the subshell variables?
 ```
 
-See also [[another-look-at-variables#^BASHPIDREF|$BASHPID]] and [[gotchas#^SUBPIT|Example 34-2]].
+See also [[another-look-at-variables#^BASHPIDREF|$BASHPID]] and [[Example 34-2|Example 34-2]].
 
 > **Definition:** The _scope_ of a variable is the context in which it has meaning, in which it has a _value_ that can be referenced. For example, the scope of a [[local-variables#^LOCALREF1|local variable]] lies only within the function, block of code, or subshell within which it is defined, while the scope of a _global_ variable is the entire script in which it appears.
 

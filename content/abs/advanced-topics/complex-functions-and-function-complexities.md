@@ -72,7 +72,7 @@ exit 0
 ```
 
 > [!important]
-> The [[othertypesv#^SHIFTREF|shift]] command works on arguments passed to functions (see [[assortedtips#^MULTIPLICATION|Example 36-18]]).
+> The [[othertypesv#^SHIFTREF|shift]] command works on arguments passed to functions (see [[Example 36-18|Example 36-18]]).
 
 But, what about command-line arguments passed to the script? Does a function see them? Well, let's clear up the confusion.
 
@@ -107,7 +107,7 @@ exit 0
 
 In contrast to certain other programming languages, shell scripts normally pass only value parameters to functions. Variable names (which are actually _pointers_), if passed as parameters to functions, will be treated as string literals. _Functions interpret their arguments literally._
 
-[[indirect-references#^IVRREF|Indirect variable references]] (see [[bash-version-2#^EX78|Example 37-2]]) provide a clumsy sort of mechanism for passing variable pointers to functions.
+[[indirect-references#^IVRREF|Indirect variable references]] (see [[Example 37-2|Example 37-2]]) provide a clumsy sort of mechanism for passing variable pointers to functions.
 
 ###### Example 24-4. Passing an indirect reference to a function
 
@@ -373,7 +373,7 @@ echo
 exit
 ```
 
-See also [[testing-and-branching#^ISALPHA|Example 11-29]].
+See also [[Example 11-29|Example 11-29]].
 
 > [!important]
 > The largest positive integer a function can return is 255. The **return** command is closely tied to the concept of [[exit-and-exit-status#^EXITSTATUSREF|exit status]], which accounts for this particular limitation. Fortunately, there are various [[assortedtips#^RVT|workarounds]] for those situations requiring a large integer return value from a function.
@@ -543,7 +543,7 @@ See also [[testing-and-branching#^ISALPHA|Example 11-29]].
 > # ----------------------------------------------
 > ```
 >
-> See also [[contributed-scripts#^DAYSBETWEEN|Example A-7]] and [[contributed-scripts#^STDDEV|Example A-37]].
+> See also [[Example A-7|Example A-7]] and [[Example A-37|Example A-37]].
 >
 > **Exercise:** Using what we have just learned, extend the previous [[complex-functions-and-function-complexities#^EX61|Roman numerals example]] to accept arbitrarily large input.
 
@@ -551,7 +551,7 @@ See also [[testing-and-branching#^ISALPHA|Example 11-29]].
 
 _Redirecting the stdin of a function_
 
-A function is essentially a [[special-characters#^CODEBLOCKREF|code block]], which means its stdin can be redirected (as in [[example 3-1|Example 3-1]]).
+A function is essentially a [[special-characters#^CODEBLOCKREF|code block]], which means its stdin can be redirected (as in [[Example 3-1|Example 3-1]]).
 
 ###### Example 24-11. Real name from username
 

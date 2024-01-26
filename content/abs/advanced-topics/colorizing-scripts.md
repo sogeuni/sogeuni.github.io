@@ -758,7 +758,7 @@ tput cup 19 0
 exit 0
 ```
 
-See also [[contributed-scripts#^HASHEXAMPLE|Example A-21]], [[contributed-scripts#^HOMEWORK|Example A-44]], [[contributed-scripts#^SHOWALLC|Example A-52]], and [[contributed-scripts#^PETALS|Example A-40]].
+See also [[Example A-21|Example A-21]], [[Example A-44|Example A-44]], [[Example A-52|Example A-52]], and [[Example A-40|Example A-40]].
 
 > [!caution]
 > There is, however, a major problem with all this. _ANSI escape sequences are emphatically [[portability-issues|non-portable]]._ What works fine on some terminal emulators (or the console) may work differently, or not at all, on others. A "colorized" script that looks stunning on the script author's machine may produce unreadable output on someone else's. This somewhat compromises the usefulness of colorizing scripts, and possibly relegates this technique to the status of a gimmick. Colorized scripts are probably inappropriate in a commercial setting, i.e., your supervisor might disapprove.

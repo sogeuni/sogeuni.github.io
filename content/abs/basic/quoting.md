@@ -41,7 +41,7 @@ total 8
 
 ## Quoting Variables
 
-When referencing a variable, it is generally advisable to enclose its name in double quotes. This prevents reinterpretation of all special characters within the quoted string -- except `$`, ` `` (backquote), and `\`(escape). [^2] Keeping $ as a special character within double quotes permits referencing a quoted variable (*"$variable"*), that is, replacing the variable with its value (see [[example 4-1|Example 4-1]], above).
+When referencing a variable, it is generally advisable to enclose its name in double quotes. This prevents reinterpretation of all special characters within the quoted string -- except `$`, ` `` (backquote), and `\`(escape). [^2] Keeping $ as a special character within double quotes permits referencing a quoted variable (*"$variable"*), that is, replacing the variable with its value (see [[Example 4-1]], above).
 
 Use double quotes to prevent word splitting. [^3] An argument enclosed in double quotes presents itself as a single word, even if it contains [[special-characters#Whitespace|whitespace]] separators.
 
@@ -156,7 +156,7 @@ A more elaborate example:
 
 ![[example 5-3]]
 
-See also [[bash-version-2#^EX77|Example 37-1]].
+See also [[Example 37-1]].
 
 \"
 

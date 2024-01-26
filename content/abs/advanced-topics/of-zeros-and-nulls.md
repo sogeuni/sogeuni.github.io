@@ -22,7 +22,7 @@ cat $filename >/dev/null
 # Contents of the file will not list to stdout.
 ```
 
-Suppressing stderr (from [[complex-commands#^EX57|Example 16-3]]).
+Suppressing stderr (from [[Example 16-3|Example 16-3]]).
 
 ```bash
 rm $badname 2>/dev/null
@@ -44,7 +44,7 @@ cat $filename 2>/dev/null >/dev/null
 #     also works, as Baris Cicek points out.
 ```
 
-Deleting contents of a file, but preserving the file itself, with all attendant permissions (from [[example 2-1|Example 2-1]] and [[example 2-3|Example 2-3]]):
+Deleting contents of a file, but preserving the file itself, with all attendant permissions (from [[Example 2-1|Example 2-1]] and [[Example 2-3|Example 2-3]]):
 
 ```bash
 cat /dev/null > /var/log/messages
@@ -142,7 +142,7 @@ echo "Swap file created and activated."
 exit $retcode
 ```
 
-Another application of /dev/zero is to "zero out" a file of a designated size for a special purpose, such as mounting a filesystem on a [[dev#^LOOPBACKREF|loopback device]] (see [[system-and-administrative-commands#^CREATEFS|Example 17-8]]) or "securely" deleting a file (see [[miscellaneous-commands#^BLOTOUT|Example 16-61]]).
+Another application of /dev/zero is to "zero out" a file of a designated size for a special purpose, such as mounting a filesystem on a [[dev#^LOOPBACKREF|loopback device]] (see [[Example 17-8|Example 17-8]]) or "securely" deleting a file (see [[Example 16-61|Example 16-61]]).
 
 ###### Example 31-3. Creating a ramdisk
 

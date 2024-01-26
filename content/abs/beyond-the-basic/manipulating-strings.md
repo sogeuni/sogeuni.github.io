@@ -581,13 +581,13 @@ For more on string manipulation in scripts, refer to [[parameter-substitution|Se
 
 Script examples:
 
-1. [[complex-commands#^EX45|Example 16-9]]
-2. [[parameter-substitution#^LENGTH|Example 10-9]]
-3. [[parameter-substitution#^PATTMATCHING|Example 10-10]]
-4. [[parameter-substitution#^RFE|Example 10-11]]
-5. [[parameter-substitution#^VARMATCH|Example 10-13]]
-6. [[contributed-scripts#^INSERTIONSORT|Example A-36]]
-7. [[contributed-scripts#^QKY|Example A-41]]
+1. [[Example 16-9|Example 16-9]]
+2. [[Example 10-9|Example 10-9]]
+3. [[Example 10-10|Example 10-10]]
+4. [[Example 10-11|Example 10-11]]
+5. [[Example 10-13|Example 10-13]]
+6. [[Example A-36|Example A-36]]
+7. [[Example A-41|Example A-41]]
 
 [^1]: This applies to either command-line arguments or parameters passed to a [[functions|function]].
 

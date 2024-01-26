@@ -65,7 +65,7 @@ exit $?
 
 ###### Example A-2. *rn*: A simple-minded file renaming utility
 
-This script is a modification of [[text-processing-commands#^LOWERCASE|Example 16-22]].
+This script is a modification of [[Example 16-22|Example 16-22]].
 
 ```bash
 #! /bin/bash

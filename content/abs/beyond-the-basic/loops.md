@@ -62,7 +62,7 @@ echo; echo "Whoops! Pluto is no longer a planet!"
 exit 0
 ```
 
-Each **[list]** element may contain multiple parameters. This is useful when processing parameters in groups. In such cases, use the [[internal-commands-and-builtins#SETREF|set]] command (see [[internal-commands-and-builtins#EX34|Example 15-16]]) to force parsing of each **[list]** element and assignment of each component to the positional parameters.
+Each **[list]** element may contain multiple parameters. This is useful when processing parameters in groups. In such cases, use the [[internal-commands-and-builtins#SETREF|set]] command (see [[Example 15-16|Example 15-16]]) to force parsing of each **[list]** element and assignment of each component to the positional parameters.
 
 ###### Example 11-2. *for* loop with two parameters in each [list] element
 
@@ -186,7 +186,7 @@ echo
 exit 0
 ```
 
-Omitting the **in [list]** part of a _for loop_ causes the loop to operate on $@ -- the [[internalvariables#POSPARAMREF|positional parameters]]. A particularly clever illustration of this is [[contributed-scripts#PRIMES|Example A-15]]. See also [[internal-commands-and-builtins#REVPOSPARAMS|Example 15-17]].
+Omitting the **in [list]** part of a _for loop_ causes the loop to operate on $@ -- the [[internalvariables#POSPARAMREF|positional parameters]]. A particularly clever illustration of this is [[Example A-15|Example A-15]]. See also [[Example 15-17|Example 15-17]].
 
 ###### Example 11-6. Missing **in [list]** in a *for* loop
 
@@ -209,7 +209,7 @@ echo
 exit 0
 ```
 
-It is possible to use [[command-substitution#COMMANDSUBREF|command substitution]] to generate the **[list]** in a _for loop_. See also [[miscellaneous-commands#EX53|Example 16-54]], [[loops1#SYMLINKS|Example 11-11]] and [[math-commands#BASE|Example 16-48]].
+It is possible to use [[command-substitution#COMMANDSUBREF|command substitution]] to generate the **[list]** in a _for loop_. See also [[Example 16-54|Example 16-54]], [[Example 11-11|Example 11-11]] and [[Example 16-48|Example 16-48]].
 
 ###### Example 11-7. Generating the **[list]** in a *for* loop with command substitution
 
@@ -523,7 +523,7 @@ echo; echo
 exit 0
 ```
 
-See also [[arrays#^QFUNCTION|Example 27-16]], [[arrays#^TWODIM|Example 27-17]], and [[contributed-scripts#^COLLATZ|Example A-6]].
+See also [[Example 27-16|Example 27-16]], [[Example 27-17|Example 27-17]], and [[Example A-6|Example A-6]].
 
 ---
 
@@ -697,7 +697,7 @@ done
 exit 0
 ```
 
-As with a _for loop_, a _while loop_ may employ C-style syntax by using the double-parentheses construct (see also [[dblparens#CVARS|Example 8-5]]).
+As with a _for loop_, a _while loop_ may employ C-style syntax by using the double-parentheses construct (see also [[Example 8-5|Example 8-5]]).
 
 ###### Example 11-18. C-style syntax in a *while* loop
 

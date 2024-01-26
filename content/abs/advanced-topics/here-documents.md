@@ -590,7 +590,7 @@ exit $DOC_REQUEST
 fi
 ```
 
-See also [[contributed-scripts#^ISSPAMMER2|Example A-28]], [[contributed-scripts#^PETALS|Example A-40]], [[contributed-scripts#^QKY|Example A-41]], and [[contributed-scripts#^NIM|Example A-42]] for more examples of self-documenting scripts.
+See also [[Example A-28]], [[Example A-40]], [[Example A-41]], and [[Example A-42]] for more examples of self-documenting scripts.
 
 > [!note]
 > Here documents create temporary files, but these files are deleted after opening and are not accessible to any other process.

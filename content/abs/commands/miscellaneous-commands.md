@@ -235,7 +235,7 @@ exit 0
 > eval set -- "$args"
 > ```
 
-See [[manipulating-strings#^GETOPTSIMPLE|Example 10-5]] for a simplified emulation of **getopt**.
+See [[Example 10-5|Example 10-5]] for a simplified emulation of **getopt**.
 
 **run-parts**
 
@@ -354,7 +354,7 @@ cat listfile* | sort | tee check.file | uniq > result.file
 
 **mkfifo**
 
-This obscure command creates a _named pipe_, a temporary _first-in-first-out buffer_ for transferring data between processes. [^4] Typically, one process writes to the FIFO, and the other reads from it. See [[contributed-scripts#^FIFO|Example A-14]].
+This obscure command creates a _named pipe_, a temporary _first-in-first-out buffer_ for transferring data between processes. [^4] Typically, one process writes to the FIFO, and the other reads from it. See [[Example A-14|Example A-14]].
 
 ```bash
 #!/bin/bash
@@ -519,7 +519,7 @@ echo -n . | dd bs=1 seek=4 of=file conv=notrunc
 # Thanks, S.C.
 ```
 
-The **dd** command can copy raw data and disk images to and from devices, such as floppies and tape drives ([[contributed-scripts#^COPYCD|Example A-5]]). A common use is creating boot floppies.
+The **dd** command can copy raw data and disk images to and from devices, such as floppies and tape drives ([[Example A-5|Example A-5]]). A common use is creating boot floppies.
 
 **dd if=kernel-image of=/dev/fd0H1440**
 
@@ -592,7 +592,7 @@ exit $?
 # 3) Have script sutodetect image file (*img) in $PWD.
 ```
 
-Other applications of **dd** include initializing temporary swap files ([[of-zeros-and-nulls#^EX73|Example 31-2]]) and ramdisks ([[of-zeros-and-nulls#^RAMDISK|Example 31-3]]). It can even do a low-level copy of an entire hard drive partition, although this is not necessarily recommended.
+Other applications of **dd** include initializing temporary swap files ([[Example 31-2|Example 31-2]]) and ramdisks ([[Example 31-3|Example 31-3]]). It can even do a low-level copy of an entire hard drive partition, although this is not necessarily recommended.
 
 People (with presumably nothing better to do with their time) are constantly thinking of interesting applications of **dd**.
 
@@ -708,7 +708,7 @@ head -c4 /dev/urandom | od -N4 -tu4 | sed -ne '1s/.* //p'
 # From rnd.sh example script, by Stéphane Chazelas
 ```
 
-See also [[another-look-at-variables#^SEEDINGRANDOM|Example 9-16]] and [[contributed-scripts#^INSERTIONSORT|Example A-36]].
+See also [[Example 9-16|Example 9-16]] and [[Example A-36|Example A-36]].
 
 **hexdump**
 

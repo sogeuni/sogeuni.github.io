@@ -7,7 +7,7 @@ title: 16.5. File and Archiving Commands
 
 **tar**
 
-The standard UNIX archiving utility. [^1] Originally a _Tape ARchiving_ program, it has developed into a general purpose package that can handle all manner of archiving with all types of destination devices, ranging from tape drives to regular files to even stdout (see [[example 3-4|Example 3-4]]). GNU _tar_ has been patched to accept various compression filters, for example: **tar czvf archive_name.tar.gz ***, which recursively archives and [[file-and-archiving-commands#^GZIPREF|gzips]] all files in a directory tree except [[basic-commands#^DOTFILESREF|dotfiles]] in the current working directory ([[another-look-at-variables#^PWDREF|$PWD]]). [^2]
+The standard UNIX archiving utility. [^1] Originally a _Tape ARchiving_ program, it has developed into a general purpose package that can handle all manner of archiving with all types of destination devices, ranging from tape drives to regular files to even stdout (see [[Example 3-4|Example 3-4]]). GNU _tar_ has been patched to accept various compression filters, for example: **tar czvf archive_name.tar.gz ***, which recursively archives and [[file-and-archiving-commands#^GZIPREF|gzips]] all files in a directory tree except [[basic-commands#^DOTFILESREF|dotfiles]] in the current working directory ([[another-look-at-variables#^PWDREF|$PWD]]). [^2]
 
 Some useful **tar** options:
 
@@ -189,7 +189,7 @@ The **zcat** filter decompresses a _gzipped_ file to stdout, as possible input t
 > [!caution]
 > On some commercial UNIX systems, **zcat** is a synonym for **uncompress -c**, and will not work on _gzipped_ files.
 
-See also [[example 7-7|Example 7-7]].
+See also [[Example 7-7|Example 7-7]].
 
 **bzip2**
 
@@ -360,7 +360,7 @@ exit 0
 /usr/bin/rm
 ```
 
-For an interesting use of this command, see [[colorizing-scripts#^HORSERACE|Example 36-16]].
+For an interesting use of this command, see [[Example 36-16|Example 36-16]].
 
 **whereis**
 
@@ -407,7 +407,7 @@ exit 0
 #    ./what.sh | less
 ```
 
-See also [[loops#^FILEINFO|Example 11-3]].
+See also [[Example 11-3|Example 11-3]].
 
 **vdir**
 
@@ -485,7 +485,7 @@ bash$ readlink /usr/bin/awk
 
 **strings**
 
-Use the **strings** command to find printable strings in a binary or data file. It will list sequences of printable characters found in the target file. This might be handy for a quick 'n dirty examination of a core dump or for looking at an unknown graphic image file (**strings image-file | more** might show something like _JFIF_, which would identify the file as a _jpeg_ graphic). In a script, you would probably parse the output of **strings** with [[textproc#^GREPREF|grep]] or [[sedawk#^SEDREF|sed]]. See [[loops#^BINGREP|Example 11-8]] and [[loops#^FINDSTRING|Example 11-10]].
+Use the **strings** command to find printable strings in a binary or data file. It will list sequences of printable characters found in the target file. This might be handy for a quick 'n dirty examination of a core dump or for looking at an unknown graphic image file (**strings image-file | more** might show something like _JFIF_, which would identify the file as a _jpeg_ graphic). In a script, you would probably parse the output of **strings** with [[textproc#^GREPREF|grep]] or [[sedawk#^SEDREF|sed]]. See [[Example 11-8|Example 11-8]] and [[Example 11-10|Example 11-10]].
 
 ###### Example 16-34. An "improved" *strings* command
 
@@ -723,7 +723,7 @@ echo "Usage: `basename $0` arg1 arg2 ... argn"
 Strips the **basename** from a filename, printing only the path information.
 
 > [!note]
-> **basename** and **dirname** can operate on any arbitrary string. The argument does not need to refer to an existing file, or even be a filename for that matter (see [[contributed-scripts#^DAYSBETWEEN|Example A-7]]).
+> **basename** and **dirname** can operate on any arbitrary string. The argument does not need to refer to an existing file, or even be a filename for that matter (see [[Example A-7|Example A-7]]).
 
 ###### Example 16-36. _basename_ and *dirname*
 
@@ -922,7 +922,7 @@ exit 0
 #+ http://sourceforge.net/projects/tripwire/.
 ```
 
-Also see [[contributed-scripts#^DIRECTORYINFO|Example A-19]], [[colorizing-scripts#^HORSERACE|Example 36-16]], and [[manipulating-strings#^RANDSTRING|Example 10-2]] for creative uses of the **md5sum** command.
+Also see [[Example A-19|Example A-19]], [[Example 36-16|Example 36-16]], and [[Example 10-2|Example 10-2]] for creative uses of the **md5sum** command.
 
 > [!note]
 > There have been reports that the 128-bit **md5sum** can be cracked, so the more secure 160-bit **sha1sum** is a welcome new addition to the checksum toolkit.
@@ -990,7 +990,7 @@ The **mimencode** and **mmencode** commands process multimedia-encoded e-mail at
 
 **crypt**
 
-At one time, this was the standard UNIX file encryption utility. [^5] Politically-motivated government regulations prohibiting the export of encryption software resulted in the disappearance of **crypt** from much of the UNIX world, and it is still missing from most Linux distributions. Fortunately, programmers have come up with a number of decent alternatives to it, among them the author's very own [cruft](ftp://metalab.unc.edu/pub/Linux/utils/file/cruft-0.2.tar.gz) (see [[contributed-scripts#^ENCRYPTEDPW|Example A-4]]).
+At one time, this was the standard UNIX file encryption utility. [^5] Politically-motivated government regulations prohibiting the export of encryption software resulted in the disappearance of **crypt** from much of the UNIX world, and it is still missing from most Linux distributions. Fortunately, programmers have come up with a number of decent alternatives to it, among them the author's very own [cruft](ftp://metalab.unc.edu/pub/Linux/utils/file/cruft-0.2.tar.gz) (see [[Example A-4|Example A-4]]).
 
 **openssl**
 
@@ -1033,7 +1033,7 @@ Of course, _openssl_ has many other uses, such as obtaining signed _certificates
 
 **shred**
 
-Securely erase a file by overwriting it multiple times with random bit patterns before deleting it. This command has the same effect as [[miscellaneous-commands#^BLOTOUT|Example 16-61]], but does it in a more thorough and elegant manner.
+Securely erase a file by overwriting it multiple times with random bit patterns before deleting it. This command has the same effect as [[Example 16-61|Example 16-61]], but does it in a more thorough and elegant manner.
 
 This is one of the GNU _fileutils_.
 
@@ -1104,7 +1104,7 @@ ls /home/bozo | awk '{print "rm -rf " $1}' | more
 #      Hand off to the shell to execute . . .       ^^
 ```
 
-The _less_ pager has the interesting property of doing a formatted display of _man page_ source. See [[contributed-scripts#^MANED|Example A-39]].
+The _less_ pager has the interesting property of doing a formatted display of _man page_ source. See [[Example A-39|Example A-39]].
 
 [^1]: An _archive_, in the sense discussed here, is simply a set of related files stored in a single location.
 

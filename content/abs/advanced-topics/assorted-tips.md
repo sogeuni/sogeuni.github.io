@@ -66,11 +66,11 @@ echo $title | cat - $file >$file.new
 #+ to write a new file with $title appended at *beginning*.
 ```
 
-This is a simplified variant of the [[here-strings#^PREPENDEX|Example 19-13]] script given earlier. And, of course, [[sedawk#^SEDREF|sed]] can also do this.
+This is a simplified variant of the [[Example 19-13|Example 19-13]] script given earlier. And, of course, [[sedawk#^SEDREF|sed]] can also do this.
 
 - A shell script may act as an embedded command inside another shell script, a *Tcl* or *wish* script, or even a [[file-and-archiving-commands#^MAKEFILEREF|Makefile]]. It can be invoked as an external shell command in a C program using the *system()* call, i.e., *system("script_name");*.
 
-- Setting a variable to the contents of an embedded _sed_ or _awk_ script increases the readability of the surrounding [[shell-wrappers#^SHWRAPPER|shell wrapper]]. See [[contributed-scripts#^MAILFORMAT|Example A-1]] and [[internal-commands-and-builtins#^COLTOTALER3|Example 15-20]].
+- Setting a variable to the contents of an embedded _sed_ or _awk_ script increases the readability of the surrounding [[shell-wrappers#^SHWRAPPER|shell wrapper]]. See [[Example A-1|Example A-1]] and [[Example 15-20|Example 15-20]].
 
 - Put together files containing your favorite and most useful definitions and functions. As necessary, "include" one or more of these "library files" in scripts with either the [[special-characters#^DOTREF|dot]] (**.**) or [[internal-commands-and-builtins#^SOURCEREF|source]] command.
 
@@ -514,9 +514,9 @@ exit 0
 #+ whitespace breaks this example.
 ```
 
-For a more elaborate example of passing arrays to functions, see [[contributed-scripts#^LIFESLOW|Example A-10]].
+For a more elaborate example of passing arrays to functions, see [[Example A-10|Example A-10]].
 
-- Using the [[operations-and-related-topics|double-parentheses construct]], it is possible to use C-style syntax for setting and incrementing/decrementing variables and in [[loops#^FORLOOPREF1|for]] and [[loops#^WHILELOOPREF|while]] loops. See [[loops#^FORLOOPC|Example 11-13]] and [[loops#^WHLOOPC|Example 11-18]].
+- Using the [[operations-and-related-topics|double-parentheses construct]], it is possible to use C-style syntax for setting and incrementing/decrementing variables and in [[loops#^FORLOOPREF1|for]] and [[loops#^WHILELOOPREF|while]] loops. See [[Example 11-13|Example 11-13]] and [[Example 11-18|Example 11-18]].
 
 - Setting the [[another-look-at-variables#^PATHREF|path]] and [[system-and-administrative-commands#^UMASKREF|umask]] at the beginning of a script makes it more [[portability-issues|portable]] -- more likely to run on a "foreign" machine whose user may have bollixed up the $PATH and **umask**.
 
@@ -581,9 +581,9 @@ isotheral
 #+ see the agram2.sh script.
 ```
     
-See also [[proc#^CONSTAT|Example 29-4]], [[text-processing-commands#^CRYPTOQUOTE|Example 16-25]], and [[contributed-scripts#^SOUNDEX|Example A-9]].
+See also [[Example 29-4|Example 29-4]], [[Example 16-25|Example 16-25]], and [[Example A-9|Example A-9]].
 
-- Use "[[here-documents#^ANONHEREDOC0|anonymous here documents]]" to comment out blocks of code, to save having to individually comment out each line with a #. See [[here-documents#^COMMENTBLOCK|Example 19-11]].
+- Use "[[here-documents#^ANONHEREDOC0|anonymous here documents]]" to comment out blocks of code, to save having to individually comment out each line with a #. See [[Example 19-11|Example 19-11]].
 
 - Running a script on a machine that relies on a command that might not be installed is dangerous. Use [[file-and-archiving-commands#^WHATISREF|whatis]] to avoid potential problems with this.
 

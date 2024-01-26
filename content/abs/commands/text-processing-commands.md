@@ -7,7 +7,7 @@ title: 16.4. Text Processing Commands
 
 **sort**
 
-File sort utility, often used as a filter in a pipe. This command sorts a _text stream_ or file forwards or backwards, or according to various keys or character positions. Using the -m option, it merges presorted input files. The _info page_ lists its many capabilities and options. See [[loops#^FINDSTRING|Example 11-10]], [[loops#^SYMLINKS|Example 11-11]], and [[contributed-scripts#^MAKEDICT|Example A-8]].
+File sort utility, often used as a filter in a pipe. This command sorts a _text stream_ or file forwards or backwards, or according to various keys or character positions. Using the -m option, it merges presorted input files. The _info page_ lists its many capabilities and options. See [[Example 11-10|Example 11-10]], [[Example 11-11|Example 11-11]], and [[Example A-8|Example A-8]].
 
 **tsort**
 
@@ -204,7 +204,7 @@ done
 >
 > Thank you, Jaka Kranjc, for pointing this out.|
 
-See also [[math-commands#^BASE|Example 16-48]].
+See also [[Example 16-48|Example 16-48]].
 
 **paste**
 
@@ -388,7 +388,7 @@ head -c4 /dev/urandom | od -N4 -tu4 | sed -ne '1s/.* //p'
 exit
 ```
 
-See also [[file-and-archiving-commands#^EX52|Example 16-39]].
+See also [[Example 16-39|Example 16-39]].
 
 **tail**
 
@@ -430,7 +430,7 @@ exit 0
 > [!note]
 > Newer implementations of **tail** deprecate the older **tail -$LINES filename** usage. The standard **tail -n $LINES filename** is correct.
 
-See also [[complex-commands#^EX41|Example 16-5]], [[file-and-archiving-commands#^EX52|Example 16-39]] and [[debugging#^ONLINE|Example 32-6]].
+See also [[Example 16-5|Example 16-5]], [[Example 16-39|Example 16-39]] and [[Example 32-6|Example 32-6]].
 
 **grep**
 
@@ -573,7 +573,7 @@ else
 fi
 ```
 
-[[debugging#^ONLINE|Example 32-6]] demonstrates how to use **grep** to search for a word pattern in a system logfile.
+[[Example 32-6|Example 32-6]] demonstrates how to use **grep** to search for a word pattern in a system logfile.
 
 ###### Example 16-17. Emulating *grep* in a script
 
@@ -824,7 +824,7 @@ exit $?
 ```
 
 > [!note]
-> See also [[contributed-scripts#^QKY|Example A-41]] for an example of speedy _fgrep_ lookup on a large text file.
+> See also [[Example A-41|Example A-41]] for an example of speedy _fgrep_ lookup on a large text file.
 
 **agrep** (_approximate grep_) extends the capabilities of **grep** to approximate matching. The search string may differ by a specified number of characters from the resulting matches. This utility is not part of the core Linux distribution.
 
@@ -946,7 +946,7 @@ bash$ grep Linux abs-book.sgml | wc -l
 138
 ```
 
-See also [[file-and-archiving-commands#^EX52|Example 16-39]] and [[redirecting-code-blocks#^REDIR4|Example 20-8]].
+See also [[Example 16-39|Example 16-39]] and [[Example 20-8|Example 20-8]].
 
 Certain commands include some of the functionality of **wc** as options.
 
@@ -1200,7 +1200,7 @@ echo $x | tr "a-z" 'oh, turtleneck Phrase Jar!'
 
 **fold**
 
-A filter that wraps lines of input to a specified width. This is especially useful with the -s option, which breaks lines at word spaces (see [[text-processing-commands#^EX50|Example 16-26]] and [[contributed-scripts#^MAILFORMAT|Example A-1]]).
+A filter that wraps lines of input to a specified width. This is especially useful with the -s option, which breaks lines at word spaces (see [[Example 16-26|Example 16-26]] and [[Example A-1|Example A-1]]).
 
 **fmt**
 
@@ -1223,7 +1223,7 @@ echo $b | fmt -w $WIDTH
 exit 0
 ```
 
-See also [[complex-commands#^EX41|Example 16-5]].
+See also [[Example 16-5|Example 16-5]].
 
 > [!tip]
 > A powerful alternative to **fmt** is Kamil Toman's **par** utility, available from [http://www.cs.berkeley.edu/~amc/Par/](http://www.cs.berkeley.edu/~amc/Par/).
@@ -1403,7 +1403,7 @@ groff -Tascii -man $1 | less
 exit $?   # See also the "maned.sh" script.
 ```
 
-See also [[contributed-scripts#^MANED|Example A-39]].
+See also [[Example A-39|Example A-39]].
 
 **lex**, **yacc**
 

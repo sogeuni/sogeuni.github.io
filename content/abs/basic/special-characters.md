@@ -95,7 +95,7 @@ esac
 
 . 
 
-**"dot" command [[internal-commands-and-builtins#^SOURCEREF|period].** Equivalent to [source]] (see [[internal-commands-and-builtins#^EX38|Example 15-22]]). This is a bash [[internal-commands-and-builtins|builtin]].
+**"dot" command [[internal-commands-and-builtins#^SOURCEREF|period].** Equivalent to [source]] (see [[Example 15-22|Example 15-22]]). This is a bash [[internal-commands-and-builtins|builtin]].
 
 .
 
@@ -248,7 +248,7 @@ else     # Or else ...
 fi
 ```
 
-Provide a placeholder where a binary operation is expected, see [[operations-and-related-topics#^ARITHOPS|Example 8-2]] and [[parameter-substitution#^DEFPARAM|default parameters]].
+Provide a placeholder where a binary operation is expected, see [[Example 8-2]] and [[parameter-substitution#^DEFPARAM|default parameters]].
 
 ```bash
 : ${username=`whoami`}
@@ -258,9 +258,9 @@ Provide a placeholder where a binary operation is expected, see [[operations-and
 : ${1?"Usage: $0 ARGUMENT"}     # From "usage-message.sh example script.
 ```
 
-Provide a placeholder where a command is expected in a [[here-documents#^HEREDOCREF|here document]]. See [[here-documents#^ANONHEREDOC|Example 19-10]].
+Provide a placeholder where a command is expected in a [[here-documents#^HEREDOCREF|here document]]. See [[Example 19-10]].
 
-Evaluate string of variables using [[parameter-substitution#^PARAMSUBREF|parameter substitution]] (as in [[parameter-substitution#^EX6|Example 10-7]]).
+Evaluate string of variables using [[parameter-substitution#^PARAMSUBREF|parameter substitution]] (as in [[Example 10-7]]).
 
 ```bash
 : ${HOSTNAME?} ${USER?} ${MAIL?}
@@ -279,7 +279,7 @@ In combination with the > [[io-redirection|redirection operator]], truncates a f
 # However, this does not fork a new process, since ":" is a builtin.
 ```
 
-See also [[text-processing-commands#^EX12|Example 16-15]].
+See also [[Example 16-15]].
 
 In combination with the >> redirection operator, has no effect on a pre-existing target file (**: >> target_file**). If the file did not previously exist, creates it.
 
@@ -326,7 +326,7 @@ not_empty ()
 
 ### ! (exclamation mark)
 
-**reverse (or negate) the sense of a test or exit status [[exit-and-exit-status#^EXITSTATUSREF|bang].** The ! operator inverts the [exit status]] of the command to which it is applied (see [[exit-and-exit-status#^NEGCOND|Example 6-2]]). It also inverts the meaning of a test operator. This can, for example, change the sense of *equal* ( [[other-comparison-operators#^EQUALSIGNREF|=]] ) to *not-equal* ( != ). The ! operator is a Bash [[internal-commands-and-builtins#^keywordref|keyword]].
+**reverse (or negate) the sense of a test or exit status [[exit-and-exit-status#^EXITSTATUSREF|bang].** The ! operator inverts the [exit status]] of the command to which it is applied (see [[Example 6-2]]). It also inverts the meaning of a test operator. This can, for example, change the sense of *equal* ( [[other-comparison-operators#^EQUALSIGNREF|=]] ) to *not-equal* ( != ). The ! operator is a Bash [[internal-commands-and-builtins#^keywordref|keyword]].
 
 In a different context, the ! also appears in [[indirect-references#^IVRREF|indirect variable references]].
 
@@ -645,7 +645,7 @@ See the discussion on the [[operations-and-related-topics.html|(( ... )) constru
 
 [[other-comparison-operators#^LTREF|In a different context]], the "<" and ">" characters act as [[other-comparison-operators#^SCOMPARISON1|string comparison operators]].
 
-[[other-comparison-operators#^INTLT|In yet another context]], the "<" and ">" characters act as [[other-comparison-operators#^ICOMPARISON1|integer comparison operators]]. See also [[complex-commands#^EX45|Example 16-9]].
+[[other-comparison-operators#^INTLT|In yet another context]], the "<" and ">" characters act as [[other-comparison-operators#^ICOMPARISON1|integer comparison operators]]. See also [[Example 16-9]].
 
 ### <<
 
@@ -824,7 +824,7 @@ Used with a [[internal-commands-and-builtins|Bash builtin]], it means the *end o
 
 The *double-dash* is also used in conjunction with [[internal-commands-and-builtins#^SETREF|set]].
 
-**set -- $variable** (as in [[internal-commands-and-builtins#^SETPOS|Example 15-18]])
+**set -- $variable** (as in [[Example 15-18]])
 
 ### -
 

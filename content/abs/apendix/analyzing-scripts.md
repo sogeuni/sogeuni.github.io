@@ -106,6 +106,6 @@ Hint: First, break the script up into bite-sized sections. Then, carefully exami
 
 ---
 
-Analyze [[contributed-scripts#^LIFESLOW|Example A-10]], and reorganize it in a simplified and more logical style. See how many of the variables can be eliminated, and try to optimize the script to speed up its execution time.
+Analyze [[Example A-10|Example A-10]], and reorganize it in a simplified and more logical style. See how many of the variables can be eliminated, and try to optimize the script to speed up its execution time.
 
 Alter the script so that it accepts any ordinary ASCII text file as input for its initial "generation". The script will read the first _$ROW*$COL_ characters, and set the occurrences of vowels as "living" cells. Hint: be sure to translate the spaces in the input file to underscore characters.

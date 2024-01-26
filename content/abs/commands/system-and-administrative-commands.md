@@ -69,7 +69,7 @@ bash$ echo $UID
 > [!note]
 > The **id** command shows the _effective_ IDs only when they differ from the _real_ ones.
 
-Also see [[another-look-at-variables#^AMIROOT|Example 9-5]].
+Also see [[Example 9-5|Example 9-5]].
 
 ## lid
 
@@ -155,7 +155,7 @@ bozo
 
 **su**
 
-Runs a program or script as a **s**ubstitute **u**ser. **su rjones** starts a shell as user _rjones_. A naked **su** defaults to _root_. See [[contributed-scripts#^FIFO|Example A-14]].
+Runs a program or script as a **s**ubstitute **u**ser. **su rjones** starts a shell as user _rjones_. A naked **su** defaults to _root_. See [[Example A-14|Example A-14]].
 
 **sudo**
 
@@ -360,7 +360,7 @@ stty "$old_tty_settings"      # Restore old settings.
 exit 0
 ```
 
-Also see [[another-look-at-variables#^TIMEOUT|Example 9-3]] and [[contributed-scripts#^STOPWATCH|Example A-43]].
+Also see [[Example 9-3|Example 9-3]] and [[Example A-43|Example A-43]].
 
 > **terminals and modes**
 >
@@ -453,7 +453,7 @@ Enables or disables write access to the current user's terminal. Disabling acces
 
 **wall**
 
-This is an acronym for "[[communications-commands#^WRITEREF|write]] all," i.e., sending a message to all users at every terminal logged into the network. It is primarily a system administrator's tool, useful, for example, when warning everyone that the system will shortly go down due to a problem (see [[here-documents#^EX70|Example 19-1]]).
+This is an acronym for "[[communications-commands#^WRITEREF|write]] all," i.e., sending a message to all users at every terminal logged into the network. It is primarily a system administrator's tool, useful, for example, when warning everyone that the system will shortly go down due to a problem (see [[Example 19-1|Example 19-1]]).
 
 ```bash
 bash$ wall System going down for maintenance in 5 minutes!
@@ -470,7 +470,7 @@ Broadcast message from bozo (pts/1) Sun Jul  8 13:53:27 2001...
 
 **uname**
 
-Output system specifications (OS, kernel version, etc.) to stdout. Invoked with the -a option, gives verbose system info (see [[complex-commands#^EX41|Example 16-5]]). The -s option shows only the OS type.
+Output system specifications (OS, kernel version, etc.) to stdout. Invoked with the -a option, gives verbose system info (see [[Example 16-5|Example 16-5]]). The -s option shows only the OS type.
 
 ```bash
 bash$ uname
@@ -487,7 +487,7 @@ Linux iron.bozo 2.6.15-1.2054_FC5 #1 Tue Mar 14 15:48:33 EST 2006
 
 **arch**
 
-Show system architecture. Equivalent to **uname -m**. See [[testing-and-branching#^CASECMD|Example 11-27]].
+Show system architecture. Equivalent to **uname -m**. See [[Example 11-27|Example 11-27]].
 
 ```bash
 bash$ arch
@@ -548,7 +548,7 @@ COMMAND  PID USER  FD  TYPE DEVICE SIZE NODE NAME
 	      
 ```
 
-See [[network-programming#^IPADDRESSES|Example 30-2]] for an effective use of **lsof**.
+See [[Example 30-2|Example 30-2]] for an effective use of **lsof**.
 
 **strace**
 
@@ -970,7 +970,7 @@ Adding an appropriate entry to /etc/logrotate.conf makes it possible to manage p
 
 **ps**
 
-_P_rocess _S_tatistics: lists currently executing processes by owner and PID (process ID). This is usually invoked with ax or aux options, and may be piped to [[text-processing-commands#^GREPREF|grep]] or [[a-sed-and-awk-micro-primer#^SEDREF|sed]] to search for a specific process (see [[internal-commands-and-builtins#^EX44|Example 15-14]] and [[proc#^PIDID|Example 29-3]]).
+_P_rocess _S_tatistics: lists currently executing processes by owner and PID (process ID). This is usually invoked with ax or aux options, and may be piped to [[text-processing-commands#^GREPREF|grep]] or [[a-sed-and-awk-micro-primer#^SEDREF|sed]] to search for a specific process (see [[Example 15-14|Example 15-14]] and [[Example 29-3|Example 29-3]]).
 
 ```bash
 bash$  ps ax | grep sendmail
@@ -1243,11 +1243,11 @@ echo `/sbin/ifconfig | grep ^[a-z] | awk '{print $1}'`
 #  Thanks, S.C., for additional comments.
 ```
 
-See also [[debugging#^ONLINE|Example 32-6]].
+See also [[Example 32-6|Example 32-6]].
 
 **netstat**
 
-Show current network statistics and information, such as routing tables and active connections. This utility accesses information in /proc/net ([[dev-and-proc|Chapter 29]]). See [[proc#^CONSTAT|Example 29-4]].
+Show current network statistics and information, such as routing tables and active connections. This utility accesses information in /proc/net ([[dev-and-proc|Chapter 29]]). See [[Example 29-4|Example 29-4]].
 
 **netstat -r** is equivalent to [[system-and-administrative-commands#^ROUTEREF|route]].
 
@@ -1342,7 +1342,7 @@ Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
 
 The **iptables** command set is a packet filtering tool used mainly for such security purposes as setting up network firewalls. This is a complex tool, and a detailed explanation of its use is beyond the scope of this document. [Oskar Andreasson's tutorial](http://www.frozentux.net/iptables-tutorial/iptables-tutorial.html) is a reasonable starting point.
 
-See also [[system-and-administrative-commands#^IPTABLES01|shutting down _iptables_]] and [[network-programming#^IPADDRESSES|Example 30-2]].
+See also [[system-and-administrative-commands#^IPTABLES01|shutting down _iptables_]] and [[Example 30-2|Example 30-2]].
 
 **chkconfig**
 
@@ -1435,7 +1435,7 @@ bash$ df
 
 Forces an immediate write of all updated data from buffers to hard drive (synchronize drive with buffers). While not strictly necessary, a **sync** assures the sys admin or user that the data just changed will survive a sudden power failure. In the olden days, a **sync; sync** (twice, just to make absolutely sure) was a useful precautionary measure before a system reboot.
 
-At times, you may wish to force an immediate buffer flush, as when securely deleting a file (see [[miscellaneous-commands#^BLOTOUT|Example 16-61]]) or when the lights begin to flicker.
+At times, you may wish to force an immediate buffer flush, as when securely deleting a file (see [[Example 16-61|Example 16-61]]) or when the lights begin to flicker.
 
 **losetup**
 
@@ -1512,7 +1512,7 @@ chmod 777 $MOUNTPOINT  # Makes new drive accessible to all users.
 exit
 ```
 
-See also [[system-and-administrative-commands#^CREATEFS|Example 17-8]] and [[of-zeros-and-nulls#^RAMDISK|Example 31-3]].
+See also [[Example 17-8|Example 17-8]] and [[Example 31-3|Example 31-3]].
 
 **mkdosfs**
 

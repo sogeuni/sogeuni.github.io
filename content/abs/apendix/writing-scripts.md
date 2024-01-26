@@ -19,7 +19,7 @@ Perform a recursive directory listing on the user's home directory and save the 
 
 **Converting [[loops#^FORLOOPREF1|for]] loops to [[loops#^WHILELOOPREF|while]] and [[loops#^UNTILLOOPREF|until]] loops**
 
-Convert the _for loops_ in [[loops#^EX22|Example 11-1]] to _while loops_. Hint: store the data in an [[arrays#^ARRAYREF|array]] and step through the array elements.
+Convert the _for loops_ in [[Example 11-1|Example 11-1]] to _while loops_. Hint: store the data in an [[arrays#^ARRAYREF|array]] and step through the array elements.
 
 Having already done the "heavy lifting," now convert the loops in the example to _until loops_.
 
@@ -111,7 +111,7 @@ _Extra credit:_ Write the script so it can handle files and directories [[basic-
 
 What is the most efficient way to make change for $1.68, using only coins in common circulations (up to 25c)? It's 6 quarters, 1 dime, a nickel, and three cents.
 
-Given any arbitrary command-line input in dollars and cents ($*.??), calculate the change, using the minimum number of coins. If your home country is not the United States, you may use your local currency units instead. The script will need to parse the command-line input, then change it to multiples of the smallest monetary unit (cents or whatever). Hint: look at [[complex-functions-and-function-complexities#^EX61|Example 24-8]].
+Given any arbitrary command-line input in dollars and cents ($*.??), calculate the change, using the minimum number of coins. If your home country is not the United States, you may use your local currency units instead. The script will need to parse the command-line input, then change it to multiples of the smallest monetary unit (cents or whatever). Hint: look at [[Example 24-8|Example 24-8]].
 
 **Quadratic Equations**
 
@@ -127,7 +127,7 @@ Hint: _bc_ requires the -l option to load the math library.
 
 **Unicode Table**
 
-Using [[ascii-table#^ASCIISH|Example T-1]] as a template, write a script that prints to a file a complete [[bash-version-4#^UNICODEREF|Unicode]] table.
+Using [[Example T-1|Example T-1]] as a template, write a script that prints to a file a complete [[bash-version-4#^UNICODEREF|Unicode]] table.
 
 Hint: Use the -e option to [[internal-commands-and-builtins#^ECHOREF|echo]]: **echo -e '\uXXXX'**, where _XXXX_ is the Unicode numerical character designation. This requires [[bash-version-4#^BASH42|version 4.2]] or later of Bash.
 
@@ -143,7 +143,7 @@ A _lucky number_ is one whose individual digits add up to 7, in successive addit
 
 **Craps**
 
-Borrowing the ASCII graphics from [[contributed-scripts#^PETALS|Example A-40]], write a script that plays the well-known gambling game of _craps_. The script will accept bets from one or more players, roll the dice, and keep track of wins and losses, as well as of each player's bankroll.
+Borrowing the ASCII graphics from [[Example A-40|Example A-40]], write a script that plays the well-known gambling game of _craps_. The script will accept bets from one or more players, roll the dice, and keep track of wins and losses, as well as of each player's bankroll.
 
 **Tic-tac-toe**
 
@@ -233,7 +233,7 @@ This exercise tests mastery of [[regexp#^REGEXREF|Regular Expressions]].
 
 **Cross Reference**
 
-Write a script that generates a _cross-reference_ (_concordance_) on a target file. The output will be a listing of all word occurrences in the target file, along with the line numbers in which each word occurs. Traditionally, _linked list_ constructs would be used in such applications. Therefore, you should investigate [[arrays#^ARRAYREF|arrays]] in the course of this exercise. [[text-processing-commands#^WF|Example 16-12]] is probably _not_ a good place to start.
+Write a script that generates a _cross-reference_ (_concordance_) on a target file. The output will be a listing of all word occurrences in the target file, along with the line numbers in which each word occurs. Traditionally, _linked list_ constructs would be used in such applications. Therefore, you should investigate [[arrays#^ARRAYREF|arrays]] in the course of this exercise. [[Example 16-12|Example 16-12]] is probably _not_ a good place to start.
 
 **Square Root**
 
@@ -320,7 +320,7 @@ Write a script that analyzes a spam e-mail by doing DNS lookups on the IP addres
 
 As necessary, use the appropriate [[communications-commands#^COMMUNINFO1|network analysis commands]].
 
-For some ideas, see [[communications-commands#^ISSPAMMER|Example 16-41]] and [[contributed-scripts#^ISSPAMMER2|Example A-28]].
+For some ideas, see [[Example 16-41|Example 16-41]] and [[Example A-28|Example A-28]].
 
 Optional: Write a script that searches through a list of e-mail messages and deletes the spam according to specified filters.
 
@@ -330,7 +330,7 @@ Write a script that automates the process of creating [[basic-commands#^MANREF|m
 
 Given a text file which contains information to be formatted into a _man page_, the script will read the file, then invoke the appropriate [[text-processing-commands#^GROFFREF|groff]] commands to output the corresponding _man page_ to stdout. The text file contains blocks of information under the standard _man page_ headings, i.e., NAME, SYNOPSIS, DESCRIPTION, etc.
 
-[[contributed-scripts#^MANED|Example A-39]] is an instructive first step.
+[[Example A-39|Example A-39]] is an instructive first step.
 
 **Hex Dump**
 
@@ -340,7 +340,7 @@ The obvious followup to this is to extend the hex dump script into a disassemble
 
 **Emulating a Shift Register**
 
-Using [[arrays#^STACKEX|Example 27-15]] as an inspiration, write a script that emulates a 64-bit shift register as an [[arrays#^ARRAYREF|array]]. Implement functions to _load_ the register, _shift left_, _shift right_, and _rotate_ it. Finally, write a function that interprets the register contents as eight 8-bit ASCII characters.
+Using [[Example 27-15|Example 27-15]] as an inspiration, write a script that emulates a 64-bit shift register as an [[arrays#^ARRAYREF|array]]. Implement functions to _load_ the register, _shift left_, _shift right_, and _rotate_ it. Finally, write a function that interprets the register contents as eight 8-bit ASCII characters.
 
 **Calculating Determinants**
 
@@ -400,7 +400,7 @@ A strict interpretation of the Gunning fog index does not count compound words a
 
 The Eighteenth Century French mathematician de Buffon came up with a novel experiment. Repeatedly drop a needle of length _n_ onto a wooden floor composed of long and narrow parallel boards. The cracks separating the equal-width floorboards are a fixed distance _d_ apart. Keep track of the total drops and the number of times the needle intersects a crack on the floor. The ratio of these two quantities turns out to be a fractional multiple of PI.
 
-In the spirit of [[math-commands#^CANNON|Example 16-50]], write a script that runs a Monte Carlo simulation of _Buffon's Needle_. To simplify matters, set the needle length equal to the distance between the cracks, _n = d_.
+In the spirit of [[Example 16-50|Example 16-50]], write a script that runs a Monte Carlo simulation of _Buffon's Needle_. To simplify matters, set the needle length equal to the distance between the cracks, _n = d_.
 
 Hint: there are actually two critical variables: the distance from the center of the needle to the nearest crack, and the inclination angle of the needle to that crack. You may use [[math-commands#^BCREF|bc]] to handle the calculations.
 
@@ -488,7 +488,7 @@ This script will have three main sections
 3. Decrypting encrypted text.
     
 
-The script will make extensive use of [[arrays#^ARRAYREF|arrays]] and [[functions|functions]]. You may use [[contributed-scripts#^GRONSFELD|Example A-56]] as an inspiration.
+The script will make extensive use of [[arrays#^ARRAYREF|arrays]] and [[functions|functions]]. You may use [[Example A-56|Example A-56]] as an inspiration.
 
 --
 

@@ -335,22 +335,22 @@ exit 0
 
 Examples of command substitution in shell scripts:
 
-1. [[loops#^BINGREP|Example 11-8]]
-2. [[testing-and-branching#^CASECMD|Example 11-27]]
-3. [[another-look-at-variables#^SEEDINGRANDOM|Example 9-16]]
-4. [[complex-commands#^EX57|Example 16-3]]
-5. [[text-processing-commands#^LOWERCASE|Example 16-22]]
-6. [[text-processing-commands#^GRP|Example 16-17]]
-7. [[miscellaneous-commands#^EX53|Example 16-54]]
-8. [[loops#^EX24|Example 11-14]]
-9. [[loops#^SYMLINKS|Example 11-11]]
-10. [[file-and-archiving-commands#^STRIPC|Example 16-32]]
-11. [[redirecting-code-blocks#^REDIR4|Example 20-8]]
-12. [[contributed-scripts#^TREE|Example A-16]]
-13. [[proc#^PIDID|Example 29-3]]
-14. [[math-commands#^MONTHLYPMT|Example 16-47]]
-15. [[math-commands#^BASE|Example 16-48]]
-16. [[math-commands#^ALTBC|Example 16-49]]
+1. [[Example 11-8|Example 11-8]]
+2. [[Example 11-27|Example 11-27]]
+3. [[Example 9-16|Example 9-16]]
+4. [[Example 16-3|Example 16-3]]
+5. [[Example 16-22|Example 16-22]]
+6. [[Example 16-17|Example 16-17]]
+7. [[Example 16-54|Example 16-54]]
+8. [[Example 11-14|Example 11-14]]
+9. [[Example 11-11|Example 11-11]]
+10. [[Example 16-32|Example 16-32]]
+11. [[Example 20-8|Example 20-8]]
+12. [[Example A-16|Example A-16]]
+13. [[Example 29-3|Example 29-3]]
+14. [[Example 16-47|Example 16-47]]
+15. [[Example 16-48|Example 16-48]]
+16. [[Example 16-49|Example 16-49]]
 
 [^1]: For purposes of _command substitution_, a **command** may be an external system command, an internal scripting [[internal-commands-and-builtins|builtin]], or even [[assorted-tips#^RVT|a script function]].
 

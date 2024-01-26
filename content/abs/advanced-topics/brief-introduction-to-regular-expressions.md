@@ -17,7 +17,7 @@ The main uses for Regular Expressions (_RE_s) are text searches and string manip
     "1133*" matches _11 + one or more 3's_: _113_, _1133_, _1133333_, and so forth.
 - The _dot_ -- . -- matches any one character, except a newline. [^2]
     "13." matches _13 + at least one of any character (including a space)_: _1133_, _11333_, but not _13_ (additional character missing).
-    See [[text-processing-commands#^CWSOLVER|Example 16-18]] for a demonstration of _dot single-character_ matching.
+    See [[Example 16-18|Example 16-18]] for a demonstration of _dot single-character_ matching.
 - The caret -- ^ -- matches the beginning of a line, but sometimes, depending on context, negates the meaning of a set of characters in an RE.
 - The dollar sign -- $ -- at the end of an RE matches the end of a line.
     "XXX$" matches XXX at the end of a line.
@@ -178,10 +178,10 @@ bash$ **ls -l ?[[:digit:]][[:digit:]]?**
 -rw-rw-r--    1 bozo  bozo         0 Aug 21 14:47 a33b
 ```
     
-    POSIX character classes are used in [[text-processing-commands#^EX49|Example 16-21]] and [[text-processing-commands#^LOWERCASE|Example 16-22]].
+    POSIX character classes are used in [[Example 16-21|Example 16-21]] and [[Example 16-22|Example 16-22]].
     
 
-[[a-sed-and-awk-micro-primer#^SEDREF|Sed]], [[awk#^AWKREF|awk]], and [[shell-wrappers#^PERLREF|Perl]], used as filters in scripts, take REs as arguments when "sifting" or transforming files or I/O streams. See [[contributed-scripts#^BEHEAD|Example A-12]] and [[contributed-scripts#^TREE|Example A-16]] for illustrations of this.
+[[a-sed-and-awk-micro-primer#^SEDREF|Sed]], [[awk#^AWKREF|awk]], and [[shell-wrappers#^PERLREF|Perl]], used as filters in scripts, take REs as arguments when "sifting" or transforming files or I/O streams. See [[Example A-12|Example A-12]] and [[Example A-16|Example A-16]] for illustrations of this.
 
 The standard reference on this complex topic is Friedl's _Mastering Regular Expressions_. _Sed & Awk_, by Dougherty and Robbins, also gives a very lucid treatment of REs. See the [[bibliography|_Bibliography_]] for more information on these books.
 

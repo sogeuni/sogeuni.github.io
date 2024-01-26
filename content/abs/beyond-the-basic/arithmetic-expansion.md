@@ -47,8 +47,8 @@ let "z += 3"  #  Quotes permit the use of spaces in variable assignment.
 
 Examples of arithmetic expansion in scripts:
 
-1. [[complex-commands#^EX45|Example 16-9]]
-2. [[loops#^EX25|Example 11-15]]
-3. [[arrays#^EX66|Example 27-1]]
-4. [[arrays#^BUBBLE|Example 27-11]]
-5. [[contributed-scripts#^TREE|Example A-16]]
+1. [[Example 16-9|Example 16-9]]
+2. [[Example 11-15|Example 11-15]]
+3. [[Example 27-1|Example 27-1]]
+4. [[Example 27-11|Example 27-11]]
+5. [[Example A-16|Example A-16]]

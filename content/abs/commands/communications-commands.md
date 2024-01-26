@@ -269,7 +269,7 @@ exit 0
      to the 'dig' command.
 ```
 
-For a much more elaborate version of the above script, see [[contributed-scripts#^ISSPAMMER2|Example A-28]].
+For a much more elaborate version of the above script, see [[Example A-28|Example A-28]].
 
 **traceroute**
 
@@ -316,7 +316,7 @@ fi
 
 **whois**
 
-Perform a DNS (Domain Name System) lookup. The -h option permits specifying which particular _whois_ server to query. See [[example 4-6|Example 4-6]] and [[communications-commands#^SPAMLOOKUP|Example 16-40]].
+Perform a DNS (Domain Name System) lookup. The -h option permits specifying which particular _whois_ server to query. See [[Example 4-6|Example 4-6]] and [[Example 16-40|Example 16-40]].
 
 **finger**
 
@@ -365,7 +365,7 @@ The **sz** and **rz** command set serves to transfer files to and from a remote 
 
 **ftp**
 
-Utility and protocol for uploading / downloading files to or from a remote host. An ftp session can be automated in a script (see [[here-documents#^EX72|Example 19-6]] and [[contributed-scripts#^ENCRYPTEDPW|Example A-4]]).
+Utility and protocol for uploading / downloading files to or from a remote host. An ftp session can be automated in a script (see [[Example 19-6|Example 19-6]] and [[Example A-4|Example A-4]]).
 
 **uucp**, **uux**, **cu**
 
@@ -447,7 +447,7 @@ exit $?
 #+   taking the user's zip code as an argument.
 ```
 
-See also [[contributed-scripts#^WGETTER2|Example A-30]] and [[contributed-scripts#^BASHPODDER|Example A-31]].
+See also [[Example A-30|Example A-30]] and [[Example A-31|Example A-31]].
 
 **lynx**
 
@@ -701,7 +701,7 @@ fi
 exit $RET
 ```
 
-See also [[contributed-scripts#^NIGHTLYBACKUP|Example A-32]].
+See also [[Example A-32|Example A-32]].
 
 > [!note]
 > Using [[communications-commands#^RCPREF|rcp]], [[communications-commands#^RSYNCREF|rsync]], and similar utilities with security implications in a shell script may not be advisable. Consider, instead, using **ssh**, [[communications-commands#^SCPREF|scp]], or an **expect** script.
