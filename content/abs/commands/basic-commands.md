@@ -7,7 +7,7 @@ title: 16.1. Basic Commands
 
 ## ls
 
-The basic file "list" command. It is all too easy to underestimate the power of this humble command. For example, using the -R, recursive option, **ls** provides a tree-like listing of a directory structure. Other useful options are -S, sort listing by file size, -t, sort by file modification time, -v, sort by (numerical) version numbers embedded in the filenames, [^1] -b, show escape characters, and -i, show file inodes (see [[complex-commands#^IDELETE|Example 16-4]]).
+The basic file "list" command. It is all too easy to underestimate the power of this humble command. For example, using the -R, recursive option, **ls** provides a tree-like listing of a directory structure. Other useful options are -S, sort listing by file size, -t, sort by file modification time, -v, sort by (numerical) version numbers embedded in the filenames, [^1] -b, show escape characters, and -i, show file inodes (see [[Example 16-4|Example 16-4]]).
 
 ```bash
 bash$ ls -l
@@ -113,7 +113,7 @@ cat file.1 file.2 file.3 > file.123   # Combines three files into one.
 
 The -n option to **cat** inserts consecutive numbers before all lines of the target file(s). The -b option numbers only the non-blank lines. The -v option echoes nonprintable characters, using ^ notation. The -s option squeezes multiple consecutive blank lines into a single blank line.
 
-See also [[text-processing-commands#^LNUM|Example 16-28]] and [[text-processing-commands#^ROT13|Example 16-24]].
+See also [[Example 16-28|Example 16-28]] and [[Example 16-24|Example 16-24]].
 
 > [!note]
 > In a [[special-characters#^PIPEREF|pipe]], it may be more efficient to [[io-redirection|redirect]] the stdin to a file, rather than to **cat** the file.
@@ -150,7 +150,7 @@ bash$ rev file1.txt
 
 ## cp
 
-This is the file copy command. **cp file1 file2** copies file1 to file2, overwriting file2 if it already exists (see [[complex-commands#^EX42|Example 16-6]]).
+This is the file copy command. **cp file1 file2** copies file1 to file2, overwriting file2 if it already exists (see [[Example 16-6|Example 16-6]]).
 
 > [!tip]
 > Particularly useful are the -a archive flag (for copying an entire directory tree), the -u update flag (which prevents overwriting identically-named newer files), and the -r and -R recursive flags.
@@ -163,7 +163,7 @@ This is the file copy command. **cp file1 file2** copies file1 to file2, overwri
 
 ## mv
 
-This is the file _move_ command. It is equivalent to a combination of **cp** and **rm**. It may be used to move multiple files to a directory, or even to rename a directory. For some examples of using **mv** in a script, see [[parameter-substitution#^RFE|Example 10-11]] and [[contributed-scripts#^RN|Example A-2]].
+This is the file _move_ command. It is equivalent to a combination of **cp** and **rm**. It may be used to move multiple files to a directory, or even to rename a directory. For some examples of using **mv** in a script, see [[Example 10-11|Example 10-11]] and [[Example A-2|Example A-2]].
 
 > [!note]
 > When used in a non-interactive script, **mv** takes the -f (_force_) option to bypass user input.
@@ -217,7 +217,7 @@ Make directory, creates a new directory. For example, **mkdir -p project/program
 
 ## chmod
 
-Changes the attributes of an existing file or directory (see [[internal-commands-and-builtins#^EX44|Example 15-14]]).
+Changes the attributes of an existing file or directory (see [[Example 15-14|Example 15-14]]).
 
 ```bash
 chmod +x filename
@@ -298,7 +298,7 @@ If a file has the c (compress) attribute set, then it will automatically be comp
 
 ## ln
 
-Creates links to pre-existings files. A "link" is a reference to a file, an alternate name for it. The **ln** command permits referencing the linked file by more than one name and is a superior alternative to aliasing (see [[example 4-6|Example 4-6]]).
+Creates links to pre-existings files. A "link" is a reference to a file, an alternate name for it. The **ln** command permits referencing the linked file by more than one name and is a superior alternative to aliasing (see [[Example 4-6|Example 4-6]]).
 
 The **ln** creates only a reference, a pointer to the file only a few bytes in size.
 
@@ -350,7 +350,7 @@ exit $HELLO_CALL
 
 These commands access the manual and information pages on system commands and installed utilities. When available, the _info_ pages usually contain more detailed descriptions than do the _man_ pages.
 
-There have been various attempts at "automating" the writing of _man pages_. For a script that makes a tentative first step in that direction, see [[contributed-scripts#^MANED|Example A-39]].
+There have been various attempts at "automating" the writing of _man pages_. For a script that makes a tentative first step in that direction, see [[Example A-39|Example A-39]].
 
 [^1]: The -v option also orders the sort by _upper- and lowercase prefixed_ filenames.
 
