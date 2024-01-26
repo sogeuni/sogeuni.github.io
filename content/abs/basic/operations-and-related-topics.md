@@ -77,76 +77,9 @@ bash$ expr 5 % 3
 
 _5/3 = 1, with remainder 2_
 
-This operator finds use in, among other things, generating numbers within a specific range (see [[another-look-at-variables#EX21|Example 9-11]] and [[another-look-at-variables#RANDOMTEST|Example 9-15]]) and formatting program output (see [[arrays#^QFUNCTION|Example 27-16]] and [[contributed-scripts#COLLATZ|Example A-6]]). It can even be used to generate prime numbers, (see [[contributed-scripts#PRIMES|Example A-15]]). Modulo turns up surprisingly often in numerical recipes.
+This operator finds use in, among other things, generating numbers within a specific range (see [[Example 9-11|Example 9-11]] and [[Example 9-15|Example 9-15]]) and formatting program output (see [[Example 27-16|Example 27-16]] and [[Example A-6|Example A-6]]). It can even be used to generate prime numbers, (see [[Example A-15|Example A-15]]). Modulo turns up surprisingly often in numerical recipes.
 
-###### Example 8-1. Greatest common divisor
-
-```bash
-
-#!/bin/bash
-# gcd.sh: greatest common divisor
-#         Uses Euclid's algorithm
-
-#  The "greatest common divisor" (gcd) of two integers
-#+ is the largest integer that will divide both, leaving no remainder.
-
-#  Euclid's algorithm uses successive division.
-#    In each pass,
-#+      dividend <---  divisor
-#+      divisor  <---  remainder
-#+   until remainder = 0.
-#    The gcd = dividend, on the final pass.
-#
-#  For an excellent discussion of Euclid's algorithm, see
-#+ Jim Loy's site, http://www.jimloy.com/number/euclids.htm.
-
-
-# ------------------------------------------------------
-# Argument check
-ARGS=2
-E_BADARGS=85
-
-if [ $# -ne "$ARGS" ]
-then
-  echo "Usage: `basename $0` first-number second-number"
-  exit $E_BADARGS
-fi
-# ------------------------------------------------------
-
-
-gcd ()
-{
-
-  dividend=$1             #  Arbitrary assignment.
-  divisor=$2              #! It doesn't matter which of the two is larger.
-                          #  Why not?
-
-  remainder=1             #  If an uninitialized variable is used inside
-                          #+ test brackets, an error message results.
-
-  until [ "$remainder" -eq 0 ]
-  do    #  ^^^^^^^^^^  Must be previously initialized!
-    let "remainder = $dividend % $divisor"
-    dividend=$divisor     # Now repeat with 2 smallest numbers.
-    divisor=$remainder
-  done                    # Euclid's algorithm
-
-}                         # Last $dividend is the gcd.
-
-
-gcd $1 $2
-
-echo; echo "GCD of $1 and $2 = $dividend"; echo
-
-
-# Exercises :
-# ---------
-# 1) Check command-line arguments to make sure they are integers,
-#+   and exit the script with an appropriate error message if not.
-# 2) Rewrite the gcd () function to use local variables.
-
-exit 0
-```
+![[example 8-1|example 8-1]]
 
 +=
 
@@ -174,62 +107,7 @@ _mod-equal_ (_remainder_ of dividing variable by a constant)
 
 _Arithmetic operators often occur in an [expr](moreadv.html#EXPRREF) or [let](internal.html#LETREF) expression._
 
-###### Example 8-2. Using Arithmetic Operations
-
-```bash
-#!/bin/bash
-# Counting to 11 in 10 different ways.
-
-n=1; echo -n "$n "
-
-let "n = $n + 1"   # let "n = n + 1"  also works.
-echo -n "$n "
-
-
-: $((n = $n + 1))
-#  ":" necessary because otherwise Bash attempts
-#+ to interpret "$((n = $n + 1))" as a command.
-echo -n "$n "
-
-(( n = n + 1 ))
-#  A simpler alternative to the method above.
-#  Thanks, David Lombard, for pointing this out.
-echo -n "$n "
-
-n=$(($n + 1))
-echo -n "$n "
-
-: $[ n = $n + 1 ]
-#  ":" necessary because otherwise Bash attempts
-#+ to interpret "$[ n = $n + 1 ]" as a command.
-#  Works even if "n" was initialized as a string.
-echo -n "$n "
-
-n=$[ $n + 1 ]
-#  Works even if "n" was initialized as a string.
-#* Avoid this type of construct, since it is obsolete and nonportable.
-#  Thanks, Stephane Chazelas.
-echo -n "$n "
-
-# Now for C-style increment operators.
-# Thanks, Frank Wang, for pointing this out.
-
-let "n++"          # let "++n"  also works.
-echo -n "$n "
-
-(( n++ ))          # (( ++n ))  also works.
-echo -n "$n "
-
-: $(( n++ ))       # : $(( ++n )) also works.
-echo -n "$n "
-
-: $[ n++ ]         # : $[ ++n ] also works
-echo -n "$n "
-
-echo
-
-exit 0
-```
+![[example 8-2|example 8-2]]
 
 > [!note]
 > Integer variables in older versions of Bash were signed _long_ (32-bit) integers, in the range of -2147483648 to 2147483647. An operation that took a variable outside these limits gave an erroneous result.
@@ -265,7 +143,7 @@ exit 0
 >
 > Use [[math-commands#BCREF|bc]] in scripts that that need floating point calculations or math library functions.
 
-**bitwise operators.** The bitwise operators seldom make an appearance in shell scripts. Their chief use seems to be manipulating and testing values read from ports or [[dev#SOCKETREF|sockets]]. "Bit flipping" is more relevant to compiled languages, such as C and C++, which provide direct access to system hardware. However, see _vladz's_ ingenious use of bitwise operators in his _base64.sh_ ([[contributed-scripts#BASE64|Example A-54]]) script.
+**bitwise operators.** The bitwise operators seldom make an appearance in shell scripts. Their chief use seems to be manipulating and testing values read from ports or [[dev#SOCKETREF|sockets]]. "Bit flipping" is more relevant to compiled languages, such as C and C++, which provide direct access to system hardware. However, see _vladz's_ ingenious use of bitwise operators in his _base64.sh_ ([[Example A-54|Example A-54]]) script.
 
 **bitwise operators**
 
@@ -279,11 +157,11 @@ _left-shift-equal_
 
 **let "var <<= 2"** results in _var_ left-shifted 2 bits (multiplied by 4)
 
->>
+`>>`
 
 bitwise right shift (divides by 2 for each shift position)
 
->>=
+`>>=`
 
 _right-shift-equal_ (inverse of <<=)
 
@@ -359,72 +237,7 @@ if [[ $condition1 || $condition2 ]]    # Also works.
 
 > [!note] Bash tests the [[exit-and-exit-status#EXITSTATUSREF|exit status]] of each statement linked with a logical operator.
 
-###### Example 8-3. Compound Condition Tests Using && and ||
-
-```bash
-#!/bin/bash
-
-a=24
-b=47
-
-if [ "$a" -eq 24 ] && [ "$b" -eq 47 ]
-then
-  echo "Test #1 succeeds."
-else
-  echo "Test #1 fails."
-fi
-
-# ERROR:   if [ "$a" -eq 24 && "$b" -eq 47 ]
-#+         attempts to execute  ' [ "$a" -eq 24 '
-#+         and fails to finding matching ']'.
-#
-#  Note:  if [[ $a -eq 24 && $b -eq 24 ]]  works.
-#  The double-bracket if-test is more flexible
-#+ than the single-bracket version.       
-#    (The "&&" has a different meaning in line 17 than in line 6.)
-#    Thanks, Stephane Chazelas, for pointing this out.
-
-
-if [ "$a" -eq 98 ] || [ "$b" -eq 47 ]
-then
-  echo "Test #2 succeeds."
-else
-  echo "Test #2 fails."
-fi
-
-
-#  The -a and -o options provide
-#+ an alternative compound condition test.
-#  Thanks to Patrick Callahan for pointing this out.
-
-
-if [ "$a" -eq 24 -a "$b" -eq 47 ]
-then
-  echo "Test #3 succeeds."
-else
-  echo "Test #3 fails."
-fi
-
-
-if [ "$a" -eq 98 -o "$b" -eq 47 ]
-then
-  echo "Test #4 succeeds."
-else
-  echo "Test #4 fails."
-fi
-
-
-a=rhino
-b=crocodile
-if [ "$a" = rhino ] && [ "$b" = crocodile ]
-then
-  echo "Test #5 succeeds."
-else
-  echo "Test #5 fails."
-fi
-
-exit 0
-```
+![[example 8-3|example 8-3]]
 
 The && and || operators also find use in an arithmetic context.
 
@@ -457,143 +270,15 @@ The comma operator finds use mainly in [[loops#FORLOOPREF1|for loops]]. See [[lo
 
 A shell script interprets a number as decimal (base 10), unless that number has a special prefix or notation. A number preceded by a _0_ is _octal_ (base 8). A number preceded by _0x_ is _hexadecimal_ (base 16). A number with an embedded _#_ evaluates as _BASE#NUMBER_ (with range and notational restrictions).
 
-###### Example 8-4. Representation of numerical constants
-
-```bash
-#!/bin/bash
-# numbers.sh: Representation of numbers in different bases.
-
-# Decimal: the default
-let "dec = 32"
-echo "decimal number = $dec"             # 32
-# Nothing out of the ordinary here.
-
-
-# Octal: numbers preceded by '0' (zero)
-let "oct = 032"
-echo "octal number = $oct"               # 26
-# Expresses result in decimal.
-# --------- ------ -- -------
-
-
-# Hexadecimal: numbers preceded by '0x' or '0X'
-let "hex = 0x32"
-echo "hexadecimal number = $hex"         # 50
-
-echo $((0x9abc))                         # 39612
-#     ^^      ^^   double-parentheses arithmetic expansion/evaluation
-# Expresses result in decimal.
-
-
-
-# Other bases: BASE#NUMBER
-# BASE between 2 and 64.
-# NUMBER must use symbols within the BASE range, see below.
-
-
-let "bin = 2#111100111001101"
-echo "binary number = $bin"              # 31181
-
-let "b32 = 32#77"
-echo "base-32 number = $b32"             # 231
-
-let "b64 = 64#@_"
-echo "base-64 number = $b64"             # 4031
-# This notation only works for a limited range (2 - 64) of ASCII characters.
-# 10 digits + 26 lowercase characters + 26 uppercase characters + @ + _
-
-
-echo
-
-echo $((36#zz)) $((2#10101010)) $((16#AF16)) $((53#1aA))
-                                         # 1295 170 44822 3375
-
-
-#  Important note:
-#  --------------
-#  Using a digit out of range of the specified base notation
-#+ gives an error message.
-
-let "bad_oct = 081"
-# (Partial) error message output:
-#  bad_oct = 081: value too great for base (error token is "081")
-#              Octal numbers use only digits in the range 0 - 7.
-
-exit $?   # Exit value = 1 (error)
-
-# Thanks, Rich Bartell and Stephane Chazelas, for clarification.
-```
+![[example 8-4|example 8-4]]
 
 ## The Double-Parentheses Construct
 
 Similar to the [[internal-commands-and-builtins#^LETREF|let]] command, the **(( ... ))** construct permits arithmetic expansion and evaluation. In its simplest form, **a=$(( 5 + 3 ))** would set **a** to **5 + 3**, or **8**. However, this double-parentheses construct is also a mechanism for allowing C-style manipulation of variables in Bash, for example, (( var++ )).
 
-###### Example 8-5. C-style manipulation of variables
+![[example 8-5|example 8-5]]
 
-```bash
-#!/bin/bash
-# c-vars.sh
-# Manipulating a variable, C-style, using the (( ... )) construct.
-
-
-echo
-
-(( a = 23 ))  #  Setting a value, C-style,
-              #+ with spaces on both sides of the "=".
-echo "a (initial value) = $a"   # 23
-
-(( a++ ))     #  Post-increment 'a', C-style.
-echo "a (after a++) = $a"       # 24
-
-(( a-- ))     #  Post-decrement 'a', C-style.
-echo "a (after a--) = $a"       # 23
-
-
-(( ++a ))     #  Pre-increment 'a', C-style.
-echo "a (after ++a) = $a"       # 24
-
-(( --a ))     #  Pre-decrement 'a', C-style.
-echo "a (after --a) = $a"       # 23
-
-echo
-
-########################################################
-#  Note that, as in C, pre- and post-decrement operators
-#+ have different side-effects.
-
-n=1; let --n && echo "True" || echo "False"  # False
-n=1; let n-- && echo "True" || echo "False"  # True
-
-#  Thanks, Jeroen Domburg.
-########################################################
-
-echo
-
-(( t = a<45?7:11 ))   # C-style trinary operator.
-#       ^  ^ ^
-echo "If a < 45, then t = 7, else t = 11."  # a = 23
-echo "t = $t "                              # t = 7
-
-echo
-
-
-# -----------------
-# Easter Egg alert!
-# -----------------
-#  Chet Ramey seems to have snuck a bunch of undocumented C-style
-#+ constructs into Bash (actually adapted from ksh, pretty much).
-#  In the Bash docs, Ramey calls (( ... )) shell arithmetic,
-#+ but it goes far beyond that.
-#  Sorry, Chet, the secret is out.
-
-# See also "for" and "while" loops using the (( ... )) construct.
-
-# These work only with version 2.04 or later of Bash.
-
-exit
-```
-
-See also [[loops#^FORLOOPC|Example 11-13]] and [[operations-and-related-topics#^NUMBERS|Example 8-4]].
+See also [[Example 11-13|Example 11-13]] and [[Example 8-4|Example 8-4]].
 
 ## Operator Precedence
 
