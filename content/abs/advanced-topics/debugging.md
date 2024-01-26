@@ -90,7 +90,7 @@ rm "$badname"
 exit 0
 ```
 
-Try to find out what's wrong with [[debugging#^EX75|Example 32-3]] by uncommenting the **echo "$badname"** line. Echo statements are useful for seeing whether what you expect is actually what you get.
+Try to find out what's wrong with [[Example 32-3|Example 32-3]] by uncommenting the **echo "$badname"** line. Echo statements are useful for seeing whether what you expect is actually what you get.
 
 In this particular case, **rm "$badname"** will not give the desired results because $badname should not be quoted. Placing it in quotes ensures that **rm** has only one argument (it will match only one filename). A partial fix is to remove to quotes from $badname and to reset $IFS to contain only a newline, **IFS=$'\n'**. However, there are simpler ways of going about it.
 
@@ -435,7 +435,7 @@ exit $?
 > VARIABLE-TRACE> $variable = "87"
 > ```
 
-Of course, the **trap** command has other uses aside from debugging, such as disabling certain keystrokes within a script (see [[contributed-scripts#^STOPWATCH|Example A-43]]).
+Of course, the **trap** command has other uses aside from debugging, such as disabling certain keystrokes within a script (see [[Example A-43|Example A-43]]).
 
 ###### Example 32-9. Running multiple processes (on an SMP box)
 
