@@ -181,7 +181,7 @@ do
 done
 ```
 
-See [[file-and-archiving-commands#^EX48|Example 16-30]], [[special-chars#^EX58|Example 3-4]], and [[loops1#^FINDSTRING|Example 11-10]] for scripts using **find**. Its [[basic#^MANREF|manpage]] provides more detail on this complex and powerful command.
+See [[Example 16-30|Example 16-30]], [[Example 3-4|Example 3-4]], and [[Example 11-10|Example 11-10]] for scripts using **find**. Its [[basic#^MANREF|manpage]] provides more detail on this complex and powerful command.
 
 **xargs**
 
