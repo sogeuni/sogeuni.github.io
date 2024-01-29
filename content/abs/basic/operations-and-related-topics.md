@@ -264,7 +264,7 @@ let "t2 = ((a = 9, 15 / 3))"      # Set "a" and calculate "t2".
 echo "t2 = $t2    a = $a"         # t2 = 5    a = 9
 ```
 
-The comma operator finds use mainly in [[loops#FORLOOPREF1|for loops]]. See [[loops.html#FORLOOPC|Example 11-13]].
+The comma operator finds use mainly in [[loops-and-branches#FORLOOPREF1|for loops]]. See [[loops.html#FORLOOPC|Example 11-13]].
 
 ## Numerical Constants
 
