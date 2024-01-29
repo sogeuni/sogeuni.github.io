@@ -79,7 +79,7 @@ _5/3 = 1, with remainder 2_
 
 This operator finds use in, among other things, generating numbers within a specific range (see [[Example 9-11|Example 9-11]] and [[Example 9-15|Example 9-15]]) and formatting program output (see [[Example 27-16|Example 27-16]] and [[Example A-6|Example A-6]]). It can even be used to generate prime numbers, (see [[Example A-15|Example A-15]]). Modulo turns up surprisingly often in numerical recipes.
 
-![[example 8-1|example 8-1]]
+![[Example 8-1|Example 8-1]]
 
 +=
 
@@ -107,7 +107,7 @@ _mod-equal_ (_remainder_ of dividing variable by a constant)
 
 _Arithmetic operators often occur in an [expr](moreadv.html#EXPRREF) or [let](internal.html#LETREF) expression._
 
-![[example 8-2|example 8-2]]
+![[Example 8-2|Example 8-2]]
 
 > [!note]
 > Integer variables in older versions of Bash were signed _long_ (32-bit) integers, in the range of -2147483648 to 2147483647. An operation that took a variable outside these limits gave an erroneous result.
@@ -237,7 +237,7 @@ if [[ $condition1 || $condition2 ]]    # Also works.
 
 > [!note] Bash tests the [[exit-and-exit-status#EXITSTATUSREF|exit status]] of each statement linked with a logical operator.
 
-![[example 8-3|example 8-3]]
+![[Example 8-3|Example 8-3]]
 
 The && and || operators also find use in an arithmetic context.
 
@@ -270,13 +270,13 @@ The comma operator finds use mainly in [[loops#FORLOOPREF1|for loops]]. See [[lo
 
 A shell script interprets a number as decimal (base 10), unless that number has a special prefix or notation. A number preceded by a _0_ is _octal_ (base 8). A number preceded by _0x_ is _hexadecimal_ (base 16). A number with an embedded _#_ evaluates as _BASE#NUMBER_ (with range and notational restrictions).
 
-![[example 8-4|example 8-4]]
+![[Example 8-4|Example 8-4]]
 
 ## The Double-Parentheses Construct
 
 Similar to the [[internal-commands-and-builtins#^LETREF|let]] command, the **(( ... ))** construct permits arithmetic expansion and evaluation. In its simplest form, **a=$(( 5 + 3 ))** would set **a** to **5 + 3**, or **8**. However, this double-parentheses construct is also a mechanism for allowing C-style manipulation of variables in Bash, for example, (( var++ )).
 
-![[example 8-5|example 8-5]]
+![[Example 8-5|Example 8-5]]
 
 See also [[Example 11-13|Example 11-13]] and [[Example 8-4|Example 8-4]].
 
