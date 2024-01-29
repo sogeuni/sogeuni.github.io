@@ -17,7 +17,7 @@ Hint: Use the [[basic-commands#^CATREF|cat]] command and the appropriate [[other
 
 Perform a recursive directory listing on the user's home directory and save the information to a file. Compress the file, have the script prompt the user to insert a USB flash drive, then press **ENTER**. Finally, save the file to the flash drive after making certain the flash drive has properly mounted by parsing the output of [[system-and-administrative-commands#^DFREF|df]]. Note that the flash drive must be _unmounted_ before it is removed.
 
-**Converting [[loops#^FORLOOPREF1|for]] loops to [[loops#^WHILELOOPREF|while]] and [[loops#^UNTILLOOPREF|until]] loops**
+**Converting [[loops-and-branches#^FORLOOPREF1|for]] loops to [[loops-and-branches#^WHILELOOPREF|while]] and [[loops-and-branches#^UNTILLOOPREF|until]] loops**
 
 Convert the _for loops_ in [[Example 11-1|Example 11-1]] to _while loops_. Hint: store the data in an [[arrays#^ARRAYREF|array]] and step through the array elements.
 

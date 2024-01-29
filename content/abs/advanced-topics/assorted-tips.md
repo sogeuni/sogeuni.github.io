@@ -516,7 +516,7 @@ exit 0
 
 For a more elaborate example of passing arrays to functions, see [[Example A-10|Example A-10]].
 
-- Using the [[operations-and-related-topics|double-parentheses construct]], it is possible to use C-style syntax for setting and incrementing/decrementing variables and in [[loops#^FORLOOPREF1|for]] and [[loops#^WHILELOOPREF|while]] loops. See [[Example 11-13|Example 11-13]] and [[Example 11-18|Example 11-18]].
+- Using the [[operations-and-related-topics|double-parentheses construct]], it is possible to use C-style syntax for setting and incrementing/decrementing variables and in [[loops-and-branches#^FORLOOPREF1|for]] and [[loops-and-branches#^WHILELOOPREF|while]] loops. See [[Example 11-13|Example 11-13]] and [[Example 11-18|Example 11-18]].
 
 - Setting the [[another-look-at-variables#^PATHREF|path]] and [[system-and-administrative-commands#^UMASKREF|umask]] at the beginning of a script makes it more [[portability-issues|portable]] -- more likely to run on a "foreign" machine whose user may have bollixed up the $PATH and **umask**.
 

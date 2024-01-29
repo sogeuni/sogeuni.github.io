@@ -23,7 +23,7 @@ Bash has certain features that the traditional [[shell-programming#^BASHDEF|Bour
 - Certain [[arrays#^ARRAYREF|array]] operations, and [[bash-version-4#^ASSOCARR|associative arrays]]
 - The [[tests#^DBLBRACKETS|double brackets]] extended test construct
 - The [[operations-and-related-topics#^DBLPARENSREF|double-parentheses]] arithmetic-evaluation construct
-- Certain [[manipulating-strings#^STRINGMANIP|string manipulation]] operations
+- Certain [[manipulating-variables#^STRINGMANIP|string manipulation]] operations
 - [[process-substitution#^PROCESSSUBREF|Process substitution]]
 - A Regular Expression [[bash-version-3#^REGEXMATCHREF|matching operator]]
 - Bash-specific [[internal-commands-and-builtins|builtins]]

@@ -213,7 +213,7 @@ echo ${#array2[*]}     # 3     (number of elements in array)
 exit
 ```
 
-Many of the standard [[manipulating-strings#^STRINGMANIP|string operations]] work on arrays.
+Many of the standard [[manipulating-variables#^STRINGMANIP|string operations]] work on arrays.
 
 ###### Example 27-4. String operations on arrays
 

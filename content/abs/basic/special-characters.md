@@ -78,7 +78,7 @@ Note that the ";" [[complex-commands#^FINDREF0|sometimes needs to be *escaped*]]
 
 ### ;; (double semicolon)
 
-**Terminator in a [[testing-and-branching#^CASEESAC1|case]] option \[double semicolon].**
+**Terminator in a [[loops-and-branches#^CASEESAC1|case]] option \[double semicolon].**
 
 ```bash
 case "$variable" in
@@ -520,7 +520,7 @@ The code block enclosed in braces may have [[io-redirection|I/O redirected]] to 
 > [!note]
 > Unlike a command group within (parentheses), as above, a code block enclosed by {braces} will *not* normally launch a [[subshells#^SUBSHELLSREF|subshell]]. [^6]
 >
-> It is possible to [[loops#^ITERATIONREF|iterate]] a code block using a [[loops#^NODODONE|non-standard *for-loop*]].
+> It is possible to [[loops-and-branches#^ITERATIONREF|iterate]] a code block using a [[loops-and-branches#^NODODONE|non-standard *for-loop*]].
 
 ### {}
 
@@ -759,7 +759,7 @@ bash$ sleep 10 &
 	      
 ```
 
-Within a script, commands and even [[loops#^FORLOOPREF1|loops]] may run in the background.
+Within a script, commands and even [[loops-and-branches#^FORLOOPREF1|loops]] may run in the background.
 
 ![[Example 3-3]]
 

@@ -23,7 +23,7 @@ bash$ seq -s : 5
 1:2:3:4:5
 ```
 
-Both **jot** and **seq** come in handy in a [[loops#^FORLOOPREF1|for loop]].
+Both **jot** and **seq** come in handy in a [[loops-and-branches#^FORLOOPREF1|for loop]].
 
 ###### Example 16-54. Using *seq* to generate loop arguments
 

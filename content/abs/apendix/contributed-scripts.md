@@ -10912,7 +10912,7 @@ exit $E_NOEXIT   # Shouldn't exit here.
 #+ Fix this.
 ```
 
-###### Example A-50. An alternate version of the [[manipulating-strings#^GETOPTSIMPLE|getopt-simple.sh]] script
+###### Example A-50. An alternate version of the [[manipulating-variables#^GETOPTSIMPLE|getopt-simple.sh]] script
 
 ```bash
 #!/bin/bash

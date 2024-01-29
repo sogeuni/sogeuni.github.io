@@ -404,7 +404,7 @@ The secondary prompt, seen when additional input is expected. It displays as ">"
 
 $PS3
 
-The tertiary prompt, displayed in a [[testing-and-branching#^SELECTREF|select]] loop (see [[Example 11-30|Example 11-30]]).
+The tertiary prompt, displayed in a [[loops-and-branches#^SELECTREF|select]] loop (see [[Example 11-30|Example 11-30]]).
 
 $PS4
 
@@ -470,7 +470,7 @@ exit $result
 
 $REPLY
 
-The default value when a variable is not supplied to [[internal-commands-and-builtins#^READREF|read]]. Also applicable to [[testing-and-branching#^SELECTREF|select]] menus, but only supplies the item number of the variable chosen, not the value of the variable itself.
+The default value when a variable is not supplied to [[internal-commands-and-builtins#^READREF|read]]. Also applicable to [[loops-and-branches#^SELECTREF|select]] menus, but only supplies the item number of the variable chosen, not the value of the variable itself.
 
 ```bash
 #!/bin/bash
