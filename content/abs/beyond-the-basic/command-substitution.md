@@ -165,64 +165,13 @@ fi
 > [!caution]
 > Do not set a variable to the contents of a _long_ text file unless you have a very good reason for doing so. Do not set a variable to the contents of a _binary_ file, even as a joke.
 >
-> **Example 12-1. Stupid script tricks**
->
-> ```bash
-> #!/bin/bash
-> # stupid-script-tricks.sh: Don't try this at home, folks.
-> # From "Stupid Script Tricks," Volume I.
-> 
-> exit 99  ### Comment out this line if you dare.
-> 
-> dangerous_variable=`cat /boot/vmlinuz`   # The compressed Linux kernel itself.
-> 
-> echo "string-length of \$dangerous_variable = ${#dangerous_variable}"
-> # string-length of $dangerous_variable = 794151
-> # (Newer kernels are bigger.)
-> # Does not give same count as 'wc -c /boot/vmlinuz'.
-> 
-> # echo "$dangerous_variable"
-> # Don't try this! It would hang the script.
-> 
-> 
-> #  The document author is aware of no useful applications for
-> #+ setting a variable to the contents of a binary file.
-> 
-> exit 0
-> ```
+> ![[Example 12-1|Example 12-1]]
 >
 > Notice that a _buffer overrun_ does not occur. This is one instance where an interpreted language, such as Bash, provides more protection from programmer mistakes than a compiled language.
 
 Command substitution permits setting a variable to the output of a [[loops-and-branches#^FORLOOPREF1|loop]]. The key to this is grabbing the output of an [[internal-commands-and-builtins#^ECHOREF|echo]] command within the loop.
 
-###### Example 12-2. Generating a variable from a loop
-
-```bash
-#!/bin/bash
-# csubloop.sh: Setting a variable to the output of a loop.
-
-variable1=`for i in 1 2 3 4 5
-do
-  echo -n "$i"                 #  The 'echo' command is critical
-done`                          #+ to command substitution here.
-
-echo "variable1 = $variable1"  # variable1 = 12345
-
-
-i=0
-variable2=`while [ "$i" -lt 10 ]
-do
-  echo -n "$i"                 # Again, the necessary 'echo'.
-  let "i += 1"                 # Increment.
-done`
-
-echo "variable2 = $variable2"  # variable2 = 0123456789
-
-#  Demonstrates that it's possible to embed a loop
-#+ inside a variable declaration.
-
-exit 0
-```
+![[Example 12-2|Example 12-2]]
 
 > Command substitution makes it possible to extend the toolset available to Bash. It is simply a matter of writing a program or script that outputs to stdout (like a well-behaved UNIX tool should) and assigning that output to a variable.
 >
