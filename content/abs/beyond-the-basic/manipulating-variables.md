@@ -219,7 +219,7 @@ done ### This could be condensed into a "one-liner" if desired.
 # Thank you, Rory Winston.
 ```
 
-`${string%%substring}`
+`${string\%\%substring}`
 
 Deletes longest match of _$substring_ from _back_ of _$string_.
 
