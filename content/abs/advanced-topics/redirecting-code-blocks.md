@@ -3,7 +3,7 @@ title: 20.2. Redirecting Code Blocks
 ---
 
 
-Blocks of code, such as [[loops#^WHILELOOPREF|while]], [[loops#^UNTILLOOPREF|until]], and [[loops#^FORLOOPREF1|for]] loops, even [[tests#^IFTHEN|if/then]] test blocks can also incorporate redirection of stdin. Even a function may use this form of redirection (see [[Example 24-11|Example 24-11]]). The < operator at the end of the code block accomplishes this.
+Blocks of code, such as [[loops-and-branches#^WHILELOOPREF|while]], [[loops-and-branches#^UNTILLOOPREF|until]], and [[loops-and-branches#^FORLOOPREF1|for]] loops, even [[tests#^IFTHEN|if/then]] test blocks can also incorporate redirection of stdin. Even a function may use this form of redirection (see [[Example 24-11|Example 24-11]]). The < operator at the end of the code block accomplishes this.
 
 ###### Example 20-5. Redirected *while* loop
 
