@@ -115,7 +115,7 @@ echo a111b \| gawk '/a1+b/'
 >
 > **Perl** and some **egrep** versions do not require escaping the curly brackets.
     
-- Parentheses -- **( )** -- enclose a group of REs. They are useful with the following "|" operator and in [[manipulating-strings#^EXPRPAREN|substring extraction]] using [[complex-commands#^EXPRREF|expr]].
+- Parentheses -- **( )** -- enclose a group of REs. They are useful with the following "|" operator and in [[manipulating-variables#^EXPRPAREN|substring extraction]] using [[complex-commands#^EXPRREF|expr]].
     
 - The -- **|** -- "or" RE operator matches any of a set of alternate characters.
     
