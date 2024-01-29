@@ -99,7 +99,7 @@ exit $?   # In this case, exit code = 99, since that is function return.
 > address[   ]="Blank"   # Error!
 > ```
     
-- Enhancements to the [[testing-and-branching#^CASEESAC1|case]] construct: the _;;&_ and _;&_ terminators.
+- Enhancements to the [[loops-and-branches#^CASEESAC1|case]] construct: the _;;&_ and _;&_ terminators.
     
     **Example 37-7. Testing characters**
     
@@ -646,7 +646,7 @@ echo
 # See also neg-offset.sh.
 ```
     
-- [[manipulating-strings#^SUBSTREXTR01|Substring extraction]] uses a negative _length_ parameter to specify an offset from the _end_ of the target string.
+- [[manipulating-variables#^SUBSTREXTR01|Substring extraction]] uses a negative _length_ parameter to specify an offset from the _end_ of the target string.
     
     **Example 37-12. Negative parameter in string-extraction construct**
 
