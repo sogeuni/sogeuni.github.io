@@ -89,7 +89,7 @@ fi
 
 - _These last two examples courtesy of Stéphane Chazelas._
 
-![[example 7-1|example 7-1]]
+![[Example 7-1|Example 7-1]]
 
 **Exercise.** Explain the behavior of [[Example 7-1|Example 7-1]], above.
 
@@ -157,7 +157,7 @@ The **if test condition-true** construct is the exact equivalent of **if [ condi
 >
 > If, for some reason, you wish to use /usr/bin/test in a Bash script, then specify it by full pathname.
 
-![[example 7-2|example 7-2]]
+![[Example 7-2|Example 7-2]]
 
 > The `[[]]` construct is the more versatile Bash version of `[ ]`. This is the _extended test command_, adopted from _ksh88_.
 >
@@ -236,7 +236,7 @@ The **if test condition-true** construct is the exact equivalent of **if [ condi
 
 The [[operations-and-related-topics|(( )) construct]] expands and evaluates an arithmetic expression. If the expression evaluates as zero, it returns an [[exit-and-exit-status#^EXITSTATUSREF|exit status]] of 1, or "false". A non-zero expression returns an exit status of 0, or "true". This is in marked contrast to using the **test** and [ ] constructs previously discussed.
 
-![[example 7-3|example 7-3]]
+![[Example 7-3|Example 7-3]]
 
 ## File test operators
 
@@ -398,7 +398,7 @@ files _f1_ and _f2_ are hard links to the same file
 
 "not" -- reverses the sense of the tests above (returns true if condition absent).
 
-![[example 7-4|example 7-4]]
+![[Example 7-4|Example 7-4]]
 
 [[Example 31-1|Example 31-1]], [[Example 11-8|Example 11-8]], [[Example 11-3|Example 11-3]], [[Example 31-3|Example 31-3]], and [[Example A-1|Example A-1]] also illustrate uses of the file test operators.
 
@@ -553,11 +553,11 @@ string is not _null._
 
 > [!caution] The **-n** test requires that the string be quoted within the test brackets. Using an unquoted string with _! -z_, or even just the unquoted string alone within test brackets (see [[Example 7-6|Example 7-6]]) normally works, however, this is an unsafe practice. _Always_ quote a tested string. [^5]
 
-![[example 7-5|example 7-5]]
+![[Example 7-5|Example 7-5]]
 
-![[example 7-6|example 7-6]]
+![[Example 7-6|Example 7-6]]
 
-![[example 7-7|example 7-7]]
+![[Example 7-7|Example 7-7]]
 
 **compound comparison**
 
