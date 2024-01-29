@@ -500,7 +500,7 @@ tail -f /var/log/messages | grep "$ERROR_MSG" >> error.log
     
 - Bash scripts written for Linux or BSD systems may need fixups to run on a commercial UNIX machine. Such scripts often employ the GNU set of commands and filters, which have greater functionality than their generic UNIX counterparts. This is particularly true of such text processing utilites as [[text-processing-commands#^TRREF|tr]].
     
-- Sadly, updates to Bash itself have broken older scripts that [[manipulating-strings#^PARAGRAPHSPACE|used to work perfectly fine]]. Let us recall [[gotchas#^UNDOCF|how risky it is to use undocumented Bash features]].
+- Sadly, updates to Bash itself have broken older scripts that [[manipulating-variables#^PARAGRAPHSPACE|used to work perfectly fine]]. Let us recall [[gotchas#^UNDOCF|how risky it is to use undocumented Bash features]].
 
 > Danger is near thee --
 >
