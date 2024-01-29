@@ -12,7 +12,7 @@ script_name=`basename $0`
 echo "The name of this script is $script_name."
 ```
 
-**The output of commands can be used as arguments to another command, to set a variable, and even for generating the argument list in a [[loops#^FORLOOPREF1|for]] loop.**
+**The output of commands can be used as arguments to another command, to set a variable, and even for generating the argument list in a [[loops-and-branches#^FORLOOPREF1|for]] loop.**
 
 ```bash
 rm `cat filename`   # "filename" contains a list of files to delete.
@@ -193,7 +193,7 @@ fi
 >
 > Notice that a _buffer overrun_ does not occur. This is one instance where an interpreted language, such as Bash, provides more protection from programmer mistakes than a compiled language.
 
-Command substitution permits setting a variable to the output of a [[loops#^FORLOOPREF1|loop]]. The key to this is grabbing the output of an [[internal-commands-and-builtins#^ECHOREF|echo]] command within the loop.
+Command substitution permits setting a variable to the output of a [[loops-and-branches#^FORLOOPREF1|loop]]. The key to this is grabbing the output of an [[internal-commands-and-builtins#^ECHOREF|echo]] command within the loop.
 
 ###### Example 12-2. Generating a variable from a loop
 
