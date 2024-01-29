@@ -1386,12 +1386,12 @@ This powerful tool parses command-line arguments passed to the script. This is t
 
 The **getopts** construct uses two implicit variables. $OPTIND is the argument pointer (_OPTion INDex_) and $OPTARG (_OPTion ARGument_) the (optional) argument attached to an option. A colon following the option name in the declaration tags that option as having an associated argument.
 
-A **getopts** construct usually comes packaged in a [[loops#^WHILELOOPREF|while loop]], which processes the options and arguments one at a time, then increments the implicit $OPTIND variable to point to the next.
+A **getopts** construct usually comes packaged in a [[loops-and-branches#^WHILELOOPREF|while loop]], which processes the options and arguments one at a time, then increments the implicit $OPTIND variable to point to the next.
 
 > [!note]
 >
 > 1. The arguments passed from the command-line to the script must be preceded by a dash (-). It is the prefixed - that lets **getopts** recognize command-line arguments as _options_. In fact, **getopts** will not process arguments without the prefixed -, and will terminate option processing at the first argument encountered lacking them.
-> 2. The **getopts** template differs slightly from the standard [[loops#^WHILELOOPREF|while loop]], in that it lacks condition brackets.
+> 2. The **getopts** template differs slightly from the standard [[loops-and-branches#^WHILELOOPREF|while loop]], in that it lacks condition brackets.
 > 3. The **getopts** construct is a highly functional replacement for the traditional [[miscellaneous-commands#^GETOPTY|getopt]] external command.
 
 ```bash
