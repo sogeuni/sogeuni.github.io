@@ -90,7 +90,7 @@ COMMAND "$variable2 $variable2 $variable2"
 
 > [!tip] Enclosing the arguments to an **echo** statement in double quotes is necessary only when word splitting or preservation of [[special-characters#Whitespace|whitespace]] is an issue.
 
-![[example 5-1]]
+![[Example 5-1]]
 
 Single quotes (' ') operate similarly to double quotes, but do not permit referencing variables, since the special meaning of $ is turned off. Within single quotes, *every* special character except ' gets interpreted literally. Consider single quotes ("full quoting") to be a stricter method of quoting than double quotes ("partial quoting").
 
@@ -150,11 +150,11 @@ translates to the octal [[special-characters#^ASCIIDEF|ASCII]] equivalent of *0n
 
 > [!important] The `$' ... '` [[Chapter%205.%20Quoting.md#^QUOTINGREF|quoted]] string-expansion construct is a mechanism that uses escaped octal or hex values to assign ASCII characters to variables, e.g., `quote=$'\042'`.
 
-![[example 5-2]]
+![[Example 5-2]]
 
 A more elaborate example:
 
-![[example 5-3]]
+![[Example 5-3]]
 
 See also [[Example 37-1]].
 

@@ -513,9 +513,9 @@ echo "a = $a"   # a = 321   (value inside code block)
 
 The code block enclosed in braces may have [[io-redirection|I/O redirected]] to and from it. 
 
-![[example 3-1]]
+![[Example 3-1]]
 
-![[example 3-2]]
+![[Example 3-2]]
 
 > [!note]
 > Unlike a command group within (parentheses), as above, a code block enclosed by {braces} will *not* normally launch a [[subshells#^SUBSHELLSREF|subshell]]. [^6]
@@ -761,7 +761,7 @@ bash$ sleep 10 &
 
 Within a script, commands and even [[loops#^FORLOOPREF1|loops]] may run in the background.
 
-![[example 3-3]]
+![[Example 3-3]]
 
 > [!caution] A command run in the background within a script may cause the script to hang, waiting for a keystroke. Fortunately, there is a [[job-control-commands#^WAITHANG|remedy]] for this.|
 
@@ -936,7 +936,7 @@ Using [[file-and-archiving-commands#^DIFFREF|diff]] to compare a file with a *se
 
 Finally, a real-world example using *-* with [[file-and-archiving-commands#^TARREF|tar]].
 
-![[example 3-4]]
+![[Example 3-4]]
 
 > [!caution]
 > Filenames beginning with "-" may cause problems when coupled with the "-" redirection operator. A script should check for this and add an appropriate prefix to such filenames, for example ./-FILENAME, $PWD/-FILENAME, or $PATHNAME/-FILENAME.

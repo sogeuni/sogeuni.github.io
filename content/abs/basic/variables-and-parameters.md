@@ -31,7 +31,7 @@ Enclosing a referenced value in *double quotes* (" ... ") does not interfere wit
 
 Note that **$variable** is actually a simplified form of **${variable}**. In contexts where the **$variable** syntax causes an error, the longer form may work (see [[parameter-substitution.html|Section 10.2]], below).
 
-![[example 4-1|example 4-1]]
+![[Example 4-1|Example 4-1]]
 
 > [!caution]
 > An uninitialized variable has a "null" value -- no assigned value at all (*not* zero!).
@@ -68,9 +68,9 @@ the assignment operator (*no space before and after*)
 >
 > Note that = can be either an *assignment* or a *test* operator, depending on context.
 
-![[example 4-2|example 4-2]]
+![[Example 4-2|Example 4-2]]
 
-![[example 4-3|example 4-3]]
+![[Example 4-3|Example 4-3]]
 
 Variable assignment using the *$(...)* mechanism (a newer method than [[command-substitution#^BACKQUOTESREF|backquotes]]). This is likewise a form of [[command-substitution#^COMMANDSUBREF|command substitution]].
 
@@ -84,7 +84,7 @@ arch=$(uname -m)
 
 Unlike many other programming languages, Bash does not segregate its variables by "type." Essentially, *Bash variables are character strings*, but, depending on context, Bash permits arithmetic operations and comparisons on variables. The determining factor is whether the value of a variable contains only digits.
 
-![[example 4-4|example 4-4]]
+![[Example 4-4|Example 4-4]]
 
 Untyped variables are both a blessing and a curse. They permit more flexibility in scripting and make it easier to grind out lines of code (and give you enough rope to hang yourself!). However, they likewise permit subtle errors to creep in and encourage sloppy programming habits.
 
@@ -134,7 +134,7 @@ $0 is the name of the script itself, $1 is the first argument, $2 the second, $3
 
 The special variables [[another-look-at-variables#^APPREF|$* and $@]] denote *all* the positional parameters.
 
-![[example 4-5|example 4-5]]
+![[Example 4-5|Example 4-5]]
 
 *Bracket notation* for positional parameters leads to a fairly simple way of referencing the *last* argument passed to a script on the command-line. This also requires [[bashver2#^VARREFNEW|indirect referencing]].
 
@@ -184,7 +184,7 @@ fi
 
 ---
 
-![[example 4-6|example 4-6]]
+![[Example 4-6|Example 4-6]]
 
 ---
 
@@ -194,7 +194,7 @@ $1 <--- $2, $2 <--- $3, $3 <--- $4, etc.
 
 The old $1 disappears, but *$0 (the script name) does not change*. If you use a large number of positional parameters to a script, **shift** lets you access those past 10, although [[othertypesv#^BRACKETNOTATION|{bracket} notation]] also permits this.
 
-![[example 4-7|example 4-7]]
+![[Example 4-7|Example 4-7]]
 
 The **shift** command can take a numerical parameter indicating how many positions to shift.
 

@@ -64,13 +64,13 @@ Following the execution of a [[special-characters#^PIPEREF|pipe]], a $? gives th
 
 After a script terminates, a $? from the command-line gives the exit status of the script, that is, the last command executed in the script, which is, by convention, **0** on success or an integer in the range 1 - 255 on error.
 
-![[example 6-1|example 6-1]]
+![[Example 6-1|Example 6-1]]
 
 [[another-look-at-variables#^XSTATVARREF|$?]] is especially useful for testing the result of a command in a script (see [[Example 16-35|Example 16-35]] and [[Example 16-20|Example 16-20]]).
 
 > [!note] The [[special-characters#^NOTREF|!]], the _logical not_ qualifier, reverses the outcome of a test or command, and this affects its [[exit-and-exit-status#^EXITSTATUSREF|exit status]].
 >
-> ![[example 6-2|example 6-2]]
+> ![[Example 6-2|Example 6-2]]
 
 > [!caution] Certain exit status codes have [[exit-codes-with-special-meanings#^EXITCODESREF|reserved meanings]] and should not be user-specified in a script.
 
