@@ -8,13 +8,13 @@ title: 2. Starting Off With a Sha-Bang
 
 In the simplest case, a script is nothing more than a list of system commands stored in a file. At the very least, this saves the effort of retyping that particular sequence of commands each time it is invoked.
 
-![[example 2-1|example 2-1]]
+![[Example 2-1|Example 2-1]]
 
-![[example 2-2|example 2-2]]
+![[Example 2-2|Example 2-2]]
 
 Now *that's* beginning to look like a real script. But we can go even farther...
 
-![[example 2-3|example 2-3]]
+![[Example 2-3|Example 2-3]]
 
 Since you may not wish to wipe out the entire system log, this version of the script keeps the last section of the message log intact. You will constantly discover ways of fine-tuning previously written scripts for increased effectiveness.
 
