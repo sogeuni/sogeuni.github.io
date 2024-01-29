@@ -9,13 +9,13 @@ Bash supports a surprising number of string manipulation operations. Unfortunate
 
 **String Length**
 
-${#string}
+`${#string}`
 
 expr length $string
 
 These are the equivalent of _strlen()_ in _C_.
 
-expr "$string" : '.*'
+`expr "$string" : '.*'`
 
 ```bash
 stringZ=abcABC123ABCabc
@@ -29,11 +29,11 @@ echo `expr "$stringZ" : '.*'`    # 15
 
 **Length of Matching Substring at Beginning of String**
 
-expr match "$string" '$substring'
+`expr match "$string" '$substring'`
 
 _$substring_ is a [[regexp#^REGEXREF|regular expression]].
 
-expr "$string" : '$substring'
+`expr "$string" : '$substring'`
 
 _$substring_ is a regular expression.
 
@@ -48,7 +48,7 @@ echo `expr "$stringZ" : 'abc[A-Z]*.2'`       # 8
 
 **Index**
 
-expr index $string $substring
+`expr index $string $substring`
 
 Numerical position in $string of first character in $substring that matches.
 
@@ -66,15 +66,15 @@ This is the near equivalent of _strchr()_ in _C_.
 
 **Substring Extraction**
 
-${string:position}
+`${string:position}`
 
-Extracts substring from _$string_ at _$position_.
+Extracts substring from _`$string`_ at _`$position`_.
 
 If the $string parameter is "*" or "@", then this extracts the [[another-look-at-variables#^POSPARAMREF|positional parameters]], [^1] starting at $position.
 
-${string:position:length}
+`${string:position:length}`
 
-Extracts _$length_ characters of substring from _$string_ at _$position_.
+Extracts _`$length`_ characters of substring from _`$string`_ at _`$position`_.
 
 ```bash
 stringZ=abcABC123ABCabc
@@ -119,7 +119,7 @@ echo ${*:2:3}        # Echoes three positional parameters, starting at second.
 
 expr substr $string $position $length
 
-Extracts _$length_ characters from _$string_ starting at _$position_.
+Extracts _`$length`_ characters from _`$string`_ starting at _`$position`_.
 
 ```bash
 stringZ=abcABC123ABCabc
@@ -198,7 +198,7 @@ echo ${stringZ##$X}     # abc
 
 ${string%substring}
 
-Deletes shortest match of _$substring_ from _back_ of _$string_.
+Deletes shortest match of _`$substring`_ from _back_ of _`$string`_.
 
 For example:
 
@@ -219,7 +219,7 @@ done ### This could be condensed into a "one-liner" if desired.
 # Thank you, Rory Winston.
 ```
 
-${string%%substring}
+`${string%%substring}`
 
 Deletes longest match of _$substring_ from _back_ of _$string_.
 
@@ -316,10 +316,10 @@ For more on string manipulation in scripts, refer to [[parameter-substitution|Se
 Script examples:
 
 1. [[Example 16-9|Example 16-9]]
-2. [[Example 10-9|Example 10-9]]
-3. [[Example 10-10|Example 10-10]]
-4. [[Example 10-11|Example 10-11]]
-5. [[Example 10-13|Example 10-13]]
+2. [[Example 10-9|Example 10-9. Length of a variable]]
+3. [[Example 10-10|Example 10-10. Pattern matching in parameter substitution]]
+4. [[Example 10-11|Example 10-11. Renaming file extensions:]]
+5. [[Example 10-13|Example 10-13. Matching patterns at prefix or suffix of string]]
 6. [[Example A-36|Example A-36]]
 7. [[Example A-41|Example A-41]]
 
@@ -431,7 +431,7 @@ DISKS=${1:-E_NOPARAM}   # Must specify how many disks.
 #+ or to $E_NOPARAM if that is unset.
 ```
 
-See also [[Example 3-4|Example 3-4]], [[Example 31-2|Example 31-2]], and [[Example A-6|Example A-6]].
+See also [[Example 3-4|Example 3-4. Backup of all files changed in last day]], [[Example 31-2|Example 31-2]], and [[Example A-6|Example A-6]].
 
 Compare this method with [[list-constructs#^ANDDEFAULT|using an _and list_ to supply a default command-line argument]].
 
