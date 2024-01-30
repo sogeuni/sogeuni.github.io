@@ -981,7 +981,7 @@ To display system processes in graphical "tree" format: **ps afjx** or **ps ax -
 
 **pgrep**, **pkill**
 
-Combining the **ps** command with [[text-processing-commands#^GREPREF|grep]] or [[job-control-commands#^KILLREF|kill]].
+Combining the **ps** command with [[text-processing-commands#^GREPREF|grep]] or [[internal-commands-and-builtins#^KILLREF|kill]].
 
 ```bash
 bash$ ps a | grep mingetty
@@ -1002,7 +1002,7 @@ bash$ pgrep mingetty
 	      
 ```
 
-Compare the action of **pkill** with [[job-control-commands#^KILLALLREF|killall]].
+Compare the action of **pkill** with [[internal-commands-and-builtins#^KILLALLREF|killall]].
 
 **pstree**
 
@@ -1030,15 +1030,15 @@ bash$ top -b
 
 **nice**
 
-Run a background job with an altered priority. Priorities run from 19 (lowest) to -20 (highest). Only _root_ may set the negative (higher) priorities. Related commands are **renice** and **snice**, which change the priority of a running process or processes, and **skill**, which sends a [[job-control-commands#^KILLREF|kill]] signal to a process or processes.
+Run a background job with an altered priority. Priorities run from 19 (lowest) to -20 (highest). Only _root_ may set the negative (higher) priorities. Related commands are **renice** and **snice**, which change the priority of a running process or processes, and **skill**, which sends a [[internal-commands-and-builtins#^KILLREF|kill]] signal to a process or processes.
 
 **nohup**
 
-Keeps a command running even after user logs off. The command will run as a foreground process unless followed by &. If you use **nohup** within a script, consider coupling it with a [[job-control-commands#^WAITREF|wait]] to avoid creating an _orphan_ or [[job-control-commands#^ZOMBIEREF|zombie]] process.
+Keeps a command running even after user logs off. The command will run as a foreground process unless followed by &. If you use **nohup** within a script, consider coupling it with a [[internal-commands-and-builtins#^WAITREF|wait]] to avoid creating an _orphan_ or [[internal-commands-and-builtins#^ZOMBIEREF|zombie]] process.
 
 **pidof**
 
-Identifies _process ID (PID)_ of a running job. Since job control commands, such as [[job-control-commands#^KILLREF|kill]] and [[system-and-administrative-commands#^NICE2REF|renice]] act on the _PID_ of a process (not its name), it is sometimes necessary to identify that _PID_. The **pidof** command is the approximate counterpart to the [[another-look-at-variables#^PPIDREF|$PPID]] internal variable.
+Identifies _process ID (PID)_ of a running job. Since job control commands, such as [[internal-commands-and-builtins#^KILLREF|kill]] and [[system-and-administrative-commands#^NICE2REF|renice]] act on the _PID_ of a process (not its name), it is sometimes necessary to identify that _PID_. The **pidof** command is the approximate counterpart to the [[another-look-at-variables#^PPIDREF|$PPID]] internal variable.
 
 ```bash
 bash$ pidof xclock

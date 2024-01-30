@@ -58,4 +58,4 @@ That wasn't so bad. Aside from a little fancy footwork with variable matching, t
 
 **Exercise 2.** Look at some of the more complex scripts in /etc/rc.d/init.d. Try to understand at least portions of them. Follow the above procedure to analyze them. For some additional insight, you might also examine the file sysvinitfiles in /usr/share/doc/initscripts-?.??, which is part of the "initscripts" documentation.
 
-[^1]: The _killall_ system script should not be confused with the [[job-control-commands#^KILLALLREF|killall]] command in /usr/bin.
+[^1]: The _killall_ system script should not be confused with the [[internal-commands-and-builtins#^KILLALLREF|killall]] command in /usr/bin.

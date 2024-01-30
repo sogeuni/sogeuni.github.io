@@ -763,7 +763,7 @@ Within a script, commands and even [[loops-and-branches#^FORLOOPREF1|loops]] may
 
 ![[Example 3-3]]
 
-> [!caution] A command run in the background within a script may cause the script to hang, waiting for a keystroke. Fortunately, there is a [[job-control-commands#^WAITHANG|remedy]] for this.|
+> [!caution] A command run in the background within a script may cause the script to hang, waiting for a keystroke. Fortunately, there is a [[internal-commands-and-builtins#^WAITHANG|remedy]] for this.|
 
 ### &&
 
