@@ -57,7 +57,7 @@ Note that the path given at the "sha-bang" must be correct, otherwise an error m
 
 ## Invoking the script
 
-Having written the script, you can invoke it by **`sh scriptname`**, [^8] or alternatively **`bash scriptname`**. (Not recommended is using **`sh <scriptname`**, since this effectively disables reading from [[a-detailed-introduction-to-io-and-io-redirection|stdin]] within the script.) Much more convenient is to make the script itself directly executable with a [[basic-commands#chmod|chmod]].
+Having written the script, you can invoke it by **`sh scriptname`**, [^8] or alternatively **`bash scriptname`**. (Not recommended is using **`sh <scriptname`**, since this effectively disables reading from [[a-detailed-introduction-to-io-and-io-redirection|stdin]] within the script.) Much more convenient is to make the script itself directly executable with a [[external-filters-programs-and-commands#chmod|chmod]].
 
 Either:
 
@@ -76,7 +76,7 @@ As a final step, after testing and debugging, you would likely want to move it t
 ## Preliminary Exercises
 
 1. System administrators often write scripts to automate common tasks. Give several instances where such scripts would be useful.
-2. Write a script that upon invocation shows the [[time-date-commands#date|time and date]], [[system-and-administrative-commands#who|lists all logged-in users]], and gives the system [[system-and-administrative-commands#uptime|uptime]]. The script then [[io-redirection|saves this information]] to a logfile.
+2. Write a script that upon invocation shows the [[external-filters-programs-and-commands#date|time and date]], [[system-and-administrative-commands#who|lists all logged-in users]], and gives the system [[system-and-administrative-commands#uptime|uptime]]. The script then [[io-redirection|saves this information]] to a logfile.
 
 [^1]: More commonly seen in the literature as *she-bang* or *sh-bang*. This derives from the concatenation of the tokens *sharp* (#) and *bang* (!).
 
@@ -116,7 +116,7 @@ As a final step, after testing and debugging, you would likely want to move it t
                     # You'll get a 0, not a 85.
     ```
 
-    Also, try starting a README file with a **#!/bin/more**, and making it executable. The result is a self-listing documentation file. (A [[here-documents#^HEREDOCREF|here document]] using [[basic-commands#^CATREF|cat]] is possibly a better alternative -- see [[Example 19-3|Example 19-3]]).
+    Also, try starting a README file with a **#!/bin/more**, and making it executable. The result is a self-listing documentation file. (A [[here-documents#^HEREDOCREF|here document]] using [[external-filters-programs-and-commands#^CATREF|cat]] is possibly a better alternative -- see [[Example 19-3|Example 19-3]]).
 
 [^5]: **P**ortable **O**perating **S**ystem *I*nterface, an attempt to standardize UNI**X**-like OSes. The POSIX specifications are listed on the [Open Group site](http://www.opengroup.org/onlinepubs/007904975/toc.htm).
 
