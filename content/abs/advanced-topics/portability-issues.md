@@ -35,7 +35,7 @@ See the [Bash F.A.Q.](ftp://ftp.cwru.edu/pub/bash/FAQ) for a complete listing.
 
 Let us illustrate some of the incompatibilities between Bash and the classic Bourne shell. Download and install the ["Heirloom Bourne Shell"](http://freshmeat.net/projects/bournesh) and run the following script, first using Bash, then the classic _sh_.
 
-###### Example 36-23. Test Suite
+**Example 36-23.** Test Suite
 
 ```bash
 #!/bin/bash
