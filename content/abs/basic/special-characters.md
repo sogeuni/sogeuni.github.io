@@ -74,7 +74,7 @@ else   #                       ^^
 fi; echo "File test complete."
 ```
 
-Note that the ";" [[complex-commands#^FINDREF0|sometimes needs to be *escaped*]].
+Note that the ";" [[external-filters-programs-and-commands#^FINDREF0|sometimes needs to be *escaped*]].
 
 ### ;; (double semicolon)
 
@@ -99,7 +99,7 @@ esac
 
 .
 
-**"dot", as a component of a filename.** When working with filenames, a leading dot is the prefix of a "hidden" file, a file that an [[basic-commands#^LSREF|ls]] will not normally show.
+**"dot", as a component of a filename.** When working with filenames, a leading dot is the prefix of a "hidden" file, a file that an [[external-filters-programs-and-commands#^LSREF|ls]] will not normally show.
 
 ```bash
 bash$ touch .hidden-file
@@ -524,7 +524,7 @@ The code block enclosed in braces may have [[io-redirection|I/O redirected]] to 
 
 ### {}
 
-**placeholder for text.** Used after [[complex-commands#^XARGSCURLYREF|xargs -i]] (*replace strings* option). The {} double curly brackets are a placeholder for output text.
+**placeholder for text.** Used after [[external-filters-programs-and-commands#^XARGSCURLYREF|xargs -i]] (*replace strings* option). The {} double curly brackets are a placeholder for output text.
 
 ```bash
 ls . | xargs -i -t cp ./{} $1
@@ -535,7 +535,7 @@ ls . | xargs -i -t cp ./{} $1
 
 ### {} \;
 
-**pathname.** Mostly used in [[complex-commands#^FINDREF|find]] constructs. This is *not* a shell [[internal-commands-and-builtins|builtin]].
+**pathname.** Mostly used in [[external-filters-programs-and-commands#^FINDREF|find]] constructs. This is *not* a shell [[internal-commands-and-builtins|builtin]].
 
 > Definition: A *pathname* is a *filename* that includes the complete [[another-look-at-variables#^PATHREF|path]]. As an example, /home/bozo/Notes/Thursday/schedule.txt. This is sometimes referred to as the *absolute path*.
 
