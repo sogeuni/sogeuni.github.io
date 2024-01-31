@@ -13,7 +13,7 @@ bash$ echo $BASH_VERSION
 
 The version 2 update of the classic Bash scripting language added array variables, string and parameter expansion, and a better method of indirect variable references, among other features.
 
-###### Example 37-1. String expansion
+**Example 37-1.** String expansion
 
 ```bash
 #!/bin/bash
@@ -37,7 +37,7 @@ echo $'\102\141\163\150'
 exit
 ```
 
-###### Example 37-2. Indirect variable references - the new way
+**Example 37-2.** Indirect variable references - the new way
 
 ```bash
 #!/bin/bash
@@ -74,7 +74,7 @@ exit 0
 # See also, ind-ref.sh example.
 ```
 
-###### Example 37-3. Simple database application, using indirect variable referencing
+**Example 37-3.** Simple database application, using indirect variable referencing
 
 ```bash
 #!/bin/bash
@@ -152,7 +152,7 @@ echo; echo
 exit 0
 ```
 
-###### Example 37-4. Using arrays and other miscellaneous trickery to deal four random hands from a deck of cards
+**Example 37-4.** Using arrays and other miscellaneous trickery to deal four random hands from a deck of cards
 
 ```bash
 #!/bin/bash
