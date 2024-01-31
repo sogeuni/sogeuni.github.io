@@ -321,7 +321,7 @@ It is often useful to pipe the formatted output from **pr** to **lp**.
 
 bash$ **pr -options file1.txt | lp**
 
-Formatting packages, such as [[text-processing-commands#^GROFFREF|groff]] and _Ghostscript_ may send their output directly to **lp**.
+Formatting packages, such as [[external-filters-programs-and-commands#^GROFFREF|groff]] and _Ghostscript_ may send their output directly to **lp**.
 
 bash$ **groff -Tascii file.tr | lp**
 
@@ -825,7 +825,7 @@ exit 0
 
 **m4**
 
-A hidden treasure, **m4** is a powerful macro [^6] processing filter, virtually a complete language. Although originally written as a pre-processor for _RatFor_, **m4** turned out to be useful as a stand-alone utility. In fact, **m4** combines some of the functionality of [[internal-commands-and-builtins#^EVALREF|eval]], [[text-processing-commands#^TRREF|tr]], and [[awk#^AWKREF|awk]], in addition to its extensive macro expansion facilities.
+A hidden treasure, **m4** is a powerful macro [^6] processing filter, virtually a complete language. Although originally written as a pre-processor for _RatFor_, **m4** turned out to be useful as a stand-alone utility. In fact, **m4** combines some of the functionality of [[internal-commands-and-builtins#^EVALREF|eval]], [[external-filters-programs-and-commands#^TRREF|tr]], and [[awk#^AWKREF|awk]], in addition to its extensive macro expansion facilities.
 
 The April, 2002 issue of [_Linux Journal_](http://www.linuxjournal.com) has a very nice article on **m4** and its uses.
 
