@@ -9,7 +9,7 @@ title: 36.9. Portability Issues
 
 This book deals specifically with Bash scripting on a GNU/Linux system. All the same, users of **sh** and **ksh** will find much of value here.
 
-As it happens, many of the various shells and scripting languages seem to be converging toward the [[sha-bang#^POSIX2REF|POSIX]] 1003.2 standard. Invoking Bash with the --posix option or inserting a **set -o posix** at the head of a script causes Bash to conform very closely to this standard. Another alternative is to use a _#!/bin/sh_ [[sha-bang#^SHABANGREF|sha-bang header]] in the script, rather than _#!/bin/bash_. [^1] Note that /bin/sh is a [[basic-commands#^LINKREF|link]] to /bin/bash in Linux and certain other flavors of UNIX, and a script invoked this way disables extended Bash functionality.
+As it happens, many of the various shells and scripting languages seem to be converging toward the [[sha-bang#^POSIX2REF|POSIX]] 1003.2 standard. Invoking Bash with the --posix option or inserting a **set -o posix** at the head of a script causes Bash to conform very closely to this standard. Another alternative is to use a _#!/bin/sh_ [[sha-bang#^SHABANGREF|sha-bang header]] in the script, rather than _#!/bin/bash_. [^1] Note that /bin/sh is a [[external-filters-programs-and-commands#^LINKREF|link]] to /bin/bash in Linux and certain other flavors of UNIX, and a script invoked this way disables extended Bash functionality.
 
 Most Bash scripts will run as-is under **ksh**, and vice-versa, since Chet Ramey has been busily porting **ksh** features to the latest versions of Bash.
 
