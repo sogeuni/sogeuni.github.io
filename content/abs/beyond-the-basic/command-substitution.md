@@ -116,7 +116,7 @@ echo $textfile_listing2
 > # -rwxr-xr-x    1 bozo      217 Mar  5 21:13 wi.sh
 > ```
 
-Command substitution even permits setting a variable to the contents of a file, using either [[io-redirection|redirection]] or the [[basic-commands#^CATREF|cat]] command.
+Command substitution even permits setting a variable to the contents of a file, using either [[io-redirection|redirection]] or the [[external-filters-programs-and-commands#^CATREF|cat]] command.
 
 ```bash
 variable1=`<file1`      #  Set "variable1" to contents of "file1".
