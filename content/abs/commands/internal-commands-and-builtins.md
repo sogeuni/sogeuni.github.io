@@ -139,7 +139,7 @@ The **printf**, formatted print, command is an enhanced **echo**. It is a limite
 
 **printf** _format-string_... _parameter_...
 
-This is the Bash _builtin_ version of the /bin/printf or /usr/bin/printf command. See the **printf** [[basic-commands#^MANREF|manpage]] (of the system command) for in-depth coverage.
+This is the Bash _builtin_ version of the /bin/printf or /usr/bin/printf command. See the **printf** [[external-filters-programs-and-commands#^MANREF|manpage]] (of the system command) for in-depth coverage.
 
 > [!caution]
 > Older versions of Bash may not support **printf**.
@@ -215,7 +215,7 @@ The **read** command may also "read" its variable value from a file [[io-redirec
 > [!note]
 > [[special-characters#^PIPEREF|Piping]] output to a _read_, using [[internal-commands-and-builtins#^ECHOREF|echo]] to set variables [[gotchas#^BADREAD0|will fail]].
 >
-> Yet, piping the output of [[basic-commands#^CATREF|cat]] _seems_ to work.
+> Yet, piping the output of [[external-filters-programs-and-commands#^CATREF|cat]] _seems_ to work.
 >
 > ```bash
 > cat file1 file2 |
@@ -229,7 +229,7 @@ The **read** command may also "read" its variable value from a file [[io-redirec
 >
 > ![[Example 15-8|Example 15-8]]
 >
-> The _gendiff_ script, usually found in /usr/bin on many Linux distros, pipes the output of [[complex-commands#^FINDREF|find]] to a _while read_ construct.
+> The _gendiff_ script, usually found in /usr/bin on many Linux distros, pipes the output of [[external-filters-programs-and-commands#^FINDREF|find]] to a _while read_ construct.
 >
 > ```bash
 > find $1 \( -name "*$2" -o -name ".*$2" \) -print |
@@ -290,7 +290,7 @@ Scripts that require various changes to the current working directory without ha
 
 **let**
 
-The **let** command carries out _arithmetic_ operations on variables. [^3] In many cases, it functions as a less complex version of [[complex-commands#^EXPRREF|expr]].
+The **let** command carries out _arithmetic_ operations on variables. [^3] In many cases, it functions as a less complex version of [[external-filters-programs-and-commands#^EXPRREF|expr]].
 
 ![[Example 15-10|Example 15-10]]
 
@@ -595,7 +595,7 @@ This shell builtin replaces the current process with a specified command. Normal
 An **exec** also serves to [[using-exec#^USINGEXECREF|reassign file descriptors]]. For example, **exec <zzz-file** replaces stdin with the file zzz-file.
 
 > [!note]
-> The -exec option to [[complex-commands#^FINDREF|find]] is _not_ the same as the **exec** shell builtin.
+> The -exec option to [[external-filters-programs-and-commands#^FINDREF|find]] is _not_ the same as the **exec** shell builtin.
 
 **shopt**
 
@@ -860,7 +860,7 @@ Forcibly terminate a process by sending it an appropriate _terminate_ signal (se
 The **killall** command kills a running process by _name_, rather than by [[special-characters#^PROCESSIDREF|process ID]]. If there are multiple instances of a particular command running, then doing a _killall_ on that command will terminate them _all_.
 
 > [!note]
-> This refers to the **killall** command in /usr/bin, _not_ the [[analyzing-a-system-script#^KILLALL2REF|killall script]] in /etc/rc.d/init.d.
+> This refers to the **killall** command in /usr/bin, _not_ the [[#KILLALL2REF|killall script]] in /etc/rc.d/init.d.
 
 **command**
 
@@ -904,7 +904,7 @@ Note that _autoload_ is not a part of the core Bash installation. It needs to be
 
 [^1]: As Nathan Coulter points out, "while forking a process is a low-cost operation, executing a new program in the newly-forked child process adds more overhead."
 
-[^2]: An exception to this is the [[time-date-commands#^TIMREF|time]] command, listed in the official Bash documentation as a keyword ("reserved word").
+[^2]: An exception to this is the [[external-filters-programs-and-commands#^TIMREF|time]] command, listed in the official Bash documentation as a keyword ("reserved word").
 
 [^3]: Note that _let_ [[gotchas#^LETBAD|cannot be used for setting _string_ variables.]]
 
