@@ -146,7 +146,7 @@ The following reference cards provide a useful _summary_ of certain scripting co
 |{ command1; command2; . . . commandN; }|[[special-characters#^CODEBLOCKREF|Block of code]]|
 |{string1,string2,string3,...}|[[special-characters#^BRACEEXPREF|Brace expansion]]|
 |{a..z}|[[bashver3#^BRACEEXPREF3|Extended brace expansion]]|
-|{}|Text replacement, after [[complex-commands#^CURLYBRACKETSREF|find]] and [[complex-commands#^XARGSCURLYREF|xargs]]|
+|{}|Text replacement, after [[external-filters-programs-and-commands#^CURLYBRACKETSREF|find]] and [[external-filters-programs-and-commands#^XARGSCURLYREF|xargs]]|
 |||
 |||
 |[[special-characters#^PARENSREF|Parentheses]]||
