@@ -95,7 +95,7 @@ bash$ cat <&5
 
 \[Thanks, Mark and Mihai Maties.]
 
-###### Example 29-1. Using /dev/tcp for troubleshooting
+**Example 29-1.** Using /dev/tcp for troubleshooting
 
 ```bash
 #!/bin/bash
@@ -136,7 +136,7 @@ fi
 exit $MYEXIT
 ```
 
-###### Example 29-2. Playing music
+**Example 29-2.** Playing music
 
 ```bash
 #!/bin/bash
