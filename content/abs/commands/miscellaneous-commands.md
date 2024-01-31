@@ -25,63 +25,7 @@ bash$ seq -s : 5
 
 Both **jot** and **seq** come in handy in a [[loops-and-branches#^FORLOOPREF1|for loop]].
 
-###### Example 16-54. Using *seq* to generate loop arguments
-
-```bash
-#!/bin/bash
-# Using "seq"
-
-echo
-
-for a in `seq 80`  # or   for a in $( seq 80 )
-# Same as   for a in 1 2 3 4 5 ... 80   (saves much typing!).
-# May also use 'jot' (if present on system).
-do
-  echo -n "$a "
-done      # 1 2 3 4 5 ... 80
-# Example of using the output of a command to generate 
-# the [list] in a "for" loop.
-
-echo; echo
-
-
-COUNT=80  # Yes, 'seq' also accepts a replaceable parameter.
-
-for a in `seq $COUNT`  # or   for a in $( seq $COUNT )
-do
-  echo -n "$a "
-done      # 1 2 3 4 5 ... 80
-
-echo; echo
-
-BEGIN=75
-END=80
-
-for a in `seq $BEGIN $END`
-#  Giving "seq" two arguments starts the count at the first one,
-#+ and continues until it reaches the second.
-do
-  echo -n "$a "
-done      # 75 76 77 78 79 80
-
-echo; echo
-
-BEGIN=45
-INTERVAL=5
-END=80
-
-for a in `seq $BEGIN $INTERVAL $END`
-#  Giving "seq" three arguments starts the count at the first one,
-#+ uses the second for a step interval,
-#+ and continues until it reaches the third.
-do
-  echo -n "$a "
-done      # 45 50 55 60 65 70 75 80
-
-echo; echo
-
-exit 0
-```
+![[Example 16-54|Example 16-54]]
 
 A simpler example:
 
@@ -99,65 +43,7 @@ do
 done
 ```
 
-###### Example 16-55. Letter Count"
-
-```bash
-#!/bin/bash
-# letter-count.sh: Counting letter occurrences in a text file.
-# Written by Stefano Palmeri.
-# Used in ABS Guide with permission.
-# Slightly modified by document author.
-
-MINARGS=2          # Script requires at least two arguments.
-E_BADARGS=65
-FILE=$1
-
-let LETTERS=$#-1   # How many letters specified (as command-line args).
-                   # (Subtract 1 from number of command-line args.)
-
-
-show_help(){
-	   echo
-           echo Usage: `basename $0` file letters  
-           echo Note: `basename $0` arguments are case sensitive.
-           echo Example: `basename $0` foobar.txt G n U L i N U x.
-	   echo
-}
-
-# Checks number of arguments.
-if [ $# -lt $MINARGS ]; then
-   echo
-   echo "Not enough arguments."
-   echo
-   show_help
-   exit $E_BADARGS
-fi  
-
-
-# Checks if file exists.
-if [ ! -f $FILE ]; then
-    echo "File \"$FILE\" does not exist."
-    exit $E_BADARGS
-fi
-
-
-
-# Counts letter occurrences .
-for n in `seq $LETTERS`; do
-      shift
-      if [[ `echo -n "$1" | wc -c` -eq 1 ]]; then             #  Checks arg.
-             echo "$1" -\> `cat $FILE | tr -cd  "$1" | wc -c` #  Counting.
-      else
-             echo "$1 is not a  single char."
-      fi  
-done
-
-exit $?
-
-#  This script has exactly the same functionality as letter-count2.sh,
-#+ but executes faster.
-#  Why?
-```
+![[Example 16-55|Example 16-55]]
 
 > [!note]
 > Somewhat more capable than _seq_, **jot** is a classic UNIX utility that is not normally included in a standard Linux distro. However, the source _rpm_ is available for download from the [MIT repository](http://www.mit.edu/afs/athena/system/rhlinux/athena-9.0/free/SRPMS/athena-jot-9.0-3.src.rpm).
@@ -175,55 +61,7 @@ exit $?
 
 The **getopt** command parses command-line options preceded by a [[special-characters#^DASHREF|dash]]. This external command corresponds to the [[internal-commands-and-builtins#^GETOPTSX|getopts]] Bash builtin. Using **getopt** permits handling long options by means of the -l flag, and this also allows parameter reshuffling.
 
-###### Example 16-56. Using *getopt* to parse command-line options
-
-```bash
-#!/bin/bash
-# Using getopt
-
-# Try the following when invoking this script:
-#   sh ex33a.sh -a
-#   sh ex33a.sh -abc
-#   sh ex33a.sh -a -b -c
-#   sh ex33a.sh -d
-#   sh ex33a.sh -dXYZ
-#   sh ex33a.sh -d XYZ
-#   sh ex33a.sh -abcd
-#   sh ex33a.sh -abcdZ
-#   sh ex33a.sh -z
-#   sh ex33a.sh a
-# Explain the results of each of the above.
-
-E_OPTERR=65
-
-if [ "$#" -eq 0 ]
-then   # Script needs at least one command-line argument.
-  echo "Usage $0 -[options a,b,c]"
-  exit $E_OPTERR
-fi  
-
-set -- `getopt "abcd:" "$@"`
-# Sets positional parameters to command-line arguments.
-# What happens if you use "$*" instead of "$@"?
-
-while [ ! -z "$1" ]
-do
-  case "$1" in
-    -a) echo "Option \"a\"";;
-    -b) echo "Option \"b\"";;
-    -c) echo "Option \"c\"";;
-    -d) echo "Option \"d\" $2";;
-     *) break;;
-  esac
-
-  shift
-done
-
-#  It is usually better to use the 'getopts' builtin in a script.
-#  See "ex33.sh."
-
-exit 0
-```
+![[Example 16-56|Example 16-56]]
 
 > [!note]
 > As _Peggy Russell_ points out:
@@ -435,79 +273,13 @@ Some basic options to **dd** are:
 
 A **dd --help** lists all the options this powerful utility takes.
 
-###### Example 16-57. A script that copies itself
+![[Example 16-57|Example 16-57]]
 
-```bash
-#!/bin/bash
-# self-copy.sh
-
-# This script copies itself.
-
-file_subscript=copy
-
-dd if=$0 of=$0.$file_subscript 2>/dev/null
-# Suppress messages from dd:   ^^^^^^^^^^^
-
-exit $?
-
-#  A program whose only output is its own source code
-#+ is called a "quine" per Willard Quine.
-#  Does this script qualify as a quine?
-```
-
-###### Example 16-58. Exercising *dd*
-
-```bash
-#!/bin/bash
-# exercising-dd.sh
-
-# Script by Stephane Chazelas.
-# Somewhat modified by ABS Guide author.
-
-infile=$0           # This script.
-outfile=log.txt     # Output file left behind.
-n=8
-p=11
-
-dd if=$infile of=$outfile bs=1 skip=$((n-1)) count=$((p-n+1)) 2> /dev/null
-# Extracts characters n to p (8 to 11) from this script ("bash").
-
-# ----------------------------------------------------------------
-
-echo -n "hello vertical world" | dd cbs=1 conv=unblock 2> /dev/null
-# Echoes "hello vertical world" vertically downward.
-# Why? A newline follows each character dd emits.
-
-exit $?
-```
+![[Example 16-58|Example 16-58]]
 
 To demonstrate just how versatile **dd** is, let's use it to capture keystrokes.
 
-###### Example 16-59. Capturing Keystrokes
-
-```bash
-#!/bin/bash
-# dd-keypress.sh: Capture keystrokes without needing to press ENTER.
-
-
-keypresses=4                      # Number of keypresses to capture.
-
-
-old_tty_setting=$(stty -g)        # Save old terminal settings.
-
-echo "Press $keypresses keys."
-stty -icanon -echo                # Disable canonical mode.
-                                  # Disable local echo.
-keys=$(dd bs=1 count=$keypresses 2> /dev/null)
-# 'dd' uses stdin, if "if" (input file) not specified.
-
-stty "$old_tty_setting"           # Restore old terminal settings.
-
-echo "You pressed the \"$keys\" keys."
-
-# Thanks, Stephane Chazelas, for showing the way.
-exit 0
-```
+![[Example 16-59|Example 16-59]]
 
 The **dd** command can do random access on a data stream.
 
@@ -531,169 +303,13 @@ Likewise, **dd** can create bootable flash drives and SD cards.
 
 **dd if=image.iso of=/dev/sdb**
 
-###### Example 16-60. Preparing a bootable SD card for the *Raspberry Pi*
-
-```bash
-#!/bin/bash
-# rp.sdcard.sh
-# Preparing an SD card with a bootable image for the Raspberry Pi.
-
-# $1 = imagefile name
-# $2 = sdcard (device file)
-# Otherwise defaults to the defaults, see below.
-
-DEFAULTbs=4M                                 # Block size, 4 mb default.
-DEFAULTif="2013-07-26-wheezy-raspbian.img"   # Commonly used distro.
-DEFAULTsdcard="/dev/mmcblk0"                 # May be different. Check!
-ROOTUSER_NAME=root                           # Must run as root!
-E_NOTROOT=81
-E_NOIMAGE=82
-
-username=$(id -nu)                           # Who is running this script?
-if [ "$username" != "$ROOTUSER_NAME" ]
-then
-  echo "This script must run as root or with root privileges."
-  exit $E_NOTROOT
-fi
-
-if [ -n "$1" ]
-then
-  imagefile="$1"
-else
-  imagefile="$DEFAULTif"
-fi
-
-if [ -n "$2" ]
-then
-  sdcard="$2"
-else
-  sdcard="$DEFAULTsdcard"
-fi
-
-if [ ! -e $imagefile ]
-then
-  echo "Image file \"$imagefile\" not found!"
-  exit $E_NOIMAGE
-fi
-
-echo "Last chance to change your mind!"; echo
-read -s -n1 -p "Hit a key to write $imagefile to $sdcard [Ctl-c to exit]."
-echo; echo
-
-echo "Writing $imagefile to $sdcard ..."
-dd bs=$DEFAULTbs if=$imagefile of=$sdcard
-
-exit $?
-
-# Exercises:
-# ---------
-# 1) Provide additional error checking.
-# 2) Have script autodetect device file for SD card (difficult!).
-# 3) Have script sutodetect image file (*img) in $PWD.
-```
+![[Example 16-60|Example 16-60]]
 
 Other applications of **dd** include initializing temporary swap files ([[Example 31-2|Example 31-2]]) and ramdisks ([[Example 31-3|Example 31-3]]). It can even do a low-level copy of an entire hard drive partition, although this is not necessarily recommended.
 
 People (with presumably nothing better to do with their time) are constantly thinking of interesting applications of **dd**.
 
-###### Example 16-61. Securely deleting a file
-
-```bash
-#!/bin/bash
-# blot-out.sh: Erase "all" traces of a file.
-
-#  This script overwrites a target file alternately
-#+ with random bytes, then zeros before finally deleting it.
-#  After that, even examining the raw disk sectors by conventional methods
-#+ will not reveal the original file data.
-
-PASSES=7         #  Number of file-shredding passes.
-                 #  Increasing this slows script execution,
-                 #+ especially on large target files.
-BLOCKSIZE=1      #  I/O with /dev/urandom requires unit block size,
-                 #+ otherwise you get weird results.
-E_BADARGS=70     #  Various error exit codes.
-E_NOT_FOUND=71
-E_CHANGED_MIND=72
-
-if [ -z "$1" ]   # No filename specified.
-then
-  echo "Usage: `basename $0` filename"
-  exit $E_BADARGS
-fi
-
-file=$1
-
-if [ ! -e "$file" ]
-then
-  echo "File \"$file\" not found."
-  exit $E_NOT_FOUND
-fi  
-
-echo; echo -n "Are you absolutely sure you want to blot out \"$file\" (y/n)? "
-read answer
-case "$answer" in
-[nN]) echo "Changed your mind, huh?"
-      exit $E_CHANGED_MIND
-      ;;
-*)    echo "Blotting out file \"$file\".";;
-esac
-
-
-flength=$(ls -l "$file" | awk '{print $5}')  # Field 5 is file length.
-pass_count=1
-
-chmod u+w "$file"   # Allow overwriting/deleting the file.
-
-echo
-
-while [ "$pass_count" -le "$PASSES" ]
-do
-  echo "Pass #$pass_count"
-  sync         # Flush buffers.
-  dd if=/dev/urandom of=$file bs=$BLOCKSIZE count=$flength
-               # Fill with random bytes.
-  sync         # Flush buffers again.
-  dd if=/dev/zero of=$file bs=$BLOCKSIZE count=$flength
-               # Fill with zeros.
-  sync         # Flush buffers yet again.
-  let "pass_count += 1"
-  echo
-done  
-
-
-rm -f $file    # Finally, delete scrambled and shredded file.
-sync           # Flush buffers a final time.
-
-echo "File \"$file\" blotted out and deleted."; echo
-
-
-exit 0
-
-#  This is a fairly secure, if inefficient and slow method
-#+ of thoroughly "shredding" a file.
-#  The "shred" command, part of the GNU "fileutils" package,
-#+ does the same thing, although more efficiently.
-
-#  The file cannot not be "undeleted" or retrieved by normal methods.
-#  However . . .
-#+ this simple method would *not* likely withstand
-#+ sophisticated forensic analysis.
-
-#  This script may not play well with a journaled file system.
-#  Exercise (difficult): Fix it so it does.
-
-
-
-#  Tom Vier's "wipe" file-deletion package does a much more thorough job
-#+ of file shredding than this simple script.
-#     http://www.ibiblio.org/pub/Linux/utils/file/wipe-2.0.0.tar.bz2
-
-#  For an in-depth analysis on the topic of file deletion and security,
-#+ see Peter Gutmann's paper,
-#+     "Secure Deletion of Data From Magnetic and Solid-State Memory".
-#       http://www.cs.auckland.ac.nz/~pgut001/pubs/secure_del.html
-```
+![[Example 16-61|Example 16-61]]
 
 See also the [[Bibliography#^DDLINK|dd thread]] entry in the [[bibliography.md#^BIBLIOREF|bibliography]].
 
@@ -753,75 +369,13 @@ random001=`md5sum $0 | awk '{print $1}'`
 
 The **mcookie** command gives yet another way to generate a "unique" filename.
 
-###### Example 16-62. Filename generator
-
-```bash
-#!/bin/bash
-# tempfile-name.sh:  temp filename generator
-
-BASE_STR=`mcookie`   # 32-character magic cookie.
-POS=11               # Arbitrary position in magic cookie string.
-LEN=5                # Get $LEN consecutive characters.
-
-prefix=temp          #  This is, after all, a "temp" file.
-                     #  For more "uniqueness," generate the
-                     #+ filename prefix using the same method
-                     #+ as the suffix, below.
-
-suffix=${BASE_STR:POS:LEN}
-                     #  Extract a 5-character string,
-                     #+ starting at position 11.
-
-temp_filename=$prefix.$suffix
-                     # Construct the filename.
-
-echo "Temp filename = "$temp_filename""
-
-# sh tempfile-name.sh
-# Temp filename = temp.e19ea
-
-#  Compare this method of generating "unique" filenames
-#+ with the 'date' method in ex51.sh.
-
-exit 0
-```
+![[Example 16-62|Example 16-62]]
 
 **units**
 
 This utility converts between different _units of measure_. While normally invoked in interactive mode, **units** may find use in a script.
 
-###### Example 16-63. Converting meters to miles
-
-```bash
-#!/bin/bash
-# unit-conversion.sh
-# Must have 'units' utility installed.
-
-
-convert_units ()  # Takes as arguments the units to convert.
-{
-  cf=$(units "$1" "$2" \| sed --silent -e '1p' | awk '{print $2}')
-  # Strip off everything except the actual conversion factor.
-  echo "$cf"
-}  
-
-Unit1=miles
-Unit2=meters
-cfactor=`convert_units $Unit1 $Unit2`
-quantity=3.73
-
-result=$(echo $quantity*$cfactor | bc)
-
-echo "There are $result $Unit2 in $quantity $Unit1."
-
-#  What happens if you pass incompatible units,
-#+ such as "acres" and "miles" to the function?
-
-exit 0
-
-# Exercise: Edit this script to accept command-line parameters,
-#           with appropriate error checking, of course.
-```
+![[Example 16-63|Example 16-63]]
 
 **m4**
 
@@ -829,25 +383,7 @@ A hidden treasure, **m4** is a powerful macro [^6] processing filter, virtually 
 
 The April, 2002 issue of [_Linux Journal_](http://www.linuxjournal.com) has a very nice article on **m4** and its uses.
 
-###### Example 16-64. Using *m4*
-
-```bash
-#!/bin/bash
-# m4.sh: Using the m4 macro processor
-
-# Strings
-string=abcdA01
-echo "len($string)" | m4                            #   7
-echo "substr($string,4)" | m4                       # A01
-echo "regexp($string,[0-1][0-1],\&Z)" | m4      # 01Z
-
-# Arithmetic
-var=99
-echo "incr($var)" | m4                              #  100
-echo "eval($var / 3)" | m4                          #   33
-
-exit
-```
+![[Example 16-64|Example 16-64]]
 
 **xmessage**
 
