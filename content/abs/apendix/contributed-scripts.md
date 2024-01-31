@@ -5,7 +5,7 @@ title: Appendix A. Contributed Scripts
 
 These scripts, while not fitting into the text of this document, do illustrate some interesting shell programming techniques. Some are useful, too. Have fun analyzing and running them.
 
-###### Example A-1. *mailformat*: Formatting an e-mail message
+**Example A-1.** *mailformat*: Formatting an e-mail message
 
 ```bash
 
@@ -63,7 +63,7 @@ sed "$sedscript" $1 | fold -s --width=$MAXWIDTH
 exit $?
 ```
 
-###### Example A-2. *rn*: A simple-minded file renaming utility
+**Example A-2.** *rn*: A simple-minded file renaming utility
 
 This script is a modification of [[Example 16-22|Example 16-22]].
 
@@ -118,7 +118,7 @@ exit $?
 # How can this be fixed?
 ```
 
-###### Example A-3. *blank-rename*: Renames filenames containing blanks
+**Example A-3.** *blank-rename*: Renames filenames containing blanks
 
 This is an even simpler-minded version of previous script.
 
@@ -154,7 +154,7 @@ fi
 exit 0
 ```
 
-###### Example A-4. *encryptedpw*: Uploading to an ftp site, using a locally encrypted password
+**Example A-4.** *encryptedpw*: Uploading to an ftp site, using a locally encrypted password
 
 ```bash
 #!/bin/bash
@@ -205,7 +205,7 @@ End-Of-Session
 exit 0
 ```
 
-###### Example A-5. *copy-cd*: Copying a data CD
+**Example A-5.** *copy-cd*: Copying a data CD
 
 ```bash
 #!/bin/bash
@@ -263,7 +263,7 @@ echo
 exit 0
 ```
 
-###### Example A-6. Collatz series
+**Example A-6.** Collatz series
 
 ```bash
 #!/bin/bash
@@ -337,7 +337,7 @@ echo
 exit 0
 ```
 
-###### Example A-7. *days-between*: Days between two dates
+**Example A-7.** *days-between*: Days between two dates
 
 ```bash
 #!/bin/bash
@@ -497,7 +497,7 @@ exit 0
 #+    http://buschencrew.hypermart.net/software/datedif
 ```
 
-###### Example A-8. Making a *dictionary*
+**Example A-8.** Making a *dictionary*
 
 ```bash
 #!/bin/bash
@@ -544,7 +544,7 @@ cat $* |                            #  Dump specified files to stdout.
 exit $?
 ```
 
-###### Example A-9. Soundex conversion
+**Example A-9.** Soundex conversion
 
 ```bash
 #!/bin/bash
@@ -706,7 +706,7 @@ echo
 exit 0
 ```
 
-###### Example A-10. *Game of Life*
+**Example A-10.** *Game of Life*
 
 ```bash title="Example A-10. Game of Life"
 #!/bin/bash
@@ -1098,7 +1098,7 @@ exit 0   # CEOF:EOF
 # Exercise: Optimize this script.
 #           It has redundant code.
 ```
-###### Example A-11. Data file for *Game of Life*
+**Example A-11.** Data file for *Game of Life*
 
 ```bash
 # gen0
@@ -1127,7 +1127,7 @@ _..___..__
 
 The following script is by Mark Moraes of the University of Toronto. See the file Moraes-COPYRIGHT for permissions and restrictions. This file is included in the combined [[download-and-mirror-sites#^WHERE_TARBALL|HTML/source tarball]] of the _ABS Guide_.
 
-###### Example A-12. *behead*: Removing mail and news message headers
+**Example A-12.** *behead*: Removing mail and news message headers
 
 ```bash
 #! /bin/sh
@@ -1186,7 +1186,7 @@ exit
 
 Antek Sawicki contributed the following script, which makes very clever use of the parameter substitution operators discussed in [[parameter-substitution.html|Section 10.2]].
 
-###### Example A-13. *password*: Generating random 8-character passwords
+**Example A-13.** *password*: Generating random 8-character passwords
 
 ```bash
 #!/bin/bash
@@ -1243,7 +1243,7 @@ exit 0
 
 James R. Van Zandt contributed this script which uses named pipes and, in his words, "really exercises quoting and escaping."
 
-###### Example A-14. *fifo*: Making daily backups, using named pipes
+**Example A-14.** *fifo*: Making daily backups, using named pipes
 
 ```bash
 #!/bin/bash
@@ -1286,7 +1286,7 @@ James R. Van Zandt contributed this script which uses named pipes and, in his wo
 
 St�phane Chazelas used the following script to demonstrate generating prime numbers without arrays.
 
-###### Example A-15. Generating prime numbers using the modulo operator
+**Example A-15.** Generating prime numbers using the modulo operator
 
 ```bash
 #!/bin/bash
@@ -1344,7 +1344,7 @@ exit $?
 
 Rick Boivie's revision of Jordi Sanfeliu's _tree_ script.
 
-###### Example A-16. *tree*: Displaying a directory tree
+**Example A-16.** *tree*: Displaying a directory tree
 
 ```bash
 #!/bin/bash
@@ -1413,7 +1413,7 @@ exit 0
 
 Patsie's version of a directory _tree_ script.
 
-###### Example A-17. *tree2*: Alternate directory tree script
+**Example A-17.** *tree2*: Alternate directory tree script
 
 ```bash
 #!/bin/bash
@@ -1525,7 +1525,7 @@ exit $?
 
 Noah Friedman permitted use of his _string function_ script. It essentially reproduces some of the _C_-library string manipulation functions.
 
-###### Example A-18. *string functions*: C-style string functions
+**Example A-18.** *string functions*: C-style string functions
 
 ```bash
 #!/bin/bash
@@ -1803,7 +1803,7 @@ exit 0
 
 Michael Zick's complex array example uses the [[file-and-archiving-commands#^MD5SUMREF|md5sum]] check sum command to encode directory information.
 
-###### Example A-19. Directory information
+**Example A-19.** Directory information
 
 ```bash
 #! /bin/bash
@@ -2360,7 +2360,7 @@ St�phane Chazelas demonstrates object-oriented programming in a Bash script.
 
 Mariusz Gniazdowski contributed a [[internal-commands-and-builtins#^HASHREF|hash]] library for use in scripts.
 
-###### Example A-20. Library of hash functions
+**Example A-20.** Library of hash functions
 
 ```bash
 # Hash:
@@ -2549,7 +2549,7 @@ IFS="$oldIFS"
 
 Here is an example script using the foregoing hash library.
 
-###### Example A-21. Colorizing text using hash functions
+**Example A-21.** Colorizing text using hash functions
 
 ```bash
 #!/bin/bash
@@ -2615,7 +2615,7 @@ exit $?
 
 An example illustrating the mechanics of hashing, but from a different point of view.
 
-###### Example A-22. More on hash functions
+**Example A-22.** More on hash functions
 
 ```bash
 #!/bin/bash
@@ -2766,7 +2766,7 @@ exit 0
 
 Now for a script that installs and mounts those cute USB keychain solid-state "hard drives."
 
-###### Example A-23. Mounting USB keychain storage devices
+**Example A-23.** Mounting USB keychain storage devices
 
 ```bash
 #!/bin/bash
@@ -2915,7 +2915,7 @@ exit 0
 
 Converting a text file to HTML format.
 
-###### Example A-24. Converting to HTML
+**Example A-24.** Converting to HTML
 
 ```bash
 #!/bin/bash
@@ -3065,7 +3065,7 @@ exit $?
 
 Here is something to warm the hearts of webmasters and mistresses: a script that saves weblogs.
 
-###### Example A-25. Preserving weblogs
+**Example A-25.** Preserving weblogs
 
 ```bash
 #!/bin/bash
@@ -3138,7 +3138,7 @@ exit 0
 
 How to keep the shell from expanding and reinterpreting text strings.
 
-###### Example A-26. Protecting literal strings
+**Example A-26.** Protecting literal strings
 
 ```bash
 #! /bin/bash
@@ -3293,7 +3293,7 @@ exit 0
 
 But, what if you _want_ the shell to expand and reinterpret strings?
 
-###### Example A-27. Unprotecting literal strings
+**Example A-27.** Unprotecting literal strings
 
 ```bash
 #! /bin/bash
@@ -3423,7 +3423,7 @@ exit 0
 
 This interesting script helps hunt down spammers.
 
-###### Example A-28. Spammer Identification
+**Example A-28.** Spammer Identification
 
 ```bash
 #!/bin/bash
@@ -5604,7 +5604,7 @@ a publically accessible site.
 
 Another anti-spam script.
 
-###### Example A-29. Spammer Hunt
+**Example A-29.** Spammer Hunt
 
 ```bash
 #!/bin/bash
@@ -5891,7 +5891,7 @@ exit 0
 
 "Little Monster's" front end to [[communications-commands#^WGETREF|wget]].
 
-###### Example A-30. Making *wget* easier to use
+**Example A-30.** Making *wget* easier to use
 
 ```bash
 #!/bin/bash
@@ -6381,7 +6381,7 @@ done
 exit 0
 ```
 
-###### Example A-31. A *podcasting* script
+**Example A-31.** A *podcasting* script
 
 ```bash
 #!/bin/bash
@@ -6466,7 +6466,7 @@ http://www.linuxjournal.com/article/8171
 #################################################
 ```
 
-###### Example A-32. Nightly backup to a firewire HD
+**Example A-32.** Nightly backup to a firewire HD
 
 ```bash
 #!/bin/bash
@@ -6835,7 +6835,7 @@ echo 'BACKUP FAILED! Is this just a dry run? Is the disk full?) '
 exit $E_BACKUP
 ```
 
-###### Example A-33. An expanded *cd* command
+**Example A-33.** An expanded *cd* command
 
 ```bash
 ###########################################################################
@@ -7607,7 +7607,7 @@ Version: 1.2.1 Date: 24-MAY-2003
 DOCUMENTATION
 ```
 
-###### Example A-34. A soundcard setup script
+**Example A-34.** A soundcard setup script
 
 ```bash
 #!/bin/bash
@@ -7718,7 +7718,7 @@ fm_port=$oplport irq=$irq dma1=$dma1 dma2=$dma2 isapnp=0 index=0
 exit $?
 ```
 
-###### Example A-35. Locating split paragraphs in a text file
+**Example A-35.** Locating split paragraphs in a text file
 
 ```bash
 #!/bin/bash
@@ -7789,7 +7789,7 @@ There will be additional output for all the other split paragraphs
 in the target file.
 ```
 
-###### Example A-36. Insertion sort
+**Example A-36.** Insertion sort
 
 ```bash
 #!/bin/bash
@@ -7859,7 +7859,7 @@ echo $'Result:\n'${list[@]}
 exit $?
 ```
 
-###### Example A-37. Standard Deviation
+**Example A-37.** Standard Deviation
 
 ```bash
 #!/bin/bash
@@ -7981,7 +7981,7 @@ exit
 # ++++++++++++++++++++++++++++++++++++++++ #
 ```
 
-###### Example A-38. A *pad* file generator for shareware authors
+**Example A-38.** A *pad* file generator for shareware authors
 
 ```bash
 #!/bin/bash
@@ -8229,7 +8229,7 @@ echo "Save file is:  \""$savefile"\""
 exit 0
 ```
 
-###### Example A-39. A *man page* editor
+**Example A-39.** A *man page* editor
 
 ```bash
 #!/bin/bash
@@ -8382,7 +8382,7 @@ end    # ... exit not needed.
 #+ but it's much easier to use.
 ```
 
-###### Example A-40. Petals Around the Rose
+**Example A-40.** Petals Around the Rose
 
 ```bash
 #!/bin/bash -i
@@ -8581,7 +8581,7 @@ exit $?
 #    (How Bill Gates coped with the Petals Around the Rose challenge.)
 ```
 
-###### Example A-41. Quacky: a Perquackey-type word game
+**Example A-41.** Quacky: a Perquackey-type word game
 
 ```bash
 #!/bin/bash
@@ -9052,7 +9052,7 @@ exit $?
 # http://bash.deta.in/qky.README.html
 ```
 
-###### Example A-42. Nim
+**Example A-42.** Nim
 
 ```bash
 #!/bin/bash
@@ -9332,7 +9332,7 @@ done
 #+ Android Nim, for the TRS-80 Model I.
 ```
 
-###### Example A-43. A command-line stopwatch
+**Example A-43.** A command-line stopwatch
 
 ```bash
 #!/bin/sh
@@ -9467,7 +9467,7 @@ done
 exit $?
 ```
 
-###### Example A-44. An all-purpose shell scripting homework assignment solution
+**Example A-44.** An all-purpose shell scripting homework assignment solution
 
 ```bash
 #!/bin/bash
@@ -9568,7 +9568,7 @@ exit $E_LZY
 #+ all too often.
 ```
 
-###### Example A-45. The Knight's Tour
+**Example A-45.** The Knight's Tour
 
 ```bash
 #!/bin/bash
@@ -10183,7 +10183,7 @@ exit 0   # return 0;
 #+   to the originating square. If so, it might be a relatively easy fix.
 ```
 
-###### Example A-46. Magic Squares
+**Example A-46.** Magic Squares
 
 ```bash
 #!/bin/bash
@@ -10300,7 +10300,7 @@ exit $?
 #    See the URL for Kwon Young Shin, above, for help.
 ```
 
-###### Example A-47. Fifteen Puzzle
+**Example A-47.** Fifteen Puzzle
 
 ```bash
 #!/bin/bash
@@ -10478,7 +10478,7 @@ exit 0
 #+ rather than the numbers 1 - 15.
 ```
 
-###### Example A-48. *The Towers of Hanoi, graphic version*
+**Example A-48.** *The Towers of Hanoi, graphic version*
 
 ```bash
 #! /bin/bash
@@ -10691,7 +10691,7 @@ exit $E_NOEXIT   # Shouldn't exit here.
 # Redirect script output to a file, otherwise it scrolls off display.
 ```
 
-###### Example A-49. *The Towers of Hanoi, alternate graphic version*
+**Example A-49.** *The Towers of Hanoi, alternate graphic version*
 
 ```bash
 #! /bin/bash
@@ -10912,7 +10912,7 @@ exit $E_NOEXIT   # Shouldn't exit here.
 #+ Fix this.
 ```
 
-###### Example A-50. An alternate version of the [[manipulating-variables#^GETOPTSIMPLE|getopt-simple.sh]] script
+**Example A-50. An alternate version of the [[manipulating-variables#^GETOPTSIMPLE|getopt-simple.**sh]] script
 
 ```bash
 #!/bin/bash
@@ -11040,7 +11040,7 @@ UseGetOpt --aoption --debug --log --test --file myfile anotherfile
 exit
 ```
 
-###### Example A-51. The version of the *UseGetOpt.sh* example used in the [[an-introduction-to-programmable-completion.html|Tab Expansion appendix]]
+**Example A-51. The version of the *UseGetOpt.sh* example used in the [[an-introduction-to-programmable-completion.**html|Tab Expansion appendix]]
 
 ```bash
 #!/bin/bash
@@ -11139,7 +11139,7 @@ DoSomething () {
 exit
 ```
 
-###### Example A-52. Cycling through all the possible color backgrounds
+**Example A-52.** Cycling through all the possible color backgrounds
 
 ```bash
 #!/bin/bash
@@ -11195,7 +11195,7 @@ done
 echo
 ```
 
-###### Example A-53. Morse Code Practice
+**Example A-53.** Morse Code Practice
 
 ```bash
 #!/bin/bash
@@ -11357,7 +11357,7 @@ exit 0
 #  2) Have the script optionally accept input from a text file.
 ```
 
-###### Example A-54. Base64 encoding/decoding
+**Example A-54.** Base64 encoding/decoding
 
 ```bash
 #!/bin/bash
@@ -11488,7 +11488,7 @@ else
 fi
 ```
 
-###### Example A-55. Inserting text in a file using *sed*
+**Example A-55.** Inserting text in a file using *sed*
 
 ```bash
 #!/bin/bash
@@ -11530,7 +11530,7 @@ exit 0
 # It needs it badly.
 ```
 
-###### Example A-56. The Gronsfeld Cipher
+**Example A-56.** The Gronsfeld Cipher
 
 ```bash
 #!/bin/bash
@@ -11682,7 +11682,7 @@ exit $?    # } End-of-script
 #   **************************************************************   #
 ```
 
-###### Example A-57. Bingo Number Generator
+**Example A-57.** Bingo Number Generator
 
 ```bash
 #!/bin/bash
@@ -11815,7 +11815,7 @@ exit 0
 
 To end this section, a review of the basics . . . and more.
 
-###### Example A-58. Basics Reviewed
+**Example A-58.** Basics Reviewed
 
 ```bash
 #!/bin/bash
@@ -12860,7 +12860,7 @@ echo ${sparseZ[@]//*/$(_GenFunc)}
 exit 0
 ```
 
-###### Example A-59. Testing execution times of various commands
+**Example A-59.** Testing execution times of various commands
 
 ```bash
 #!/bin/bash
@@ -12934,7 +12934,7 @@ done
 exit $?
 ```
 
-###### Example A-60. Associative arrays vs. conventional arrays (execution times)
+**Example A-60. Associative arrays vs.** conventional arrays (execution times)
 
 ```bash
 #!/bin/bash
