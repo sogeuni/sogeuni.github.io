@@ -9,7 +9,7 @@ local variables
 
 A variable declared as _local_ is one that is visible only within the [[special-chars.html#CODEBLOCKREF|block of code]] in which it appears. It has local [[subshells.html#SCOPEREF|scope]]. In a function, a _local variable_ has meaning only within that function block. [^1]
 
-###### Example 24-12. Local variable visibility
+**Example 24-12.** Local variable visibility
 
 ```bash
 #!/bin/bash
@@ -174,7 +174,7 @@ exit 0
 
 Local variables are a useful tool for writing recursive code, but this practice generally involves a great deal of computational overhead and is definitely _not_ recommended in a shell script. [^6]
 
-###### Example 24-15. Recursion, using a local variable
+**Example 24-15.** Recursion, using a local variable
 
 ```bash
 #!/bin/bash

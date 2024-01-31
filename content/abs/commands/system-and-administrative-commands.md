@@ -177,55 +177,7 @@ Sets, changes, or manages a user's password.
 
 The **passwd** command can be used in a script, but probably _should not_ be.
 
-###### Example 17-1. Setting a new password
-
-```bash title="Example 17-1. Setting a new password"
-#!/bin/bash
-#  setnew-password.sh: For demonstration purposes only.
-#                      Not a good idea to actually run this script.
-#  This script must be run as root.
-
-ROOT_UID=0         # Root has $UID 0.
-E_WRONG_USER=65    # Not root?
-
-E_NOSUCHUSER=70
-SUCCESS=0
-
-
-if [ "$UID" -ne "$ROOT_UID" ]
-then
-  echo; echo "Only root can run this script."; echo
-  exit $E_WRONG_USER
-else
-  echo
-  echo "You should know better than to run this script, root."
-  echo "Even root users get the blues... "
-  echo
-fi  
-
-
-username=bozo
-NEWPASSWORD=security_violation
-
-# Check if bozo lives here.
-grep -q "$username" /etc/passwd
-if [ $? -ne $SUCCESS ]
-then
-  echo "User $username does not exist."
-  echo "No password changed."
-  exit $E_NOSUCHUSER
-fi  
-
-echo "$NEWPASSWORD" | passwd --stdin "$username"
-#  The '--stdin' option to 'passwd' permits
-#+ getting a new password from stdin (or a pipe).
-
-echo; echo "User $username's password changed!"
-
-# Using the 'passwd' command in a script is dangerous.
-
-exit 0
-```
+![[Example 17-1|Example 17-1]]
 
 The **passwd** command's -l, -u, and -d options permit locking, unlocking, and deleting a user's password. Only _root_ may use these options.
 
@@ -277,28 +229,7 @@ bash$ tty
 
 Shows and/or changes terminal settings. This complex command, used in a script, can control terminal behavior and the way output displays. See the info page, and study it carefully.
 
-###### Example 17-2. Setting an *erase* character
-
-```bash
-#!/bin/bash
-# erase.sh: Using "stty" to set an erase character when reading input.
-
-echo -n "What is your name? "
-read name                      #  Try to backspace
-                               #+ to erase characters of input.
-                               #  Problems?
-echo "Your name is $name."
-
-stty erase '#'                 #  Set "hashmark" (#) as erase character.
-echo -n "What is your name? "
-read name                      #  Use # to erase last character typed.
-echo "Your name is $name."
-
-exit 0
-
-# Even after the script exits, the new key value remains set.
-# Exercise: How would you reset the erase character to the default value?
-```
+![[Example 17-2|Example 17-2]]
 
 ###### Example 17-3. *secret password*: Turning off terminal echoing
 

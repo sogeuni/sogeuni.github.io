@@ -18,7 +18,7 @@ The following commands and actions are disabled:
 - Various other commands that would enable monkeying with or attempting to subvert the script for an unintended purpose.
 - Getting out of restricted mode within the script.
 
-###### Example 22-1. Running a script in restricted mode
+**Example 22-1.** Running a script in restricted mode
 
 ```bash
 #!/bin/bash

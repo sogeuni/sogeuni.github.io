@@ -5,7 +5,7 @@ title: Appendix T. ASCII Table
 
 Traditionally, a book of this sort has an [[special-characters#^ASCIIDEF|ASCII]] Table appendix. This book does not. Instead, here are several short scripts, each of which generates a complete ASCII table.
 
-###### Example T-1. A script that generates an ASCII table
+**Example T-1.** A script that generates an ASCII table
 
 ```bash
 #!/bin/bash
@@ -56,7 +56,7 @@ exit $?
 # Rewrite this script to use decimal numbers, rather than octal.
 ```
 
-###### Example T-2. Another ASCII table script
+**Example T-2.** Another ASCII table script
 
 ```bash
 #!/bin/bash
@@ -103,7 +103,7 @@ while [ $IDX -le 127 ] && CHR="${ABR[$IDX]}"
 exit $?
 ```
 
-###### Example T-3. A third ASCII table script, using *awk*
+**Example T-3.** A third ASCII table script, using *awk*
 
 ```bash
 #!/bin/bash

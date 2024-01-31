@@ -178,7 +178,7 @@ fi
 
 The /proc directory contains subdirectories with unusual numerical names. Every one of these names maps to the [[another-look-at-variables#^PPIDREF|process ID]] of a currently running process. Within each of these subdirectories, there are a number of files that hold useful information about the corresponding process. The stat and status files keep running statistics on the process, the cmdline file holds the command-line arguments the process was invoked with, and the exe file is a symbolic link to the complete path name of the invoking process. There are a few more such files, but these seem to be the most interesting from a scripting standpoint.
 
-###### Example 29-3. Finding the process associated with a PID
+**Example 29-3.** Finding the process associated with a PID
 
 ```bash
 #!/bin/bash
@@ -268,7 +268,7 @@ fi
 exit 0
 ```
 
-###### Example 29-4. On-line connect status
+**Example 29-4.** On-line connect status
 
 ```bash
 #!/bin/bash

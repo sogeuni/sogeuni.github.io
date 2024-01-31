@@ -5,7 +5,7 @@ title: "36.4. Recursion: a script calling itself"
 
 Can a script [[local-variables#^RECURSIONREF|recursively]] call itself? Indeed.
 
-###### Example 36-10. A (useless) script that recursively calls itself
+**Example 36-10.** A (useless) script that recursively calls itself
 
 ```bash
 #!/bin/bash
@@ -40,7 +40,7 @@ exit 0
 # Explain why.
 ```
 
-###### Example 36-11. A (useful) script that recursively calls itself
+**Example 36-11.** A (useful) script that recursively calls itself
 
 ```bash
 #!/bin/bash
@@ -95,7 +95,7 @@ Sam Roe         956 E. 8th St., New York, NY 10009          (212) 444-5678
 #+ it prints *only* the line(s) containing all the arguments.
 ```
 
-###### Example 36-12. Another (useful) script that recursively calls itself
+**Example 36-12.** Another (useful) script that recursively calls itself
 
 ```bash
 #!/bin/bash

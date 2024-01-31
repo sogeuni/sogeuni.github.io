@@ -39,7 +39,7 @@ Choose a _limit string_ sufficiently unusual that it will not occur anywhere in 
 
 Note that _here documents_ may sometimes be used to good effect with non-interactive utilities and commands, such as, for example, [[system-and-administrative-commands#^WALLREF|wall]].
 
-###### Example 19-1. *broadcast*: Sends message to everyone logged in
+**Example 19-1.** *broadcast*: Sends message to everyone logged in
 
 ```bash
 #!/bin/bash
@@ -61,7 +61,7 @@ exit
 
 Even such unlikely candidates as the _vi_ text editor lend themselves to _here documents_.
 
-###### Example 19-2. *dummyfile*: Creates a 2-line dummy file
+**Example 19-2.** *dummyfile*: Creates a 2-line dummy file
 
 ```bash
 #!/bin/bash
@@ -124,7 +124,7 @@ done
 
 Analogous to "ex scripts" are _cat scripts_.
 
-###### Example 19-3. Multi-line message using *cat*
+**Example 19-3.** Multi-line message using *cat*
 
 ```bash
 #!/bin/bash
@@ -167,7 +167,7 @@ This is the last line of the message.
 
 The - option to mark a here document limit string (**<<-LimitString**) suppresses leading tabs (but not spaces) in the output. This may be useful in making a script more readable.
 
-###### Example 19-4. Multi-line message, with tabs suppressed
+**Example 19-4.** Multi-line message, with tabs suppressed
 
 ```bash
 #!/bin/bash
@@ -197,7 +197,7 @@ exit 0
 
 A _here document_ supports parameter and command substitution. It is therefore possible to pass different parameters to the body of the here document, changing its output accordingly.
 
-###### Example 19-5. Here document with replaceable parameters
+**Example 19-5.** Here document with replaceable parameters
 
 ```bash
 #!/bin/bash
@@ -238,7 +238,7 @@ exit
 
 This is a useful script containing a _here document_ with parameter substitution.
 
-###### Example 19-6. Upload a file pair to *Sunsite* incoming directory
+**Example 19-6.** Upload a file pair to *Sunsite* incoming directory
 
 ```bash
 #!/bin/bash
@@ -287,7 +287,7 @@ exit 0
 
 Quoting or escaping the "limit string" at the head of a here document disables parameter substitution within its body. The reason for this is that _quoting/escaping the limit string_ effectively [[quoting#^ESCP|escapes]] the $, `, and \ [[special-characters#^SCHARLIST|special characters]], and causes them to be interpreted literally. (Thank you, Allen Halsey, for pointing this out.)
 
-###### Example 19-7. Parameter substitution turned off
+**Example 19-7.** Parameter substitution turned off
 
 ```bash
 #!/bin/bash
@@ -335,7 +335,7 @@ exit
 
 Disabling parameter substitution permits outputting literal text. Generating scripts or even program code is one use for this.
 
-###### Example 19-8. A script that generates another script
+**Example 19-8.** A script that generates another script
 
 ```bash
 #!/bin/bash
@@ -404,7 +404,7 @@ echo "$variable"
 
 A here document can supply input to a function in the same script.
 
-###### Example 19-9. Here documents and functions
+**Example 19-9.** Here documents and functions
 
 ```bash
 #!/bin/bash
@@ -443,7 +443,7 @@ exit 0
 
 It is possible to use : as a dummy command accepting output from a here document. This, in effect, creates an "anonymous" here document.
 
-###### Example 19-10. "Anonymous" Here Document
+**Example 19-10.** "Anonymous" Here Document
 
 ```bash
 #!/bin/bash
@@ -458,7 +458,7 @@ exit $?
 > [!tip]
 > A variation of the above technique permits "commenting out" blocks of code.
 
-###### Example 19-11. Commenting out a block of code
+**Example 19-11.** Commenting out a block of code
 
 ```bash
 #!/bin/bash
@@ -532,7 +532,7 @@ commented-bad.sh: line 3: foo_bar_bazz: parameter null or not set
 > [!tip]
 > Yet another twist of this nifty trick makes "self-documenting" scripts possible.
 
-###### Example 19-12. A self-documenting script
+**Example 19-12.** A self-documenting script
 
 ```bash
 #!/bin/bash

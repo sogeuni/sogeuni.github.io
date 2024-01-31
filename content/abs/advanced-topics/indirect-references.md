@@ -7,7 +7,7 @@ We have seen that [[varsubn.html|referencing a variable]], $var, fetches its _va
 
 The actual notation is _\$$var_, usually preceded by an [[internal.html#EVALREF|eval]] (and sometimes an [[internal.html#ECHOREF|echo]). This is called an _indirect reference_.
 
-###### Example 28-1. Indirect Variable References
+**Example 28-1.** Indirect Variable References
 
 ```bash
 #!/bin/bash
@@ -152,7 +152,7 @@ echo $?        # 1
 # The variable name is composed of two parts: "get" and "Sparc" . . .
 ```
 
-###### Example 28-2. Passing an indirect reference to *awk*
+**Example 28-2.** Passing an indirect reference to *awk*
 
 ```bash
 #!/bin/bash

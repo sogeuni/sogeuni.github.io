@@ -55,7 +55,7 @@ cat /dev/null > /var/log/wtmp
 
 Automatically emptying the contents of a logfile (especially good for dealing with those nasty "cookies" sent by commercial Web sites):
 
-###### Example 31-1. Hiding the cookie jar
+**Example 31-1.** Hiding the cookie jar
 
 ```bash
 # Obsolete Netscape browser.
@@ -74,7 +74,7 @@ Uses of /dev/zero
 
 Like /dev/null, /dev/zero is a pseudo-device file, but it actually produces a stream of nulls (_binary_ zeros, not the [[special-characters#^ASCIIDEF|ASCII]] kind). Output written to /dev/zero disappears, and it is fairly difficult to actually read the nulls emitted there, though it can be done with [[miscellaneous-commands#^ODREF|od]] or a hex editor. The chief use of /dev/zero is creating an initialized dummy file of predetermined length intended as a temporary swap file.
 
-###### Example 31-2. Setting up a swapfile using /dev/zero
+**Example 31-2.** Setting up a swapfile using /dev/zero
 
 ```bash
 #!/bin/bash
@@ -144,7 +144,7 @@ exit $retcode
 
 Another application of /dev/zero is to "zero out" a file of a designated size for a special purpose, such as mounting a filesystem on a [[dev#^LOOPBACKREF|loopback device]] (see [[Example 17-8|Example 17-8]]) or "securely" deleting a file (see [[Example 16-61|Example 16-61]]).
 
-###### Example 31-3. Creating a ramdisk
+**Example 31-3.** Creating a ramdisk
 
 ```bash
 #!/bin/bash

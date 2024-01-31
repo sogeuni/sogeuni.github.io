@@ -5,7 +5,7 @@ title: 36.5. "Colorizing" Scripts
 
 The ANSI [^1] escape sequences set screen attributes, such as bold text, and color of foreground and background. [[converting-dos-batch-files-to-shell-scripts#^DOSBATCH1|DOS batch files]] commonly used ANSI escape codes for _color_ output, and so can Bash scripts.
 
-###### Example 36-13. A "colorized" address database
+**Example 36-13.** A "colorized" address database
 
 ```bash
 #!/bin/bash
@@ -85,7 +85,7 @@ echo
 exit 0
 ```
 
-###### Example 36-14. Drawing a box
+**Example 36-14.** Drawing a box
 
 ```bash
 #!/bin/bash
@@ -297,7 +297,7 @@ The numbers in the following table work for an _rxvt_ terminal. Results may vary
 |cyan|36|46|
 |white|37|47|
 
-###### Example 36-15. Echoing colored text
+**Example 36-15.** Echoing colored text
 
 ```bash
 #!/bin/bash

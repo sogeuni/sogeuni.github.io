@@ -5,7 +5,7 @@ title: 20.2. Redirecting Code Blocks
 
 Blocks of code, such as [[loops-and-branches#^WHILELOOPREF|while]], [[loops-and-branches#^UNTILLOOPREF|until]], and [[loops-and-branches#^FORLOOPREF1|for]] loops, even [[tests#^IFTHEN|if/then]] test blocks can also incorporate redirection of stdin. Even a function may use this form of redirection (see [[Example 24-11|Example 24-11]]). The < operator at the end of the code block accomplishes this.
 
-###### Example 20-5. Redirected *while* loop
+**Example 20-5.** Redirected *while* loop
 
 ```bash
 #!/bin/bash
@@ -59,7 +59,7 @@ echo $abc
 #  And, thanks, Brian Onn, for correcting an annotation error.
 ```
 
-###### Example 20-6. Alternate form of redirected *while* loop
+**Example 20-6.** Alternate form of redirected *while* loop
 
 ```bash
 #!/bin/bash
@@ -109,7 +109,7 @@ echo; echo "$count names read"; echo
 exit 0
 ```
 
-###### Example 20-7. Redirected *until* loop
+**Example 20-7.** Redirected *until* loop
 
 ```bash
 #!/bin/bash
@@ -135,7 +135,7 @@ done <"$Filename"             # Redirects stdin to file $Filename.
 exit 0
 ```
 
-###### Example 20-8. Redirected *for* loop
+**Example 20-8.** Redirected *for* loop
 
 ```bash
 #!/bin/bash
@@ -174,7 +174,7 @@ exit 0
 
 We can modify the previous example to also redirect the output of the loop.
 
-###### Example 20-9. Redirected *for* loop (both stdin and stdout redirected)
+**Example 20-9.** Redirected *for* loop (both stdin and stdout redirected)
 
 ```bash
 #!/bin/bash
@@ -206,7 +206,7 @@ done < "$Filename" > "$Savefile"     # Redirects stdin to file $Filename,
 exit 0
 ```
 
-###### Example 20-10. Redirected *if/then* test
+**Example 20-10.** Redirected *if/then* test
 
 ```bash
 #!/bin/bash
@@ -233,7 +233,7 @@ fi <"$Filename"
 exit 0
 ```
 
-###### Example 20-11. Data file *names.data* for above examples
+**Example 20-11. Data file *names.**data* for above examples
 
 ```bash
 Aristotle

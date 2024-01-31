@@ -26,7 +26,7 @@ equation()
 }
 ```
 
-###### Example 26-1. Using an *and list* to test for command-line arguments
+**Example 26-1.** Using an *and list* to test for command-line arguments
 
 ```bash
 #!/bin/bash
@@ -68,7 +68,7 @@ fi
 exit $?
 ```
 
-###### Example 26-2. Another command-line arg test using an *and list*
+**Example 26-2.** Another command-line arg test using an *and list*
 
 ```bash
 #!/bin/bash
@@ -108,7 +108,7 @@ command-1 | command-2 | command-3 | ... command-n
 
 Each command executes in turn for as long as the previous command returns false. At the first true return, the command chain terminates (the first command returning true is the last one to execute). This is obviously the inverse of the "and list".
 
-###### Example 26-3. Using _or lists_ in combination with an *and list*
+**Example 26-3.** Using _or lists_ in combination with an *and list*
 
 ```bash
 #!/bin/bash

@@ -9,7 +9,7 @@ title: 32. Debugging
 
 The Bash shell contains no built-in debugger, and only bare-bones debugging-specific commands and constructs. Syntax errors or outright typos in the script generate cryptic error messages that are often of no help in debugging a non-functional script.
 
-###### Example 32-1. A buggy script
+**Example 32-1.** A buggy script
 
 ```bash
 #!/bin/bash
@@ -36,7 +36,7 @@ Output from script:
 
 What's wrong with the above script? Hint: after the _if_.
 
-###### Example 32-2. Missing [[internal-commands-and-builtins#^keywordref|keyword]]
+**Example 32-2.** Missing [[internal-commands-and-builtins#^keywordref|keyword]]
 
 ```bash
 #!/bin/bash
@@ -69,7 +69,7 @@ Error messages may disregard comment lines in a script when reporting the line n
 
 What if the script executes, but does not work as expected? This is the all too familiar logic error.
 
-###### Example 32-3. *test24*: another buggy script
+**Example 32-3.** *test24*: another buggy script
 
 ```bash
 #!/bin/bash
@@ -243,7 +243,7 @@ trap 'echo "Control-C disabled."' 2
 # Message when Control-C pressed.
 ```
 
-###### Example 32-5. Trapping at exit
+**Example 32-5.** Trapping at exit
 
 ```bash
 #!/bin/bash
@@ -268,7 +268,7 @@ exit 0
 #+ since the script exits in any case after running out of commands.
 ```
 
-###### Example 32-6. Cleaning up after **Control-C**
+**Example 32-6.** Cleaning up after **Control-C**
 
 ```bash
 #!/bin/bash
@@ -360,7 +360,7 @@ echo "On-line"
 #           of each of these various approaches.
 ```
 
-###### Example 32-7. A Simple Implementation of a Progress Bar
+**Example 32-7.** A Simple Implementation of a Progress Bar
 
 ```bash
 #! /bin/bash
@@ -437,7 +437,7 @@ exit $?
 
 Of course, the **trap** command has other uses aside from debugging, such as disabling certain keystrokes within a script (see [[Example A-43|Example A-43]]).
 
-###### Example 32-9. Running multiple processes (on an SMP box)
+**Example 32-9.** Running multiple processes (on an SMP box)
 
 ```bash
 #!/bin/bash

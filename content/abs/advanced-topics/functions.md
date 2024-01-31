@@ -44,7 +44,7 @@ _command_...
 
 Functions are called, _triggered_, simply by invoking their names. _A function call is equivalent to a command._
 
-###### Example 24-1. Simple functions
+**Example 24-1.** Simple functions
 
 ```bash
 #!/bin/bash

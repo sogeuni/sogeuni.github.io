@@ -128,7 +128,7 @@ exec 3>&-
 
 Here is a method of circumventing the problem of an [[gotchas#^BADREAD0|_echo_ piped to a _while-read loop_]] running in a subshell.
 
-###### Example 23-1. Code block redirection without forking
+**Example 23-1.** Code block redirection without forking
 
 ```bash
 #!/bin/bash
@@ -200,7 +200,7 @@ exit $?
 
 This is a similar example.
 
-###### Example 23-2. Redirecting the output of *process substitution* into a loop.
+**Example 23-2. Redirecting the output of *process substitution* into a loop.**
 
 ```bash
 #!/bin/bash

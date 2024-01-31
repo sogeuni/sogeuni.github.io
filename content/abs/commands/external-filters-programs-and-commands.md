@@ -789,70 +789,7 @@ bash$ sort testfile | uniq -c | sort -nr
 
 The **sort INPUTFILE | uniq -c | sort -nr** command string produces a _frequency of occurrence_ listing on the INPUTFILE file (the -nr options to **sort** cause a reverse numerical sort). This template finds use in analysis of log files and dictionary lists, and wherever the lexical structure of a document needs to be examined.
 
-###### Example 16-12. Word Frequency Analysis
-
-```bash
-#!/bin/bash
-# wf.sh: Crude word frequency analysis on a text file.
-# This is a more efficient version of the "wf2.sh" script.
-
-
-# Check for input file on command-line.
-ARGS=1
-E_BADARGS=85
-E_NOFILE=86
-
-if [ $# -ne "$ARGS" ]  # Correct number of arguments passed to script?
-then
-  echo "Usage: `basename $0` filename"
-  exit $E_BADARGS
-fi
-
-if [ ! -f "$1" ]       # Check if file exists.
-then
-  echo "File \"$1\" does not exist."
-  exit $E_NOFILE
-fi
-
-
-
-########################################################
-# main ()
-sed -e 's/\.//g'  -e 's/\,//g' -e 's/ /\
-/g' "$1" | tr 'A-Z' 'a-z' | sort | uniq -c | sort -nr
-#                           =========================
-#                            Frequency of occurrence
-
-#  Filter out periods and commas, and
-#+ change space between words to linefeed,
-#+ then shift characters to lowercase, and
-#+ finally prefix occurrence count and sort numerically.
-
-#  Arun Giridhar suggests modifying the above to:
-#  . . . | sort | uniq -c | sort +1 [-f] | sort +0 -nr
-#  This adds a secondary sort key, so instances of
-#+ equal occurrence are sorted alphabetically.
-#  As he explains it:
-#  "This is effectively a radix sort, first on the
-#+ least significant column
-#+ (word or string, optionally case-insensitive)
-#+ and last on the most significant column (frequency)."
-#
-#  As Frank Wang explains, the above is equivalent to
-#+       . . . | sort | uniq -c | sort +0 -nr
-#+ and the following also works:
-#+       . . . | sort | uniq -c | sort -k1nr -k
-########################################################
-
-exit 0
-
-# Exercises:
-# ---------
-# 1) Add 'sed' commands to filter out other punctuation,
-#+   such as semicolons.
-# 2) Modify the script to also filter out multiple spaces and
-#+   other whitespace.
-```
+![[Example 16-12|Example 16-12]]
 
 ```bash
 bash$ cat testfile
@@ -1001,127 +938,9 @@ File: 1.data 2.data
 
 lists the beginning of a file to stdout. The default is 10 lines, but a different number can be specified. The command has a number of interesting options.
 
-###### Example 16-13. Which files are scripts?
+![[Example 16-13|Example 16-13]]
 
-```bash
-#!/bin/bash
-# script-detector.sh: Detects scripts within a directory.
-
-TESTCHARS=2    # Test first 2 characters.
-SHABANG='#!'   # Scripts begin with a "sha-bang."
-
-for file in *  # Traverse all the files in current directory.
-do
-  if [[ `head -c$TESTCHARS "$file"` = "$SHABANG" ]]
-  #      head -c2                      #!
-  #  The '-c' option to "head" outputs a specified
-  #+ number of characters, rather than lines (the default).
-  then
-    echo "File \"$file\" is a script."
-  else
-    echo "File \"$file\" is *not* a script."
-  fi
-done
-  
-exit 0
-
-#  Exercises:
-#  ---------
-#  1) Modify this script to take as an optional argument
-#+    the directory to scan for scripts
-#+    (rather than just the current working directory).
-#
-#  2) As it stands, this script gives "false positives" for
-#+    Perl, awk, and other scripting language scripts.
-#     Correct this.
-```
-
-###### Example 16-14. Generating 10-digit random numbers
-
-```bash
-#!/bin/bash
-# rnd.sh: Outputs a 10-digit random number
-
-# Script by Stephane Chazelas.
-
-head -c4 /dev/urandom | od -N4 -tu4 | sed -ne '1s/.* //p'
-
-
-# =================================================================== #
-
-# Analysis
-# --------
-
-# head:
-# -c4 option takes first 4 bytes.
-
-# od:
-# -N4 option limits output to 4 bytes.
-# -tu4 option selects unsigned decimal format for output.
-
-# sed: 
-# -n option, in combination with "p" flag to the "s" command,
-# outputs only matched lines.
-
-
-
-# The author of this script explains the action of 'sed', as follows.
-
-# head -c4 /dev/urandom | od -N4 -tu4 | sed -ne '1s/.* //p'
-# ----------------------------------> |
-
-# Assume output up to "sed" --------> |
-# is 0000000 1198195154\n
-
-#  sed begins reading characters: 0000000 1198195154\n.
-#  Here it finds a newline character,
-#+ so it is ready to process the first line (0000000 1198195154).
-#  It looks at its <range><action>s. The first and only one is
-
-#   range     action
-#   1         s/.* //p
-
-#  The line number is in the range, so it executes the action:
-#+ tries to substitute the longest string ending with a space in the line
-#  ("0000000 ") with nothing (//), and if it succeeds, prints the result
-#  ("p" is a flag to the "s" command here, this is different
-#+ from the "p" command).
-
-#  sed is now ready to continue reading its input. (Note that before
-#+ continuing, if -n option had not been passed, sed would have printed
-#+ the line once again).
-
-#  Now, sed reads the remainder of the characters, and finds the
-#+ end of the file.
-#  It is now ready to process its 2nd line (which is also numbered '$' as
-#+ it's the last one).
-#  It sees it is not matched by any <range>, so its job is done.
-
-#  In few word this sed commmand means:
-#  "On the first line only, remove any character up to the right-most space,
-#+ then print it."
-
-# A better way to do this would have been:
-#           sed -e 's/.* //;q'
-
-# Here, two <range><action>s (could have been written
-#           sed -e 's/.* //' -e q):
-
-#   range                    action
-#   nothing (matches line)   s/.* //
-#   nothing (matches line)   q (quit)
-
-#  Here, sed only reads its first line of input.
-#  It performs both actions, and prints the line (substituted) before
-#+ quitting (because of the "q" action) since the "-n" option is not passed.
-
-# =================================================================== #
-
-# An even simpler altenative to the above one-line script would be:
-#           head -c4 /dev/urandom| od -An -tu4
-
-exit
-```
+![[Example 16-14|Example 16-14]]
 
 See also [[Example 16-39|Example 16-39]].
 
@@ -1129,25 +948,7 @@ See also [[Example 16-39|Example 16-39]].
 
 lists the (tail) end of a file to stdout. The default is 10 lines, but this can be changed with the -n option. Commonly used to keep track of changes to a system logfile, using the -f option, which outputs lines appended to the file.
 
-###### Example 16-15. Using *tail* to monitor the system log
-
-```bash
-#!/bin/bash
-
-filename=sys.log
-
-cat /dev/null > $filename; echo "Creating / cleaning out file."
-#  Creates the file if it does not already exist,
-#+ and truncates it to zero length if it does.
-#  : > filename   and   > filename also work.
-
-tail /var/log/messages > $filename  
-# /var/log/messages must have world read permission for this to work.
-
-echo "$filename contains tail end of system log."
-
-exit 0
-```
+![[Example 16-15|Example 16-15]]
 
 > [!tip]
 > To list a specific line of a text file, [[special-characters#^PIPEREF|pipe]] the output of **head** to **tail -n 1**. For example **head -n 8 database.txt \| tail -n 1** lists the 8th line of the file database.txt.
@@ -1242,35 +1043,7 @@ printf 'a b\nc  d\n\n\n\n\n\000\n\000e\000\000\nf' \| grep -c '$'    # 9
 
 The --color (or --colour) option marks the matching string in color (on the console or in an _xterm_ window). Since _grep_ prints out each entire line containing the matching pattern, this lets you see exactly _what_ is being matched. See also the -o option, which shows only the matching portion of the line(s).
 
-###### Example 16-16. Printing out the *From* lines in stored e-mail messages
-
-```bash
-#!/bin/bash
-# from.sh
-
-#  Emulates the useful 'from' utility in Solaris, BSD, etc.
-#  Echoes the "From" header line in all messages
-#+ in your e-mail directory.
-
-
-MAILDIR=~/mail/*               #  No quoting of variable. Why?
-# Maybe check if-exists $MAILDIR:   if [ -d $MAILDIR ] . . .
-GREP_OPTS="-H -A 5 --color"    #  Show file, plus extra context lines
-                               #+ and display "From" in color.
-TARGETSTR="^From"              # "From" at beginning of line.
-
-for file in $MAILDIR           #  No quoting of variable.
-do
-  grep $GREP_OPTS "$TARGETSTR" "$file"
-  #    ^^^^^^^^^^              #  Again, do not quote this variable.
-  echo
-done
-
-exit $?
-
-#  You might wish to pipe the output of this script to 'more'
-#+ or redirect it to a file . . .
-```
+![[Example 16-16|Example 16-16]]
 
 When invoked with more than one target file given, **grep** specifies which file contains matches.
 
@@ -1310,44 +1083,7 @@ fi
 
 [[Example 32-6|Example 32-6]] demonstrates how to use **grep** to search for a word pattern in a system logfile.
 
-###### Example 16-17. Emulating *grep* in a script
-
-```bash
-#!/bin/bash
-# grp.sh: Rudimentary reimplementation of grep.
-
-E_BADARGS=85
-
-if [ -z "$1" ]    # Check for argument to script.
-then
-  echo "Usage: `basename $0` pattern"
-  exit $E_BADARGS
-fi  
-
-echo
-
-for file in *     # Traverse all files in $PWD.
-do
-  output=$(sed -n /"$1"/p $file)  # Command substitution.
-
-  if [ ! -z "$output" ]           # What happens if "$output" is not quoted?
-  then
-    echo -n "$file: "
-    echo "$output"
-  fi              #  sed -ne "/$1/s\|^\|${file}: \|p"  is equivalent to above.
-
-  echo
-done  
-
-echo
-
-exit 0
-
-# Exercises:
-# ---------
-# 1) Add newlines to output, if more than one match in any given file.
-# 2) Add features.
-```
+![[Example 16-17|Example 16-17]]
 
 How can **grep** search for two (or more) separate patterns? What if you want **grep** to display all lines in a file or files that contain both "pattern1" _and_ "pattern2"?
 
@@ -1382,76 +1118,7 @@ This is an ordinary text file.
 
 Now, for an interesting recreational use of _grep_ . . .
 
-###### Example 16-18. Crossword puzzle solver
-
-```bash
-#!/bin/bash
-# cw-solver.sh
-# This is actually a wrapper around a one-liner (line 46).
-
-#  Crossword puzzle and anagramming word game solver.
-#  You know *some* of the letters in the word you're looking for,
-#+ so you need a list of all valid words
-#+ with the known letters in given positions.
-#  For example: w...i....n
-#               1???5????10
-# w in position 1, 3 unknowns, i in the 5th, 4 unknowns, n at the end.
-# (See comments at end of script.)
-
-
-E_NOPATT=71
-DICT=/usr/share/dict/word.lst
-#                    ^^^^^^^^   Looks for word list here.
-#  ASCII word list, one word per line.
-#  If you happen to need an appropriate list,
-#+ download the author's "yawl" word list package.
-#  http://ibiblio.org/pub/Linux/libs/yawl-0.3.2.tar.gz
-#  or
-#  http://bash.deta.in/yawl-0.3.2.tar.gz
-
-
-if [ -z "$1" ]   #  If no word pattern specified
-then             #+ as a command-line argument . . .
-  echo           #+ . . . then . . .
-  echo "Usage:"  #+ Usage message.
-  echo
-  echo ""$0" \"pattern,\""
-  echo "where \"pattern\" is in the form"
-  echo "xxx..x.x..."
-  echo
-  echo "The x's represent known letters,"
-  echo "and the periods are unknown letters (blanks)."
-  echo "Letters and periods can be in any position."
-  echo "For example, try:   sh cw-solver.sh w...i....n"
-  echo
-  exit $E_NOPATT
-fi
-
-echo
-# ===============================================
-# This is where all the work gets done.
-grep ^"$1"$ "$DICT"   # Yes, only one line!
-#    \|    \|
-# ^ is start-of-word regex anchor.
-# $ is end-of-word regex anchor.
-
-#  From _Stupid Grep Tricks_, vol. 1,
-#+ a book the ABS Guide author may yet get around
-#+ to writing . . . one of these days . . .
-# ===============================================
-echo
-
-
-exit $?  # Script terminates here.
-#  If there are too many words generated,
-#+ redirect the output to a file.
-
-$ sh cw-solver.sh w...i....n
-
-wellington
-workingman
-workingmen
-```
+![[Example 16-18|Example 16-18]]
 
 **egrep** -- _extended grep_ -- is the same as **grep -E**. This uses a somewhat different, extended set of [[regexp#^REGEXREF|Regular Expressions]], which can make the search a bit more flexible. It also allows the boolean | (_or_) operator.
 
@@ -1468,95 +1135,7 @@ Line 1 matches.
 > [!note]
 > On some Linux distros, **egrep** and **fgrep** are symbolic links to, or aliases for **grep**, but invoked with the -E and -F options, respectively.
 
-###### Example 16-19. Looking up definitions in *Webster's 1913 Dictionary*
-
-```bash
-#!/bin/bash
-# dict-lookup.sh
-
-#  This script looks up definitions in the 1913 Webster's Dictionary.
-#  This Public Domain dictionary is available for download
-#+ from various sites, including
-#+ Project Gutenberg (http://www.gutenberg.org/etext/247).
-#
-#  Convert it from DOS to UNIX format (with only LF at end of line)
-#+ before using it with this script.
-#  Store the file in plain, uncompressed ASCII text.
-#  Set DEFAULT_DICTFILE variable below to path/filename.
-
-
-E_BADARGS=85
-MAXCONTEXTLINES=50                        # Maximum number of lines to show.
-DEFAULT_DICTFILE="/usr/share/dict/webster1913-dict.txt"
-                                          # Default dictionary file pathname.
-                                          # Change this as necessary.
-#  Note:
-#  ----
-#  This particular edition of the 1913 Webster's
-#+ begins each entry with an uppercase letter
-#+ (lowercase for the remaining characters).
-#  Only the *very first line* of an entry begins this way,
-#+ and that's why the search algorithm below works.
-
-
-
-if [[ -z $(echo "$1" | sed -n '/^[A-Z]/p') ]]
-#  Must at least specify word to look up, and
-#+ it must start with an uppercase letter.
-then
-  echo "Usage: `basename $0` Word-to-define [dictionary-file]"
-  echo
-  echo "Note: Word to look up must start with capital letter,"
-  echo "with the rest of the word in lowercase."
-  echo "--------------------------------------------"
-  echo "Examples: Abandon, Dictionary, Marking, etc."
-  exit $E_BADARGS
-fi
-
-
-if [ -z "$2" ]                            #  May specify different dictionary
-                                          #+ as an argument to this script.
-then
-  dictfile=$DEFAULT_DICTFILE
-else
-  dictfile="$2"
-fi
-
-# ---------------------------------------------------------
-Definition=$(fgrep -A $MAXCONTEXTLINES "$1 \\" "$dictfile")
-#                  Definitions in form "Word \..."
-#
-#  And, yes, "fgrep" is fast enough
-#+ to search even a very large text file.
-
-
-# Now, snip out just the definition block.
-
-echo "$Definition" |
-sed -n '1,/^[A-Z]/p' |
-#  Print from first line of output
-#+ to the first line of the next entry.
-sed '$d' | sed '$d'
-#  Delete last two lines of output
-#+ (blank line and first line of next entry).
-# ---------------------------------------------------------
-
-exit $?
-
-# Exercises:
-# ---------
-# 1)  Modify the script to accept any type of alphabetic input
-#   + (uppercase, lowercase, mixed case), and convert it
-#   + to an acceptable format for processing.
-#
-# 2)  Convert the script to a GUI application,
-#   + using something like 'gdialog' or 'zenity' . . .
-#     The script will then no longer take its argument(s)
-#   + from the command-line.
-#
-# 3)  Modify the script to parse one of the other available
-#   + Public Domain Dictionaries, such as the U.S. Census Bureau Gazetteer.
-```
+![[Example 16-19|Example 16-19]]
 
 > [!note]
 > See also [[Example A-41|Example A-41]] for an example of speedy _fgrep_ lookup on a large text file.
@@ -1572,54 +1151,7 @@ exit $?
 
 The command **look** works like **grep**, but does a lookup on a "dictionary," a sorted word list. By default, **look** searches for a match in /usr/dict/words, but a different dictionary file may be specified.
 
-###### Example 16-20. Checking words in a list for validity
-
-```bash
-#!/bin/bash
-# lookup: Does a dictionary lookup on each word in a data file.
-
-file=words.data  # Data file from which to read words to test.
-
-echo
-echo "Testing file $file"
-echo
-
-while [ "$word" != end ]  # Last word in data file.
-do               # ^^^
-  read word      # From data file, because of redirection at end of loop.
-  look $word > /dev/null  # Don't want to display lines in dictionary file.
-  #  Searches for words in the file /usr/share/dict/words
-  #+ (usually a link to linux.words).
-  lookup=$?      # Exit status of 'look' command.
-
-  if [ "$lookup" -eq 0 ]
-  then
-    echo "\"$word\" is valid."
-  else
-    echo "\"$word\" is invalid."
-  fi  
-
-done <"$file"    # Redirects stdin to $file, so "reads" come from there.
-
-echo
-
-exit 0
-
-# ----------------------------------------------------------------
-# Code below line will not execute because of "exit" command above.
-
-
-# Stephane Chazelas proposes the following, more concise alternative:
-
-while read word && [[ $word != end ]]
-do if look "$word" > /dev/null
-   then echo "\"$word\" is valid."
-   else echo "\"$word\" is invalid."
-   fi
-done <"$file"
-
-exit 0
-```
+![[Example 16-20|Example 16-20]]
 
 **sed**, **awk**
 
@@ -1736,186 +1268,15 @@ bash$ echo "abcd2ef1" | tr '[:alpha:]' -
 ----2--1
 ```
 
-###### Example 16-21. *toupper*: Transforms a file to all uppercase.
+![[Example 16-21|Example 16-21]]
 
-```bash
-#!/bin/bash
-# Changes a file to all uppercase.
+![[Example 16-22|Example 16-22]]
 
-E_BADARGS=85
+![[Example 16-23|Example 16-23]]
 
-if [ -z "$1" ]  # Standard check for command-line arg.
-then
-  echo "Usage: `basename $0` filename"
-  exit $E_BADARGS
-fi  
+![[Example 16-24|Example 16-24]]
 
-tr a-z A-Z <"$1"
-
-# Same effect as above, but using POSIX character set notation:
-#        tr '[:lower:]' '[:upper:]' <"$1"
-# Thanks, S.C.
-
-#     Or even . . .
-#     cat "$1" | tr a-z A-Z
-#     Or dozens of other ways . . .
-
-exit 0
-
-#  Exercise:
-#  Rewrite this script to give the option of changing a file
-#+ to *either* upper or lowercase.
-#  Hint: Use either the "case" or "select" command.
-```
-
-###### Example 16-22. *lowercase*: Changes all filenames in working directory to lowercase.
-
-```bash
-#!/bin/bash
-#
-#  Changes every filename in working directory to all lowercase.
-#
-#  Inspired by a script of John Dubois,
-#+ which was translated into Bash by Chet Ramey,
-#+ and considerably simplified by the author of the ABS Guide.
-
-
-for filename in *                # Traverse all files in directory.
-do
-   fname=`basename $filename`
-   n=`echo $fname | tr A-Z a-z`  # Change name to lowercase.
-   if [ "$fname" != "$n" ]       # Rename only files not already lowercase.
-   then
-     mv $fname $n
-   fi  
-done   
-
-exit $?
-
-
-# Code below this line will not execute because of "exit".
-#--------------------------------------------------------#
-# To run it, delete script above line.
-
-# The above script will not work on filenames containing blanks or newlines.
-# Stephane Chazelas therefore suggests the following alternative:
-
-
-for filename in *    # Not necessary to use basename,
-                     # since "*" won't return any file containing "/".
-do n=`echo "$filename/" | tr '[:upper:]' '[:lower:]'`
-#                             POSIX char set notation.
-#                    Slash added so that trailing newlines are not
-#                    removed by command substitution.
-   # Variable substitution:
-   n=${n%/}          # Removes trailing slash, added above, from filename.
-   [[ $filename == $n ]] | mv "$filename" "$n"
-                     # Checks if filename already lowercase.
-done
-
-exit $?
-```
-
-###### Example 16-23. *du*: DOS to UNIX text file conversion.
-
-```bash
-#!/bin/bash
-# Du.sh: DOS to UNIX text file converter.
-
-E_WRONGARGS=85
-
-if [ -z "$1" ]
-then
-  echo "Usage: `basename $0` filename-to-convert"
-  exit $E_WRONGARGS
-fi
-
-NEWFILENAME=$1.unx
-
-CR='\015'  # Carriage return.
-           # 015 is octal ASCII code for CR.
-           # Lines in a DOS text file end in CR-LF.
-           # Lines in a UNIX text file end in LF only.
-
-tr -d $CR < $1 > $NEWFILENAME
-# Delete CR's and write to new file.
-
-echo "Original DOS text file is \"$1\"."
-echo "Converted UNIX text file is \"$NEWFILENAME\"."
-
-exit 0
-
-# Exercise:
-# --------
-# Change the above script to convert from UNIX to DOS.
-```
-
-###### Example 16-24. *rot13*: ultra-weak encryption.
-
-```bash
-#!/bin/bash
-# rot13.sh: Classic rot13 algorithm,
-#           encryption that might fool a 3-year old
-#           for about 10 minutes.
-
-# Usage: ./rot13.sh filename
-# or     ./rot13.sh <filename
-# or     ./rot13.sh and supply keyboard input (stdin)
-
-cat "$@" | tr 'a-zA-Z' 'n-za-mN-ZA-M'   # "a" goes to "n", "b" to "o" ...
-#  The   cat "$@"   construct
-#+ permits input either from stdin or from files.
-
-exit 0
-```
-
-###### Example 16-25. Generating "Crypto-Quote" Puzzles
-
-```bash
-#!/bin/bash
-# crypto-quote.sh: Encrypt quotes
-
-#  Will encrypt famous quotes in a simple monoalphabetic substitution.
-#  The result is similar to the "Crypto Quote" puzzles
-#+ seen in the Op Ed pages of the Sunday paper.
-
-
-key=ETAOINSHRDLUBCFGJMQPVWZYXK
-# The "key" is nothing more than a scrambled alphabet.
-# Changing the "key" changes the encryption.
-
-# The 'cat "$@"' construction gets input either from stdin or from files.
-# If using stdin, terminate input with a Control-D.
-# Otherwise, specify filename as command-line parameter.
-
-cat "$@" | tr "a-z" "A-Z" | tr "A-Z" "$key"
-#        |  to uppercase  |     encrypt       
-# Will work on lowercase, uppercase, or mixed-case quotes.
-# Passes non-alphabetic characters through unchanged.
-
-
-# Try this script with something like:
-# "Nothing so needs reforming as other people's habits."
-# --Mark Twain
-#
-# Output is:
-# "CFPHRCS QF CIIOQ MINFMBRCS EQ FPHIM GIFGUI'Q HETRPQ."
-# --BEML PZERC
-
-# To reverse the encryption:
-# cat "$@" | tr "$key" "A-Z"
-
-
-#  This simple-minded cipher can be broken by an average 12-year old
-#+ using only pencil and paper.
-
-exit 0
-
-#  Exercise:
-#  --------
-#  Modify the script so that it will either encrypt or decrypt,
-#+ depending on command-line argument(s).
-```
+![[Example 16-25|Example 16-25]]
 
 Of course, _tr_ lends itself to _code obfuscation_.
 
@@ -1941,22 +1302,7 @@ A filter that wraps lines of input to a specified width. This is especially usef
 
 Simple-minded file formatter, used as a filter in a pipe to "wrap" long lines of text output.
 
-###### Example 16-26. Formatted file listing.
-
-```bash
-#!/bin/bash
-
-WIDTH=40                    # 40 columns wide.
-
-b=`ls /usr/local/bin`       # Get a file listing...
-
-echo $b | fmt -w $WIDTH
-
-# Could also have been done by
-#    echo $b | fold - -s -w $WIDTH
- 
-exit 0
-```
+![[Example 16-26|Example 16-26]]
 
 See also [[Example 16-5|Example 16-5]].
 
@@ -1971,26 +1317,7 @@ This deceptively named filter removes reverse line feeds from an input stream. I
 
 Column formatter. This filter transforms list-type text output into a "pretty-printed" table by inserting tabs at appropriate places.
 
-###### Example 16-27. Using *column* to format a directory listing
-
-```bash
-#!/bin/bash
-# colms.sh
-# A minor modification of the example file in the "column" man page.
-
-
-(printf "PERMISSIONS LINKS OWNER GROUP SIZE MONTH DAY HH:MM PROG-NAME\n" \
-; ls -l | sed 1d) | column -t
-#         ^^^^^^           ^^
-
-#  The "sed 1d" in the pipe deletes the first line of output,
-#+ which would be "total        N",
-#+ where "N" is the total number of files found by "ls -l".
-
-# The -t option to "column" pretty-prints a table.
-
-exit 0
-```
+![[Example 16-27|Example 16-27]]
 
 **colrm**
 
@@ -2005,29 +1332,7 @@ Line numbering filter: **nl filename** lists filename to stdout, but inserts con
 
 The output of **nl** is very similar to **cat -b**, since, by default **nl** does not list blank lines.
 
-###### Example 16-28. *nl*: A self-numbering script.
-
-```bash
-#!/bin/bash
-# line-number.sh
-
-# This script echoes itself twice to stdout with its lines numbered.
-
-echo "     line number = $LINENO" # 'nl' sees this as line 4
-#                                   (nl does not number blank lines).
-#                                   'cat -n' sees it correctly as line #6.
-
-nl `basename $0`
-
-echo; echo  # Now, let's try it with 'cat -n'
-
-cat -n `basename $0`
-# The difference is that 'cat -n' numbers the blank lines.
-# Note that 'nl -ba' will also do so.
-
-exit 0
-# -----------------------------------------------------------------
-```
+![[Example 16-28|Example 16-28]]
 
 **pr**
 
@@ -2104,39 +1409,7 @@ The **tbl** table processing utility is considered part of **groff**, as its fun
 
 The **eqn** equation processing utility is likewise part of **groff**, and its function is to convert equation markup into **groff** commands.
 
-###### Example 16-29. *manview*: Viewing formatted manpages
-
-```bash
-#!/bin/bash
-# manview.sh: Formats the source of a man page for viewing.
-
-#  This script is useful when writing man page source.
-#  It lets you look at the intermediate results on the fly
-#+ while working on it.
-
-E_WRONGARGS=85
-
-if [ -z "$1" ]
-then
-  echo "Usage: `basename $0` filename"
-  exit $E_WRONGARGS
-fi
-
-# ---------------------------
-groff -Tascii -man $1 | less
-# From the man page for groff.
-# ---------------------------
-
-#  If the man page includes tables and/or equations,
-#+ then the above code will barf.
-#  The following line can handle such cases.
-#
-#   gtbl < "$1" | geqn -Tlatin1 | groff -Tlatin1 -mtty-char -man
-#
-#   Thanks, S.C.
-
-exit $?   # See also the "maned.sh" script.
-```
+![[Example 16-29|Example 16-29]]
 
 See also [[Example A-39|Example A-39]].
 

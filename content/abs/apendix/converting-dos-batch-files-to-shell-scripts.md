@@ -89,7 +89,7 @@ Batch files usually contain DOS commands. These must be translated into their UN
 
 Converting a DOS batch file into a shell script is generally straightforward, and the result ofttimes reads better than the original.
 
-###### Example N-1. VIEWDATA.BAT: DOS Batch File
+**Example N-1. VIEWDATA.**BAT: DOS Batch File
 
 ```batch
 REM VIEWDATA
@@ -115,7 +115,7 @@ REM  SHOW ENTIRE FILE, 1 PAGE AT A TIME.
 
 The script conversion is somewhat of an improvement. [^1]
 
-###### Example N-2. *viewdata.sh*: Shell Script Conversion of VIEWDATA.BAT
+**Example N-2. *viewdata.sh*: Shell Script Conversion of VIEWDATA.**BAT
 
 ```bash
 #!/bin/bash
