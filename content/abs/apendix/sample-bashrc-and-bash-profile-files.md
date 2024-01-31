@@ -9,7 +9,7 @@ The ~/.bashrc file determines the behavior of interactive shells. A good look at
 
 Study the file carefully, and feel free to reuse code snippets and functions from it in your own .bashrc file or even in your scripts.
 
-###### Example M-1. Sample .bashrc file
+**Example M-1. Sample .**bashrc file
 
 ```bash
 # =============================================================== #
@@ -939,7 +939,7 @@ complete -F _killall killall killps
 
 And, here is a snippet from Andrzej Szelachowski's instructive .bash_profile file.
 
-###### Example M-2. .bash_profile file
+**Example M-2. .**bash_profile file
 
 ```bash
 # From Andrzej Szelachowski's ~/.bash_profile:
