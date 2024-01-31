@@ -310,7 +310,7 @@ echo "Input" | show_input_type                    # PIPE
 
 -h
 
-file is a [[basic-commands#^SYMLINKREF|symbolic link]]
+file is a [[external-filters-programs-and-commands#^SYMLINKREF|symbolic link]]
 
 -L
 
@@ -656,7 +656,7 @@ else
 fi
 ```
 
-Explain the _test_ constructs in the above snippet, then examine an updated version of the file, /etc/X11/xinit/xinitrc, and analyze the _if/then_ test constructs there. You may need to refer ahead to the discussions of [[text-processing-commands#^GREPREF|grep]], [[sedawk#^SEDREF|sed]], and [[regexp#^REGEXREF|regular expressions]].
+Explain the _test_ constructs in the above snippet, then examine an updated version of the file, /etc/X11/xinit/xinitrc, and analyze the _if/then_ test constructs there. You may need to refer ahead to the discussions of [[external-filters-programs-and-commands#^GREPREF|grep]], [[sedawk#^SEDREF|sed]], and [[regexp#^REGEXREF|regular expressions]].
 
 [^1]: A _token_ is a symbol or short string with a special meaning attached to it (a [[brief-introduction-to-regular-expressions#^metameaningref|meta-meaning]]). In Bash, certain tokens, such as **[[special-characters#^DOTREF|** and [. (dot-command)]], may expand to _keywords_ and commands.
 
