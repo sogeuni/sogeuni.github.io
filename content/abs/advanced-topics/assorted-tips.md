@@ -672,7 +672,7 @@ It would be nice to be able to invoke X-Windows widgets from a shell script. The
 
 The _dialog_ family of tools offers a method of calling "dialog" widgets from a shell script. The original _dialog_ utility works in a text console, but its successors, _gdialog_, _Xdialog_, and _kdialog_ use X-Windows-based widget sets.
 
-###### Example 36-22. Widgets invoked from a shell script
+**Example 36-22.** Widgets invoked from a shell script
 
 ```bash
 #!/bin/bash
