@@ -83,77 +83,13 @@ A simple **rpm -i package_name.rpm** usually suffices to install a package, thou
 
 This specialized archiving copy command (**c**o**p**y **i**nput and **o**utput) is rarely seen any more, having been supplanted by **tar**/**gzip**. It still has its uses, such as moving a directory tree. With an appropriate block size (for copying) specified, it can be appreciably faster than **tar**.
 
-###### Example 16-30. Using *cpio* to move a directory tree
-
-```bash
-#!/bin/bash
-
-# Copying a directory tree using cpio.
-
-# Advantages of using 'cpio':
-#   Speed of copying. It's faster than 'tar' with pipes.
-#   Well suited for copying special files (named pipes, etc.)
-#+  that 'cp' may choke on.
-
-ARGS=2
-E_BADARGS=65
-
-if [ $# -ne "$ARGS" ]
-then
-  echo "Usage: `basename $0` source destination"
-  exit $E_BADARGS
-fi  
-
-source="$1"
-destination="$2"
-
-###################################################################
-find "$source" -depth | cpio -admvp "$destination"
-#               ^^^^^         ^^^^^
-#  Read the 'find' and 'cpio' info pages to decipher these options.
-#  The above works only relative to $PWD (current directory) . . .
-#+ full pathnames are specified.
-###################################################################
-
-
-# Exercise:
-# --------
-
-#  Add code to check the exit status ($?) of the 'find | cpio' pipe
-#+ and output appropriate error messages if anything went wrong.
-
-exit $?
-```
+![[Example 16-30|Example 16-30]]
 
 **rpm2cpio**
 
 This command extracts a **cpio** archive from an [[file-and-archiving-commands#^RPMREF|rpm]] one.
 
-###### Example 16-31. Unpacking an *rpm* archive
-
-```bash
-#!/bin/bash
-# de-rpm.sh: Unpack an 'rpm' archive
-
-: ${1?"Usage: `basename $0` target-file"}
-# Must specify 'rpm' archive name as an argument.
-
-
-TEMPFILE=$$.cpio                         #  Tempfile with "unique" name.
-                                         #  $$ is process ID of script.
-
-rpm2cpio < $1 > $TEMPFILE                #  Converts rpm archive into
-                                         #+ cpio archive.
-cpio --make-directories -F $TEMPFILE -i  #  Unpacks cpio archive.
-rm -f $TEMPFILE                          #  Deletes cpio archive.
-
-exit 0
-
-#  Exercise:
-#  Add check for whether 1) "target-file" exists and
-#+                       2) it is an rpm archive.
-#  Hint:                    Parse output of 'file' command.
-```
+![[Example 16-31|Example 16-31]]
 
 **pax**
 
@@ -266,89 +202,7 @@ file $DIRECTORY/* | fgrep $KEYWORD
 # . . .
 ```
 
-###### Example 16-32. Stripping comments from C program files
-
-```bash
-#!/bin/bash
-# strip-comment.sh: Strips out the comments (/* COMMENT */) in a C program.
-
-E_NOARGS=0
-E_ARGERROR=66
-E_WRONG_FILE_TYPE=67
-
-if [ $# -eq "$E_NOARGS" ]
-then
-  echo "Usage: `basename $0` C-program-file" >&2 # Error message to stderr.
-  exit $E_ARGERROR
-fi  
-
-# Test for correct file type.
-type=`file $1 | awk '{ print $2, $3, $4, $5 }'`
-# "file $1" echoes file type . . .
-# Then awk removes the first field, the filename . . .
-# Then the result is fed into the variable "type."
-correct_type="ASCII C program text"
-
-if [ "$type" != "$correct_type" ]
-then
-  echo
-  echo "This script works on C program files only."
-  echo
-  exit $E_WRONG_FILE_TYPE
-fi  
-
-
-# Rather cryptic sed script:
-#--------
-sed '
-/^\/\*/d
-/.*\*\//d
-' $1
-#--------
-# Easy to understand if you take several hours to learn sed fundamentals.
-
-
-#  Need to add one more line to the sed script to deal with
-#+ case where line of code has a comment following it on same line.
-#  This is left as a non-trivial exercise.
-
-#  Also, the above code deletes non-comment lines with a "*/" . . .
-#+ not a desirable result.
-
-exit 0
-
-
-# ----------------------------------------------------------------
-# Code below this line will not execute because of 'exit 0' above.
-
-# Stephane Chazelas suggests the following alternative:
-
-usage() {
-  echo "Usage: `basename $0` C-program-file" >&2
-  exit 1
-}
-
-WEIRD=`echo -n -e '\377'`   # or WEIRD=$'\377'
-[[ $# -eq 1 ]] | usage
-case `file "$1"` in
-  *"C program text"*) sed -e "s%/\*%${WEIRD}%g;s%\*/%${WEIRD}%g" "$1" \
-     | tr '\377\n' '\n\377' \
-     | sed -ne 'p;n' \
-     | tr -d '\n' | tr '\377' '\n';;
-  *) usage;;
-esac
-
-#  This is still fooled by things like:
-#  printf("/*");
-#  or
-#  /*  /* buggy embedded comment */
-#
-#  To handle all special cases (comments in strings, comments in string
-#+ where there is a \", \\" ...),
-#+ the only way is to write a C parser (using lex or yacc perhaps?).
-
-exit 0
-```
+![[Example 16-32|Example 16-32]]
 
 **which**
 
@@ -382,30 +236,7 @@ rm: /bin/rm /usr/share/man/man1/rm.1.bz2
 whatis               (1)  - search the whatis database for complete words
 ```
 
-###### Example 16-33. Exploring /usr/X11R6/bin
-
-```bash
-#!/bin/bash
-
-# What are all those mysterious binaries in /usr/X11R6/bin?
-
-DIRECTORY="/usr/X11R6/bin"
-# Try also "/bin", "/usr/bin", "/usr/local/bin", etc.
-
-for file in $DIRECTORY/*
-do
-  whatis `basename $file`   # Echoes info about the binary.
-done
-
-exit 0
-
-#  Note: For this to work, you must create a "whatis" database
-#+ with /usr/sbin/makewhatis.
-#  You may wish to redirect output of this script, like so:
-#    ./what.sh >>whatis.db
-#  or view it a page at a time on stdout,
-#    ./what.sh | less
-```
+![[Example 16-33|Example 16-33]]
 
 See also [[Example 11-3|Example 11-3]].
 
@@ -487,84 +318,7 @@ bash$ readlink /usr/bin/awk
 
 Use the **strings** command to find printable strings in a binary or data file. It will list sequences of printable characters found in the target file. This might be handy for a quick 'n dirty examination of a core dump or for looking at an unknown graphic image file (**strings image-file | more** might show something like _JFIF_, which would identify the file as a _jpeg_ graphic). In a script, you would probably parse the output of **strings** with [[textproc#^GREPREF|grep]] or [[sedawk#^SEDREF|sed]]. See [[Example 11-8|Example 11-8]] and [[Example 11-10|Example 11-10]].
 
-###### Example 16-34. An "improved" *strings* command
-
-```bash
-#!/bin/bash
-# wstrings.sh: "word-strings" (enhanced "strings" command)
-#
-#  This script filters the output of "strings" by checking it
-#+ against a standard word list file.
-#  This effectively eliminates gibberish and noise,
-#+ and outputs only recognized words.
-
-# ===========================================================
-#                 Standard Check for Script Argument(s)
-ARGS=1
-E_BADARGS=85
-E_NOFILE=86
-
-if [ $# -ne $ARGS ]
-then
-  echo "Usage: `basename $0` filename"
-  exit $E_BADARGS
-fi
-
-if [ ! -f "$1" ]                      # Check if file exists.
-then
-    echo "File \"$1\" does not exist."
-    exit $E_NOFILE
-fi
-# ===========================================================
-
-
-MINSTRLEN=3                           #  Minimum string length.
-WORDFILE=/usr/share/dict/linux.words  #  Dictionary file.
-#  May specify a different word list file
-#+ of one-word-per-line format.
-#  For example, the "yawl" word-list package,
-#  http://bash.deta.in/yawl-0.3.2.tar.gz
-
-
-wlist=`strings "$1" | tr A-Z a-z | tr '[:space:]' Z | \
-       tr -cs '[:alpha:]' Z | tr -s '\173-\377' Z | tr Z ' '`
-
-# Translate output of 'strings' command with multiple passes of 'tr'.
-#  "tr A-Z a-z"  converts to lowercase.
-#  "tr '[:space:]'"  converts whitespace characters to Z's.
-#  "tr -cs '[:alpha:]' Z"  converts non-alphabetic characters to Z's,
-#+ and squeezes multiple consecutive Z's.
-#  "tr -s '\173-\377' Z"  converts all characters past 'z' to Z's
-#+ and squeezes multiple consecutive Z's,
-#+ which gets rid of all the weird characters that the previous
-#+ translation failed to deal with.
-#  Finally, "tr Z ' '" converts all those Z's to whitespace,
-#+ which will be seen as word separators in the loop below.
-
-#  ***********************************************************************
-#  Note the technique of feeding/piping the output of 'tr' back to itself,
-#+ but with different arguments and/or options on each successive pass.
-#  ***********************************************************************
-
-
-for word in $wlist                    #  Important:
-                                      #  $wlist must not be quoted here.
-                                      # "$wlist" does not work.
-                                      #  Why not?
-do
-  strlen=${#word}                     #  String length.
-  if [ "$strlen" -lt "$MINSTRLEN" ]   #  Skip over short strings.
-  then
-    continue
-  fi
-
-  grep -Fw $word "$WORDFILE"          #   Match whole words only.
-#      ^^^                            #  "Fixed strings" and
-                                      #+ "whole words" options. 
-done  
-
-exit $?
-```
+![[Example 16-34|Example 16-34]]
 
 **Comparison**
 
@@ -644,45 +398,7 @@ The **cmp** command is a simpler version of **diff**, above. Whereas **diff** re
 > [!note]
 > Like **diff**, **cmp** returns an exit status of 0 if the compared files are identical, and 1 if they differ. This permits use in a test construct within a shell script.
 
-###### Example 16-35. Using *cmp* to compare two files within a script.
-
-```bash
-#!/bin/bash
-# file-comparison.sh
-
-ARGS=2  # Two args to script expected.
-E_BADARGS=85
-E_UNREADABLE=86
-
-if [ $# -ne "$ARGS" ]
-then
-  echo "Usage: `basename $0` file1 file2"
-  exit $E_BADARGS
-fi
-
-if [[ ! -r "$1" | ! -r "$2" ]]
-then
-  echo "Both files to be compared must exist and be readable."
-  exit $E_UNREADABLE
-fi
-
-cmp $1 $2 &> /dev/null
-#   Redirection to /dev/null buries the output of the "cmp" command.
-#   cmp -s $1 $2  has same result ("-s" silent flag to "cmp")
-#   Thank you  Anders Gustavsson for pointing this out.
-#
-#  Also works with 'diff', i.e.,
-#+ diff $1 $2 &> /dev/null
-
-if [ $? -eq 0 ]         # Test exit status of "cmp" command.
-then
-  echo "File \"$1\" is identical to file \"$2\"."
-else  
-  echo "File \"$1\" differs from file \"$2\"."
-fi
-
-exit 0
-```
+![[Example 16-35|Example 16-35]]
 
 > [!tip]
 > Use **zcmp** on _gzipped_ files.
@@ -725,21 +441,7 @@ Strips the **basename** from a filename, printing only the path information.
 > [!note]
 > **basename** and **dirname** can operate on any arbitrary string. The argument does not need to refer to an existing file, or even be a filename for that matter (see [[Example A-7|Example A-7]]).
 
-###### Example 16-36. _basename_ and *dirname*
-
-```bash
-#!/bin/bash
-
-address=/home/bozo/daily-journal.txt
-
-echo "Basename of /home/bozo/daily-journal.txt = `basename $address`"
-echo "Dirname of /home/bozo/daily-journal.txt = `dirname $address`"
-echo
-echo "My own home is `basename ~/`."         # `basename ~` also works.
-echo "The home of my home is `dirname ~/`."  # `dirname ~`  also works.
-
-exit 0
-```
+![[Example 16-36|Example 16-36]]
 
 **split**, **csplit**
 
@@ -747,35 +449,7 @@ These are utilities for splitting a file into smaller chunks. Their usual use is
 
 The **csplit** command splits a file according to _context_, the split occuring where patterns are matched.
 
-###### Example 16-37. A script that copies itself in sections
-
-```bash
-#!/bin/bash
-# splitcopy.sh
-
-#  A script that splits itself into chunks,
-#+ then reassembles the chunks into an exact copy
-#+ of the original script.
-
-CHUNKSIZE=4    #  Size of first chunk of split files.
-OUTPREFIX=xx   #  csplit prefixes, by default,
-               #+ files with "xx" ...
-
-csplit "$0" "$CHUNKSIZE"
-
-# Some comment lines for padding . . .
-# Line 15
-# Line 16
-# Line 17
-# Line 18
-# Line 19
-# Line 20
-
-cat "$OUTPREFIX"* > "$0.copy"  # Concatenate the chunks.
-rm "$OUTPREFIX"*               # Get rid of the chunks.
-
-exit $?
-```
+![[Example 16-37|Example 16-37]]
 
 **Encoding and Encryption**
 
@@ -802,125 +476,7 @@ bash$ echo -n "Top Secret" | md5sum
 >
 > The **md5sum** and **sha1sum** commands display a [[special-characters#^DASHREF2|dash]] when they receive their input from stdout.
 
-###### Example 16-38. Checking file integrity
-
-```bash
-#!/bin/bash
-# file-integrity.sh: Checking whether files in a given directory
-#                    have been tampered with.
-
-E_DIR_NOMATCH=80
-E_BAD_DBFILE=81
-
-dbfile=File_record.md5
-# Filename for storing records (database file).
-
-
-set_up_database ()
-{
-  echo ""$directory"" > "$dbfile"
-  # Write directory name to first line of file.
-  md5sum "$directory"/* >> "$dbfile"
-  # Append md5 checksums and filenames.
-}
-
-check_database ()
-{
-  local n=0
-  local filename
-  local checksum
-
-  # ------------------------------------------- #
-  #  This file check should be unnecessary,
-  #+ but better safe than sorry.
-
-  if [ ! -r "$dbfile" ]
-  then
-    echo "Unable to read checksum database file!"
-    exit $E_BAD_DBFILE
-  fi
-  # ------------------------------------------- #
-
-  while read record[n]
-  do
-
-    directory_checked="${record[0]}"
-    if [ "$directory_checked" != "$directory" ]
-    then
-      echo "Directories do not match up!"
-      # Tried to use file for a different directory.
-      exit $E_DIR_NOMATCH
-    fi
-
-    if [ "$n" -gt 0 ]   # Not directory name.
-    then
-      filename[n]=$( echo ${record[$n]} | awk '{ print $2 }' )
-      #  md5sum writes records backwards,
-      #+ checksum first, then filename.
-      checksum[n]=$( md5sum "${filename[n]}" )
-
-
-      if [ "${record[n]}" = "${checksum[n]}" ]
-      then
-        echo "${filename[n]} unchanged."
-
-        elif [ "`basename ${filename[n]}`" != "$dbfile" ]
-               #  Skip over checksum database file,
-               #+ as it will change with each invocation of script.
-               #  ---
-               #  This unfortunately means that when running
-               #+ this script on $PWD, tampering with the
-               #+ checksum database file will not be detected.
-               #  Exercise: Fix this.
-        then
-          echo "${filename[n]} : CHECKSUM ERROR!"
-        # File has been changed since last checked.
-        fi
-
-      fi
-
-
-
-    let "n+=1"
-  done <"$dbfile"       # Read from checksum database file. 
-
-}  
-
-# =================================================== #
-# main ()
-
-if [ -z  "$1" ]
-then
-  directory="$PWD"      #  If not specified,
-else                    #+ use current working directory.
-  directory="$1"
-fi  
-
-clear                   # Clear screen.
-echo " Running file integrity check on $directory"
-echo
-
-# ------------------------------------------------------------------ #
-  if [ ! -r "$dbfile" ] # Need to create database file?
-  then
-    echo "Setting up database file, \""$directory"/"$dbfile"\"."; echo
-    set_up_database
-  fi  
-# ------------------------------------------------------------------ #
-
-check_database          # Do the actual work.
-
-echo 
-
-#  You may wish to redirect the stdout of this script to a file,
-#+ especially if the directory checked has many files in it.
-
-exit 0
-
-#  For a much more thorough file integrity check,
-#+ consider the "Tripwire" package,
-#+ http://sourceforge.net/projects/tripwire/.
-```
+![[Example 16-38|Example 16-38]]
 
 Also see [[Example A-19|Example A-19]], [[Example 36-16|Example 36-16]], and [[Example 10-2|Example 10-2]] for creative uses of the **md5sum** command.
 
@@ -945,41 +501,7 @@ This utility encodes binary files (images, sound files, compressed files, etc.) 
 
 This reverses the encoding, decoding _uuencoded_ files back into the original binaries.
 
-###### Example 16-39. Uudecoding encoded files
-
-```bash
-#!/bin/bash
-# Uudecodes all uuencoded files in current working directory.
-
-lines=35        # Allow 35 lines for the header (very generous).
-
-for File in *   # Test all the files in $PWD.
-do
-  search1=`head -n $lines $File | grep begin | wc -w`
-  search2=`tail -n $lines $File | grep end | wc -w`
-  #  Uuencoded files have a "begin" near the beginning,
-  #+ and an "end" near the end.
-  if [ "$search1" -gt 0 ]
-  then
-    if [ "$search2" -gt 0 ]
-    then
-      echo "uudecoding - $File -"
-      uudecode $File
-    fi  
-  fi
-done  
-
-#  Note that running this script upon itself fools it
-#+ into thinking it is a uuencoded file,
-#+ because it contains both "begin" and "end".
-
-#  Exercise:
-#  --------
-#  Modify this script to check each file for a newsgroup header,
-#+ and skip to next if not found.
-
-exit 0
-```
+![[Example 16-39|Example 16-39]]
 
 > [!tip]
 > The [[external-filters-programs-and-commands#^FOLDREF|fold -s]] command may be useful (possibly in a pipe) to process long uudecoded text messages downloaded from Usenet newsgroups.
