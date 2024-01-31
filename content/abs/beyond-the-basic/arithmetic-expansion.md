@@ -7,7 +7,7 @@ Arithmetic expansion provides a powerful tool for performing (integer) arithmeti
 
 **Variations**
 
-Arithmetic expansion with [[command-substitution#^BACKQUOTESREF|backticks]] (often used in conjunction with [[complex-commands#^EXPRREF|expr]])
+Arithmetic expansion with [[command-substitution#^BACKQUOTESREF|backticks]] (often used in conjunction with [[external-filters-programs-and-commands#^EXPRREF|expr]])
 
 ```bash
 z=`expr $z + 3`          # The 'expr' command performs the expansion.

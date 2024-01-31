@@ -119,7 +119,7 @@ bozo
 
 **w**
 
-Show all logged on users and the processes belonging to them. This is an extended version of **who**. The output of **w** may be piped to [[text-processing-commands#^GREPREF|grep]] to find a specific user and/or process.
+Show all logged on users and the processes belonging to them. This is an extended version of **who**. The output of **w** may be piped to [[external-filters-programs-and-commands#^GREPREF|grep]] to find a specific user and/or process.
 
 ```bash
 bash$ w | grep startx
@@ -525,7 +525,7 @@ root          tty1                      Fri Dec  7 18:43:21 -0700 2001
 
 **lsof**
 
-List open files. This command outputs a detailed table of all currently open files and gives information about their owner, size, the processes associated with them, and more. Of course, **lsof** may be piped to [[text-processing-commands#^GREPREF|grep]] and/or [[awk#^AWKREF|awk]] to parse and analyze its results.
+List open files. This command outputs a detailed table of all currently open files and gives information about their owner, size, the processes associated with them, and more. Of course, **lsof** may be piped to [[external-filters-programs-and-commands#^GREPREF|grep]] and/or [[awk#^AWKREF|awk]] to parse and analyze its results.
 
 ```bash
 bash$ lsof
@@ -675,7 +675,7 @@ echo clone | nc thunk.org 5000 > e2fsprogs.dat
 
 **free**
 
-Shows memory and cache usage in tabular form. The output of this command lends itself to parsing, using [[text-processing-commands#^GREPREF|grep]], [[awk#^AWKREF|awk]] or **Perl**. The **procinfo** command shows all the information that **free** does, and much more.
+Shows memory and cache usage in tabular form. The output of this command lends itself to parsing, using [[external-filters-programs-and-commands#^GREPREF|grep]], [[awk#^AWKREF|awk]] or **Perl**. The **procinfo** command shows all the information that **free** does, and much more.
 
 ```bash
 bash$ free
@@ -746,7 +746,7 @@ Filesystem           1k-blocks      Used Available Use% Mounted on
 
 **dmesg**
 
-Lists all system bootup messages to stdout. Handy for debugging and ascertaining which device drivers were installed and which system interrupts in use. The output of **dmesg** may, of course, be parsed with [[text-processing-commands#^GREPREF|grep]], [[a-sed-and-awk-micro-primer#^SEDREF|sed]], or [[awk#^AWKREF|awk]] from within a script.
+Lists all system bootup messages to stdout. Handy for debugging and ascertaining which device drivers were installed and which system interrupts in use. The output of **dmesg** may, of course, be parsed with [[external-filters-programs-and-commands#^GREPREF|grep]], [[a-sed-and-awk-micro-primer#^SEDREF|sed]], or [[awk#^AWKREF|awk]] from within a script.
 
 ```bash
 bash$ dmesg | grep hda
@@ -970,7 +970,7 @@ Adding an appropriate entry to /etc/logrotate.conf makes it possible to manage p
 
 **ps**
 
-_P_rocess _S_tatistics: lists currently executing processes by owner and PID (process ID). This is usually invoked with ax or aux options, and may be piped to [[text-processing-commands#^GREPREF|grep]] or [[a-sed-and-awk-micro-primer#^SEDREF|sed]] to search for a specific process (see [[Example 15-14|Example 15-14]] and [[Example 29-3|Example 29-3]]).
+_P_rocess _S_tatistics: lists currently executing processes by owner and PID (process ID). This is usually invoked with ax or aux options, and may be piped to [[external-filters-programs-and-commands#^GREPREF|grep]] or [[a-sed-and-awk-micro-primer#^SEDREF|sed]] to search for a specific process (see [[Example 15-14|Example 15-14]] and [[Example 29-3|Example 29-3]]).
 
 ```bash
 bash$  ps ax | grep sendmail
@@ -981,7 +981,7 @@ To display system processes in graphical "tree" format: **ps afjx** or **ps ax -
 
 **pgrep**, **pkill**
 
-Combining the **ps** command with [[text-processing-commands#^GREPREF|grep]] or [[internal-commands-and-builtins#^KILLREF|kill]].
+Combining the **ps** command with [[external-filters-programs-and-commands#^GREPREF|grep]] or [[internal-commands-and-builtins#^KILLREF|kill]].
 
 ```bash
 bash$ ps a | grep mingetty
@@ -1136,7 +1136,7 @@ root# ps ax | grep 2095 | grep -v grep
 
 **cron**
 
-Administrative program scheduler, performing such duties as cleaning up and deleting system log files and updating the slocate database. This is the _superuser_ version of [[time-date-commands#^ATREF|at]] (although each user may have their own crontab file which can be changed with the **crontab** command). It runs as a [[communications-commands#^DAEMONREF|daemon]] and executes scheduled entries from /etc/crontab.
+Administrative program scheduler, performing such duties as cleaning up and deleting system log files and updating the slocate database. This is the _superuser_ version of [[external-filters-programs-and-commands#^ATREF|at]] (although each user may have their own crontab file which can be changed with the **crontab** command). It runs as a [[communications-commands#^DAEMONREF|daemon]] and executes scheduled entries from /etc/crontab.
 
 > [!note]
 > Some flavors of Linux run **crond**, Matthew Dillon's version of **cron**.
@@ -1369,7 +1369,7 @@ bash$ tcpdump ip host bozoville and caduceus
 	  
 ```
 
-Of course, the output of **tcpdump** can be parsed with certain of the previously discussed [[text-processing-commands#^TPCOMMANDLISTING1|text processing utilities]].
+Of course, the output of **tcpdump** can be parsed with certain of the previously discussed [[external-filters-programs-and-commands#^TPCOMMANDLISTING1|text processing utilities]].
 
 **Filesystem**
 
@@ -1731,7 +1731,7 @@ Set user or group disk quotas from the command-line.
 
 **umask**
 
-User file creation permissions _mask_. Limit the default file attributes for a particular user. All files created by that user take on the attributes specified by **umask**. The (octal) value passed to **umask** defines the file permissions _disabled_. For example, **umask 022** ensures that new files will have at most 755 permissions (777 NAND 022). [^8] Of course, the user may later change the attributes of particular files with [[basic-commands#^CHMODREF|chmod]]. The usual practice is to set the value of **umask** in /etc/profile and/or ~/.bash_profile (see [[important-files|Appendix H]]).
+User file creation permissions _mask_. Limit the default file attributes for a particular user. All files created by that user take on the attributes specified by **umask**. The (octal) value passed to **umask** defines the file permissions _disabled_. For example, **umask 022** ensures that new files will have at most 755 permissions (777 NAND 022). [^8] Of course, the user may later change the attributes of particular files with [[external-filters-programs-and-commands#^CHMODREF|chmod]]. The usual practice is to set the value of **umask** in /etc/profile and/or ~/.bash_profile (see [[important-files|Appendix H]]).
 
 ###### Example 17-10. Using *umask* to hide an output file from prying eyes
 
@@ -1868,7 +1868,7 @@ watch -n 5 tail /var/log/messages
 ```
 
 > [!note]
-> Unfortunately, [[special-characters#^PIPEREF|piping]] the output of **watch command** to [[text-processing-commands#^GREPREF|grep]] does not work.
+> Unfortunately, [[special-characters#^PIPEREF|piping]] the output of **watch command** to [[external-filters-programs-and-commands#^GREPREF|grep]] does not work.
 
 **strip**
 
@@ -2022,6 +2022,18 @@ exit $E_CHANGE1
 
 Remote distribution client: synchronizes, clones, or backs up a file system on a remote server.
 
+## Analyzing a System Script
+
+Using our knowledge of administrative commands, let us examine a system script. One of the shortest and simplest to understand scripts is "killall," [^10] used to suspend running processes at system shutdown.
+
+![[Example 17-12|Example 17-12]]
+
+That wasn't so bad. Aside from a little fancy footwork with variable matching, there is no new material there.
+
+**Exercise 1.** In /etc/rc.d/init.d, analyze the **halt** script. It is a bit longer than **killall**, but similar in concept. Make a copy of this script somewhere in your home directory and experiment with it (do _not_ run it as _root_). Do a simulated run with the -vn flags (**sh -vn scriptname**). Add extensive comments. Change the commands to [[internal-commands-and-builtins#^ECHOREF|echos]].
+
+**Exercise 2.** Look at some of the more complex scripts in /etc/rc.d/init.d. Try to understand at least portions of them. Follow the above procedure to analyze them. For some additional insight, you might also examine the file sysvinitfiles in /usr/share/doc/initscripts-?.??, which is part of the "initscripts" documentation.
+
 [^1]: This is the case on a Linux machine or a UNIX system with disk quotas.
 
 [^2]: The **userdel** command will fail if the particular user being deleted is still logged on.
@@ -2044,3 +2056,5 @@ Remote distribution client: synchronizes, clones, or backs up a file system on a
     var1=value1 var2=value2 commandXXX
     # $var1 and $var2 set in the environment of 'commandXXX' only.
     ```
+
+[^10]: The _killall_ system script should not be confused with the [[internal-commands-and-builtins#^KILLALLREF|killall]] command in /usr/bin.

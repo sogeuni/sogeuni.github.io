@@ -106,6 +106,6 @@ title: Bibliography
 - The [comp.os.unix.shell FAQ](http://www.newsville.com/cgi-bin/getfaq?file=comp.unix.shell/comp.unix.shell*FAQ*-*Answers*to*Frequently*Asked_Questions).
 - Assorted comp.os.unix [FAQs](http://www.faqs.org/faqs/by-newsgroup/comp/comp.unix.shell.html).
 - The [*Wikipedia* article](http://en.wikipedia.org/wiki/Dc_(Unix)) covering [[math-commands#^DCREF|dc]].
-- The [[basic-commands#^MANREF|manpages]] for **bash** and **bash2**, **date**, **expect**, **expr**, **find**, **grep**, **gzip**, **ln**, **patch**, **tar**, **tr**, **bc**, **xargs**. The *texinfo* documentation on **bash**, **dd**, **m4**, **gawk**, and **sed**.
+- The [[external-filters-programs-and-commands#^MANREF|manpages]] for **bash** and **bash2**, **date**, **expect**, **expr**, **find**, **grep**, **gzip**, **ln**, **patch**, **tar**, **tr**, **bc**, **xargs**. The *texinfo* documentation on **bash**, **dd**, **m4**, **gawk**, and **sed**.
 
 [^1]: It was hard to resist the obvious pun. No slight intended, since the book is a pretty decent introduction to the basic concepts of shell scripting.

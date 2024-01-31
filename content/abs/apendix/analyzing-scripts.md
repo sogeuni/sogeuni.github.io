@@ -60,7 +60,7 @@ exit 0
 
 ---
 
-Examine and explain the following script. For hints, you might refer to the listings for [[complex-commands#^FINDREF|find]] and [[system-and-administrative-commands#^STATREF|stat]].
+Examine and explain the following script. For hints, you might refer to the listings for [[external-filters-programs-and-commands#^FINDREF|find]] and [[system-and-administrative-commands#^STATREF|stat]].
 
 ```bash
 #!/bin/bash
@@ -102,7 +102,7 @@ export SUM=0; for f in $(find src -name "*.java");
 do export SUM=$(($SUM + $(wc -l $f | awk '{ print $1 }'))); done; echo $SUM
 ```
 
-Hint: First, break the script up into bite-sized sections. Then, carefully examine its use of [[operations-and-related-topics.html|double-parentheses]] arithmetic, the [[internal-commands-and-builtins#^EXPORTREF|export]] command, the [[complex-commands#^FINDREF|find]] command, the [[text-processing-commands#^WCREF|wc]] command, and [[awk#^AWKREF|awk]].
+Hint: First, break the script up into bite-sized sections. Then, carefully examine its use of [[operations-and-related-topics.html|double-parentheses]] arithmetic, the [[internal-commands-and-builtins#^EXPORTREF|export]] command, the [[external-filters-programs-and-commands#^FINDREF|find]] command, the [[external-filters-programs-and-commands#^WCREF|wc]] command, and [[awk#^AWKREF|awk]].
 
 ---
 

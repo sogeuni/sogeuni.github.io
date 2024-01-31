@@ -273,7 +273,7 @@ For a much more elaborate version of the above script, see [[Example A-28|Exampl
 
 **traceroute**
 
-Trace the route taken by packets sent to a remote host. This command works within a LAN, WAN, or over the Internet. The remote host may be specified by an IP address. The output of this command may be filtered by [[text-processing-commands#^GREPREF|grep]] or [[Appendix%20C.%20A%20Sed%20and%20Awk%20Micro-Primer.md#^SEDREF|sed]] in a pipe.
+Trace the route taken by packets sent to a remote host. This command works within a LAN, WAN, or over the Internet. The remote host may be specified by an IP address. The output of this command may be filtered by [[external-filters-programs-and-commands#^GREPREF|grep]] or [[Appendix%20C.%20A%20Sed%20and%20Awk%20Micro-Primer.md#^SEDREF|sed]] in a pipe.
 
 ```bash
 bash$ traceroute 81.9.6.2
@@ -708,7 +708,7 @@ See also [[Example A-32|Example A-32]].
 
 **ssh**
 
-_Secure shell_, logs onto a remote host and executes commands there. This secure replacement for **telnet**, **rlogin**, **rcp**, and **rsh** uses identity authentication and encryption. See its [[basic-commands#^MANREF|manpage]] for details.
+_Secure shell_, logs onto a remote host and executes commands there. This secure replacement for **telnet**, **rlogin**, **rcp**, and **rsh** uses identity authentication and encryption. See its [[external-filters-programs-and-commands#^MANREF|manpage]] for details.
 
 ###### Example 16-44. Using *ssh*
 

@@ -364,7 +364,7 @@ The members of the $PIPESTATUS array hold the exit status of each respective com
 > 
 > ```
 >
-> Chet Ramey attributes the above output to the behavior of [[basic-commands#^LSREF|ls]]. If _ls_ writes to a _pipe_ whose output is not read, then _SIGPIPE_ kills it, and its [[exit-and-exit-status#^EXITSTATUSREF|exit status]] is 141. Otherwise its exit status is 0, as expected. This likewise is the case for [[text-processing-commands#^TRREF|tr]].
+> Chet Ramey attributes the above output to the behavior of [[external-filters-programs-and-commands#^LSREF|ls]]. If _ls_ writes to a _pipe_ whose output is not read, then _SIGPIPE_ kills it, and its [[exit-and-exit-status#^EXITSTATUSREF|exit status]] is 141. Otherwise its exit status is 0, as expected. This likewise is the case for [[external-filters-programs-and-commands#^TRREF|tr]].
 
 > [!note]
 > $PIPESTATUS is a "volatile" variable. It needs to be captured immediately after the pipe in question, before any other command intervenes.
@@ -803,7 +803,7 @@ echo "Number = $number"     # Number = 0
 # Tries to evaluate the string "three" as an integer.
 ```
 
-Certain arithmetic operations are permitted for declared integer variables without the need for [[complex-commands#^EXPRREF|expr]] or [[internal-commands-and-builtins#^LETREF|let]].
+Certain arithmetic operations are permitted for declared integer variables without the need for [[external-filters-programs-and-commands#^EXPRREF|expr]] or [[internal-commands-and-builtins#^LETREF|let]].
 
 ```bash
 n=6/3
@@ -969,7 +969,7 @@ As we have seen in the last example, it is best to _reseed_ the _RANDOM_ generat
 >
 > ![[Example 9-17|Example 9-17]]
 >
-> The [[time-date-commands#^DATEREF|date]] command also lends itself to [[time-date-commands#^DATERANDREF|generating pseudorandom integer sequences]].
+> The [[external-filters-programs-and-commands#^DATEREF|date]] command also lends itself to [[external-filters-programs-and-commands#^DATERANDREF|generating pseudorandom integer sequences]].
 
 [^1]: A _stack register_ is a set of consecutive memory locations, such that the values stored (_pushed_) are retrieved (_popped_) in _reverse_ order. The last value stored is the first retrieved. This is sometimes called a _LIFO_ (_last-in-first-out_) or _pushdown_ stack.
 

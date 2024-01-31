@@ -7,7 +7,7 @@ title: 16.5. File and Archiving Commands
 
 **tar**
 
-The standard UNIX archiving utility. [^1] Originally a _Tape ARchiving_ program, it has developed into a general purpose package that can handle all manner of archiving with all types of destination devices, ranging from tape drives to regular files to even stdout (see [[Example 3-4|Example 3-4]]). GNU _tar_ has been patched to accept various compression filters, for example: **tar czvf archive_name.tar.gz ***, which recursively archives and [[file-and-archiving-commands#^GZIPREF|gzips]] all files in a directory tree except [[basic-commands#^DOTFILESREF|dotfiles]] in the current working directory ([[another-look-at-variables#^PWDREF|$PWD]]). [^2]
+The standard UNIX archiving utility. [^1] Originally a _Tape ARchiving_ program, it has developed into a general purpose package that can handle all manner of archiving with all types of destination devices, ranging from tape drives to regular files to even stdout (see [[Example 3-4|Example 3-4]]). GNU _tar_ has been patched to accept various compression filters, for example: **tar czvf archive_name.tar.gz ***, which recursively archives and [[file-and-archiving-commands#^GZIPREF|gzips]] all files in a directory tree except [[external-filters-programs-and-commands#^DOTFILESREF|dotfiles]] in the current working directory ([[another-look-at-variables#^PWDREF|$PWD]]). [^2]
 
 Some useful **tar** options:
 
@@ -236,7 +236,7 @@ A new high-efficiency compression tool, backward compatible with _lzma_, and wit
 
 A utility for identifying file types. The command **file file-name** will return a file specification for file-name, such as ascii text or data. It references the [[sha-bang#^magnumref|magic numbers]] found in /usr/share/magic, /etc/magic, or /usr/lib/magic, depending on the Linux/UNIX distribution.
 
-The -f option causes **file** to run in [[time-date-commands#^BATCHPROCREF|batch]] mode, to read from a designated file a list of filenames to analyze. The -z option, when used on a compressed target file, forces an attempt to analyze the uncompressed file type.
+The -f option causes **file** to run in [[external-filters-programs-and-commands#^BATCHPROCREF|batch]] mode, to read from a designated file a list of filenames to analyze. The -z option, when used on a compressed target file, forces an attempt to analyze the uncompressed file type.
 
 ```bash
 bash$ file test.tar.gz
@@ -364,7 +364,7 @@ For an interesting use of this command, see [[Example 36-16|Example 36-16]].
 
 **whereis**
 
-Similar to **which**, above, **whereis command** gives the full path to "command," but also to its [[basic-commands#^MANREF|manpage]].
+Similar to **which**, above, **whereis command** gives the full path to "command," but also to its [[external-filters-programs-and-commands#^MANREF|manpage]].
 
 **$bash whereis rm**
 
@@ -411,7 +411,7 @@ See also [[Example 11-3|Example 11-3]].
 
 **vdir**
 
-Show a detailed directory listing. The effect is similar to [[basic-commands#^LSREF|ls -lb]].
+Show a detailed directory listing. The effect is similar to [[external-filters-programs-and-commands#^LSREF|ls -lb]].
 
 This is one of the GNU _fileutils_.
 
@@ -570,7 +570,7 @@ exit $?
 
 **diff**, **patch**
 
-**diff**: flexible file comparison utility. It compares the target files line-by-line sequentially. In some applications, such as comparing word dictionaries, it may be helpful to filter the files through [[text-processing-commands#^SORTREF|sort]] and **uniq** before piping them to **diff**. **diff file-1 file-2** outputs the lines in the files that differ, with carets showing which file each particular line belongs to.
+**diff**: flexible file comparison utility. It compares the target files line-by-line sequentially. In some applications, such as comparing word dictionaries, it may be helpful to filter the files through [[external-filters-programs-and-commands#^SORTREF|sort]] and **uniq** before piping them to **diff**. **diff file-1 file-2** outputs the lines in the files that differ, with carets showing which file each particular line belongs to.
 
 The --side-by-side option to **diff** outputs each compared file, line by line, in separate columns, with non-matching lines marked. The -c and -u options likewise make the output of the command easier to interpret.
 
@@ -982,11 +982,11 @@ exit 0
 ```
 
 > [!tip]
-> The [[text-processing-commands#^FOLDREF|fold -s]] command may be useful (possibly in a pipe) to process long uudecoded text messages downloaded from Usenet newsgroups.
+> The [[external-filters-programs-and-commands#^FOLDREF|fold -s]] command may be useful (possibly in a pipe) to process long uudecoded text messages downloaded from Usenet newsgroups.
 
 **mimencode**, **mmencode**
 
-The **mimencode** and **mmencode** commands process multimedia-encoded e-mail attachments. Although _mail user agents_ (such as _pine_ or _kmail_) normally handle this automatically, these particular utilities permit manipulating such attachments manually from the command-line or in [[time-date-commands#^BATCHPROCREF|batch processing mode]] by means of a shell script.
+The **mimencode** and **mmencode** commands process multimedia-encoded e-mail attachments. Although _mail user agents_ (such as _pine_ or _kmail_) normally handle this automatically, these particular utilities permit manipulating such attachments manually from the command-line or in [[external-filters-programs-and-commands#^BATCHPROCREF|batch processing mode]] by means of a shell script.
 
 **crypt**
 
@@ -1029,7 +1029,7 @@ tar -xzv
 # Decrypts and unpacks into current working directory.
 ```
 
-Of course, _openssl_ has many other uses, such as obtaining signed _certificates_ for Web sites. See the [[basic-commands#^INFOREF|info]] page.
+Of course, _openssl_ has many other uses, such as obtaining signed _certificates_ for Web sites. See the [[external-filters-programs-and-commands#^INFOREF|info]] page.
 
 **shred**
 
@@ -1079,7 +1079,7 @@ The _make_ utility is, in effect, a powerful scripting language similar in many 
 
 **install**
 
-Special purpose file copying command, similar to [[basic-commands#^CPREF|cp]], but capable of setting permissions and attributes of the copied files. This command seems tailormade for installing software packages, and as such it shows up frequently in Makefiles (in the _make install :_ section). It could likewise prove useful in installation scripts.
+Special purpose file copying command, similar to [[external-filters-programs-and-commands#^CPREF|cp]], but capable of setting permissions and attributes of the copied files. This command seems tailormade for installing software packages, and as such it shows up frequently in Makefiles (in the _make install :_ section). It could likewise prove useful in installation scripts.
 
 **dos2unix**
 

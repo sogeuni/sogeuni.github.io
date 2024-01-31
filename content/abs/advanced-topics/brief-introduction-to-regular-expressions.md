@@ -81,7 +81,7 @@ This is the only instance of line 2.
 >  This line contains the number 113312312.    # Match.
 > ```
 
-- **Extended REs.** Additional metacharacters added to the basic set. Used in [[text-processing-commands#^EGREPREF|egrep]], [[awk#^AWKREF|awk]], and [[shell-wrappers#^PERLREF|Perl]].
+- **Extended REs.** Additional metacharacters added to the basic set. Used in [[external-filters-programs-and-commands#^EGREPREF|egrep]], [[awk#^AWKREF|awk]], and [[shell-wrappers#^PERLREF|Perl]].
     
 - The question mark -- ? -- matches zero or one of the previous RE. It is generally used for matching single characters.
     
@@ -115,7 +115,7 @@ echo a111b \| gawk '/a1+b/'
 >
 > **Perl** and some **egrep** versions do not require escaping the curly brackets.
     
-- Parentheses -- **( )** -- enclose a group of REs. They are useful with the following "|" operator and in [[manipulating-variables#^EXPRPAREN|substring extraction]] using [[complex-commands#^EXPRREF|expr]].
+- Parentheses -- **( )** -- enclose a group of REs. They are useful with the following "|" operator and in [[manipulating-variables#^EXPRPAREN|substring extraction]] using [[external-filters-programs-and-commands#^EXPRREF|expr]].
     
 - The -- **|** -- "or" RE operator matches any of a set of alternate characters.
     
@@ -187,7 +187,7 @@ The standard reference on this complex topic is Friedl's _Mastering Regular Expr
 
 [^1]: A _meta-meaning_ is the meaning of a term or expression on a higher level of abstraction. For example, the _literal_ meaning of _regular expression_ is an ordinary expression that conforms to accepted usage. The _meta-meaning_ is drastically different, as discussed at length in this chapter.
 
-[^2]: Since [[a-sed-and-awk-micro-primer#^SEDREF|sed]], [[awk#^AWKREF|awk]], and [[text-processing-commands#^GREPREF|grep]] process single lines, there will usually not be a newline to match. In those cases where there is a newline in a multiple line expression, the dot will match the newline.
+[^2]: Since [[a-sed-and-awk-micro-primer#^SEDREF|sed]], [[awk#^AWKREF|awk]], and [[external-filters-programs-and-commands#^GREPREF|grep]] process single lines, there will usually not be a newline to match. In those cases where there is a newline in a multiple line expression, the dot will match the newline.
     
     ```bash
     #!/bin/bash

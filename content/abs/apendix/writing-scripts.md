@@ -11,7 +11,7 @@ Write a script to carry out each of the following tasks.
 
 Write a script that backs itself up, that is, copies itself to a file named backup.sh.
 
-Hint: Use the [[basic-commands#^CATREF|cat]] command and the appropriate [[othertypesv#^SCRNAMEPARAM|positional parameter]].
+Hint: Use the [[external-filters-programs-and-commands#^CATREF|cat]] command and the appropriate [[othertypesv#^SCRNAMEPARAM|positional parameter]].
 
 **Home Directory Listing**
 
@@ -47,13 +47,13 @@ Generate a "unique" 6-digit hexadecimal identifier for your computer. Do _not_ u
 
 **Backup**
 
-Archive as a "tarball" (*.tar.gz file) all the files in your home directory tree (/home/your-name) that have been modified in the last 24 hours. Hint: use [[complex-commands#^FINDREF|find]].
+Archive as a "tarball" (*.tar.gz file) all the files in your home directory tree (/home/your-name) that have been modified in the last 24 hours. Hint: use [[external-filters-programs-and-commands#^FINDREF|find]].
 
 Optional: you may use this as the basis of a _backup_ script.
 
 **Checking whether a process is still running**
 
-Given a [[special-characters#^PROCESSIDREF|process ID]] (_PID_) as an argument, this script will check, at user-specified intervals, whether the given process is still running. You may use the [[system-and-administrative-commands#^PPSSREF|ps]] and [[time-date-commands#^SLEEPREF|sleep]] commands.
+Given a [[special-characters#^PROCESSIDREF|process ID]] (_PID_) as an argument, this script will check, at user-specified intervals, whether the given process is still running. You may use the [[system-and-administrative-commands#^PPSSREF|ps]] and [[external-filters-programs-and-commands#^SLEEPREF|sleep]] commands.
 
 **Primes**
 
@@ -103,9 +103,9 @@ Hint: use [[system-and-administrative-commands#^WHOREF|who]], [[system-and-admin
 
 **Safe Delete**
 
-Implement, as a script, a "safe" delete command, sdel.sh. Filenames passed as command-line arguments to this script are not deleted, but instead [[file-and-archiving-commands#^GZIPREF|gzipped]] if not already compressed (use [[file-and-archiving-commands#^FILEREF|file]] to check), then moved to a ~/TRASH directory. Upon invocation, the script checks the ~/TRASH directory for files older than 48 hours and [[basic-commands#^RMREF|permanently deletes]] them. (An better alternative might be to have a second script handle this, periodically invoked by the [[system-and-administrative-commands#^CRONREF|cron daemon]].)
+Implement, as a script, a "safe" delete command, sdel.sh. Filenames passed as command-line arguments to this script are not deleted, but instead [[file-and-archiving-commands#^GZIPREF|gzipped]] if not already compressed (use [[file-and-archiving-commands#^FILEREF|file]] to check), then moved to a ~/TRASH directory. Upon invocation, the script checks the ~/TRASH directory for files older than 48 hours and [[external-filters-programs-and-commands#^RMREF|permanently deletes]] them. (An better alternative might be to have a second script handle this, periodically invoked by the [[system-and-administrative-commands#^CRONREF|cron daemon]].)
 
-_Extra credit:_ Write the script so it can handle files and directories [[basic-commands#^RMRECURS|recursively]]. This would give it the capability of "safely deleting" entire directory structures.
+_Extra credit:_ Write the script so it can handle files and directories [[external-filters-programs-and-commands#^RMRECURS|recursively]]. This would give it the capability of "safely deleting" entire directory structures.
 
 **Making Change**
 
@@ -326,9 +326,9 @@ Optional: Write a script that searches through a list of e-mail messages and del
 
 **Creating man pages**
 
-Write a script that automates the process of creating [[basic-commands#^MANREF|man pages]].
+Write a script that automates the process of creating [[external-filters-programs-and-commands#^MANREF|man pages]].
 
-Given a text file which contains information to be formatted into a _man page_, the script will read the file, then invoke the appropriate [[text-processing-commands#^GROFFREF|groff]] commands to output the corresponding _man page_ to stdout. The text file contains blocks of information under the standard _man page_ headings, i.e., NAME, SYNOPSIS, DESCRIPTION, etc.
+Given a text file which contains information to be formatted into a _man page_, the script will read the file, then invoke the appropriate [[external-filters-programs-and-commands#^GROFFREF|groff]] commands to output the corresponding _man page_ to stdout. The text file contains blocks of information under the standard _man page_ headings, i.e., NAME, SYNOPSIS, DESCRIPTION, etc.
 
 [[Example A-39|Example A-39]] is an instructive first step.
 

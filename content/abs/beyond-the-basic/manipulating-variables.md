@@ -5,7 +5,7 @@ title: 10. Manipulating Variables
 
 ## Manipulating Strings
 
-Bash supports a surprising number of string manipulation operations. Unfortunately, these tools lack a unified focus. Some are a subset of [[#Parameter Substitution|parameter substitution]], and others fall under the functionality of the UNIX [[complex-commands#^EXPRREF|expr]] command. This results in inconsistent command syntax and overlap of functionality, not to mention confusion.
+Bash supports a surprising number of string manipulation operations. Unfortunately, these tools lack a unified focus. Some are a subset of [[#Parameter Substitution|parameter substitution]], and others fall under the functionality of the UNIX [[external-filters-programs-and-commands#^EXPRREF|expr]] command. This results in inconsistent command syntax and overlap of functionality, not to mention confusion.
 
 **String Length**
 
@@ -311,7 +311,7 @@ A Bash script may invoke the string manipulation facilities of [[awk#^AWKREF|awk
 
 ### Further Reference
 
-For more on string manipulation in scripts, refer to [[parameter-substitution|Section 10.2]] and the [[complex-commands#^EXPEXTRSUB|relevant section]] of the [[complex-commands#^EXPRREF|expr]] command listing.
+For more on string manipulation in scripts, refer to [[parameter-substitution|Section 10.2]] and the [[external-filters-programs-and-commands#^EXPEXTRSUB|relevant section]] of the [[external-filters-programs-and-commands#^EXPRREF|expr]] command listing.
 
 Script examples:
 

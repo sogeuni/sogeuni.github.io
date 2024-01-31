@@ -31,7 +31,7 @@ Rick Boivie contributed the delightfully recursive _pb.sh_ script ([[Example 36-
 
 Florian Wisser enlightened me on some of the fine points of testing strings (see [[Example 7-6|Example 7-6]]), and on other matters.
 
-Oleg Philon sent suggestions concerning [[text-processing-commands#^CUTREF|cut]] and [[system-and-administrative-commands#^PIDOFREF|pidof]].
+Oleg Philon sent suggestions concerning [[external-filters-programs-and-commands#^CUTREF|cut]] and [[system-and-administrative-commands#^PIDOFREF|pidof]].
 
 Michael Zick extended the [[arrays#^EMPTYARRAY|empty array]] example to demonstrate some surprising array properties. He also contributed the _isspammer_ scripts ([[Example 16-41|Example 16-41]] and [[Example A-28|Example A-28]]).
 

@@ -241,7 +241,7 @@ $ sh shift-past.sh 1 2 3 4 5
 
 [^2]: Note that [[complex-functions-and-function-complexities#^PASSEDARGS|*functions* also take positional parameters]].
 
-[^3]: The process calling the script sets the $0 parameter. By convention, this parameter is the name of the script. See the [[basic-commands#^MANREF|manpage]] (manual page) for **execv**.
+[^3]: The process calling the script sets the $0 parameter. By convention, this parameter is the name of the script. See the [[external-filters-programs-and-commands#^MANREF|manpage]] (manual page) for **execv**.
 
     From the *command-line*, however, $0 is the name of the shell.
 
@@ -253,4 +253,4 @@ $ sh shift-past.sh 1 2 3 4 5
     tcsh
     ```
 
-[^4]: If the the script is [[internal-commands-and-builtins#^SOURCEREF|sourced]] or [[basic-commands#^SYMLINKREF|symlinked]], then this will not work. It is safer to check [[debugging#^BASHSOURCEREF|$BASH_Source]].
+[^4]: If the the script is [[internal-commands-and-builtins#^SOURCEREF|sourced]] or [[external-filters-programs-and-commands#^SYMLINKREF|symlinked]], then this will not work. It is safer to check [[debugging#^BASHSOURCEREF|$BASH_Source]].
