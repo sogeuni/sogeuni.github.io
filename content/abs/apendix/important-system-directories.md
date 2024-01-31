@@ -41,7 +41,7 @@ Sysadmins and anyone else writing administrative scripts should be intimately fa
     
 - /usr/man
     
-    The systemwide [[basic-commands#^MANREF|manpages]].
+    The systemwide [[external-filters-programs-and-commands#^MANREF|manpages]].
     
 - /dev
     
