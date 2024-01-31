@@ -528,7 +528,7 @@ umask 022   # Files that the script creates will have 755 permission.
 # Thanks to Ian D. Allen, for this tip.
 ```
 
-- A useful scripting technique is to _repeatedly_ feed the output of a filter (by piping) back to the _same filter_, but with a different set of arguments and/or options. Especially suitable for this are [[text-processing-commands#^TRREF|tr]] and [[text-processing-commands#^GREPREF|grep]].
+- A useful scripting technique is to _repeatedly_ feed the output of a filter (by piping) back to the _same filter_, but with a different set of arguments and/or options. Especially suitable for this are [[external-filters-programs-and-commands#^TRREF|tr]] and [[external-filters-programs-and-commands#^GREPREF|grep]].
 
 ```bash
 # From "wstrings.sh" example.
@@ -653,7 +653,7 @@ rm -f "$TMPFILE"                 # Get rid of temp file.
 echo "$inner_variable"           # It's an ugly kludge, but it works.
 ```
 
-- The [[miscellaneous-commands#^RUNPARTSREF|run-parts]] command is handy for running a set of command scripts in a particular sequence, especially in combination with [[system-and-administrative-commands#^CRONREF|cron]] or [[time-date-commands#^ATREF|at]].
+- The [[miscellaneous-commands#^RUNPARTSREF|run-parts]] command is handy for running a set of command scripts in a particular sequence, especially in combination with [[system-and-administrative-commands#^CRONREF|cron]] or [[external-filters-programs-and-commands#^ATREF|at]].
 
 - For doing multiple revisions on a complex script, use the _rcs_ Revision Control System package.
 
