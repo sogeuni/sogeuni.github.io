@@ -58,7 +58,7 @@ For anything more complex, we could write a script that specifies a list of acce
 
 Let us take a [[contributed-scripts.html#USEGETOPT2|modified version]] of the _UseGetOpt.sh_ script as an example command. This script accepts a number of command-line parameters, preceded by either a single or double dash. And here is the corresponding _completion script_, by convention given a filename corresponding to its associated command.
 
-###### Example J-1. Completion script for *UseGetOpt.sh*
+**Example J-1. Completion script for *UseGetOpt.**sh*
 
 ```bash
 # file: UseGetOpt-2
