@@ -57,7 +57,7 @@ done <<< $(echo ${ArrayVar[*]})
 # element0 element1 element2 A B C D
 ```
 
-###### Example 19-13. Prepending a line to a file
+**Example 19-13.** Prepending a line to a file
 
 ```bash
 #!/bin/bash
@@ -97,7 +97,7 @@ exit  # Ends script execution.
    Title: ' $file
 ```
 
-###### Example 19-14. Parsing a mailbox
+**Example 19-14.** Parsing a mailbox
 
 ```bash
 #!/bin/bash
