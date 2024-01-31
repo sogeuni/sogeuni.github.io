@@ -51,7 +51,7 @@ Corresponding to the **END**, there is a **BEGIN**, for a code block to be perfo
 
 The following example illustrates how **awk** can add text-parsing tools to a shell script.
 
-###### Example C-1. Counting Letter Occurrences
+**Example C-1.** Counting Letter Occurrences
 
 ```bash
 #! /bin/sh
