@@ -7,7 +7,7 @@ Running a shell script launches a new process, a _subshell_.
 
 > **Definition:** A _subshell_ is a [[othertypesv#^CHILDREF2|child process]] launched by a shell (or _shell script_).
 
-A subshell is a separate instance of the command processor -- the _shell_ that gives you the prompt at the console or in an _xterm_ window. Just as your commands are interpreted at the command-line prompt, similarly does a script [[time-date-commands#^BATCHPROCREF|batch-process]] a list of commands. Each shell script running is, in effect, a subprocess (_child process_) of the [[internal-commands-and-builtins#^FORKREF|parent]] shell.
+A subshell is a separate instance of the command processor -- the _shell_ that gives you the prompt at the console or in an _xterm_ window. Just as your commands are interpreted at the command-line prompt, similarly does a script [[external-filters-programs-and-commands#^BATCHPROCREF|batch-process]] a list of commands. Each shell script running is, in effect, a subprocess (_child process_) of the [[internal-commands-and-builtins#^FORKREF|parent]] shell.
 
 A shell script can itself launch subprocesses. These _subshells_ let the script do parallel processing, in effect executing multiple subtasks simultaneously.
 
