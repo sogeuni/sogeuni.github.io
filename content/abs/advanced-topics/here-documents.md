@@ -7,7 +7,7 @@ title: 19. Here Documents
 >
 >--<cite>Aldous Huxley, _Island_</cite>
 
-A _here document_ is a special-purpose code block. It uses a form of [[io-redirection|I/O redirection]] to feed a command list to an interactive program or a command, such as [[communications-commands#^FTPREF|ftp]], [[basic-commands#^CATREF|cat]], or the _ex_ text editor.
+A _here document_ is a special-purpose code block. It uses a form of [[io-redirection|I/O redirection]] to feed a command list to an interactive program or a command, such as [[communications-commands#^FTPREF|ftp]], [[external-filters-programs-and-commands#^CATREF|cat]], or the _ex_ text editor.
 
 ```bash
 COMMAND <<InputComesFromHERE
