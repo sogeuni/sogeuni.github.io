@@ -19,15 +19,15 @@ Bash has certain features that the traditional [[shell-programming#^BASHDEF|Bour
 
 - Certain extended [[options#^INVOCATIONOPTIONSREF|invocation options]]
 - [[command-substitution#^COMMANDSUBREF|Command substitution]] using **$( )** notation
-- [[bash-version-3#^BRACEEXPREF3|Brace expansion]]
-- Certain [[arrays#^ARRAYREF|array]] operations, and [[bash-version-4#^ASSOCARR|associative arrays]]
+- [[bash-version-2-3-and-4#^BRACEEXPREF3|Brace expansion]]
+- Certain [[arrays#^ARRAYREF|array]] operations, and [[bash-version-2-3-and-4#^ASSOCARR|associative arrays]]
 - The [[tests#^DBLBRACKETS|double brackets]] extended test construct
 - The [[operations-and-related-topics#^DBLPARENSREF|double-parentheses]] arithmetic-evaluation construct
 - Certain [[manipulating-variables#^STRINGMANIP|string manipulation]] operations
 - [[process-substitution#^PROCESSSUBREF|Process substitution]]
-- A Regular Expression [[bash-version-3#^REGEXMATCHREF|matching operator]]
+- A Regular Expression [[bash-version-2-3-and-4#^REGEXMATCHREF|matching operator]]
 - Bash-specific [[internal-commands-and-builtins|builtins]]
-- [[bash-version-4#^COPROCREF|Coprocesses]]
+- [[bash-version-2-3-and-4#^COPROCREF|Coprocesses]]
 
 See the [Bash F.A.Q.](ftp://ftp.cwru.edu/pub/bash/FAQ) for a complete listing.
 
@@ -35,69 +35,6 @@ See the [Bash F.A.Q.](ftp://ftp.cwru.edu/pub/bash/FAQ) for a complete listing.
 
 Let us illustrate some of the incompatibilities between Bash and the classic Bourne shell. Download and install the ["Heirloom Bourne Shell"](http://freshmeat.net/projects/bournesh) and run the following script, first using Bash, then the classic _sh_.
 
-**Example 36-23.** Test Suite
-
-```bash
-#!/bin/bash
-# test-suite.sh
-# A partial Bash compatibility test suite.
-# Run this on your version of Bash, or some other shell.
-
-default_option=FAIL         # Tests below will fail unless . . .
-
-echo
-echo -n "Testing "
-sleep 1; echo -n ". "
-sleep 1; echo -n ". "
-sleep 1; echo ". "
-echo
-
-# Double brackets
-String="Double brackets supported?"
-echo -n "Double brackets test: "
-if [[ "$String" = "Double brackets supported?" ]]
-then
-  echo "PASS"
-else
-  echo "FAIL"
-fi
-
-
-# Double brackets and regex matching
-String="Regex matching supported?"
-echo -n "Regex matching: "
-if [[ "$String" =~ R.....matching* ]]
-then
-  echo "PASS"
-else
-  echo "FAIL"
-fi
-
-
-# Arrays
-test_arr=$default_option     # FAIL
-Array=( If supports arrays will print PASS )
-test_arr=${Array[5]}
-echo "Array test: $test_arr"
-
-
-# Command Substitution
-csub_test ()
-{
-  echo "PASS"
-}
-
-test_csub=$default_option    # FAIL
-test_csub=$(csub_test)
-echo "Command substitution test: $test_csub"
-
-echo
-
-#  Completing this script is an exercise for the reader.
-#  Add to the above similar tests for double parentheses,
-#+ brace expansion, process substitution, etc.
-
-exit $?
-```
+![[Example 36-23|Example 36-23]]
 
 [^1]: Or, better yet, [[system-and-administrative-commands#^ENVV2REF|#!/bin/env sh]].

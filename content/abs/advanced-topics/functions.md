@@ -44,48 +44,7 @@ _command_...
 
 Functions are called, _triggered_, simply by invoking their names. _A function call is equivalent to a command._
 
-**Example 24-1.** Simple functions
-
-```bash
-#!/bin/bash
-# ex59.sh: Exercising functions (simple).
-
-JUST_A_SECOND=1
-
-funky ()
-{ # This is about as simple as functions get.
-  echo "This is a funky function."
-  echo "Now exiting funky function."
-} # Function declaration must precede call.
-
-
-fun ()
-{ # A somewhat more complex function.
-  i=0
-  REPEATS=30
-
-  echo
-  echo "And now the fun really begins."
-  echo
-
-  sleep $JUST_A_SECOND    # Hey, wait a second!
-  while [ $i -lt $REPEATS ]
-  do
-    echo "----------FUNCTIONS---------->"
-    echo "<------------ARE-------------"
-    echo "<------------FUN------------>"
-    echo
-    let "i+=1"
-  done
-}
-
-  # Now, call the functions.
-
-funky
-fun
-
-exit $?
-```
+![[Example 24-1|Example 24-1]]
 
 The function definition must precede the first call to it. There is no method of "declaring" the function, as, for example, in C.
 

@@ -127,9 +127,9 @@ Hint: _bc_ requires the -l option to load the math library.
 
 **Unicode Table**
 
-Using [[Example T-1|Example T-1]] as a template, write a script that prints to a file a complete [[bash-version-4#^UNICODEREF|Unicode]] table.
+Using [[Example T-1|Example T-1]] as a template, write a script that prints to a file a complete [[bash-version-2-3-and-4#^UNICODEREF|Unicode]] table.
 
-Hint: Use the -e option to [[internal-commands-and-builtins#^ECHOREF|echo]]: **echo -e '\uXXXX'**, where _XXXX_ is the Unicode numerical character designation. This requires [[bash-version-4#^BASH42|version 4.2]] or later of Bash.
+Hint: Use the -e option to [[internal-commands-and-builtins#^ECHOREF|echo]]: **echo -e '\uXXXX'**, where _XXXX_ is the Unicode numerical character designation. This requires [[bash-version-2-3-and-4#^BASH42|version 4.2]] or later of Bash.
 
 **Sum of Matching Numbers**
 

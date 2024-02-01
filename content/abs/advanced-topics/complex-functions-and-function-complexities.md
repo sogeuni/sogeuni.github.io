@@ -11,203 +11,26 @@ function_name $arg1 $arg2
 
 The function refers to the passed arguments by position (as if they were [[another-look-at-variables#^POSPARAMREF|positional parameters]]), that is, $1, $2, and so forth.
 
-**Example 24-2.** Function Taking Parameters
-
-```bash
-#!/bin/bash
-# Functions and parameters
-
-DEFAULT=default                             # Default param value.
-
-func2 () {
-   if [ -z "$1" ]                           # Is parameter #1 zero length?
-   then
-     echo "-Parameter #1 is zero length.-"  # Or no parameter passed.
-   else
-     echo "-Parameter #1 is \"$1\".-"
-   fi
-
-   variable=${1-$DEFAULT}                   #  What does
-   echo "variable = $variable"              #+ parameter substitution show?
-                                            #  ---------------------------
-                                            #  It distinguishes between
-                                            #+ no param and a null param.
-
-   if [ "$2" ]
-   then
-     echo "-Parameter #2 is \"$2\".-"
-   fi
-
-   return 0
-}
-
-echo
-   
-echo "Nothing passed."   
-func2                          # Called with no params
-echo
-
-
-echo "Zero-length parameter passed."
-func2 ""                       # Called with zero-length param
-echo
-
-echo "Null parameter passed."
-func2 "$uninitialized_param"   # Called with uninitialized param
-echo
-
-echo "One parameter passed."   
-func2 first           # Called with one param
-echo
-
-echo "Two parameters passed."   
-func2 first second    # Called with two params
-echo
-
-echo "\"\" \"second\" passed."
-func2 "" second       # Called with zero-length first parameter
-echo                  # and ASCII string as a second one.
-
-exit 0
-```
+![[Example 24-2|Example 24-2]]
 
 > [!important]
 > The [[othertypesv#^SHIFTREF|shift]] command works on arguments passed to functions (see [[Example 36-18|Example 36-18]]).
 
 But, what about command-line arguments passed to the script? Does a function see them? Well, let's clear up the confusion.
 
-**Example 24-3.** Functions and command-line args passed to the script
-
-```bash
-#!/bin/bash
-# func-cmdlinearg.sh
-#  Call this script with a command-line argument,
-#+ something like $0 arg1.
-
-
-func ()
-
-{
-echo "$1"   # Echoes first arg passed to the function.
-}           # Does a command-line arg qualify?
-
-echo "First call to function: no arg passed."
-echo "See if command-line arg is seen."
-func
-# No! Command-line arg not seen.
-
-echo "============================================================"
-echo
-echo "Second call to function: command-line arg passed explicitly."
-func $1
-# Now it's seen!
-
-exit 0
-```
+![[Example 24-3|Example 24-3]]
 
 In contrast to certain other programming languages, shell scripts normally pass only value parameters to functions. Variable names (which are actually _pointers_), if passed as parameters to functions, will be treated as string literals. _Functions interpret their arguments literally._
 
 [[indirect-references#^IVRREF|Indirect variable references]] (see [[Example 37-2|Example 37-2]]) provide a clumsy sort of mechanism for passing variable pointers to functions.
 
-**Example 24-4.** Passing an indirect reference to a function
-
-```bash
-#!/bin/bash
-# ind-func.sh: Passing an indirect reference to a function.
-
-echo_var ()
-{
-echo "$1"
-}
-
-message=Hello
-Hello=Goodbye
-
-echo_var "$message"        # Hello
-# Now, let's pass an indirect reference to the function.
-echo_var "${!message}"     # Goodbye
-
-echo "-------------"
-
-# What happens if we change the contents of "hello" variable?
-Hello="Hello, again!"
-echo_var "$message"        # Hello
-echo_var "${!message}"     # Hello, again!
-
-exit 0
-```
+![[Example 24-4|Example 24-4]]
 
 The next logical question is whether parameters can be dereferenced _after_ being passed to a function.
 
-**Example 24-5.** Dereferencing a parameter passed to a function
+![[Example 24-5|Example 24-5]]
 
-```bash
-#!/bin/bash
-# dereference.sh
-# Dereferencing parameter passed to a function.
-# Script by Bruce W. Clare.
-
-dereference ()
-{
-     y=\$"$1"   # Name of variable (not value!).
-     echo $y    # $Junk
-
-     x=`eval "expr \"$y\" "`
-     echo $1=$x
-     eval "$1=\"Some Different Text \""  # Assign new value.
-}
-
-Junk="Some Text"
-echo $Junk "before"    # Some Text before
-
-dereference Junk
-echo $Junk "after"     # Some Different Text after
-
-exit 0
-```
-
-**Example 24-6.** Again, dereferencing a parameter passed to a function
-
-```bash
-#!/bin/bash
-# ref-params.sh: Dereferencing a parameter passed to a function.
-#                (Complex Example)
-
-ITERATIONS=3  # How many times to get input.
-icount=1
-
-my_read () {
-  #  Called with my_read varname,
-  #+ outputs the previous value between brackets as the default value,
-  #+ then asks for a new value.
-
-  local local_var
-
-  echo -n "Enter a value "
-  eval 'echo -n "[$'$1'] "'  #  Previous value.
-# eval echo -n "[\$$1] "     #  Easier to understand,
-                             #+ but loses trailing space in user prompt.
-  read local_var
-  [ -n "$local_var" ] && eval $1=\$local_var
-
-  # "And-list": if "local_var" then set "$1" to its value.
-}
-
-echo
-
-while [ "$icount" -le "$ITERATIONS" ]
-do
-  my_read var
-  echo "Entry #$icount = $var"
-  let "icount += 1"
-  echo
-done  
-
-
-# Thanks to Stephane Chazelas for providing this instructive example.
-
-exit 0
-```
+![[Example 24-6|Example 24-6]]
 
 **Exit and Return**
 
@@ -219,58 +42,7 @@ Functions return a value, called an _exit status_. This is analogous to the [[ex
 
 Terminates a function. A **return** command [^1] optionally takes an _integer_ argument, which is returned to the calling script as the "exit status" of the function, and this exit status is assigned to the variable [[another-look-at-variables#^XSTATVARREF|$?]].
 
-**Example 24-7.** Maximum of two numbers
-
-```bash
-#!/bin/bash
-# max.sh: Maximum of two integers.
-
-E_PARAM_ERR=250    # If less than 2 params passed to function.
-EQUAL=251          # Return value if both params equal.
-#  Error values out of range of any
-#+ params that might be fed to the function.
-
-max2 ()             # Returns larger of two numbers.
-{                   # Note: numbers compared must be less than 250.
-if [ -z "$2" ]
-then
-  return $E_PARAM_ERR
-fi
-
-if [ "$1" -eq "$2" ]
-then
-  return $EQUAL
-else
-  if [ "$1" -gt "$2" ]
-  then
-    return $1
-  else
-    return $2
-  fi
-fi
-}
-
-max2 33 34
-return_val=$?
-
-if [ "$return_val" -eq $E_PARAM_ERR ]
-then
-  echo "Need to pass two parameters to the function."
-elif [ "$return_val" -eq $EQUAL ]
-  then
-    echo "The two numbers are equal."
-else
-    echo "The larger of the two numbers is $return_val."
-fi  
-
-  
-exit 0
-
-#  Exercise (easy):
-#  ---------------
-#  Convert this to an interactive script,
-#+ that is, have the script ask for input (two numbers).
-```
+![[Example 24-7|Example 24-7]]
 
 > [!tip]
 > For a function to return a string or array, use a dedicated variable.
@@ -295,83 +67,7 @@ exit 0
 > # Thanks, S.C.
 > ```
 
-**Example 24-8.** Converting numbers to Roman numerals
-
-```bash
-#!/bin/bash
-
-# Arabic number to Roman numeral conversion
-# Range: 0 - 200
-# It's crude, but it works.
-
-# Extending the range and otherwise improving the script is left as an exercise.
-
-# Usage: roman number-to-convert
-
-LIMIT=200
-E_ARG_ERR=65
-E_OUT_OF_RANGE=66
-
-if [ -z "$1" ]
-then
-  echo "Usage: `basename $0` number-to-convert"
-  exit $E_ARG_ERR
-fi  
-
-num=$1
-if [ "$num" -gt $LIMIT ]
-then
-  echo "Out of range!"
-  exit $E_OUT_OF_RANGE
-fi  
-
-to_roman ()   # Must declare function before first call to it.
-{
-number=$1
-factor=$2
-rchar=$3
-let "remainder = number - factor"
-while [ "$remainder" -ge 0 ]
-do
-  echo -n $rchar
-  let "number -= factor"
-  let "remainder = number - factor"
-done  
-
-return $number
-       # Exercises:
-       # ---------
-       # 1) Explain how this function works.
-       #    Hint: division by successive subtraction.
-       # 2) Extend to range of the function.
-       #    Hint: use "echo" and command-substitution capture.
-}
-   
-
-to_roman $num 100 C
-num=$?
-to_roman $num 90 LXXXX
-num=$?
-to_roman $num 50 L
-num=$?
-to_roman $num 40 XL
-num=$?
-to_roman $num 10 X
-num=$?
-to_roman $num 9 IX
-num=$?
-to_roman $num 5 V
-num=$?
-to_roman $num 4 IV
-num=$?
-to_roman $num 1 I
-# Successive calls to conversion function!
-# Is this really necessary??? Can it be simplified?
-
-echo
-
-exit
-```
+![[Example 24-8|Example 24-8]]
 
 See also [[Example 11-29|Example 11-29]].
 
@@ -553,48 +249,7 @@ _Redirecting the stdin of a function_
 
 A function is essentially a [[special-characters#^CODEBLOCKREF|code block]], which means its stdin can be redirected (as in [[Example 3-1|Example 3-1]]).
 
-**Example 24-11.** Real name from username
-
-```bash
-#!/bin/bash
-# realname.sh
-#
-# From username, gets "real name" from /etc/passwd.
-
-
-ARGCOUNT=1       # Expect one arg.
-E_WRONGARGS=85
-
-file=/etc/passwd
-pattern=$1
-
-if [ $# -ne "$ARGCOUNT" ]
-then
-  echo "Usage: `basename $0` USERNAME"
-  exit $E_WRONGARGS
-fi  
-
-file_excerpt ()    #  Scan file for pattern,
-{                  #+ then print relevant portion of line.
-  while read line  # "while" does not necessarily need [ condition ]
-  do
-    echo "$line" | grep $1 | awk -F":" '{ print $5 }'
-    # Have awk use ":" delimiter.
-  done
-} <$file  # Redirect into function's stdin.
-
-file_excerpt $pattern
-
-# Yes, this entire script could be reduced to
-#       grep PATTERN /etc/passwd | awk -F":" '{ print $5 }'
-# or
-#       awk -F: '/PATTERN/ {print $5}'
-# or
-#       awk -F: '($1 == "username") { print $5 }' # real name from username
-# However, it might not be as instructive.
-
-exit 0
-```
+![[Example 24-11|Example 24-11]]
 
 There is an alternate, and perhaps less confusing method of redirecting a function's stdin. This involves redirecting the stdin to an embedded bracketed code block within the function.
 

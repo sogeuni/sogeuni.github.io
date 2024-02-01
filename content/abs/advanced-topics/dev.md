@@ -95,91 +95,9 @@ bash$ cat <&5
 
 \[Thanks, Mark and Mihai Maties.]
 
-**Example 29-1.** Using /dev/tcp for troubleshooting
+![[Example 29-1|Example 29-1]]
 
-```bash
-#!/bin/bash
-# dev-tcp.sh: /dev/tcp redirection to check Internet connection.
-
-# Script by Troy Engel.
-# Used with permission.
- 
-TCP_HOST=news-15.net       # A known spam-friendly ISP.
-TCP_PORT=80                # Port 80 is http.
-  
-# Try to connect. (Somewhat similar to a 'ping' . . .) 
-echo "HEAD / HTTP/1.0" >/dev/tcp/${TCP_HOST}/${TCP_PORT}
-MYEXIT=$?
-
-: <<EXPLANATION
-If bash was compiled with --enable-net-redirections, it has the capability of
-using a special character device for both TCP and UDP redirections. These
-redirections are used identically as STDIN/STDOUT/STDERR. The device entries
-are 30,36 for /dev/tcp:
-
-  mknod /dev/tcp c 30 36
-
->From the bash reference:
-/dev/tcp/host/port
-    If host is a valid hostname or Internet address, and port is an integer
-port number or service name, Bash attempts to open a TCP connection to the
-corresponding socket.
-EXPLANATION
-
-   
-if [ "X$MYEXIT" = "X0" ]; then
-  echo "Connection successful. Exit code: $MYEXIT"
-else
-  echo "Connection unsuccessful. Exit code: $MYEXIT"
-fi
-
-exit $MYEXIT
-```
-
-**Example 29-2.** Playing music
-
-```bash
-#!/bin/bash
-# music.sh
-
-# Music without external files
-
-# Author: Antonio Macchi
-# Used in ABS Guide with permission.
-
-
-#  /dev/dsp default = 8000 frames per second, 8 bits per frame (1 byte),
-#+ 1 channel (mono)
-
-duration=2000       # If 8000 bytes = 1 second, then 2000 = 1/4 second.
-volume=$'\xc0'      # Max volume = \xff (or \x00).
-mute=$'\x80'        # No volume = \x80 (the middle).
-
-function mknote ()  # $1=Note Hz in bytes (e.g. A = 440Hz ::
-{                   #+ 8000 fps / 440 = 16 :: A = 16 bytes per second)
-  for t in `seq 0 $duration`
-  do
-    test $(( $t % $1 )) = 0 && echo -n $volume || echo -n $mute
-  done
-}
-
-e=`mknote 49`
-g=`mknote 41`
-a=`mknote 36`
-b=`mknote 32`
-c=`mknote 30`
-cis=`mknote 29`
-d=`mknote 27`
-e2=`mknote 24`
-n=`mknote 32767`
-# European notation.
-
-echo -n "$g$e2$d$c$d$c$a$g$n$g$e$n$g$e2$d$c$c$b$c$cis$n$cis$d \
-$n$g$e2$d$c$d$c$a$g$n$g$e$n$g$a$d$c$b$a$b$c" > /dev/dsp
-# dsp = Digital Signal Processor
-
-exit      # A "bonny" example of an elegant shell script!
-```
+![[Example 29-2|Example 29-2]]
 
 [^1]: The entries in /dev provide mount points for physical and virtual devices. These entries use very little drive space.
     

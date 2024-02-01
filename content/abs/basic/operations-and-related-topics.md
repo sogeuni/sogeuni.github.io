@@ -387,7 +387,7 @@ if [ -f /etc/sysconfig/i18n -a -z "${NOLOCALE:-}" ] ; then
 > # Much better -- the condition tests are grouped in logical sections.
 > ```
 
-[^1]: In a different context, **+=** can serve as a _string concatenation_ operator. This can be useful for [[bash-version-3#^PATHAPPEND|modifying _environmental variables_]].
+[^1]: In a different context, **+=** can serve as a _string concatenation_ operator. This can be useful for [[bash-version-2-3-and-4#^PATHAPPEND|modifying _environmental variables_]].
 
 [^2]: _Side effects_ are, of course, unintended -- and usually undesirable -- consequences.
 

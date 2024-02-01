@@ -204,62 +204,7 @@ while [ "$var1" != "end" ]    #> while test "$var1" != "end"
 
 - Dotan Barak contributes template code for a _progress bar_ in a script.
 
-    **Example 36-17. A Progress Bar**
-
-```bash
-#!/bin/bash
-# progress-bar.sh
-
-# Author: Dotan Barak (very minor revisions by ABS Guide author).
-# Used in ABS Guide with permission (thanks!).
-
-
-BAR_WIDTH=50
-BAR_CHAR_START="["
-BAR_CHAR_END="]"
-BAR_CHAR_EMPTY="."
-BAR_CHAR_FULL="="
-BRACKET_CHARS=2
-LIMIT=100
-
-print_progress_bar()
-{
-        # Calculate how many characters will be full.
-        let "full_limit = ((($1 - $BRACKET_CHARS) * $2) / $LIMIT)"
-
-        # Calculate how many characters will be empty.
-        let "empty_limit = ($1 - $BRACKET_CHARS) - ${full_limit}"
-
-        # Prepare the bar.
-        bar_line="${BAR_CHAR_START}"
-        for ((j=0; j<full_limit; j++)); do
-                bar_line="${bar_line}${BAR_CHAR_FULL}"
-        done
-
-        for ((j=0; j<empty_limit; j++)); do
-                bar_line="${bar_line}${BAR_CHAR_EMPTY}"
-        done
-
-        bar_line="${bar_line}${BAR_CHAR_END}"
-
-        printf "%3d%% %s" $2 ${bar_line}
-}
-
-# Here is a sample of code that uses it.
-MAX_PERCENT=100
-for ((i=0; i<=MAX_PERCENT; i++)); do
-        #
-        usleep 10000
-        # ... Or run some other commands ...
-        #
-        print_progress_bar ${BAR_WIDTH} ${i}
-        echo -en "\r"
-done
-
-echo ""
-
-exit
-```
+![[Example 36-17|Example 36-17]]
 
 - A particularly clever use of [[tests#^TESTCONSTRUCTS1|if-test]] constructs is for comment blocks.
 
@@ -320,41 +265,7 @@ exit 0
 
 - The 0 - 255 range for function return values is a severe limitation. Global variables and other workarounds are often problematic. An alternative method for a function to communicate a value back to the main body of the script is to have the function write to stdout (usually with [[internal-commands-and-builtins#^ECHOREF|echo]]) the "return value," and assign this to a variable. This is actually a variant of [[command-substitution#^COMMANDSUBREF|command substitution.]]
 
-    **Example 36-18. Return value trickery**
-
-```bash
-#!/bin/bash
-# multiplication.sh
-
-multiply ()                     # Multiplies params passed.
-{                               # Will accept a variable number of args.
-
-  local product=1
-
-  until [ -z "$1" ]             # Until uses up arguments passed...
-  do
-    let "product *= $1"
-    shift
-  done
-
-  echo $product                 #  Will not echo to stdout,
-}                               #+ since this will be assigned to a variable.
-
-mult1=15383; mult2=25211
-val1=`multiply $mult1 $mult2`
-# Assigns stdout (echo) of function to the variable val1.
-echo "$mult1 X $mult2 = $val1"                   # 387820813
-
-mult1=25; mult2=5; mult3=20
-val2=`multiply $mult1 $mult2 $mult3`
-echo "$mult1 X $mult2 X $mult3 = $val2"          # 2500
-
-mult1=188; mult2=37; mult3=25; mult4=47
-val3=`multiply $mult1 $mult2 $mult3 $mult4`
-echo "$mult1 X $mult2 X $mult3 X $mult4 = $val3" # 8173300
-
-exit 0
-```
+![[Example 36-18|Example 36-18]]
 
 The same technique also works for alphanumeric strings. This means that a function can "return" a non-numeric value.
 
@@ -379,39 +290,8 @@ echo "$newstring"          # Every sentence should start with a capital letter.
 ```
 
 It is even possible for a function to "return" multiple values with this method.
-    
-    **Example 36-19. Even more return value trickery**
-    
-```bash
-#!/bin/bash
-# sum-product.sh
-# A function may "return" more than one value.
 
-sum_and_product ()   # Calculates both sum and product of passed args.
-{
-  echo $(( $1 + $2 )) $(( $1 * $2 ))
-# Echoes to stdout each calculated value, separated by space.
-}
-
-echo
-echo "Enter first number "
-read first
-
-echo
-echo "Enter second number "
-read second
-echo
-
-retval=`sum_and_product $first $second`      # Assigns output of function.
-sum=`echo "$retval" | awk '{print $1}'`      # Assigns first field.
-product=`echo "$retval" | awk '{print $2}'`  # Assigns second field.
-
-echo "$first + $second = $sum"
-echo "$first * $second = $product"
-echo
-
-exit 0
-```
+![[Example 36-19|Example 36-19]]
 
 > [!caution]
 > There can be only **one** _echo_ statement in the function for this to work. If you alter the previous example:
@@ -431,88 +311,7 @@ exit 0
 
     Passing an array involves loading the space-separated elements of the array into a variable with [[command-substitution#^COMMANDSUBREF|command substitution]]. Getting an array back as the "return value" from a function uses the previously mentioned strategem of [[internal-commands-and-builtins#^ECHOREF|echoing]] the array in the function, then invoking command substitution and the **( ... )** operator to assign it to an array.
 
-    **Example 36-20. Passing and returning arrays**
-
-```bash
-#!/bin/bash
-# array-function.sh: Passing an array to a function and ...
-#                   "returning" an array from a function
-
-
-Pass_Array ()
-{
-  local passed_array   # Local variable!
-  passed_array=( `echo "$1"` )
-  echo "${passed_array[@]}"
-  #  List all the elements of the new array
-  #+ declared and set within the function.
-}
-
-
-original_array=( element1 element2 element3 element4 element5 )
-
-echo
-echo "original_array = ${original_array[@]}"
-#                      List all elements of original array.
-
-
-# This is the trick that permits passing an array to a function.
-# **********************************
-argument=`echo ${original_array[@]}`
-# **********************************
-#  Pack a variable
-#+ with all the space-separated elements of the original array.
-#
-# Attempting to just pass the array itself will not work.
-
-
-# This is the trick that allows grabbing an array as a "return value".
-# *****************************************
-returned_array=( `Pass_Array "$argument"` )
-# *****************************************
-# Assign 'echoed' output of function to array variable.
-
-echo "returned_array = ${returned_array[@]}"
-
-echo "============================================================="
-
-#  Now, try it again,
-#+ attempting to access (list) the array from outside the function.
-Pass_Array "$argument"
-
-# The function itself lists the array, but ...
-#+ accessing the array from outside the function is forbidden.
-echo "Passed array (within function) = ${passed_array[@]}"
-# NULL VALUE since the array is a variable local to the function.
-
-echo
-
-############################################
-
-# And here is an even more explicit example:
-
-ret_array ()
-{
-  for element in {11..20}
-  do
-    echo "$element "   #  Echo individual elements
-  done                 #+ of what will be assembled into an array.
-}
-
-arr=( $(ret_array) )   #  Assemble into array.
-
-echo "Capturing array \"arr\" from function ret_array () ..."
-echo "Third element of array \"arr\" is ${arr[2]}."   # 13  (zero-indexed)
-echo -n "Entire array is: "
-echo ${arr[@]}                # 11 12 13 14 15 16 17 18 19 20
-
-echo
-
-exit 0
-
-#  Nathan Coulter points out that passing arrays with elements containing
-#+ whitespace breaks this example.
-```
+![[Example 36-20|Example 36-20]]
 
 For a more elaborate example of passing arrays to functions, see [[Example A-10|Example A-10]].
 
@@ -537,49 +336,7 @@ wlist=`strings "$1" | tr A-Z a-z | tr '[:space:]' Z | \
 tr -cs '[:alpha:]' Z | tr -s '\173-\377' Z | tr Z ' '`
 ```
 
-    **Example 36-21. Fun with anagrams**
-
-```bash
-#!/bin/bash
-# agram.sh: Playing games with anagrams.
-
-# Find anagrams of...
-LETTERSET=etaoinshrdlu
-FILTER='.......'       # How many letters minimum?
-#       1234567
-
-anagram "$LETTERSET" | # Find all anagrams of the letterset...
-grep "$FILTER" |       # With at least 7 letters,
-grep '^is' |           # starting with 'is'
-grep -v 's$' |         # no plurals
-grep -v 'ed$'          # no past tense verbs
-# Possible to add many combinations of conditions and filters.
-
-#  Uses "anagram" utility
-#+ that is part of the author's "yawl" word list package.
-#  http://ibiblio.org/pub/Linux/libs/yawl-0.3.2.tar.gz
-#  http://bash.deta.in/yawl-0.3.2.tar.gz
-
-exit 0                 # End of code.
-
-
-bash$ sh agram.sh
-islander
-isolate
-isolead
-isotheral
-
-
-
-#  Exercises:
-#  ---------
-#  Modify this script to take the LETTERSET as a command-line parameter.
-#  Parameterize the filters in lines 11 - 13 (as with $FILTER),
-#+ so that they can be specified by passing arguments to a function.
-
-#  For a slightly different approach to anagramming,
-#+ see the agram2.sh script.
-```
+![[Example 36-21|Example 36-21]]
     
 See also [[Example 29-4|Example 29-4]], [[Example 16-25|Example 16-25]], and [[Example A-9|Example A-9]].
 
@@ -672,67 +429,7 @@ It would be nice to be able to invoke X-Windows widgets from a shell script. The
 
 The _dialog_ family of tools offers a method of calling "dialog" widgets from a shell script. The original _dialog_ utility works in a text console, but its successors, _gdialog_, _Xdialog_, and _kdialog_ use X-Windows-based widget sets.
 
-**Example 36-22.** Widgets invoked from a shell script
-
-```bash
-#!/bin/bash
-# dialog.sh: Using 'gdialog' widgets.
-
-# Must have 'gdialog' installed on your system to run this script.
-# Or, you can replace all instance of 'gdialog' below with 'kdialog' ...
-# Version 1.1 (corrected 04/05/05)
-
-# This script was inspired by the following article.
-#     "Scripting for X Productivity," by Marco Fioretti,
-#      LINUX JOURNAL, Issue 113, September 2003, pp. 86-9.
-# Thank you, all you good people at LJ.
-
-
-# Input error in dialog box.
-E_INPUT=85
-# Dimensions of display, input widgets.
-HEIGHT=50
-WIDTH=60
-
-# Output file name (constructed out of script name).
-OUTFILE=$0.output
-
-# Display this script in a text widget.
-gdialog --title "Displaying: $0" --textbox $0 $HEIGHT $WIDTH
-
-
-
-# Now, we'll try saving input in a file.
-echo -n "VARIABLE=" > $OUTFILE
-gdialog --title "User Input" --inputbox "Enter variable, please:" \
-$HEIGHT $WIDTH 2>> $OUTFILE
-
-
-if [ "$?" -eq 0 ]
-# It's good practice to check exit status.
-then
-  echo "Executed \"dialog box\" without errors."
-else
-  echo "Error(s) in \"dialog box\" execution."
-        # Or, clicked on "Cancel", instead of "OK" button.
-  rm $OUTFILE
-  exit $E_INPUT
-fi
-
-
-
-# Now, we'll retrieve and display the saved variable.
-. $OUTFILE   # 'Source' the saved file.
-echo "The variable input in the \"input box\" was: "$VARIABLE""
-
-
-rm $OUTFILE  # Clean up by removing the temp file.
-             # Some applications may need to retain this file.
-
-exit $?
-
-# Exercise: Rewrite this script using the 'zenity' widget set.
-```
+![[Example 36-22|Example 36-22]]
 
 The [[miscellaneous-commands#^XMESSAGEREF|xmessage]] command is a simple method of popping up a message/query window. For example:
 

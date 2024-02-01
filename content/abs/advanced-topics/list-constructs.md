@@ -26,70 +26,9 @@ equation()
 }
 ```
 
-**Example 26-1.** Using an *and list* to test for command-line arguments
+![[Example 26-1|Example 26-1]]
 
-```bash
-#!/bin/bash
-# and list
-
-if [ ! -z "$1" ] && echo "Argument #1 = $1" && [ ! -z "$2" ] && \
-#                ^^                         ^^               ^^
-echo "Argument #2 = $2"
-then
-  echo "At least 2 arguments passed to script."
-  # All the chained commands return true.
-else
-  echo "Fewer than 2 arguments passed to script."
-  # At least one of the chained commands returns false.
-fi  
-# Note that "if [ ! -z $1 ]" works, but its alleged equivalent,
-#   "if [ -n $1 ]" does not.
-#     However, quoting fixes this.
-#  if "[ -n "$1" ]" works.
-#           ^  ^    Careful!
-# It is always best to QUOTE the variables being tested.
-
-
-# This accomplishes the same thing, using "pure" if/then statements.
-if [ ! -z "$1" ]
-then
-  echo "Argument #1 = $1"
-fi
-if [ ! -z "$2" ]
-then
-  echo "Argument #2 = $2"
-  echo "At least 2 arguments passed to script."
-else
-  echo "Fewer than 2 arguments passed to script."
-fi
-# It's longer and more ponderous than using an "and list".
-
-
-exit $?
-```
-
-**Example 26-2.** Another command-line arg test using an *and list*
-
-```bash
-#!/bin/bash
-
-ARGS=1        # Number of arguments expected.
-E_BADARGS=85  # Exit value if incorrect number of args passed.
-
-test $# -ne $ARGS && \
-#    ^^^^^^^^^^^^ condition #1
-echo "Usage: `basename $0` $ARGS argument(s)" && exit $E_BADARGS
-#                                             ^^
-#  If condition #1 tests true (wrong number of args passed to script),
-#+ then the rest of the line executes, and script terminates.
-
-# Line below executes only if the above test fails.
-echo "Correct number of arguments passed to this script."
-
-exit 0
-
-# To check exit value, do a "echo $?" after script termination.
-```
+![[Example 26-2|Example 26-2]]
 
 Of course, an _and list_ can also _set_ variables to a default value.
 
@@ -108,38 +47,7 @@ command-1 | command-2 | command-3 | ... command-n
 
 Each command executes in turn for as long as the previous command returns false. At the first true return, the command chain terminates (the first command returning true is the last one to execute). This is obviously the inverse of the "and list".
 
-**Example 26-3.** Using _or lists_ in combination with an *and list*
-
-```bash
-#!/bin/bash
-
-#  delete.sh, a not-so-cunning file deletion utility.
-#  Usage: delete filename
-
-E_BADARGS=85
-
-if [ -z "$1" ]
-then
-  echo "Usage: `basename $0` filename"
-  exit $E_BADARGS  # No arg? Bail out.
-else  
-  file=$1          # Set filename.
-fi  
-
-
-[ ! -f "$file" ] && echo "File \"$file\" not found. \
-Cowardly refusing to delete a nonexistent file."
-# AND LIST, to give error message if file not present.
-# Note echo message continuing on to a second line after an escape.
-
-[ ! -f "$file" ] | (rm -f $file; echo "File \"$file\" deleted.")
-# OR LIST, to delete file if present.
-
-# Note logic inversion above.
-# AND LIST executes on true, OR LIST on false.
-
-exit $?
-```
+![[Example 26-3|Example 26-3]]
 
 > [!caution]
 > If the first command in an _or list_ returns true, it _will_ execute.

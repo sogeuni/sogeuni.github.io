@@ -599,7 +599,7 @@ An **exec** also serves to [[using-exec#^USINGEXECREF|reassign file descriptors]
 
 **shopt**
 
-This command permits changing _shell options_ on the fly (see [[Example 25-1|Example 25-1]] and [[Example 25-2|Example 25-2]]). It often appears in the Bash [[important-files#^FILESREF1|startup files]], but also has its uses in scripts. Needs [[bash-version-2#^BASH2REF|version 2]] or later of Bash.
+This command permits changing _shell options_ on the fly (see [[Example 25-1|Example 25-1]] and [[Example 25-2|Example 25-2]]). It often appears in the Bash [[important-files#^FILESREF1|startup files]], but also has its uses in scripts. Needs [[bash-version-2-3-and-4#^BASH2REF|version 2]] or later of Bash.
 
 ```bash
 shopt -s cdspell
@@ -726,7 +726,7 @@ The **bind** builtin displays or modifies _readline_ [^9] key bindings.
 
 **help**
 
-Gets a short usage summary of a shell builtin. This is the counterpart to [[file-and-archiving-commands#^WHATISREF|whatis]], but for builtins. The display of _help_ information got a much-needed update in the [[bash-version-4#^BASH4REF|version 4 release]] of Bash.
+Gets a short usage summary of a shell builtin. This is the counterpart to [[file-and-archiving-commands#^WHATISREF|whatis]], but for builtins. The display of _help_ information got a much-needed update in the [[bash-version-2-3-and-4#^BASH4REF|version 4 release]] of Bash.
 
 ```bash
 bash$ help exit
