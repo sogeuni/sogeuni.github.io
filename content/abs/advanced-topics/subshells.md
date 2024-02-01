@@ -59,79 +59,7 @@ A command list embedded between _parentheses_ runs as a subshell.
 
 Variables in a subshell are _not_ visible outside the block of code in the subshell. They are not accessible to the [[internal-commands-and-builtins#^FORKREF|parent process]], to the shell that launched the subshell. These are, in effect, variables [[local-variables#^LOCALREF|local]] to the _child process_.
 
-**Example 21-1.** Variable scope in a subshell
-
-```bash
-#!/bin/bash
-# subshell.sh
-
-echo
-
-echo "We are outside the subshell."
-echo "Subshell level OUTSIDE subshell = $BASH_SUBSHELL"
-# Bash, version 3, adds the new         $BASH_SUBSHELL variable.
-echo; echo
-
-outer_variable=Outer
-global_variable=
-#  Define global variable for "storage" of
-#+ value of subshell variable.
-
-(
-echo "We are inside the subshell."
-echo "Subshell level INSIDE subshell = $BASH_SUBSHELL"
-inner_variable=Inner
-
-echo "From inside subshell, \"inner_variable\" = $inner_variable"
-echo "From inside subshell, \"outer\" = $outer_variable"
-
-global_variable="$inner_variable"   #  Will this allow "exporting"
-                                    #+ a subshell variable?
-)
-
-echo; echo
-echo "We are outside the subshell."
-echo "Subshell level OUTSIDE subshell = $BASH_SUBSHELL"
-echo
-
-if [ -z "$inner_variable" ]
-then
-  echo "inner_variable undefined in main body of shell"
-else
-  echo "inner_variable defined in main body of shell"
-fi
-
-echo "From main body of shell, \"inner_variable\" = $inner_variable"
-#  $inner_variable will show as blank (uninitialized)
-#+ because variables defined in a subshell are "local variables".
-#  Is there a remedy for this?
-echo "global_variable = "$global_variable""  # Why doesn't this work?
-
-echo
-
-# =======================================================================
-
-# Additionally ...
-
-echo "-----------------"; echo
-
-var=41                                                 # Global variable.
-
-( let "var+=1"; echo "\$var INSIDE subshell = $var" )  # 42
-
-echo "\$var OUTSIDE subshell = $var"                   # 41
-#  Variable operations inside a subshell, even to a GLOBAL variable
-#+ do not affect the value of the variable outside the subshell!
-
-
-exit 0
-
-#  Question:
-#  --------
-#  Once having exited a subshell,
-#+ is there any way to reenter that very same subshell
-#+ to modify or access the subshell variables?
-```
+![[Example 21-1|Example 21-1]]
 
 See also [[another-look-at-variables#^BASHPIDREF|$BASHPID]] and [[Example 34-2|Example 34-2]].
 
@@ -154,29 +82,7 @@ See also [[another-look-at-variables#^BASHPIDREF|$BASHPID]] and [[Example 34-2|E
 
 Directory changes made in a subshell do not carry over to the parent shell.
 
-**Example 21-2.** List User Profiles
-
-```bash
-#!/bin/bash
-# allprofs.sh: Print all user profiles.
-
-# This script written by Heiner Steven, and modified by the document author.
-
-FILE=.bashrc  #  File containing user profile,
-              #+ was ".profile" in original script.
-
-for home in `awk -F: '{print $6}' /etc/passwd`
-do
-  [ -d "$home" ] | continue    # If no home directory, go to next.
-  [ -r "$home" ] | continue    # If not readable, go to next.
-  (cd $home; [ -e $FILE ] && less $FILE)
-done
-
-#  When script terminates, there is no need to 'cd' back to original directory,
-#+ because 'cd $home' takes place in a subshell.
-
-exit 0
-```
+![[Example 21-2|Example 21-2]]
 
 A subshell may be used to set up a "dedicated environment" for a command group.
 
@@ -236,22 +142,7 @@ fi
 
 Processes may execute in parallel within different subshells. This permits breaking a complex task into subcomponents processed concurrently.
 
-**Example 21-3.** Running parallel processes in subshells
-
-```bash
-(cat list1 list2 list3 | sort | uniq > list123) &
-	(cat list4 list5 list6 | sort | uniq > list456) &
-	# Merges and sorts both sets of lists simultaneously.
-	# Running in background ensures parallel execution.
-	#
-	# Same effect as
-	#   cat list1 list2 list3 | sort | uniq > list123 &
-	#   cat list4 list5 list6 | sort | uniq > list456 &
-	
-	wait   # Don't execute the next command until subshells finish.
-	
-	diff list123 list456
-```
+![[Example 21-3|Example 21-3]]
 
 Redirecting I/O to a subshell uses the "|" pipe operator, as in **ls -al | (command)**.
 
