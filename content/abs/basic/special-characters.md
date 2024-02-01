@@ -89,7 +89,7 @@ esac
 
 ### ;;&, ;&
 
-**[[bash-version-4#^NCTERM|Terminators]] in a *case* option ([[bash-version-4#^BASH4REF|version 4+]] of Bash).**
+**[[bash-version-2-3-and-4#^NCTERM|Terminators]] in a *case* option ([[bash-version-2-3-and-4#^BASH4REF|version 4+]] of Bash).**
 
 ### . (dot)
 
@@ -191,7 +191,7 @@ done
 
 ### ,, ,
 
-**[[bash-version-4#^CASEMODPARAMSUB|Lowercase conversion]] in *parameter substitution* (added in [[bash-version-4#^BASH4REF|version 4]] of Bash).**
+**[[bash-version-2-3-and-4#^CASEMODPARAMSUB|Lowercase conversion]] in *parameter substitution* (added in [[bash-version-2-3-and-4#^BASH4REF|version 4]] of Bash).**
 
 ### \ (backslash)
 
@@ -350,7 +350,7 @@ The * also represents [[brief-introduction-to-regular-expressions#^ASTERISKREG|a
 
 **[[operations-and-related-topics#^AROPS1|arithmetic operator]].** In the context of arithmetic operations, the * denotes multiplication.
 
-** A double asterisk can represent the [[operations-and-related-topics#^EXPONENTIATIONREF|exponentiation]] operator or [[bash-version-4#^GLOBSTARREF|extended file-match]] *globbing*.
+** A double asterisk can represent the [[operations-and-related-topics#^EXPONENTIATIONREF|exponentiation]] operator or [[bash-version-2-3-and-4#^GLOBSTARREF|extended file-match]] *globbing*.
 
 ### ? (question mark)
 
@@ -406,7 +406,7 @@ $
 
 ### $' ... '
 
-**[[quoting#^STRQ|Quoted string expansion]].** This construct expands single or multiple escaped octal or hex values into ASCII [^3] or [[bash-version-4#^UNICODEREF|Unicode]] characters.
+**[[quoting#^STRQ|Quoted string expansion]].** This construct expands single or multiple escaped octal or hex values into ASCII [^3] or [[bash-version-2-3-and-4#^UNICODEREF|Unicode]] characters.
 
 ### \$\*, \$@
 
