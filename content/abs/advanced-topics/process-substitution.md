@@ -128,104 +128,11 @@ exec 3>&-
 
 Here is a method of circumventing the problem of an [[gotchas#^BADREAD0|_echo_ piped to a _while-read loop_]] running in a subshell.
 
-**Example 23-1.** Code block redirection without forking
-
-```bash
-#!/bin/bash
-# wr-ps.bash: while-read loop with process substitution.
-
-# This example contributed by Tomas Pospisek.
-# (Heavily edited by the ABS Guide author.)
-
-echo
-
-echo "random input" | while read i
-do
-  global=3D": Not available outside the loop."
-  # ... because it runs in a subshell.
-done
-
-echo "\$global (from outside the subprocess) = $global"
-# $global (from outside the subprocess) =
-
-echo; echo "--"; echo
-
-while read i
-do
-  echo $i
-  global=3D": Available outside the loop."
-  # ... because it does NOT run in a subshell.
-done < <( echo "random input" )
-#    ^ ^
-
-echo "\$global (using process substitution) = $global"
-# Random input
-# $global (using process substitution) = 3D: Available outside the loop.
-
-
-echo; echo "##########"; echo
-
-
-
-# And likewise . . .
-
-declare -a inloop
-index=0
-cat $0 | while read line
-do
-  inloop[$index]="$line"
-  ((index++))
-  # It runs in a subshell, so ...
-done
-echo "OUTPUT = "
-echo ${inloop[*]}           # ... nothing echoes.
-
-
-echo; echo "--"; echo
-
-
-declare -a outloop
-index=0
-while read line
-do
-  outloop[$index]="$line"
-  ((index++))
-  # It does NOT run in a subshell, so ...
-done < <( cat $0 )
-echo "OUTPUT = "
-echo ${outloop[*]}          # ... the entire script echoes.
-
-exit $?
-```
+![[Example 23-1|Example 23-1]]
 
 This is a similar example.
 
-**Example 23-2. Redirecting the output of *process substitution* into a loop.**
-
-```bash
-#!/bin/bash
-# psub.bash
-
-# As inspired by Diego Molina (thanks!).
-
-declare -a array0
-while read
-do
-  array0[${#array0[@]}]="$REPLY"
-done < <( sed -e 's/bash/CRASH-BANG!/' $0 | grep bin | awk '{print $1}' )
-#  Sets the default 'read' variable, $REPLY, by process substitution,
-#+ then copies it into an array.
-
-echo "${array0[@]}"
-
-exit $?
-
-# ====================================== #
-
-bash psub.bash
-
-#!/bin/CRASH-BANG! done #!/bin/CRASH-BANG!
-```
+![[Example 23-2|Example 23-2]]
 
 A reader sent in the following interesting example of process substitution.
 
