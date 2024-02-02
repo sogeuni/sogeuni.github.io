@@ -89,57 +89,11 @@ Batch files usually contain DOS commands. These must be translated into their UN
 
 Converting a DOS batch file into a shell script is generally straightforward, and the result ofttimes reads better than the original.
 
-**Example N-1. VIEWDATA.**BAT: DOS Batch File
-
-```batch
-REM VIEWDATA
-
-REM INSPIRED BY AN EXAMPLE IN "DOS POWERTOOLS"
-REM                           BY PAUL SOMERSON
-
-
-@ECHO OFF
-
-IF !%1==! GOTO VIEWDATA
-REM  IF NO COMMAND-LINE ARG...
-FIND "%1" C:\BOZO\BOOKLIST.TXT
-GOTO EXIT0
-REM  PRINT LINE WITH STRING MATCH, THEN EXIT.
-
-:VIEWDATA
-TYPE C:\BOZO\BOOKLIST.TXT | MORE
-REM  SHOW ENTIRE FILE, 1 PAGE AT A TIME.
-
-:EXIT0
-```
+![[Example N-1|Example N-1]]
 
 The script conversion is somewhat of an improvement. [^1]
 
-**Example N-2. *viewdata.sh*: Shell Script Conversion of VIEWDATA.**BAT
-
-```bash
-#!/bin/bash
-# viewdata.sh
-# Conversion of VIEWDATA.BAT to shell script.
-
-DATAFILE=/home/bozo/datafiles/book-collection.data
-ARGNO=1
-
-# @ECHO OFF                 Command unnecessary here.
-
-if [ $# -lt "$ARGNO" ]    # IF !%1==! GOTO VIEWDATA
-then
-  less $DATAFILE          # TYPE C:\MYDIR\BOOKLIST.TXT | MORE
-else
-  grep "$1" $DATAFILE     # FIND "%1" C:\MYDIR\BOOKLIST.TXT
-fi  
-
-exit 0                    # :EXIT0
-
-#  GOTOs, labels, smoke-and-mirrors, and flimflam unnecessary.
-#  The converted script is short, sweet, and clean,
-#+ which is more than can be said for the original.
-```
+![[Example N-2|Example N-2]]
 
 Ted Davis' [Shell Scripts on the PC](http://www.maem.umr.edu/batch/) site had a set of comprehensive tutorials on the old-fashioned art of batch file programming. Unfortunately the page has vanished without a trace.
 
